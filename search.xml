@@ -256,6 +256,75 @@
       </tags>
   </entry>
   <entry>
+    <title>博客制作遇到的问题</title>
+    <url>/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>制作博客的过程中遇到的一部分问题及其解决办法</p>
+<span id="more"></span>
+
+<h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><p><code>hexo server</code> #启动本地服务器，用于预览主题。Hexo 会监视文件变动并自动更新，除修改站点配置文件外,无须重启服务器,直接刷新网页即可生效。</p>
+<p><code>hexo server -s</code> #以静态模式启动</p>
+<p><code>hexo server -p 5000</code> #更改访问端口 (默认端口为4000，’ctrl + c’关闭server)</p>
+<p><code>hexo server -i IP地址</code> #自定义 IP</p>
+<p><code>hexo clean</code> #清除缓存 ,网页正常情况下可以忽略此条命令,执行该指令后,会删掉站点根目录下的public文件夹</p>
+<p><code>hexo g</code> #生成静态网页 (执行 $ <code>hexo g</code>后会在站点根目录下生成public文件夹, hexo会将”/blog/source/“ 下面的.md后缀的文件编译为.html后缀的文件,存放在”/blog/public/ “ 路径下)</p>
+<p><code>hexo d</code> #自动生成网站静态文件，并将本地数据部署到设定的仓库(如github)</p>
+<p><code>hexo init</code> 文件夹名称 #初始化XX文件夹名称</p>
+<p><code>npm update hexo -g</code>#升级</p>
+<p><code>npm install hexo -g</code> #安装</p>
+<p><code>node-v</code> #查看node.js版本号</p>
+<p><code>npm -v</code> #查看npm版本号</p>
+<p><code>git --version</code> #查看git版本号</p>
+<p><code>hexo -v</code> #查看hexo版本号</p>
+<h1 id="简写指令"><a href="#简写指令" class="headerlink" title="简写指令"></a>简写指令</h1><p>hexo n “我的第一篇文章”<code>等价于</code>hexo new “我的第一篇文章”<code>还等价于</code>hexo new post “我的第一篇文章”<br>hexo p<code>等价于</code>hexo publish<br>hexo g<code>等价于</code>hexo generate<br>hexo s<code>等价于 </code>hexo server<br>hexo d<code>等价于</code>hexo deploy<br>hexo g -d<code>等价于</code>hexo generate –deploy<br>注: <code>hexo clean</code> 没有 简写, <code>git --version</code> 没有简写</p>
+<h1 id="hexo-next设置网站运行时间"><a href="#hexo-next设置网站运行时间" class="headerlink" title="hexo+next设置网站运行时间"></a>hexo+next设置网站运行时间</h1><p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/MB5B%25Y4VY%60%25V_WO7@1Y%5BW6B.jpg" alt="img"></p>
+<p>找到<code>hexo\themes\next\layout\_partials\footer.swig</code>添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var now = new Date(); </span><br><span class="line">    function createtime() &#123; </span><br><span class="line">        var grt= new Date(&quot;08/10/2018 17:38:00&quot;);//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); </span><br><span class="line">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); </span><br><span class="line">        if(String(hnum).length ==1 )&#123;hnum = &quot;0&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); </span><br><span class="line">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;0&quot; + mnum;&#125; </span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;0&quot; + snum;&#125; </span><br><span class="line">        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;; </span><br><span class="line">        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;; </span><br><span class="line">    &#125; </span><br><span class="line">setInterval(&quot;createtime()&quot;,250);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后部署上传即可！</p>
+<h1 id="博客不显示图片"><a href="#博客不显示图片" class="headerlink" title="博客不显示图片"></a>博客不显示图片</h1><p>在写博客的过程中难免需要插图，而有时候在插图时在博客中无法正常显示图片，这个时候就需要以下几个步骤：</p>
+<h2 id="修改博客根目录中-config-yml文件的配置项post-asset-folder为true"><a href="#修改博客根目录中-config-yml文件的配置项post-asset-folder为true" class="headerlink" title="修改博客根目录中_config.yml文件的配置项post_asset_folder为true"></a>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code></h2><blockquote>
+<p>post_asset_folder: true</p>
+</blockquote>
+<p>完成此设置后，当你通过<code>hexo new 文件名</code>新建博客后，会产生一个和文件同名的文件夹。</p>
+<p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/webp.webp" alt=" "></p>
+<h2 id="在博客根目录中下使用npm安装插件："><a href="#在博客根目录中下使用npm安装插件：" class="headerlink" title="在博客根目录中下使用npm安装插件："></a>在博客根目录中下使用npm安装插件：</h2><p>（回到博客根目录下在空白部分点右键，进入<code>git bush here</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p>完成以上步骤后就可以正常插图了！在这里再强调一下插图的语法是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![ ]( )</span><br></pre></td></tr></table></figure>
+
+<p>然后选择对路径之后就会正常显示图片！</p>
+<h1 id="Hexo博客添加搜索功能"><a href="#Hexo博客添加搜索功能" class="headerlink" title="Hexo博客添加搜索功能"></a>Hexo博客添加搜索功能</h1><p>安装插件，在博客根目录执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<p>修改根目录下的<code>_config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br><span class="line">  content: true</span><br></pre></td></tr></table></figure>
+
+<p>修改主题配置文件./themes/next下的<code>_config.yml</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">	enable: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h1 id="时发生error：spawn-failed错误"><a href="#时发生error：spawn-failed错误" class="headerlink" title="时发生error：spawn failed错误"></a>时发生error：spawn failed错误</h1><p>首先用<code>ssh -T git@github.com</code>命令测试是否连接，如果不能连接的话，在存放key的目录下新建config文件</p>
+<p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/MO22Ie.png" alt="MO22Ie.png"></p>
+<p>填入以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User 你GitHub的邮箱</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+
+<p>如果可以正常连接的话，回到博客的根目录，打开_config.yml配置文件</p>
+<p>修改以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">type: git</span><br><span class="line"></span><br><span class="line">repo: https://github.com/yourname/yourname.github.io.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>其中的repo修改为</p>
+<p><code>git@github.com:yourname/yourname.github.io.git</code></p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>长安“战疫”网络安全卫士守护赛wp</title>
     <url>/2022/01/08/%E9%95%BF%E5%AE%89%E2%80%9C%E6%88%98%E7%96%AB%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%AE%88%E6%8A%A4%E8%B5%9Bwp/</url>
     <content><![CDATA[<p>长安“战疫”网络安全卫士守护赛wp</p>
@@ -434,75 +503,6 @@
       </categories>
       <tags>
         <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客制作遇到的问题</title>
-    <url>/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>制作博客的过程中遇到的一部分问题及其解决办法</p>
-<span id="more"></span>
-
-<h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><p><code>hexo server</code> #启动本地服务器，用于预览主题。Hexo 会监视文件变动并自动更新，除修改站点配置文件外,无须重启服务器,直接刷新网页即可生效。</p>
-<p><code>hexo server -s</code> #以静态模式启动</p>
-<p><code>hexo server -p 5000</code> #更改访问端口 (默认端口为4000，’ctrl + c’关闭server)</p>
-<p><code>hexo server -i IP地址</code> #自定义 IP</p>
-<p><code>hexo clean</code> #清除缓存 ,网页正常情况下可以忽略此条命令,执行该指令后,会删掉站点根目录下的public文件夹</p>
-<p><code>hexo g</code> #生成静态网页 (执行 $ <code>hexo g</code>后会在站点根目录下生成public文件夹, hexo会将”/blog/source/“ 下面的.md后缀的文件编译为.html后缀的文件,存放在”/blog/public/ “ 路径下)</p>
-<p><code>hexo d</code> #自动生成网站静态文件，并将本地数据部署到设定的仓库(如github)</p>
-<p><code>hexo init</code> 文件夹名称 #初始化XX文件夹名称</p>
-<p><code>npm update hexo -g</code>#升级</p>
-<p><code>npm install hexo -g</code> #安装</p>
-<p><code>node-v</code> #查看node.js版本号</p>
-<p><code>npm -v</code> #查看npm版本号</p>
-<p><code>git --version</code> #查看git版本号</p>
-<p><code>hexo -v</code> #查看hexo版本号</p>
-<h1 id="简写指令"><a href="#简写指令" class="headerlink" title="简写指令"></a>简写指令</h1><p>hexo n “我的第一篇文章”<code>等价于</code>hexo new “我的第一篇文章”<code>还等价于</code>hexo new post “我的第一篇文章”<br>hexo p<code>等价于</code>hexo publish<br>hexo g<code>等价于</code>hexo generate<br>hexo s<code>等价于 </code>hexo server<br>hexo d<code>等价于</code>hexo deploy<br>hexo g -d<code>等价于</code>hexo generate –deploy<br>注: <code>hexo clean</code> 没有 简写, <code>git --version</code> 没有简写</p>
-<h1 id="hexo-next设置网站运行时间"><a href="#hexo-next设置网站运行时间" class="headerlink" title="hexo+next设置网站运行时间"></a>hexo+next设置网站运行时间</h1><p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/MB5B%25Y4VY%60%25V_WO7@1Y%5BW6B.jpg" alt="img"></p>
-<p>找到<code>hexo\themes\next\layout\_partials\footer.swig</code>添加如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var now = new Date(); </span><br><span class="line">    function createtime() &#123; </span><br><span class="line">        var grt= new Date(&quot;08/10/2018 17:38:00&quot;);//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); </span><br><span class="line">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); </span><br><span class="line">        if(String(hnum).length ==1 )&#123;hnum = &quot;0&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); </span><br><span class="line">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;0&quot; + mnum;&#125; </span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;0&quot; + snum;&#125; </span><br><span class="line">        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;; </span><br><span class="line">        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;; </span><br><span class="line">    &#125; </span><br><span class="line">setInterval(&quot;createtime()&quot;,250);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后部署上传即可！</p>
-<h1 id="博客不显示图片"><a href="#博客不显示图片" class="headerlink" title="博客不显示图片"></a>博客不显示图片</h1><p>在写博客的过程中难免需要插图，而有时候在插图时在博客中无法正常显示图片，这个时候就需要以下几个步骤：</p>
-<h2 id="修改博客根目录中-config-yml文件的配置项post-asset-folder为true"><a href="#修改博客根目录中-config-yml文件的配置项post-asset-folder为true" class="headerlink" title="修改博客根目录中_config.yml文件的配置项post_asset_folder为true"></a>修改博客根目录中<code>_config.yml</code>文件的配置项<code>post_asset_folder</code>为<code>true</code></h2><blockquote>
-<p>post_asset_folder: true</p>
-</blockquote>
-<p>完成此设置后，当你通过<code>hexo new 文件名</code>新建博客后，会产生一个和文件同名的文件夹。</p>
-<p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/webp.webp" alt=" "></p>
-<h2 id="在博客根目录中下使用npm安装插件："><a href="#在博客根目录中下使用npm安装插件：" class="headerlink" title="在博客根目录中下使用npm安装插件："></a>在博客根目录中下使用npm安装插件：</h2><p>（回到博客根目录下在空白部分点右键，进入<code>git bush here</code>）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p>完成以上步骤后就可以正常插图了！在这里再强调一下插图的语法是</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![ ]( )</span><br></pre></td></tr></table></figure>
-
-<p>然后选择对路径之后就会正常显示图片！</p>
-<h1 id="Hexo博客添加搜索功能"><a href="#Hexo博客添加搜索功能" class="headerlink" title="Hexo博客添加搜索功能"></a>Hexo博客添加搜索功能</h1><p>安装插件，在博客根目录执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<p>修改根目录下的<code>_config.yml</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br><span class="line">  content: true</span><br></pre></td></tr></table></figure>
-
-<p>修改主题配置文件./themes/next下的<code>_config.yml</code>文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">	enable: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h1 id="时发生error：spawn-failed错误"><a href="#时发生error：spawn-failed错误" class="headerlink" title="时发生error：spawn failed错误"></a>时发生error：spawn failed错误</h1><p>首先用<code>ssh -T git@github.com</code>命令测试是否连接，如果不能连接的话，在存放key的目录下新建config文件</p>
-<p><img src="/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/MO22Ie.png" alt="MO22Ie.png"></p>
-<p>填入以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User 你GitHub的邮箱</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
-
-<p>如果可以正常连接的话，回到博客的根目录，打开_config.yml配置文件</p>
-<p>修改以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">type: git</span><br><span class="line"></span><br><span class="line">repo: https://github.com/yourname/yourname.github.io.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-
-<p>其中的repo修改为</p>
-<p><code>git@github.com:yourname/yourname.github.io.git</code></p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
 </search>
