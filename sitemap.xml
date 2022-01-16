@@ -128,13 +128,6 @@
 
   
   <url>
-    <loc>https://hzy2003628.top/tags/C/</loc>
-    <lastmod>2022-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/tags/Python/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -149,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/tags/Reverse/</loc>
+    <loc>https://hzy2003628.top/tags/C/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://hzy2003628.top/tags/Reverse/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -176,14 +169,14 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://hzy2003628.top/categories/C/</loc>
+    <loc>https://hzy2003628.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>https://hzy2003628.top/categories/Python%E7%B1%BB/</loc>
@@ -200,14 +193,14 @@
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/categories/CTF-Reverse/</loc>
+    <loc>https://hzy2003628.top/categories/C/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E7%B1%BB/</loc>
+    <loc>https://hzy2003628.top/categories/CTF-Reverse/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -222,6 +215,13 @@
   
   <url>
     <loc>https://hzy2003628.top/categories/%E5%BF%83%E5%BE%97%E7%B1%BB/</loc>
+    <lastmod>2022-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hzy2003628.top/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E7%B1%BB/</loc>
     <lastmod>2022-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
