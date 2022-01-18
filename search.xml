@@ -2986,6 +2986,24 @@
       </tags>
   </entry>
   <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>valine</title>
     <url>/2022/01/18/valine/</url>
     <content><![CDATA[<p>Hexo NexT 评论系统 Valine 的使用</p>
@@ -3010,55 +3028,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
 <p>并且修改主题配置文件：notify改成 true</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新版next置换</title>
-    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
-    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
-<span id="more"></span>
-
-<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
-<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
-<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
-
-<p>文章分段栏</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<p>联系方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
-
-<p>头像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
-
-<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
@@ -3191,6 +3160,37 @@
 
 <p>其中的repo修改为</p>
 <p><code>git@github.com:yourname/yourname.github.io.git</code></p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新版next置换</title>
+    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
+    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
+<span id="more"></span>
+
+<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
+<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
+
+<p>文章分段栏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<p>联系方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+
+<p>头像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
+
+<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
