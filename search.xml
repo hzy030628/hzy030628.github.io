@@ -2636,6 +2636,77 @@
       </tags>
   </entry>
   <entry>
+    <title>ctf之reverse</title>
+    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
+    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
+<span id="more"></span>
+
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
+<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
+<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
+<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
+<p>   验证：if H(key)==Secret</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   输出：flag</p>
+<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
+<p>2.密码算法验证</p>
+<p>3.算法求解验证</p>
+<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这种类型flag就在其中，善于观察即可！</p>
+<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
+<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
+<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
+<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
+<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
+<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
+<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
+<p>—-密钥空间过短</p>
+<p>—-伪随机算法</p>
+<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
+<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
+<p>—-密码算法（密钥部分已知）</p>
+<p>—-解题算法（暴力搜索）</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
+<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
+<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
+<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
+<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
+]]></content>
+      <categories>
+        <category>CTF-Reverse</category>
+      </categories>
+      <tags>
+        <tag>Reverse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>reverse刷题</title>
+    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ctf之Web</title>
     <url>/2022/01/08/ctf%E4%B9%8Bweb/</url>
     <content><![CDATA[<p>CTF中的Web领域的入门学习</p>
@@ -2915,77 +2986,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ctf之reverse</title>
-    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
-    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
-<span id="more"></span>
-
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
-<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
-<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
-<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
-<p>   验证：if H(key)==Secret</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   输出：flag</p>
-<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
-<p>2.密码算法验证</p>
-<p>3.算法求解验证</p>
-<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这种类型flag就在其中，善于观察即可！</p>
-<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
-<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
-<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
-<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
-<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
-<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
-<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
-<p>—-密钥空间过短</p>
-<p>—-伪随机算法</p>
-<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
-<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
-<p>—-密码算法（密钥部分已知）</p>
-<p>—-解题算法（暴力搜索）</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
-<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
-<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
-<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
-<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
-]]></content>
-      <categories>
-        <category>CTF-Reverse</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>reverse刷题</title>
-    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开启博客之旅</title>
     <url>/2021/12/30/test/</url>
     <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
@@ -3028,6 +3028,73 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
 <p>并且修改主题配置文件：notify改成 true</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>不蒜子相关问题</title>
+    <url>/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>不蒜子统计相关问题</p>
+<span id="more"></span>
+
+<p>不蒜子统计访客量总是不显示，这个问题我差了很多资料，希望可以帮到大家！NexT 预置了不蒜子提供的网页计数功能。只需要在配置文件中启用即可！</p>
+<p>至于为啥总是不显示数据，初步发现应该和看板娘Live2D冲突导致的！</p>
+<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>添加 Live2D 后网页的不蒜子部分源码的 <code>style</code> 从 <code>&quot;display: inline;&quot;</code> 替换为了 <code>&quot;display: none;&quot;</code></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>删除不蒜子部分的 <code>id</code> 和 <code>style</code> 属性，重新部署网页即可解决该问题。</p>
+<p><code>next/layout/_third-party/statistics/busuanzi-counter.swig</code> 中修改的是网页页脚部分的不蒜子显示，<code>next/layout/_macro/post.swig</code> 中修改的博客文章阅览数的不蒜子显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if theme.busuanzi_count.total_visitors %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_uv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- ... --&gt;</span><br><span class="line"></span><br><span class="line">&#123;%- if theme.busuanzi_count.total_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if not is_index and theme.busuanzi_count.enable and theme.busuanzi_count.post_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; title=&quot;&#123;&#123; __(&#x27;post.views&#x27;) &#125;&#125;&quot; id=&quot;busuanzi_container_page_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新版next置换</title>
+    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
+    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
+<span id="more"></span>
+
+<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
+<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
+
+<p>文章分段栏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<p>联系方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+
+<p>头像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
+
+<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>框架问题</title>
+    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>框架问题</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
@@ -3169,37 +3236,6 @@
 
 <p>其中的repo修改为</p>
 <p><code>git@github.com:yourname/yourname.github.io.git</code></p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新版next置换</title>
-    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
-    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
-<span id="more"></span>
-
-<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
-<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
-<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
-
-<p>文章分段栏</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<p>联系方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
-
-<p>头像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
-
-<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
