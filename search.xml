@@ -2587,6 +2587,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Web刷题</title>
+    <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
+<span id="more"></span>
+
+<h1 id="Get和Post"><a href="#Get和Post" class="headerlink" title="Get和Post"></a>Get和Post</h1><p>在web中最简单且最重要的就是get和post的相关方法，对于Get的方法如下：</p>
+<p>借用Bugctf平台中的题</p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/1.png" alt=" "></p>
+<p>Get就是直接在网址上面直接加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/？***</span><br></pre></td></tr></table></figure>
+
+<p>具体根据对应题来写。</p>
+<p>对于Post的方法如下：</p>
+<p>Post需要借助相关插件hackber来进行，这在各浏览器都可以下载，推荐使用火狐浏览器</p>
+<p>这个的借用题和上面的Get几乎一样，这里就不放图了，上重点，用hackber<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/3.png" alt=" "></p>
+<p>然后根据题意<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/4.png" alt=" "></p>
+<p>就可以顺利得到flag<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/2.png" alt=" "></p>
+<h1 id="Simple-SSTI-1"><a href="#Simple-SSTI-1" class="headerlink" title="Simple_SSTI_1"></a>Simple_SSTI_1</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210528104247407.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><p>这个题目是<code>SSTI</code>（<code>Server-Side Template Injection</code>）服务器端模板注入</p>
+</li>
+<li><p>查看源代码，下方提示的是<code>flask</code>和<code>secret_key</code><br><code>flask</code>是<code>python</code>的一个<code>web</code>框架</p>
+</li>
+<li><p>相关资料参考一下链接</p>
+</li>
+</ul>
+<p>拿到题先看源代码<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<p>要我们传入一个flag参数，用post直接报错，那么就选择采用get方式，看源代码发现在<a href="https://so.csdn.net/so/search?q=flask">flask</a>里，经常设置一个secret_key变量。</p>
+<blockquote>
+<p>传入一个<code>flag</code>参数，用两个括号括起来一个表达式或者是变量，返回对应的表达式或变量的值。</p>
+</blockquote>
+<p>尝试后发现成功回显，则输入config查看变量内容<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210707190048792.png" alt="在这里插入图片描述"></p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/5.png" alt=" "></p>
+<p>在这里找到了flag！</p>
+<p>其次，因为题目提示<code>flag</code>值是在<code>SECRET_KEY</code>中，也可以修改成<code>config.SECRET_KEY</code>来访问变量的值<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70-16418967980484.png" alt="在这里插入图片描述"></p>
+<h1 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE.png" alt=" "></p>
+<blockquote>
+<p>这是php弱类型，题的意思就是如果num不能是数字就输出num，如果num=1就输出flag{}，看似矛盾其实不矛盾，只需要/？flag=1*就可以，就是让1后面有其他字符，这样两个式子都成立，就可以得到flag。</p>
+<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE%E7%AD%94%E6%A1%88.png" alt=" "></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ctf之reverse</title>
     <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
     <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
@@ -2636,52 +2685,43 @@
       </tags>
   </entry>
   <entry>
-    <title>Web刷题</title>
-    <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
-<span id="more"></span>
-
-<h1 id="Get和Post"><a href="#Get和Post" class="headerlink" title="Get和Post"></a>Get和Post</h1><p>在web中最简单且最重要的就是get和post的相关方法，对于Get的方法如下：</p>
-<p>借用Bugctf平台中的题</p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/1.png" alt=" "></p>
-<p>Get就是直接在网址上面直接加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/？***</span><br></pre></td></tr></table></figure>
-
-<p>具体根据对应题来写。</p>
-<p>对于Post的方法如下：</p>
-<p>Post需要借助相关插件hackber来进行，这在各浏览器都可以下载，推荐使用火狐浏览器</p>
-<p>这个的借用题和上面的Get几乎一样，这里就不放图了，上重点，用hackber<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/3.png" alt=" "></p>
-<p>然后根据题意<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/4.png" alt=" "></p>
-<p>就可以顺利得到flag<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/2.png" alt=" "></p>
-<h1 id="Simple-SSTI-1"><a href="#Simple-SSTI-1" class="headerlink" title="Simple_SSTI_1"></a>Simple_SSTI_1</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210528104247407.png" alt="在这里插入图片描述"></p>
-<ul>
-<li><p>这个题目是<code>SSTI</code>（<code>Server-Side Template Injection</code>）服务器端模板注入</p>
-</li>
-<li><p>查看源代码，下方提示的是<code>flask</code>和<code>secret_key</code><br><code>flask</code>是<code>python</code>的一个<code>web</code>框架</p>
-</li>
-<li><p>相关资料参考一下链接</p>
-</li>
-</ul>
-<p>拿到题先看源代码<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
-<p>要我们传入一个flag参数，用post直接报错，那么就选择采用get方式，看源代码发现在<a href="https://so.csdn.net/so/search?q=flask">flask</a>里，经常设置一个secret_key变量。</p>
-<blockquote>
-<p>传入一个<code>flag</code>参数，用两个括号括起来一个表达式或者是变量，返回对应的表达式或变量的值。</p>
-</blockquote>
-<p>尝试后发现成功回显，则输入config查看变量内容<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/20210707190048792.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/5.png" alt=" "></p>
-<p>在这里找到了flag！</p>
-<p>其次，因为题目提示<code>flag</code>值是在<code>SECRET_KEY</code>中，也可以修改成<code>config.SECRET_KEY</code>来访问变量的值<img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NtYWxsZm94MjMz,size_16,color_FFFFFF,t_70-16418967980484.png" alt="在这里插入图片描述"></p>
-<h1 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h1><p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE.png" alt=" "></p>
-<blockquote>
-<p>这是php弱类型，题的意思就是如果num不能是数字就输出num，如果num=1就输出flag{}，看似矛盾其实不矛盾，只需要/？flag=1*就可以，就是让1后面有其他字符，这样两个式子都成立，就可以得到flag。</p>
-<p><img src="/2022/01/11/Web%E5%88%B7%E9%A2%98/%E7%9F%9B%E7%9B%BE%E7%AD%94%E6%A1%88.png" alt=" "></p>
-</blockquote>
-]]></content>
+    <title>reverse刷题</title>
+    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>CTF-wp</category>
       </categories>
       <tags>
         <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
       </tags>
   </entry>
   <entry>
@@ -2964,43 +3004,36 @@
       </tags>
   </entry>
   <entry>
-    <title>reverse刷题</title>
-    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+    <title>valine</title>
+    <url>/2022/01/18/valine/</url>
+    <content><![CDATA[<p>Hexo NexT 评论系统 Valine 的使用</p>
 <span id="more"></span>
 
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+<p>这个valine评论系统我感觉很方便，不用进行繁琐的登录就可评论，在这里说一下配置方法！</p>
+<h1 id="开启评论系统"><a href="#开启评论系统" class="headerlink" title="开启评论系统"></a>开启评论系统</h1><p>1注册 <a href="https://leancloud.cn/">LeanCloud</a></p>
+<p>2.创建 Valine 应用，名称任意</p>
+<p>3.进入对应的应用，点击 <code>设置 -&gt; 应用 Keys</code>，获取 <code>AppID</code> 和 <code>AppKey</code></p>
+<p>4 在 Hexo 博客主题配置文件 <code>next/_config.yml</code> 中进行配置，可根据自己喜好来设置该评论系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true # 设置为true，默认为false</span><br><span class="line">  appid:  # 将应用key的App ID设置在这里</span><br><span class="line">  appkey: # 将应用key的App Key设置在这里</span><br><span class="line">  notify: false# 邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false</span><br><span class="line">  verify: false# 验证码 默认为false</span><br><span class="line">  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认，</span><br><span class="line">  avatar: monsterid # 头像风格，默认为mm，可进入网址：https://valine.js.org/visitor.html查看头像设置，这里有许多头像风格，进行设置</span><br><span class="line">  guest_info: nick,mail,link # 自定义评论标题</span><br><span class="line">  pageSize: 10 # 分页大小，10页就自动分页</span><br><span class="line">  visitor: true # 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以开启此评论系统！</p>
+<h2 id="Valine-的配置"><a href="#Valine-的配置" class="headerlink" title="Valine 的配置"></a>Valine 的配置</h2><h2 id="查看评论"><a href="#查看评论" class="headerlink" title="查看评论"></a>查看评论</h2><p>点击 <code>存储 -&gt; 结构化数据</code>，选择 <code>创建 Class</code>，名称 <code>Comment</code>，其他保持默认，以后就可在此 Class 内查看</p>
+<blockquote>
+<p>注：选择 <code>Valine</code> 评论系统是因为支持国内网络，不需要连接外网（翻墙）就可以进行显示评论系统，而且很好管理，页面简单</p>
+</blockquote>
+<h2 id="文章阅读量统计"><a href="#文章阅读量统计" class="headerlink" title="文章阅读量统计"></a>文章阅读量统计</h2><p>点击 <code>存储 -&gt; 结构化数据</code>，选择<code>创建 Class</code>，名称 <code>Counter</code>，其他保持默认，以后就可在此 Class 内查看</p>
+<h1 id="邮件通知功能"><a href="#邮件通知功能" class="headerlink" title="邮件通知功能"></a>邮件通知功能</h1><h4 id="原邮箱模板通知功能"><a href="#原邮箱模板通知功能" class="headerlink" title="原邮箱模板通知功能"></a>原邮箱模板通知功能</h4><p>登录 <a href="https://leancloud.cn/dashboard/login.html">leadcloud</a> 后台，在应用的<code>设置-&gt;邮件模板-&gt;邮件主题</code>（修改主题名称和内容，保存）</p>
+<p>修改邮件主题：<code>你在的评论收到了新的评论</code></p>
+<p>内容改成如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>并且修改主题配置文件：notify改成 true</p>
 ]]></content>
       <categories>
-        <category>心得类</category>
+        <category>博客相关问题类</category>
       </categories>
       <tags>
-        <tag>心得</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -3026,39 +3059,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
 
 <p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>valine</title>
-    <url>/2022/01/18/valine/</url>
-    <content><![CDATA[<p>Hexo NexT 评论系统 Valine 的使用</p>
-<span id="more"></span>
-
-<p>这个valine评论系统我感觉很方便，不用进行繁琐的登录就可评论，在这里说一下配置方法！</p>
-<h1 id="开启评论系统"><a href="#开启评论系统" class="headerlink" title="开启评论系统"></a>开启评论系统</h1><p>1注册 <a href="https://leancloud.cn/">LeanCloud</a></p>
-<p>2.创建 Valine 应用，名称任意</p>
-<p>3.进入对应的应用，点击 <code>设置 -&gt; 应用 Keys</code>，获取 <code>AppID</code> 和 <code>AppKey</code></p>
-<p>4 在 Hexo 博客主题配置文件 <code>next/_config.yml</code> 中进行配置，可根据自己喜好来设置该评论系统。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true # 设置为true，默认为false</span><br><span class="line">  appid:  # 将应用key的App ID设置在这里</span><br><span class="line">  appkey: # 将应用key的App Key设置在这里</span><br><span class="line">  notify: false# 邮箱通知 , https://github.com/xCss/Valine/wiki，默认为false</span><br><span class="line">  verify: false# 验证码 默认为false</span><br><span class="line">  placeholder: Just go go ^_^ # 初始化评论显示，根据自己修改，这里默认，</span><br><span class="line">  avatar: monsterid # 头像风格，默认为mm，可进入网址：https://valine.js.org/visitor.html查看头像设置，这里有许多头像风格，进行设置</span><br><span class="line">  guest_info: nick,mail,link # 自定义评论标题</span><br><span class="line">  pageSize: 10 # 分页大小，10页就自动分页</span><br><span class="line">  visitor: true # 是否允许游客评论 ，进入官网查看设置：https://valine.js.org/visitor.html</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以开启此评论系统！</p>
-<h2 id="Valine-的配置"><a href="#Valine-的配置" class="headerlink" title="Valine 的配置"></a>Valine 的配置</h2><h2 id="查看评论"><a href="#查看评论" class="headerlink" title="查看评论"></a>查看评论</h2><p>点击 <code>存储 -&gt; 结构化数据</code>，选择 <code>创建 Class</code>，名称 <code>Comment</code>，其他保持默认，以后就可在此 Class 内查看</p>
-<blockquote>
-<p>注：选择 <code>Valine</code> 评论系统是因为支持国内网络，不需要连接外网（翻墙）就可以进行显示评论系统，而且很好管理，页面简单</p>
-</blockquote>
-<h2 id="文章阅读量统计"><a href="#文章阅读量统计" class="headerlink" title="文章阅读量统计"></a>文章阅读量统计</h2><p>点击 <code>存储 -&gt; 结构化数据</code>，选择<code>创建 Class</code>，名称 <code>Counter</code>，其他保持默认，以后就可在此 Class 内查看</p>
-<h1 id="邮件通知功能"><a href="#邮件通知功能" class="headerlink" title="邮件通知功能"></a>邮件通知功能</h1><h4 id="原邮箱模板通知功能"><a href="#原邮箱模板通知功能" class="headerlink" title="原邮箱模板通知功能"></a>原邮箱模板通知功能</h4><p>登录 <a href="https://leancloud.cn/dashboard/login.html">leadcloud</a> 后台，在应用的<code>设置-&gt;邮件模板-&gt;邮件主题</code>（修改主题名称和内容，保存）</p>
-<p>修改邮件主题：<code>你在的评论收到了新的评论</code></p>
-<p>内容改成如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<p>并且修改主题配置文件：notify改成 true</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
