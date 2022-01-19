@@ -1,76 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python程序运行常见错误总结</title>
-    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>Python程序运行常见错误总结</p>
-<span id="more"></span>
-
-<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
-
-<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
-
-<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python类</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言系统学习</title>
     <url>/2022/01/15/C/</url>
     <content><![CDATA[<p>C语言系统学习</p>
@@ -2636,6 +2566,76 @@
       </tags>
   </entry>
   <entry>
+    <title>Python程序运行常见错误总结</title>
+    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>Python程序运行常见错误总结</p>
+<span id="more"></span>
+
+<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
+
+<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python类</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ctf之reverse</title>
     <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
     <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
@@ -2964,6 +2964,24 @@
       </tags>
   </entry>
   <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>reverse刷题</title>
     <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -2983,24 +3001,6 @@
       </categories>
       <tags>
         <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
       </tags>
   </entry>
   <entry>
@@ -3028,6 +3028,30 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
 <p>并且修改主题配置文件：notify改成 true</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>不蒜子相关问题</title>
+    <url>/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>不蒜子统计相关问题</p>
+<span id="more"></span>
+
+<p>不蒜子统计访客量总是不显示，这个问题我差了很多资料，希望可以帮到大家！NexT 预置了不蒜子提供的网页计数功能。只需要在配置文件中启用即可！</p>
+<p>至于为啥总是不显示数据，初步发现应该和看板娘Live2D冲突导致的！</p>
+<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>添加 Live2D 后网页的不蒜子部分源码的 <code>style</code> 从 <code>&quot;display: inline;&quot;</code> 替换为了 <code>&quot;display: none;&quot;</code></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>删除不蒜子部分的 <code>id</code> 和 <code>style</code> 属性，重新部署网页即可解决该问题。</p>
+<p><code>next/layout/_third-party/statistics/busuanzi-counter.swig</code> 中修改的是网页页脚部分的不蒜子显示，<code>next/layout/_macro/post.swig</code> 中修改的博客文章阅览数的不蒜子显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if theme.busuanzi_count.total_visitors %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_uv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- ... --&gt;</span><br><span class="line"></span><br><span class="line">&#123;%- if theme.busuanzi_count.total_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if not is_index and theme.busuanzi_count.enable and theme.busuanzi_count.post_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; title=&quot;&#123;&#123; __(&#x27;post.views&#x27;) &#125;&#125;&quot; id=&quot;busuanzi_container_page_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="暴力解决"><a href="#暴力解决" class="headerlink" title="暴力解决"></a>暴力解决</h1><p>直接关上看板娘！！！</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
@@ -3178,43 +3202,6 @@
       </tags>
   </entry>
   <entry>
-    <title>框架问题</title>
-    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>框架问题</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>不蒜子相关问题</title>
-    <url>/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>不蒜子统计相关问题</p>
-<span id="more"></span>
-
-<p>不蒜子统计访客量总是不显示，这个问题我差了很多资料，希望可以帮到大家！NexT 预置了不蒜子提供的网页计数功能。只需要在配置文件中启用即可！</p>
-<p>至于为啥总是不显示数据，初步发现应该和看板娘Live2D冲突导致的！</p>
-<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>添加 Live2D 后网页的不蒜子部分源码的 <code>style</code> 从 <code>&quot;display: inline;&quot;</code> 替换为了 <code>&quot;display: none;&quot;</code></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>删除不蒜子部分的 <code>id</code> 和 <code>style</code> 属性，重新部署网页即可解决该问题。</p>
-<p><code>next/layout/_third-party/statistics/busuanzi-counter.swig</code> 中修改的是网页页脚部分的不蒜子显示，<code>next/layout/_macro/post.swig</code> 中修改的博客文章阅览数的不蒜子显示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if theme.busuanzi_count.total_visitors %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_uv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- ... --&gt;</span><br><span class="line"></span><br><span class="line">&#123;%- if theme.busuanzi_count.total_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; id=&quot;busuanzi_container_site_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if not is_index and theme.busuanzi_count.enable and theme.busuanzi_count.post_views %&#125;</span><br><span class="line">  &lt;span class=&quot;post-meta-item&quot; title=&quot;&#123;&#123; __(&#x27;post.views&#x27;) &#125;&#125;&quot; id=&quot;busuanzi_container_page_pv&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="暴力解决"><a href="#暴力解决" class="headerlink" title="暴力解决"></a>暴力解决</h1><p>直接关上看板娘！！！</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新版next置换</title>
     <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
     <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
@@ -3237,6 +3224,19 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
 
 <p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>框架问题</title>
+    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>框架问题</p>
+<span id="more"></span>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
