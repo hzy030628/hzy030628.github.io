@@ -1,76 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Python程序运行常见错误总结</title>
-    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>Python程序运行常见错误总结</p>
-<span id="more"></span>
-
-<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
-
-<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
-
-<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python类</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言系统学习</title>
     <url>/2022/01/15/C/</url>
     <content><![CDATA[<p>C语言系统学习</p>
@@ -2587,6 +2517,76 @@
       </tags>
   </entry>
   <entry>
+    <title>Python程序运行常见错误总结</title>
+    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>Python程序运行常见错误总结</p>
+<span id="more"></span>
+
+<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
+
+<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python类</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Web刷题</title>
     <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
@@ -2633,95 +2633,6 @@
       </categories>
       <tags>
         <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ctf之reverse</title>
-    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
-    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
-<span id="more"></span>
-
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
-<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
-<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
-<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
-<p>   验证：if H(key)==Secret</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   输出：flag</p>
-<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
-<p>2.密码算法验证</p>
-<p>3.算法求解验证</p>
-<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这种类型flag就在其中，善于观察即可！</p>
-<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
-<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
-<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
-<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
-<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
-<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
-<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
-<p>—-密钥空间过短</p>
-<p>—-伪随机算法</p>
-<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
-<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
-<p>—-密码算法（密钥部分已知）</p>
-<p>—-解题算法（暴力搜索）</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
-<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
-<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
-<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
-<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
-]]></content>
-      <categories>
-        <category>CTF-Reverse</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>reverse刷题</title>
-    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
       </tags>
   </entry>
   <entry>
@@ -3004,6 +2915,95 @@
       </tags>
   </entry>
   <entry>
+    <title>ctf之reverse</title>
+    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
+    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
+<span id="more"></span>
+
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
+<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
+<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
+<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
+<p>   验证：if H(key)==Secret</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   输出：flag</p>
+<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
+<p>2.密码算法验证</p>
+<p>3.算法求解验证</p>
+<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这种类型flag就在其中，善于观察即可！</p>
+<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
+<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
+<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
+<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
+<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
+<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
+<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
+<p>—-密钥空间过短</p>
+<p>—-伪随机算法</p>
+<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
+<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
+<p>—-密码算法（密钥部分已知）</p>
+<p>—-解题算法（暴力搜索）</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
+<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
+<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
+<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
+<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
+]]></content>
+      <categories>
+        <category>CTF-Reverse</category>
+      </categories>
+      <tags>
+        <tag>Reverse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>reverse刷题</title>
+    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>valine</title>
     <url>/2022/01/18/valine/</url>
     <content><![CDATA[<p>Hexo NexT 评论系统 Valine 的使用</p>
@@ -3028,37 +3028,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hi, &#123;&#123;username&#125;&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;你在 &#123;&#123;appname&#125;&#125; 的评论收到了新的回复，请点击查看：&lt;/p&gt;</span><br><span class="line">&lt;p&gt;</span><br><span class="line">&lt;a href=&quot;https://cungudafa.gitee.io&quot; style=&quot;display: inline-block; padding: 10px 20px; border-radius: 4px; background-color: #3090e4; color: #fff; text-decoration: none;&quot;&gt;马上查看&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
 <p>并且修改主题配置文件：notify改成 true</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新版next置换</title>
-    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
-    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
-<span id="more"></span>
-
-<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
-<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
-<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
-
-<p>文章分段栏</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<p>联系方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
-
-<p>头像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
-
-<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
@@ -3200,6 +3169,37 @@
 
 <p>其中的repo修改为</p>
 <p><code>git@github.com:yourname/yourname.github.io.git</code></p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新版next置换</title>
+    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
+    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
+<span id="more"></span>
+
+<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
+<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
+
+<p>文章分段栏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<p>联系方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+
+<p>头像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
+
+<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>

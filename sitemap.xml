@@ -155,13 +155,6 @@
 
   
   <url>
-    <loc>https://hzy2003628.top/tags/Python/</loc>
-    <lastmod>2022-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/tags/C/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -169,7 +162,21 @@
   </url>
   
   <url>
+    <loc>https://hzy2003628.top/tags/Python/</loc>
+    <lastmod>2022-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hzy2003628.top/tags/wp/</loc>
+    <lastmod>2022-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hzy2003628.top/tags/Web/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -190,13 +197,6 @@
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/tags/Web/</loc>
-    <lastmod>2022-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -206,13 +206,6 @@
 
   
   <url>
-    <loc>https://hzy2003628.top/categories/Python%E7%B1%BB/</loc>
-    <lastmod>2022-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/categories/C/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -220,7 +213,21 @@
   </url>
   
   <url>
+    <loc>https://hzy2003628.top/categories/Python%E7%B1%BB/</loc>
+    <lastmod>2022-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hzy2003628.top/categories/CTF-wp/</loc>
+    <lastmod>2022-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hzy2003628.top/categories/CTF-Web/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -235,13 +242,6 @@
   
   <url>
     <loc>https://hzy2003628.top/categories/%E5%BF%83%E5%BE%97%E7%B1%BB/</loc>
-    <lastmod>2022-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hzy2003628.top/categories/CTF-Web/</loc>
     <lastmod>2022-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
