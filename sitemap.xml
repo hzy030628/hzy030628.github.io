@@ -189,13 +189,6 @@
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/tags/C/</loc>
-    <lastmod>2022-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/tags/wp/</loc>
     <lastmod>2022-01-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -218,6 +211,13 @@
   
   <url>
     <loc>https://hzy2003628.top/tags/misc/</loc>
+    <lastmod>2022-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hzy2003628.top/tags/C/</loc>
     <lastmod>2022-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -247,13 +247,6 @@
   </url>
   
   <url>
-    <loc>https://hzy2003628.top/categories/C/</loc>
-    <lastmod>2022-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hzy2003628.top/categories/CTF-wp/</loc>
     <lastmod>2022-01-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -276,6 +269,13 @@
   
   <url>
     <loc>https://hzy2003628.top/categories/misc/</loc>
+    <lastmod>2022-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hzy2003628.top/categories/C/</loc>
     <lastmod>2022-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
