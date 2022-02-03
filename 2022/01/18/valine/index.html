@@ -49,13 +49,14 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 <meta property="og:description" content="Hexo NexT 评论系统 Valine 的使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/image-20220203120812965.png">
+<meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/valine_var_template.png">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/image-20220203122055181.png">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/20200710121318224.png">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/image-20220203122241800.png">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/image-20220203122844414.png">
 <meta property="og:image" content="https://hzy2003628.top/2022/01/18/valine/image-20220203123121367.png">
 <meta property="article:published_time" content="2022-01-18T05:26:49.000Z">
-<meta property="article:modified_time" content="2022-02-03T05:32:21.719Z">
+<meta property="article:modified_time" content="2022-02-03T05:44:15.132Z">
 <meta property="article:author" content="黄子元">
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="评论系统">
@@ -274,7 +275,7 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-03 13:32:21" itemprop="dateModified" datetime="2022-02-03T13:32:21+08:00">2022-02-03</time>
+                <time title="修改时间：2022-02-03 13:44:15" itemprop="dateModified" datetime="2022-02-03T13:44:15+08:00">2022-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -373,11 +374,11 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 </tr>
 <tr>
 <td>BLOGGER_EMAIL</td>
-<td><a href="mailto:&#x32;&#x35;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#x38;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x32;&#x35;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#x38;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#50;&#x35;&#x39;&#54;&#x33;&#50;&#56;&#x39;&#x35;&#56;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;">&#50;&#x35;&#x39;&#54;&#x33;&#50;&#56;&#x39;&#x35;&#56;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td>SENDER_EMAIL</td>
-<td><a href="mailto:&#x32;&#53;&#x39;&#x36;&#x33;&#x32;&#x38;&#x39;&#53;&#x38;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#x32;&#53;&#x39;&#x36;&#x33;&#x32;&#x38;&#x39;&#53;&#x38;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#x32;&#x35;&#x39;&#54;&#x33;&#x32;&#56;&#x39;&#x35;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#x32;&#x35;&#x39;&#54;&#x33;&#x32;&#56;&#x39;&#x35;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td>SENDER_NAME</td>
@@ -401,7 +402,7 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 </tr>
 <tr>
 <td>SMTP_USER</td>
-<td><a href="mailto:&#x32;&#53;&#57;&#x36;&#x33;&#50;&#56;&#57;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#x32;&#53;&#57;&#x36;&#x33;&#50;&#56;&#57;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#50;&#x35;&#x39;&#54;&#x33;&#x32;&#x38;&#57;&#x35;&#x38;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#50;&#x35;&#x39;&#54;&#x33;&#x32;&#x38;&#57;&#x35;&#x38;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td>TEMPLATE_NAME</td>
@@ -409,12 +410,19 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 </tr>
 </tbody></table>
 <ul>
-<li><code>SITE_NAME</code> : 网站名称。</li>
-<li><code>SITE_URL</code> : 网站地址, <strong>最后不要加 <code>/</code> 。</strong></li>
-<li><code>SMTP_USER</code> : SMTP 服务用户名，一般为邮箱地址。</li>
-<li><code>SMTP_PASS</code> : SMTP 密码，一般为授权码，而不是邮箱的登陆密码，请自行查询对应邮件服务商的获取方式</li>
-<li><code>SMTP_SERVICE</code> : 邮件服务提供商，支持 <code>QQ</code>、<code>163</code>、<code>126</code>、<code>Gmail</code>、<code>&quot;Yahoo&quot;</code>、<code>......</code> ，全部支持请参考 : <a target="_blank" rel="noopener" href="https://nodemailer.com/smtp/well-known/#supported-services">Nodemailer Supported services</a>。 — <em>如这里没有你使用的邮件提供商，请查看<a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin/blob/master/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8">自定义邮件服务器</a></em></li>
-<li><code>SENDER_NAME</code> : 寄件人名称。</li>
+<li><p><code>SITE_NAME</code> : 网站名称。</p>
+</li>
+<li><p><code>SITE_URL</code> : 网站地址, <strong>最后不要加 <code>/</code> 。</strong></p>
+</li>
+<li><p><code>SMTP_USER</code> : SMTP 服务用户名，一般为邮箱地址。</p>
+</li>
+<li><p><code>SMTP_PASS</code> : SMTP 密码，一般为授权码，而不是邮箱的登陆密码，请自行查询对应邮件服务商的获取方式</p>
+</li>
+<li><p><code>SMTP_SERVICE</code> : 邮件服务提供商，支持 <code>QQ</code>、<code>163</code>、<code>126</code>、<code>Gmail</code>、<code>&quot;Yahoo&quot;</code>、<code>......</code> ，全部支持请参考 : <a target="_blank" rel="noopener" href="https://nodemailer.com/smtp/well-known/#supported-services">Nodemailer Supported services</a>。 — <em>如这里没有你使用的邮件提供商，请查看<a target="_blank" rel="noopener" href="https://github.com/zhaojun1998/Valine-Admin/blob/master/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8">自定义邮件服务器</a></em></p>
+</li>
+<li><p><code>SENDER_NAME</code> : 寄件人名称。</p>
+<p><img src="/2022/01/18/valine/valine_var_template.png" alt="img"></p>
+</li>
 </ul>
 </li>
 </ul>
