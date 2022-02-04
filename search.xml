@@ -169,79 +169,6 @@
       </tags>
   </entry>
   <entry>
-    <title>misc部分解题软件命令记录</title>
-    <url>/2022/01/23/misc%E9%83%A8%E5%88%86%E8%A7%A3%E9%A2%98%E8%BD%AF%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>misc部分工具解题的命令记录，方便后续使用到的时候能找到，所以记录一下。</p>
-<span id="more"></span>
-
-<h1 id="F5隐写"><a href="#F5隐写" class="headerlink" title="F5隐写"></a>F5隐写</h1><p>全称是F5-steganography</p>
-<p>1.进入该文件夹后，需要将隐写的图片复制到文件夹里然后在空白处打开终端</p>
-<p>2.java Extract图片的绝对路径是/123.jpg -p 123（这个-p后面输入的是密码，多半题目密码就是图片名，还有一定要用绝对路径）</p>
-<p>3.这个时候在文件夹中找到并打开output.txt文件即可得到</p>
-<h2 id="steghide工具"><a href="#steghide工具" class="headerlink" title="steghide工具"></a>steghide工具</h2><p>将post.txt文件隐藏到xxx.jpg中：<br>steghide embed -cf xxx.jpg -ef post.txt -p 123456（不加-p参数 不设置密码 ）<br>从xxx.jpg解出post.txt:<br>steghide extract -sf xxx.jpg （图片路径）-p 123456（-p 密码）<br>steghide也可以用来爆破密码：<br>需要shell脚本：`#bruteStegHide.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   #bruteStegHide.sh</span><br><span class="line">   #!/bin/bash</span><br><span class="line"></span><br><span class="line">for line in `cat $2`;do</span><br><span class="line">steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">if [[ $? -eq 0 ]];then</span><br><span class="line">echo &#x27;password is: &#x27;$line</span><br><span class="line">exit</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>用法：<br># ./bruteStegHide.sh test.jpg passwd.txt<br>剩下的密码就出来了。</p>
-<h2 id="文件分离工具（binwalk-foremost）"><a href="#文件分离工具（binwalk-foremost）" class="headerlink" title="文件分离工具（binwalk,foremost）"></a>文件分离工具（binwalk,foremost）</h2><h2 id="binwalk"><a href="#binwalk" class="headerlink" title="binwalk"></a>binwalk</h2><p>binwalk -D “archive:zip” -D “image:jpg” hehe.jpg 可以直接分离文件</p>
-<blockquote>
-<p>也可以使用dd命令分离文件，如:<code>dd if=hehe.jpg of=hehe1.zip bs=1 skip=54163</code></p>
-</blockquote>
-<h2 id="foremost的使用"><a href="#foremost的使用" class="headerlink" title="foremost的使用"></a>foremost的使用</h2><p>先用<code>foremost -h</code>检查一下是否已经安装，若安装之后会显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ foremost [-v|-V|-h|-T|-Q|-q|-a|-w-d] [-t &lt;type&gt;] [-s &lt;blocks&gt;] [-k &lt;size&gt;] </span><br><span class="line">    [-b &lt;size&gt;] [-c &lt;file&gt;] [-o &lt;dir&gt;] [-i &lt;file] </span><br><span class="line"></span><br><span class="line">-V  - 显示版权信息并退出</span><br><span class="line">-t  - 指定文件类型.  (-t jpeg,pdf ...) </span><br><span class="line">-d  -打开间接块检测 (针对UNIX文件系统) </span><br><span class="line">-i  - 指定输入文件 (默认为标准输入) </span><br><span class="line">-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) </span><br><span class="line">-w  - 向磁盘写入审计文件，不写入任何检测到的文件</span><br><span class="line">-o  - 设置输出目录 (默认为为输出)</span><br><span class="line">-c  - 设置配置文件 (默认为 foremost.conf)</span><br><span class="line">-q  - 启用快速模式. 在512字节边界执行搜索.</span><br><span class="line">-Q  - 启用安静模式. 禁用输出消息. </span><br><span class="line">-v  - 详细模式. 向屏幕上记录所有消息。</span><br></pre></td></tr></table></figure>
-
-<p>使用方法就是将图片放进foremost目录下，输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">foremost -i xxx.jpg</span><br></pre></td></tr></table></figure>
-
-<p>在目录下会出现一个output文件夹，结果就在里面。</p>
-]]></content>
-      <categories>
-        <category>misc</category>
-      </categories>
-      <tags>
-        <tag>misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>reverse刷题</title>
-    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ctf之Web</title>
     <url>/2022/01/08/ctf%E4%B9%8Bweb/</url>
     <content><![CDATA[<p>CTF中的Web领域的入门学习</p>
@@ -523,6 +450,61 @@
       </tags>
   </entry>
   <entry>
+    <title>misc部分解题软件命令记录</title>
+    <url>/2022/01/23/misc%E9%83%A8%E5%88%86%E8%A7%A3%E9%A2%98%E8%BD%AF%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>misc部分工具解题的命令记录，方便后续使用到的时候能找到，所以记录一下。</p>
+<span id="more"></span>
+
+<h1 id="F5隐写"><a href="#F5隐写" class="headerlink" title="F5隐写"></a>F5隐写</h1><p>全称是F5-steganography</p>
+<p>1.进入该文件夹后，需要将隐写的图片复制到文件夹里然后在空白处打开终端</p>
+<p>2.java Extract图片的绝对路径是/123.jpg -p 123（这个-p后面输入的是密码，多半题目密码就是图片名，还有一定要用绝对路径）</p>
+<p>3.这个时候在文件夹中找到并打开output.txt文件即可得到</p>
+<h2 id="steghide工具"><a href="#steghide工具" class="headerlink" title="steghide工具"></a>steghide工具</h2><p>将post.txt文件隐藏到xxx.jpg中：<br>steghide embed -cf xxx.jpg -ef post.txt -p 123456（不加-p参数 不设置密码 ）<br>从xxx.jpg解出post.txt:<br>steghide extract -sf xxx.jpg （图片路径）-p 123456（-p 密码）<br>steghide也可以用来爆破密码：<br>需要shell脚本：`#bruteStegHide.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   #bruteStegHide.sh</span><br><span class="line">   #!/bin/bash</span><br><span class="line"></span><br><span class="line">for line in `cat $2`;do</span><br><span class="line">steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">if [[ $? -eq 0 ]];then</span><br><span class="line">echo &#x27;password is: &#x27;$line</span><br><span class="line">exit</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>用法：<br># ./bruteStegHide.sh test.jpg passwd.txt<br>剩下的密码就出来了。</p>
+<h2 id="文件分离工具（binwalk-foremost）"><a href="#文件分离工具（binwalk-foremost）" class="headerlink" title="文件分离工具（binwalk,foremost）"></a>文件分离工具（binwalk,foremost）</h2><h2 id="binwalk"><a href="#binwalk" class="headerlink" title="binwalk"></a>binwalk</h2><p>binwalk -D “archive:zip” -D “image:jpg” hehe.jpg 可以直接分离文件</p>
+<blockquote>
+<p>也可以使用dd命令分离文件，如:<code>dd if=hehe.jpg of=hehe1.zip bs=1 skip=54163</code></p>
+</blockquote>
+<h2 id="foremost的使用"><a href="#foremost的使用" class="headerlink" title="foremost的使用"></a>foremost的使用</h2><p>先用<code>foremost -h</code>检查一下是否已经安装，若安装之后会显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ foremost [-v|-V|-h|-T|-Q|-q|-a|-w-d] [-t &lt;type&gt;] [-s &lt;blocks&gt;] [-k &lt;size&gt;] </span><br><span class="line">    [-b &lt;size&gt;] [-c &lt;file&gt;] [-o &lt;dir&gt;] [-i &lt;file] </span><br><span class="line"></span><br><span class="line">-V  - 显示版权信息并退出</span><br><span class="line">-t  - 指定文件类型.  (-t jpeg,pdf ...) </span><br><span class="line">-d  -打开间接块检测 (针对UNIX文件系统) </span><br><span class="line">-i  - 指定输入文件 (默认为标准输入) </span><br><span class="line">-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) </span><br><span class="line">-w  - 向磁盘写入审计文件，不写入任何检测到的文件</span><br><span class="line">-o  - 设置输出目录 (默认为为输出)</span><br><span class="line">-c  - 设置配置文件 (默认为 foremost.conf)</span><br><span class="line">-q  - 启用快速模式. 在512字节边界执行搜索.</span><br><span class="line">-Q  - 启用安静模式. 禁用输出消息. </span><br><span class="line">-v  - 详细模式. 向屏幕上记录所有消息。</span><br></pre></td></tr></table></figure>
+
+<p>使用方法就是将图片放进foremost目录下，输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">foremost -i xxx.jpg</span><br></pre></td></tr></table></figure>
+
+<p>在目录下会出现一个output文件夹，结果就在里面。</p>
+]]></content>
+      <categories>
+        <category>misc</category>
+      </categories>
+      <tags>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>reverse刷题</title>
+    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>valine</title>
     <url>/2022/01/18/valine/</url>
     <content><![CDATA[<p>Hexo NexT 评论系统 Valine 的使用</p>
@@ -559,11 +541,11 @@
 </tr>
 <tr>
 <td>BLOGGER_EMAIL</td>
-<td><a href="mailto:&#x32;&#x35;&#57;&#54;&#51;&#50;&#56;&#x39;&#53;&#56;&#64;&#x71;&#113;&#46;&#x63;&#111;&#109;">&#x32;&#x35;&#57;&#54;&#51;&#50;&#56;&#x39;&#53;&#56;&#64;&#x71;&#113;&#46;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#50;&#x35;&#x39;&#54;&#51;&#x32;&#x38;&#x39;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;">&#50;&#x35;&#x39;&#54;&#51;&#x32;&#x38;&#x39;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td>SENDER_EMAIL</td>
-<td><a href="mailto:&#50;&#53;&#x39;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#x38;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;">&#50;&#53;&#x39;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#x38;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#x32;&#53;&#x39;&#54;&#x33;&#x32;&#x38;&#x39;&#53;&#56;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x32;&#53;&#x39;&#54;&#x33;&#x32;&#x38;&#x39;&#53;&#56;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td>SENDER_NAME</td>
@@ -587,7 +569,7 @@
 </tr>
 <tr>
 <td>SMTP_USER</td>
-<td><a href="mailto:&#x32;&#x35;&#57;&#x36;&#x33;&#x32;&#56;&#57;&#x35;&#x38;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#x32;&#x35;&#57;&#x36;&#x33;&#x32;&#56;&#57;&#x35;&#x38;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#50;&#x35;&#57;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#50;&#x35;&#57;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td>TEMPLATE_NAME</td>
@@ -643,6 +625,44 @@
       <tags>
         <tag>博客</tag>
         <tag>评论系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>不蒜子与看板娘的矛盾</title>
+    <url>/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>不蒜子统计相关问题</p>
+<span id="more"></span>
+
+<p>不蒜子统计访客量总是不显示，这个问题我差了很多资料，希望可以帮到大家！NexT 预置了不蒜子提供的网页计数功能。只需要在配置文件中启用即可！</p>
+<p>至于为啥总是不显示数据，初步发现应该和看板娘Live2D冲突导致的！</p>
+<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>添加 Live2D 后网页的不蒜子部分源码的 <code>style</code> 从 <code>&quot;display: inline;&quot;</code> 替换为了 <code>&quot;display: none;&quot;</code></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p> 将流量统计相关代码的外层<code>&lt;span&gt;</code>删除即可正常显示，如图：<br>原来代码：<img src="/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/image-20220203205412286.png" alt="image-20220203205412286"></p>
+<p>修改之后：</p>
+<p><img src="/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/image-20220203205452405.png" alt="image-20220203205452405"></p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>不蒜子不显示</tag>
       </tags>
   </entry>
   <entry>
@@ -6021,26 +6041,6 @@
       </tags>
   </entry>
   <entry>
-    <title>不蒜子与看板娘的矛盾</title>
-    <url>/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>不蒜子统计相关问题</p>
-<span id="more"></span>
-
-<p>不蒜子统计访客量总是不显示，这个问题我差了很多资料，希望可以帮到大家！NexT 预置了不蒜子提供的网页计数功能。只需要在配置文件中启用即可！</p>
-<p>至于为啥总是不显示数据，初步发现应该和看板娘Live2D冲突导致的！</p>
-<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>添加 Live2D 后网页的不蒜子部分源码的 <code>style</code> 从 <code>&quot;display: inline;&quot;</code> 替换为了 <code>&quot;display: none;&quot;</code></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p> 将流量统计相关代码的外层<code>&lt;span&gt;</code>删除即可正常显示，如图：<br>原来代码：<img src="/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/image-20220203205412286.png" alt="image-20220203205412286"></p>
-<p>修改之后：</p>
-<p><img src="/2022/01/19/%E4%B8%8D%E8%92%9C%E5%AD%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/image-20220203205452405.png" alt="image-20220203205452405"></p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>不蒜子不显示</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新版next置换</title>
     <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
     <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
@@ -6430,6 +6430,34 @@
       </tags>
   </entry>
   <entry>
+    <title>留言板</title>
+    <url>/2022/02/03/%E7%95%99%E8%A8%80%E6%9D%BF/</url>
+    <content><![CDATA[<p>加个留言板方便交流！！</p>
+<span id="more"></span>
+
+<p>添加一个新的page</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page guestbook</span><br></pre></td></tr></table></figure>
+
+<p>进入 source/guestbook/index.md。加入你想显示的内容，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 留言板</span><br><span class="line">date: </span><br><span class="line">---</span><br><span class="line"># 欢迎来到我的博客！</span><br><span class="line"></span><br><span class="line">欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在name栏目输入QQ号可以直接获取你的QQ头像。</span><br></pre></td></tr></table></figure>
+
+<p>进入 _config.next.yml， 找到menu栏目，添加留言板功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure>
+
+<p>图标支持font awesome，可以按自己喜好修改。如果有多语言支持需求，可以更改 themes/next/languages 下对应语言的翻译。</p>
+<p>zh-CN.yml:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-重新生成页面即可"><a href="#4-重新生成页面即可" class="headerlink" title="4. 重新生成页面即可"></a>4. 重新生成页面即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>留言板</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客制作遇到的问题</title>
     <url>/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>制作博客的过程中遇到的一部分问题及其解决办法</p>
@@ -6571,34 +6599,6 @@
         <tag>博客部分问题解决方法</tag>
         <tag>常用指令</tag>
         <tag>博客主题优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/2022/02/03/%E7%95%99%E8%A8%80%E6%9D%BF/</url>
-    <content><![CDATA[<p>加个留言板方便交流！！</p>
-<span id="more"></span>
-
-<p>添加一个新的page</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page guestbook</span><br></pre></td></tr></table></figure>
-
-<p>进入 source/guestbook/index.md。加入你想显示的内容，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 留言板</span><br><span class="line">date: </span><br><span class="line">---</span><br><span class="line"># 欢迎来到我的博客！</span><br><span class="line"></span><br><span class="line">欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在name栏目输入QQ号可以直接获取你的QQ头像。</span><br></pre></td></tr></table></figure>
-
-<p>进入 _config.next.yml， 找到menu栏目，添加留言板功能：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure>
-
-<p>图标支持font awesome，可以按自己喜好修改。如果有多语言支持需求，可以更改 themes/next/languages 下对应语言的翻译。</p>
-<p>zh-CN.yml:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-重新生成页面即可"><a href="#4-重新生成页面即可" class="headerlink" title="4. 重新生成页面即可"></a>4. 重新生成页面即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>留言板</tag>
       </tags>
   </entry>
   <entry>
