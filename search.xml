@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DVWA</title>
+    <url>/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>DVWA下载、安装、使用的教程</p>
+<span id="more"></span>
+
+<p>DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程。</p>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>暴力（破解）、命令行注入、跨站请求伪造、文件包含、文件上传、不安全的验证码、SQL注入、SQL盲注、弱会话ID、XSS漏洞（DOM型跨站脚本、反射型跨站脚本、 存储型跨站脚本）</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/fbe2f0c1d9f6556338bcb7fe96c1468e.jpg-600" alt="在这里插入图片描述"></p>
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="下载DVWA"><a href="#下载DVWA" class="headerlink" title="下载DVWA"></a>下载DVWA</h2><p>下载地址：<a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a></p>
+<h2 id="下载安装并启动phpstudy"><a href="#下载安装并启动phpstudy" class="headerlink" title="下载安装并启动phpstudy"></a>下载安装并启动phpstudy</h2><p><a href="https://www.xp.cn/">https://www.xp.cn/</a></p>
+<p>phpStudy是一个PHP调试环境的程序集成包。恰好我们可以用到”PHP+Mysql+Apache”。）</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233428295.png" alt="image-20220204233428295"></p>
+<h2 id="将下载的DVWA解压到phpstudy网站根目录下"><a href="#将下载的DVWA解压到phpstudy网站根目录下" class="headerlink" title="将下载的DVWA解压到phpstudy网站根目录下"></a><strong>将下载的DVWA解压到phpstudy网站根目录下</strong></h2><p>解压后的路径是“D:\phpStudy\WWW\DVWA-master\”</p>
+<h2 id="将-config-inc-php-dist-复制一份或重命令为-config-inc-php；"><a href="#将-config-inc-php-dist-复制一份或重命令为-config-inc-php；" class="headerlink" title="将 config.inc.php.dist 复制一份或重命令为 config.inc.php；"></a><strong>将 config.inc.php.dist 复制一份或重命令为 config.inc.php；</strong></h2><p>配置文件路径是“D:\phpStudy\WWW\DVWA-master\config”</p>
+<h2 id="修改-config-inc-php-里代码"><a href="#修改-config-inc-php-里代码" class="headerlink" title="修改 config.inc.php 里代码"></a><strong>修改 config.inc.php 里代码</strong></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_DVWA[ &#x27;db_server&#x27; ]  = &#x27;127.0.0.1&#x27;; #数据库地址 $_DVWA[ &#x27;db_database&#x27; ] = &#x27;dvwa&#x27;; #数据库名称 $_DVWA[ &#x27;db_user&#x27; ]   = &#x27;root&#x27;; #数据库用户名 $_DVWA[ &#x27;db_password&#x27; ] = &#x27;root&#x27;; #数据库密码</span><br></pre></td></tr></table></figure>
+
+<p>因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’db_password‘为root！！！</p>
+<h1 id="DVWA使用"><a href="#DVWA使用" class="headerlink" title="DVWA使用"></a>DVWA使用</h1><h2 id="设置或重置数据库"><a href="#设置或重置数据库" class="headerlink" title="设置或重置数据库"></a><strong>设置或重置数据库</strong></h2><p>浏览器只需要直接打开“<strong><a href="http://127.0.0.1/DVWA-master/setup.php">http://127.0.0.1/DVWA-master/setup.php</a></strong>”即可！如果有”标红“提示，可能你要打开一些模块或做一些设置，否则有些是不能实验的，例如：文件包含、文件上传漏洞。<br>拉到下面，点击Setup/Reset DB，点击Create/Reset Database。会看到创建成功提示！</p>
+<h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a><strong>登陆</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/login.php">http://127.0.0.1/DVWA-master/login.php</a></strong>“登陆。默认用户名：admin，默认密码：password；</p>
+<h2 id="设置程序安全级别"><a href="#设置程序安全级别" class="headerlink" title="设置程序安全级别"></a><strong>设置程序安全级别</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/security.php">http://127.0.0.1/DVWA-master/security.php</a></strong>“来做设置，分别有”低、中、高、不可能“，程序安全级别越低，说明越容易被攻破，没有做任何的安全防护。主要是用来自我挑战不同等级的程序防护级别的！</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233840685.png" alt="image-20220204233840685"></p>
+]]></content>
+      <categories>
+        <category>漏洞测试环境搭建</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python程序运行常见错误总结</title>
+    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>Python程序运行常见错误总结</p>
+<span id="more"></span>
+
+<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
+
+<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
+<p>错误例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python类</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言系统学习</title>
     <url>/2022/01/15/C/</url>
     <content><![CDATA[<p>C语言系统学习</p>
@@ -5376,120 +5476,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python程序运行常见错误总结</title>
-    <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>Python程序运行常见错误总结</p>
-<span id="more"></span>
-
-<h2 id="1-SyntaxError-invalid-syntax"><a href="#1-SyntaxError-invalid-syntax" class="headerlink" title="1.SyntaxError:invalid syntax"></a>1.SyntaxError:invalid syntax</h2><p>语法错误：非法的语法。这种错误很常见，根据系统提示好好检查代码即可，看报错信息在第几行，从这一行往上找错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i=<span class="number">3</span>:	</span><br><span class="line"></span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-NameError-name-‘q’-is-not-defined"><a href="#2-NameError-name-‘q’-is-not-defined" class="headerlink" title="2.NameError: name ‘q’ is not defined"></a>2.NameError: name ‘q’ is not defined</h2><p>变量名错误：’q’未定义。解决方法是在前面给q赋值，还有一种可能是变量或者函数名拼写错误。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>q</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#0&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  q</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">&#x27;q&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Indentation-Error"><a href="#3-Indentation-Error" class="headerlink" title="3.Indentation Error"></a>3.Indentation Error</h2><p>缩进错误：Python的缩进非常严格，行首多个空格，少个空格都会报错。 像def，class，if，for，while等代码块都需要缩进。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">j=<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> i&lt;j:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line">IndentationError: expected an indented block</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-IndexError-string-index-out-of-range"><a href="#4-IndexError-string-index-out-of-range" class="headerlink" title="4.IndexError: string index out of range"></a>4.IndexError: string index out of range</h2><p>索引错误：字符串超出了范围。解决办法：查看字符串的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s[<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">IndexError: string index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-ValueError-substring-not-found"><a href="#5-ValueError-substring-not-found" class="headerlink" title="5.ValueError: substring not found"></a>5.ValueError: substring not found</h2><p>值错误：子字符串未找到。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1=<span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2=<span class="string">&#x27;ei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.index(s2)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#11&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  s1.index(s2)</span><br><span class="line"></span><br><span class="line">ValueError: substring <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-IndexError-list-index-out-of-range"><a href="#6-IndexError-list-index-out-of-range" class="headerlink" title="6.IndexError: list index out of range"></a>6.IndexError: list index out of range</h2><p>索引错误：列表索引超出范围。解决办法：查看列表的长度，索引要小于长度。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#5&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  L[<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">IndexError: <span class="built_in">list</span> index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’"><a href="#7-AttributeError-‘tuple’-object-has-no-attribute-‘remove’" class="headerlink" title="7.AttributeError: ‘tuple’ object has no attribute ‘remove’"></a>7.AttributeError: ‘tuple’ object has no attribute ‘remove’</h2><p>属性错误：元组对象没有属性’remove’。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#13&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  t.remove(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">AttributeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;remove&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="8-KeyError-‘ff’"><a href="#8-KeyError-‘ff’" class="headerlink" title="8.KeyError: ‘ff’"></a>8.KeyError: ‘ff’</h2><p>key 键错误：没有指定的键值“ff”</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">\&gt;&gt;&gt; <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#3&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>[<span class="string">&#x27;ff&#x27;</span>]</span><br><span class="line"></span><br><span class="line">KeyError: <span class="string">&#x27;ff&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="9-TypeError-pop-expected-at-least-1-arguments-got-0"><a href="#9-TypeError-pop-expected-at-least-1-arguments-got-0" class="headerlink" title="9.TypeError: pop expected at least 1 arguments, got 0"></a>9.TypeError: pop expected at least 1 arguments, got 0</h2><p>类型错误：pop方法希望得到至少一个参数，但是现在参数为0。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>=&#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#7&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">dict</span>.pop()</span><br><span class="line"></span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl"><a href="#10-TypeError-Can’t-convert-‘int’-object-to-str-implicitl" class="headerlink" title="10.TypeError: Can’t convert ‘int’ object to str implicitl"></a>10.TypeError: Can’t convert ‘int’ object to str implicitl</h2><p>类型错误：不能转换整形成字符串。解决办法：使用+拼接时必须使用字符串，或将数字转化成字符串str()</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#9&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;hello&#x27;</span>+<span class="number">9</span></span><br><span class="line"></span><br><span class="line">TypeError: Can<span class="string">&#x27;t convert &#x27;</span><span class="built_in">int</span><span class="string">&#x27; object to str implicitly</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="11-SyntaxError-EOL-while-scanning-string-literal"><a href="#11-SyntaxError-EOL-while-scanning-string-literal" class="headerlink" title="11. SyntaxError: EOL while scanning string literal"></a>11. SyntaxError: EOL while scanning string literal</h2><p>语法错误：在字符串首尾忘记加引号。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;hello)    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SyntaxError: EOL while scanning string literal</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">12. TypeError: &#x27;</span><span class="built_in">range</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
-
-<p>类型错误：range不支持item操作。range() 返回的是“range object”，而不是实际的 list 值。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">range</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#8&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  l[<span class="number">3</span>]=<span class="number">16</span></span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;range&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br><span class="line">可改为：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">3</span>]=<span class="number">16</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="13-IndentationError-unindent-does-not-match-any-outer-indentation-level"><a href="#13-IndentationError-unindent-does-not-match-any-outer-indentation-level" class="headerlink" title="13. IndentationError:unindent does not match any outer indentation level"></a>13. IndentationError:unindent does not match any outer indentation level</h2><p>缩进错误：未知缩进不匹配任何缩进等级。缩进混乱造成。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> i==<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">​	j=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">​    k=<span class="number">3</span>    </span><br><span class="line"></span><br><span class="line">SyntaxError: unindent does <span class="keyword">not</span> match <span class="built_in">any</span> outer indentation level</span><br></pre></td></tr></table></figure>
-
-<h2 id="14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’"><a href="#14-FileNotFoundError-Errno-2-No-such-file-or-directory-‘file1’" class="headerlink" title="14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’"></a>14. FileNotFoundError: [Errno 2] No such file or directory: ‘file1’</h2><p>文件不存在：尝试打开一个不存在的磁盘文件或目录。</p>
-<p>错误例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"></span><br><span class="line"> File <span class="string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"></span><br><span class="line">  f=<span class="built_in">open</span>(<span class="string">&#x27;file1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">FileNotFoundError: [Errno <span class="number">2</span>] No such file <span class="keyword">or</span> directory: <span class="string">&#x27;file1&#x27;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python类</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL简单注入</title>
-    <url>/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<p>通过一个简单的题来接触一下SQL</p>
-<span id="more"></span>
-
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204192950568.png" alt="image-20220204192950568"></p>
-<p>首先查看源码发现name为id，并且是post传参</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193042721.png" alt="image-20220204193042721"></p>
-<p>用hackbar查查有几个数据，发现只有三个</p>
-<p>测试发现当post内容加<code>‘</code>时，内容就显示不出来</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193404946.png" alt="image-20220204193404946"></p>
-<p>而加<code>’#</code>，发现又正常显示</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193459549.png" alt="image-20220204193459549"></p>
-<p>这个题完全就是考察SQL注入，这个题目前来看有两种解决方法，在这里记录一下。</p>
-<h1 id="第一种解决方法"><a href="#第一种解决方法" class="headerlink" title="第一种解决方法"></a>第一种解决方法</h1><p>首先先说点知识，1、MySql在5.0版本后新增一个叫<code>information_schema</code>的虚拟数据库，其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等。利用这个可以获取表名，列名等<br>2、查询中用到的<code>group_concat()</code>函数是要把查询的内容联合到一起方便查看的，这样就不需要limit 0,1一个一个判断了<br>先查个字段，因为有三个数据，就用4吧<code>order by 4#</code></p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193859153.png" alt="image-20220204193859153"></p>
-<p>显示依然正常，那再试试5</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193934206.png" alt="image-20220204193934206"></p>
-<p>这个时候发现没有返回值，所以可以确定字段就是四个，接下来，爆库名<code>id=-1&#39; union select 1，2，3，4#</code>，把id变为-1是因为如果id有回显的话，我们查询的内容就不能显示了，所以要换一个id没有内容的值</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204194415205.png" alt="image-20220204194415205"></p>
-<p>这样就知道每一个数值所在的位置，然后开始爆库，<code>id=-1&#39; union select 1,database(),user(),version()#</code>,这个有必要说明一下，database（）是查询当前数据库名，user（）是为了查询当前用户名，version（）是为了查询数据库版本</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204194828472.png" alt="image-20220204194828472"></p>
-<p>然后爆表名，这个是固定格式，<code>id=-1&#39; union select 1,group_concat(table_name),user(),version() from information_schema.tables where table_schema=database()#</code>,得到两个表名fl4g，sc</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204200949037.png" alt="image-20220204200949037"></p>
-<p>再然后爆列明，<code>id=-1&#39; union select 1,group_concat(column_name),user(),version() from information_schema.columns where table_name=&#39;fl4g&#39;#</code></p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204201124534.png" alt="image-20220204201124534"></p>
-<p>得到列名skctf_flag</p>
-<blockquote>
-<p>表明单引号要用英文的’’，当然不加也可以，但是表名要用十六进制</p>
-</blockquote>
-<p>最后一步就是查询想要的数据了</p>
-<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204201353733.png" alt="image-20220204201353733"></p>
-<p>得到flag</p>
-<h1 id="第二种解决方法"><a href="#第二种解决方法" class="headerlink" title="第二种解决方法"></a>第二种解决方法</h1><p>sqlmap跑，目前还在了解，学会了再更！！</p>
-]]></content>
-      <categories>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Web刷题</title>
     <url>/2022/01/11/Web%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<p>Web经典题型及其相关解题步骤</p>
@@ -5536,6 +5522,50 @@
       </categories>
       <tags>
         <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL简单注入</title>
+    <url>/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<p>通过一个简单的题来接触一下SQL</p>
+<span id="more"></span>
+
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204192950568.png" alt="image-20220204192950568"></p>
+<p>首先查看源码发现name为id，并且是post传参</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193042721.png" alt="image-20220204193042721"></p>
+<p>用hackbar查查有几个数据，发现只有三个</p>
+<p>测试发现当post内容加<code>‘</code>时，内容就显示不出来</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193404946.png" alt="image-20220204193404946"></p>
+<p>而加<code>’#</code>，发现又正常显示</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193459549.png" alt="image-20220204193459549"></p>
+<p>这个题完全就是考察SQL注入，这个题目前来看有两种解决方法，在这里记录一下。</p>
+<h1 id="第一种解决方法"><a href="#第一种解决方法" class="headerlink" title="第一种解决方法"></a>第一种解决方法</h1><p>首先先说点知识，1、MySql在5.0版本后新增一个叫<code>information_schema</code>的虚拟数据库，其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权限等。利用这个可以获取表名，列名等<br>2、查询中用到的<code>group_concat()</code>函数是要把查询的内容联合到一起方便查看的，这样就不需要limit 0,1一个一个判断了<br>先查个字段，因为有三个数据，就用4吧<code>order by 4#</code></p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193859153.png" alt="image-20220204193859153"></p>
+<p>显示依然正常，那再试试5</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204193934206.png" alt="image-20220204193934206"></p>
+<p>这个时候发现没有返回值，所以可以确定字段就是四个，接下来，爆库名<code>id=-1&#39; union select 1，2，3，4#</code>，把id变为-1是因为如果id有回显的话，我们查询的内容就不能显示了，所以要换一个id没有内容的值</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204194415205.png" alt="image-20220204194415205"></p>
+<p>这样就知道每一个数值所在的位置，然后开始爆库，<code>id=-1&#39; union select 1,database(),user(),version()#</code>,这个有必要说明一下，database（）是查询当前数据库名，user（）是为了查询当前用户名，version（）是为了查询数据库版本</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204194828472.png" alt="image-20220204194828472"></p>
+<p>然后爆表名，这个是固定格式，<code>id=-1&#39; union select 1,group_concat(table_name),user(),version() from information_schema.tables where table_schema=database()#</code>,得到两个表名fl4g，sc</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204200949037.png" alt="image-20220204200949037"></p>
+<p>再然后爆列明，<code>id=-1&#39; union select 1,group_concat(column_name),user(),version() from information_schema.columns where table_name=&#39;fl4g&#39;#</code></p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204201124534.png" alt="image-20220204201124534"></p>
+<p>得到列名skctf_flag</p>
+<blockquote>
+<p>表明单引号要用英文的’’，当然不加也可以，但是表名要用十六进制</p>
+</blockquote>
+<p>最后一步就是查询想要的数据了</p>
+<p><img src="/2022/02/04/SQL%E7%AE%80%E5%8D%95%E6%B3%A8%E5%85%A5/image-20220204201353733.png" alt="image-20220204201353733"></p>
+<p>得到flag</p>
+<h1 id="第二种解决方法"><a href="#第二种解决方法" class="headerlink" title="第二种解决方法"></a>第二种解决方法</h1><p>sqlmap跑，目前还在了解，学会了再更！！</p>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -5902,24 +5932,6 @@
       </tags>
   </entry>
   <entry>
-    <title>开启博客之旅</title>
-    <url>/2021/12/30/test/</url>
-    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
-<span id="more"></span>
-
-<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
-<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
-<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
-<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
-]]></content>
-      <categories>
-        <category>心得类</category>
-      </categories>
-      <tags>
-        <tag>心得</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>reverse刷题</title>
     <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -5939,6 +5951,24 @@
       </categories>
       <tags>
         <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开启博客之旅</title>
+    <url>/2021/12/30/test/</url>
+    <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
+<span id="more"></span>
+
+<h1 id="博客的类型"><a href="#博客的类型" class="headerlink" title="博客的类型"></a>博客的类型</h1><p>本博客是采用云服务器，避免花大量资金购买服务器和备案，域名为阿里云购买的.top，将博客搭载到GitHub服务器上，采用hexo构建，主体采用next主题，并开启了看板娘功能(挺有趣的）。</p>
+<h1 id="博客的作用"><a href="#博客的作用" class="headerlink" title="博客的作用"></a>博客的作用</h1><p>今后我将会在博客分享自己的学习经验和知识交流，也可以为广大网友解决问题，同时也会把我看到的觉得适合收藏的知识分享在这上面，此博客是深度交流沟通的网络新方式。</p>
+<h1 id="开启博客之旅"><a href="#开启博客之旅" class="headerlink" title="开启博客之旅"></a>开启博客之旅</h1><p>让我们一起开启博客的旅途吧！！！</p>
+<p><img src="/../../public/images/R-C.103add1996f9349bfd2fff6889db4164rik=Eafe60O3MNhfeQ&riu=http://img95.699pic.com/photo/50047/3787.jpg_wh860.jpg&ehk=8Ctrqqgwzar/SnM28+bVq48uCf5Eb4fzhazNY6yX1PE=&risl=&pid=ImgRaw&r=0"></p>
+]]></content>
+      <categories>
+        <category>心得类</category>
+      </categories>
+      <tags>
+        <tag>心得</tag>
       </tags>
   </entry>
   <entry>
@@ -5978,11 +6008,11 @@
 </tr>
 <tr>
 <td>BLOGGER_EMAIL</td>
-<td><a href="mailto:&#50;&#53;&#57;&#x36;&#x33;&#x32;&#56;&#57;&#x35;&#x38;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#50;&#53;&#57;&#x36;&#x33;&#x32;&#56;&#57;&#x35;&#x38;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#50;&#53;&#57;&#54;&#x33;&#50;&#x38;&#x39;&#x35;&#56;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#50;&#53;&#57;&#54;&#x33;&#50;&#x38;&#x39;&#x35;&#56;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td>SENDER_EMAIL</td>
-<td><a href="mailto:&#50;&#53;&#57;&#54;&#51;&#x32;&#x38;&#57;&#53;&#56;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#50;&#53;&#57;&#54;&#51;&#x32;&#x38;&#57;&#53;&#56;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x32;&#x35;&#57;&#x36;&#x33;&#50;&#56;&#x39;&#53;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x32;&#x35;&#57;&#x36;&#x33;&#50;&#56;&#x39;&#53;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td>SENDER_NAME</td>
@@ -6006,7 +6036,7 @@
 </tr>
 <tr>
 <td>SMTP_USER</td>
-<td><a href="mailto:&#50;&#53;&#x39;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#56;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#50;&#53;&#x39;&#x36;&#x33;&#50;&#x38;&#57;&#x35;&#56;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#50;&#53;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#50;&#53;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td>TEMPLATE_NAME</td>
@@ -6114,6 +6144,27 @@
       <tags>
         <tag>博客</tag>
         <tag>next主题失效</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>框架问题</title>
+    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>框架问题</p>
+<span id="more"></span>
+
+<p>这个问题我觉得值得记录一下，因为有时候很小的事可能就会浪费很多时间，在这里我特别感谢一下帮助我的一个博主[大佬]: <a href="https://szqlovegw.top/">https://szqlovegw.top</a><br>这可能是个很小的问题，但是对于小白的我，是个很大的问题!毕竟是自己的博客，想尽力优化的更好，毛病更少，所以我就发现在我添加了标签云之后，有些页面会出现异常，进度条到最下面时会自动弹上来（强迫症看了会当场去世，在这里我就不插图了）。下面就来说一下原因和解决方法吧</p>
+<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>因为左边的个人资料栏太长导致个别页面滚到最下面的时候出现塌陷从而出现异常！</p>
+<h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>字面意思喽，很容易想到，当然是加宽右边的页面大小，这样就不会塌陷!</p>
+<p>在 <code>博客/themes/next/source/css</code>目录下找到<code>main.styl</code>,在里面最下面加上下面的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.content-wrap&#123;</span><br><span class="line">    min-height:1000px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成之后重新部署一下就可以解决问题了！</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>、 - 博客死循环框架问题</tag>
       </tags>
   </entry>
   <entry>
@@ -6453,24 +6504,31 @@
       </tags>
   </entry>
   <entry>
-    <title>框架问题</title>
-    <url>/2022/01/19/%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>框架问题</p>
+    <title>留言板</title>
+    <url>/2022/02/03/%E7%95%99%E8%A8%80%E6%9D%BF/</url>
+    <content><![CDATA[<p>加个留言板方便交流！！</p>
 <span id="more"></span>
 
-<p>这个问题我觉得值得记录一下，因为有时候很小的事可能就会浪费很多时间，在这里我特别感谢一下帮助我的一个博主[大佬]: <a href="https://szqlovegw.top/">https://szqlovegw.top</a><br>这可能是个很小的问题，但是对于小白的我，是个很大的问题!毕竟是自己的博客，想尽力优化的更好，毛病更少，所以我就发现在我添加了标签云之后，有些页面会出现异常，进度条到最下面时会自动弹上来（强迫症看了会当场去世，在这里我就不插图了）。下面就来说一下原因和解决方法吧</p>
-<h1 id="导致原因"><a href="#导致原因" class="headerlink" title="导致原因"></a>导致原因</h1><p>因为左边的个人资料栏太长导致个别页面滚到最下面的时候出现塌陷从而出现异常！</p>
-<h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>字面意思喽，很容易想到，当然是加宽右边的页面大小，这样就不会塌陷!</p>
-<p>在 <code>博客/themes/next/source/css</code>目录下找到<code>main.styl</code>,在里面最下面加上下面的代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.content-wrap&#123;</span><br><span class="line">    min-height:1000px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加一个新的page</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page guestbook</span><br></pre></td></tr></table></figure>
 
-<p>完成之后重新部署一下就可以解决问题了！</p>
+<p>进入 source/guestbook/index.md。加入你想显示的内容，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 留言板</span><br><span class="line">date: </span><br><span class="line">---</span><br><span class="line"># 欢迎来到我的博客！</span><br><span class="line"></span><br><span class="line">欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在name栏目输入QQ号可以直接获取你的QQ头像。</span><br></pre></td></tr></table></figure>
+
+<p>进入 _config.next.yml， 找到menu栏目，添加留言板功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure>
+
+<p>图标支持font awesome，可以按自己喜好修改。如果有多语言支持需求，可以更改 themes/next/languages 下对应语言的翻译。</p>
+<p>zh-CN.yml:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-重新生成页面即可"><a href="#4-重新生成页面即可" class="headerlink" title="4. 重新生成页面即可"></a>4. 重新生成页面即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>博客相关问题类</category>
       </categories>
       <tags>
-        <tag>、 - 博客死循环框架问题</tag>
+        <tag>留言板</tag>
       </tags>
   </entry>
   <entry>
@@ -6615,34 +6673,6 @@
         <tag>博客部分问题解决方法</tag>
         <tag>常用指令</tag>
         <tag>博客主题优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/2022/02/03/%E7%95%99%E8%A8%80%E6%9D%BF/</url>
-    <content><![CDATA[<p>加个留言板方便交流！！</p>
-<span id="more"></span>
-
-<p>添加一个新的page</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page guestbook</span><br></pre></td></tr></table></figure>
-
-<p>进入 source/guestbook/index.md。加入你想显示的内容，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 留言板</span><br><span class="line">date: </span><br><span class="line">---</span><br><span class="line"># 欢迎来到我的博客！</span><br><span class="line"></span><br><span class="line">欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在name栏目输入QQ号可以直接获取你的QQ头像。</span><br></pre></td></tr></table></figure>
-
-<p>进入 _config.next.yml， 找到menu栏目，添加留言板功能：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: /guestbook/ || fa fa-book</span><br></pre></td></tr></table></figure>
-
-<p>图标支持font awesome，可以按自己喜好修改。如果有多语言支持需求，可以更改 themes/next/languages 下对应语言的翻译。</p>
-<p>zh-CN.yml:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  guestbook: 留言板</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-重新生成页面即可"><a href="#4-重新生成页面即可" class="headerlink" title="4. 重新生成页面即可"></a>4. 重新生成页面即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>留言板</tag>
       </tags>
   </entry>
   <entry>
