@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DVWA</title>
+    <url>/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>DVWA下载、安装、使用的教程</p>
+<span id="more"></span>
+
+<p>DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程。</p>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>暴力（破解）、命令行注入、跨站请求伪造、文件包含、文件上传、不安全的验证码、SQL注入、SQL盲注、弱会话ID、XSS漏洞（DOM型跨站脚本、反射型跨站脚本、 存储型跨站脚本）</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/fbe2f0c1d9f6556338bcb7fe96c1468e.jpg-600" alt="在这里插入图片描述"></p>
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="下载DVWA"><a href="#下载DVWA" class="headerlink" title="下载DVWA"></a>下载DVWA</h2><p>下载地址：<a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a></p>
+<h2 id="下载安装并启动phpstudy"><a href="#下载安装并启动phpstudy" class="headerlink" title="下载安装并启动phpstudy"></a>下载安装并启动phpstudy</h2><p><a href="https://www.xp.cn/">https://www.xp.cn/</a></p>
+<p>phpStudy是一个PHP调试环境的程序集成包。恰好我们可以用到”PHP+Mysql+Apache”。）</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233428295.png" alt="image-20220204233428295"></p>
+<h2 id="将下载的DVWA解压到phpstudy网站根目录下"><a href="#将下载的DVWA解压到phpstudy网站根目录下" class="headerlink" title="将下载的DVWA解压到phpstudy网站根目录下"></a><strong>将下载的DVWA解压到phpstudy网站根目录下</strong></h2><p>解压后的路径是“D:\phpStudy\WWW\DVWA-master\”</p>
+<h2 id="将-config-inc-php-dist-复制一份或重命令为-config-inc-php；"><a href="#将-config-inc-php-dist-复制一份或重命令为-config-inc-php；" class="headerlink" title="将 config.inc.php.dist 复制一份或重命令为 config.inc.php；"></a><strong>将 config.inc.php.dist 复制一份或重命令为 config.inc.php；</strong></h2><p>配置文件路径是“D:\phpStudy\WWW\DVWA-master\config”</p>
+<h2 id="修改-config-inc-php-里代码"><a href="#修改-config-inc-php-里代码" class="headerlink" title="修改 config.inc.php 里代码"></a><strong>修改 config.inc.php 里代码</strong></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_DVWA[ &#x27;db_server&#x27; ]  = &#x27;127.0.0.1&#x27;; #数据库地址 $_DVWA[ &#x27;db_database&#x27; ] = &#x27;dvwa&#x27;; #数据库名称 $_DVWA[ &#x27;db_user&#x27; ]   = &#x27;root&#x27;; #数据库用户名 $_DVWA[ &#x27;db_password&#x27; ] = &#x27;root&#x27;; #数据库密码</span><br></pre></td></tr></table></figure>
+
+<p>因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’db_password‘为root！！！</p>
+<h1 id="DVWA使用"><a href="#DVWA使用" class="headerlink" title="DVWA使用"></a>DVWA使用</h1><h2 id="设置或重置数据库"><a href="#设置或重置数据库" class="headerlink" title="设置或重置数据库"></a><strong>设置或重置数据库</strong></h2><p>浏览器只需要直接打开“<strong><a href="http://127.0.0.1/DVWA-master/setup.php">http://127.0.0.1/DVWA-master/setup.php</a></strong>”即可！如果有”标红“提示，可能你要打开一些模块或做一些设置，否则有些是不能实验的，例如：文件包含、文件上传漏洞。<br>拉到下面，点击Setup/Reset DB，点击Create/Reset Database。会看到创建成功提示！</p>
+<p>编辑 dvwa/config/config.inc.php这个配置文件</p>
+<p>Site key:<br>6LdJJlUUAAAAAH1Q6cTpZRQ2Ah8VpyzhnffD0mBb</p>
+<p>Secret key:<br>6LdJJlUUAAAAAM2a3HrgzLczqdYp4g05EqDs-W4K</p>
+<p>把key填上就行了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_DVWA[ &#x27;recaptcha_public_key&#x27; ] = &#x27;6LdJJlUUAAAAAH1Q6cTpZRQ2Ah8VpyzhnffD0mBb&#x27;; $_DVWA[ &#x27;recaptcha_private_key&#x27; ] = &#x27;6LdJJlUUAAAAAM2a3HrgzLczqdYp4g05EqDs-W4K&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a><strong>登陆</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/login.php">http://127.0.0.1/DVWA-master/login.php</a></strong>“登陆。默认用户名：admin，默认密码：password；</p>
+<h2 id="设置程序安全级别"><a href="#设置程序安全级别" class="headerlink" title="设置程序安全级别"></a><strong>设置程序安全级别</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/security.php">http://127.0.0.1/DVWA-master/security.php</a></strong>“来做设置，分别有”低、中、高、不可能“，程序安全级别越低，说明越容易被攻破，没有做任何的安全防护。主要是用来自我挑战不同等级的程序防护级别的！</p>
+<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233840685.png" alt="image-20220204233840685"></p>
+]]></content>
+      <categories>
+        <category>漏洞测试环境搭建</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python程序运行常见错误总结</title>
     <url>/2022/01/02/Python%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>Python程序运行常见错误总结</p>
@@ -68,42 +104,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DVWA</title>
-    <url>/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>DVWA下载、安装、使用的教程</p>
-<span id="more"></span>
-
-<p>DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程。</p>
-<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>暴力（破解）、命令行注入、跨站请求伪造、文件包含、文件上传、不安全的验证码、SQL注入、SQL盲注、弱会话ID、XSS漏洞（DOM型跨站脚本、反射型跨站脚本、 存储型跨站脚本）</p>
-<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/fbe2f0c1d9f6556338bcb7fe96c1468e.jpg-600" alt="在这里插入图片描述"></p>
-<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="下载DVWA"><a href="#下载DVWA" class="headerlink" title="下载DVWA"></a>下载DVWA</h2><p>下载地址：<a href="http://www.dvwa.co.uk/">http://www.dvwa.co.uk/</a></p>
-<h2 id="下载安装并启动phpstudy"><a href="#下载安装并启动phpstudy" class="headerlink" title="下载安装并启动phpstudy"></a>下载安装并启动phpstudy</h2><p><a href="https://www.xp.cn/">https://www.xp.cn/</a></p>
-<p>phpStudy是一个PHP调试环境的程序集成包。恰好我们可以用到”PHP+Mysql+Apache”。）</p>
-<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233428295.png" alt="image-20220204233428295"></p>
-<h2 id="将下载的DVWA解压到phpstudy网站根目录下"><a href="#将下载的DVWA解压到phpstudy网站根目录下" class="headerlink" title="将下载的DVWA解压到phpstudy网站根目录下"></a><strong>将下载的DVWA解压到phpstudy网站根目录下</strong></h2><p>解压后的路径是“D:\phpStudy\WWW\DVWA-master\”</p>
-<h2 id="将-config-inc-php-dist-复制一份或重命令为-config-inc-php；"><a href="#将-config-inc-php-dist-复制一份或重命令为-config-inc-php；" class="headerlink" title="将 config.inc.php.dist 复制一份或重命令为 config.inc.php；"></a><strong>将 config.inc.php.dist 复制一份或重命令为 config.inc.php；</strong></h2><p>配置文件路径是“D:\phpStudy\WWW\DVWA-master\config”</p>
-<h2 id="修改-config-inc-php-里代码"><a href="#修改-config-inc-php-里代码" class="headerlink" title="修改 config.inc.php 里代码"></a><strong>修改 config.inc.php 里代码</strong></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_DVWA[ &#x27;db_server&#x27; ]  = &#x27;127.0.0.1&#x27;; #数据库地址 $_DVWA[ &#x27;db_database&#x27; ] = &#x27;dvwa&#x27;; #数据库名称 $_DVWA[ &#x27;db_user&#x27; ]   = &#x27;root&#x27;; #数据库用户名 $_DVWA[ &#x27;db_password&#x27; ] = &#x27;root&#x27;; #数据库密码</span><br></pre></td></tr></table></figure>
-
-<p>因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’db_password‘为root！！！</p>
-<h1 id="DVWA使用"><a href="#DVWA使用" class="headerlink" title="DVWA使用"></a>DVWA使用</h1><h2 id="设置或重置数据库"><a href="#设置或重置数据库" class="headerlink" title="设置或重置数据库"></a><strong>设置或重置数据库</strong></h2><p>浏览器只需要直接打开“<strong><a href="http://127.0.0.1/DVWA-master/setup.php">http://127.0.0.1/DVWA-master/setup.php</a></strong>”即可！如果有”标红“提示，可能你要打开一些模块或做一些设置，否则有些是不能实验的，例如：文件包含、文件上传漏洞。<br>拉到下面，点击Setup/Reset DB，点击Create/Reset Database。会看到创建成功提示！</p>
-<p>编辑 dvwa/config/config.inc.php这个配置文件</p>
-<p>Site key:<br>6LdJJlUUAAAAAH1Q6cTpZRQ2Ah8VpyzhnffD0mBb</p>
-<p>Secret key:<br>6LdJJlUUAAAAAM2a3HrgzLczqdYp4g05EqDs-W4K</p>
-<p>把key填上就行了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_DVWA[ &#x27;recaptcha_public_key&#x27; ] = &#x27;6LdJJlUUAAAAAH1Q6cTpZRQ2Ah8VpyzhnffD0mBb&#x27;; $_DVWA[ &#x27;recaptcha_private_key&#x27; ] = &#x27;6LdJJlUUAAAAAM2a3HrgzLczqdYp4g05EqDs-W4K&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a><strong>登陆</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/login.php">http://127.0.0.1/DVWA-master/login.php</a></strong>“登陆。默认用户名：admin，默认密码：password；</p>
-<h2 id="设置程序安全级别"><a href="#设置程序安全级别" class="headerlink" title="设置程序安全级别"></a><strong>设置程序安全级别</strong></h2><p>浏览器打开”<strong><a href="http://127.0.0.1/DVWA-master/security.php">http://127.0.0.1/DVWA-master/security.php</a></strong>“来做设置，分别有”低、中、高、不可能“，程序安全级别越低，说明越容易被攻破，没有做任何的安全防护。主要是用来自我挑战不同等级的程序防护级别的！</p>
-<p><img src="/2022/02/04/DVWA%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%99%E7%A8%8B/image-20220204233840685.png" alt="image-20220204233840685"></p>
-]]></content>
-      <categories>
-        <category>漏洞测试环境搭建</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -222,88 +222,6 @@
         <tag>wp</tag>
         <tag>ctfshow</tag>
         <tag>文件上传漏洞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ctf之reverse</title>
-    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
-    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
-<span id="more"></span>
-
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
-<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
-<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
-<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
-<p>   验证：if H(key)==Secret</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   输出：flag</p>
-<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
-<p>2.密码算法验证</p>
-<p>3.算法求解验证</p>
-<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这种类型flag就在其中，善于观察即可！</p>
-<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
-<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
-<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
-<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
-<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
-<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
-<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
-<p>—-密钥空间过短</p>
-<p>—-伪随机算法</p>
-<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
-<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
-<p>—-密码算法（密钥部分已知）</p>
-<p>—-解题算法（暴力搜索）</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
-<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
-<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
-<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
-<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
-]]></content>
-      <categories>
-        <category>CTF-Reverse</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>misc部分解题软件命令记录</title>
-    <url>/2022/01/23/misc%E9%83%A8%E5%88%86%E8%A7%A3%E9%A2%98%E8%BD%AF%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>misc部分工具解题的命令记录，方便后续使用到的时候能找到，所以记录一下。</p>
-<span id="more"></span>
-
-<h1 id="F5隐写"><a href="#F5隐写" class="headerlink" title="F5隐写"></a>F5隐写</h1><p>全称是F5-steganography</p>
-<p>1.进入该文件夹后，需要将隐写的图片复制到文件夹里然后在空白处打开终端</p>
-<p>2.java Extract图片的绝对路径是/123.jpg -p 123（这个-p后面输入的是密码，多半题目密码就是图片名，还有一定要用绝对路径）</p>
-<p>3.这个时候在文件夹中找到并打开output.txt文件即可得到</p>
-<h2 id="steghide工具"><a href="#steghide工具" class="headerlink" title="steghide工具"></a>steghide工具</h2><p>将post.txt文件隐藏到xxx.jpg中：<br>steghide embed -cf xxx.jpg -ef post.txt -p 123456（不加-p参数 不设置密码 ）<br>从xxx.jpg解出post.txt:<br>steghide extract -sf xxx.jpg （图片路径）-p 123456（-p 密码）<br>steghide也可以用来爆破密码：<br>需要shell脚本：`#bruteStegHide.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   #bruteStegHide.sh</span><br><span class="line">   #!/bin/bash</span><br><span class="line"></span><br><span class="line">for line in `cat $2`;do</span><br><span class="line">steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">if [[ $? -eq 0 ]];then</span><br><span class="line">echo &#x27;password is: &#x27;$line</span><br><span class="line">exit</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>用法：<br># ./bruteStegHide.sh test.jpg passwd.txt<br>剩下的密码就出来了。</p>
-<h2 id="文件分离工具（binwalk-foremost）"><a href="#文件分离工具（binwalk-foremost）" class="headerlink" title="文件分离工具（binwalk,foremost）"></a>文件分离工具（binwalk,foremost）</h2><h2 id="binwalk"><a href="#binwalk" class="headerlink" title="binwalk"></a>binwalk</h2><p>binwalk -D “archive:zip” -D “image:jpg” hehe.jpg 可以直接分离文件</p>
-<blockquote>
-<p>也可以使用dd命令分离文件，如:<code>dd if=hehe.jpg of=hehe1.zip bs=1 skip=54163</code></p>
-</blockquote>
-<h2 id="foremost的使用"><a href="#foremost的使用" class="headerlink" title="foremost的使用"></a>foremost的使用</h2><p>先用<code>foremost -h</code>检查一下是否已经安装，若安装之后会显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ foremost [-v|-V|-h|-T|-Q|-q|-a|-w-d] [-t &lt;type&gt;] [-s &lt;blocks&gt;] [-k &lt;size&gt;] </span><br><span class="line">    [-b &lt;size&gt;] [-c &lt;file&gt;] [-o &lt;dir&gt;] [-i &lt;file] </span><br><span class="line"></span><br><span class="line">-V  - 显示版权信息并退出</span><br><span class="line">-t  - 指定文件类型.  (-t jpeg,pdf ...) </span><br><span class="line">-d  -打开间接块检测 (针对UNIX文件系统) </span><br><span class="line">-i  - 指定输入文件 (默认为标准输入) </span><br><span class="line">-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) </span><br><span class="line">-w  - 向磁盘写入审计文件，不写入任何检测到的文件</span><br><span class="line">-o  - 设置输出目录 (默认为为输出)</span><br><span class="line">-c  - 设置配置文件 (默认为 foremost.conf)</span><br><span class="line">-q  - 启用快速模式. 在512字节边界执行搜索.</span><br><span class="line">-Q  - 启用安静模式. 禁用输出消息. </span><br><span class="line">-v  - 详细模式. 向屏幕上记录所有消息。</span><br></pre></td></tr></table></figure>
-
-<p>使用方法就是将图片放进foremost目录下，输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">foremost -i xxx.jpg</span><br></pre></td></tr></table></figure>
-
-<p>在目录下会出现一个output文件夹，结果就在里面。</p>
-]]></content>
-      <categories>
-        <category>misc</category>
-      </categories>
-      <tags>
-        <tag>misc</tag>
       </tags>
   </entry>
   <entry>
@@ -5682,6 +5600,55 @@
       </tags>
   </entry>
   <entry>
+    <title>ctf之reverse</title>
+    <url>/2022/01/01/ctf%E4%B9%8Breverse/</url>
+    <content><![CDATA[<p>CTF中的Reverse领域的入门学习</p>
+<span id="more"></span>
+
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><p>​     不说题外话，经过一学期的学习和参加一次CTF大赛后，对于reverse的最直观的印象就是写脚本，写各种程序，不论是很简单的reverse题还是较为复杂的，甚至有时候思路很明确，写出来脚本之后flag就到手了。</p>
+<p>​      总而言之，对于reverse，如果想学精学透，最基础的应该就是从脚本下手，多刷题，多写脚本，而对于解题方便，脚本语言习惯上使用python，所以学好python，非常重要，不仅仅是python，多掌握一门语言没有坏处，学习C语言也是必不可少的。</p>
+<h1 id="逆向的核心"><a href="#逆向的核心" class="headerlink" title="逆向的核心"></a>逆向的核心</h1><p>​      学习逆向不仅仅要学好语言，最重要的核心是破解验证算法，要学好算法！</p>
+<h2 id="验证算法如下"><a href="#验证算法如下" class="headerlink" title="验证算法如下"></a>验证算法如下</h2><p>   输入：key</p>
+<p>   验证：if H(key)==Secret</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    flag=O(key);</span><br><span class="line">    print flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   输出：flag</p>
+<h2 id="验证算法分类"><a href="#验证算法分类" class="headerlink" title="验证算法分类"></a>验证算法分类</h2><p>1.简单比较验证</p>
+<p>2.密码算法验证</p>
+<p>3.算法求解验证</p>
+<h2 id="算法举例如下："><a href="#算法举例如下：" class="headerlink" title="算法举例如下："></a>算法举例如下：</h2><h3 id="1-key直接比较"><a href="#1-key直接比较" class="headerlink" title="1.key直接比较"></a>1.key直接比较</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(szKey,<span class="string">&quot;Thi5_i5_TOo_E4sy&quot;</span>,<span class="number">16</span>)==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;flag is your key!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please decompiler or debug me!\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这种类型flag就在其中，善于观察即可！</p>
+<h3 id="2-key简单变换"><a href="#2-key简单变换" class="headerlink" title="2.key简单变换"></a>2.key简单变换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;\x58\x31\x70\x5C\x35\x76\x59\x69\x38\x7D\x55\x63\x38\x7F\x6A&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szXor[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input Key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szKey);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;strien(szKey);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		szXor[i]=szKey[i]^i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szXor,secret,<span class="keyword">sizeof</span>(secret))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个用异或，再进行一次就出来了，见识短浅的我表示还再学习学习才能明白。</p>
+<h3 id="3-key编码转换"><a href="#3-key编码转换" class="headerlink" title="3.key编码转换"></a>3.key编码转换</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">char</span> secret[]=<span class="string">&quot;QjRzZTYOX2k1X2MwbW1vbg==&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> szKey[<span class="number">20</span>]=&#123;<span class="number">0</span>&#125;,szBase64[<span class="number">40</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;input key:&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%16s&quot;</span>,szkey);</span><br><span class="line">	Base64encode(szBase64,szKey,<span class="built_in">strlen</span>(szkey));</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">memcmp</span>(szBase64,secret,<span class="keyword">sizeof</span>(serect))==<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;xman&#123;%s&#125;\r\n&quot;</span>,szKey);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;please reverse me!\r\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种转换常见为Base64，也不排除会出现其他编码！</p>
+<h3 id="4-key散列计算"><a href="#4-key散列计算" class="headerlink" title="4.key散列计算"></a>4.key散列计算</h3><p>这种类型的，可以用md5进行反查</p>
+<h2 id="验证算法逆向思路"><a href="#验证算法逆向思路" class="headerlink" title="验证算法逆向思路"></a>验证算法逆向思路</h2><h3 id="简单变化验证"><a href="#简单变化验证" class="headerlink" title="简单变化验证"></a>简单变化验证</h3><p>—-人工逆向，找到可逆运算，按位分步破解</p>
+<h3 id="密码算法验证"><a href="#密码算法验证" class="headerlink" title="密码算法验证"></a>密码算法验证</h3><p>—-识别密码算法，针对性解密</p>
+<h3 id="解题算法验证"><a href="#解题算法验证" class="headerlink" title="解题算法验证"></a>解题算法验证</h3><p>—-理解算法原理，针对性解题</p>
+<h3 id="验证常见漏洞"><a href="#验证常见漏洞" class="headerlink" title="验证常见漏洞"></a>验证常见漏洞</h3><p>—-直接输出flag</p>
+<p>—-密钥空间过短</p>
+<p>—-伪随机算法</p>
+<h3 id="现实竞赛"><a href="#现实竞赛" class="headerlink" title="现实竞赛"></a>现实竞赛</h3><p>—-分段，嵌套验证</p>
+<h3 id="爆破奇招"><a href="#爆破奇招" class="headerlink" title="爆破奇招"></a>爆破奇招</h3><p>—-简单验证（按位破解）</p>
+<p>—-密码算法（密钥部分已知）</p>
+<p>—-解题算法（暴力搜索）</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要学会用F5做签到题，害，暂时就写到这吧，先学好就是多刷题，goodbye！！！</p>
+<h1 id="练习平台"><a href="#练习平台" class="headerlink" title="练习平台"></a>练习平台</h1><p>1.i春秋训练平台：<a href="https://www.ichunqiu.com/battalion">https://www.ichunqiu.com/battalion</a></p>
+<p>2.We Chall:  <a href="http://www.wechall.net/sites.php">http://www.wechall.net/sites.php</a></p>
+<p>3.很炫酷游戏化————<a href="https://microcorruption.com/login">https://microcorruption.com/login</a></p>
+<p>4.<a href="https://adworld.xctf.org.cn/">攻防世界 (xctf.org.cn)</a></p>
+]]></content>
+      <categories>
+        <category>CTF-Reverse</category>
+      </categories>
+      <tags>
+        <tag>Reverse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ctf之Web</title>
     <url>/2022/01/08/ctf%E4%B9%8Bweb/</url>
     <content><![CDATA[<p>CTF中的Web领域的入门学习</p>
@@ -5963,6 +5930,61 @@
       </tags>
   </entry>
   <entry>
+    <title>misc部分解题软件命令记录</title>
+    <url>/2022/01/23/misc%E9%83%A8%E5%88%86%E8%A7%A3%E9%A2%98%E8%BD%AF%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>misc部分工具解题的命令记录，方便后续使用到的时候能找到，所以记录一下。</p>
+<span id="more"></span>
+
+<h1 id="F5隐写"><a href="#F5隐写" class="headerlink" title="F5隐写"></a>F5隐写</h1><p>全称是F5-steganography</p>
+<p>1.进入该文件夹后，需要将隐写的图片复制到文件夹里然后在空白处打开终端</p>
+<p>2.java Extract图片的绝对路径是/123.jpg -p 123（这个-p后面输入的是密码，多半题目密码就是图片名，还有一定要用绝对路径）</p>
+<p>3.这个时候在文件夹中找到并打开output.txt文件即可得到</p>
+<h2 id="steghide工具"><a href="#steghide工具" class="headerlink" title="steghide工具"></a>steghide工具</h2><p>将post.txt文件隐藏到xxx.jpg中：<br>steghide embed -cf xxx.jpg -ef post.txt -p 123456（不加-p参数 不设置密码 ）<br>从xxx.jpg解出post.txt:<br>steghide extract -sf xxx.jpg （图片路径）-p 123456（-p 密码）<br>steghide也可以用来爆破密码：<br>需要shell脚本：`#bruteStegHide.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   #bruteStegHide.sh</span><br><span class="line">   #!/bin/bash</span><br><span class="line"></span><br><span class="line">for line in `cat $2`;do</span><br><span class="line">steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">if [[ $? -eq 0 ]];then</span><br><span class="line">echo &#x27;password is: &#x27;$line</span><br><span class="line">exit</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>用法：<br># ./bruteStegHide.sh test.jpg passwd.txt<br>剩下的密码就出来了。</p>
+<h2 id="文件分离工具（binwalk-foremost）"><a href="#文件分离工具（binwalk-foremost）" class="headerlink" title="文件分离工具（binwalk,foremost）"></a>文件分离工具（binwalk,foremost）</h2><h2 id="binwalk"><a href="#binwalk" class="headerlink" title="binwalk"></a>binwalk</h2><p>binwalk -D “archive:zip” -D “image:jpg” hehe.jpg 可以直接分离文件</p>
+<blockquote>
+<p>也可以使用dd命令分离文件，如:<code>dd if=hehe.jpg of=hehe1.zip bs=1 skip=54163</code></p>
+</blockquote>
+<h2 id="foremost的使用"><a href="#foremost的使用" class="headerlink" title="foremost的使用"></a>foremost的使用</h2><p>先用<code>foremost -h</code>检查一下是否已经安装，若安装之后会显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ foremost [-v|-V|-h|-T|-Q|-q|-a|-w-d] [-t &lt;type&gt;] [-s &lt;blocks&gt;] [-k &lt;size&gt;] </span><br><span class="line">    [-b &lt;size&gt;] [-c &lt;file&gt;] [-o &lt;dir&gt;] [-i &lt;file] </span><br><span class="line"></span><br><span class="line">-V  - 显示版权信息并退出</span><br><span class="line">-t  - 指定文件类型.  (-t jpeg,pdf ...) </span><br><span class="line">-d  -打开间接块检测 (针对UNIX文件系统) </span><br><span class="line">-i  - 指定输入文件 (默认为标准输入) </span><br><span class="line">-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) </span><br><span class="line">-w  - 向磁盘写入审计文件，不写入任何检测到的文件</span><br><span class="line">-o  - 设置输出目录 (默认为为输出)</span><br><span class="line">-c  - 设置配置文件 (默认为 foremost.conf)</span><br><span class="line">-q  - 启用快速模式. 在512字节边界执行搜索.</span><br><span class="line">-Q  - 启用安静模式. 禁用输出消息. </span><br><span class="line">-v  - 详细模式. 向屏幕上记录所有消息。</span><br></pre></td></tr></table></figure>
+
+<p>使用方法就是将图片放进foremost目录下，输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">foremost -i xxx.jpg</span><br></pre></td></tr></table></figure>
+
+<p>在目录下会出现一个output文件夹，结果就在里面。</p>
+]]></content>
+      <categories>
+        <category>misc</category>
+      </categories>
+      <tags>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>reverse刷题</title>
+    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>CTF-wp</category>
+      </categories>
+      <tags>
+        <tag>wp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开启博客之旅</title>
     <url>/2021/12/30/test/</url>
     <content><![CDATA[<p>历经两天的博客搭建和美化，最终成功开启了博客之旅。下面我总结一下这次博客搭建的类型和作用，大家有意见或建议都可以在评论区提出来。</p>
@@ -6017,11 +6039,11 @@
 </tr>
 <tr>
 <td>BLOGGER_EMAIL</td>
-<td><a href="mailto:&#50;&#x35;&#x39;&#x36;&#51;&#x32;&#x38;&#57;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#50;&#x35;&#x39;&#x36;&#51;&#x32;&#x38;&#57;&#53;&#x38;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#50;&#x35;&#x39;&#x36;&#51;&#50;&#x38;&#57;&#x35;&#56;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#50;&#x35;&#x39;&#x36;&#51;&#50;&#x38;&#57;&#x35;&#56;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td>SENDER_EMAIL</td>
-<td><a href="mailto:&#50;&#x35;&#57;&#x36;&#x33;&#50;&#x38;&#57;&#53;&#x38;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#50;&#x35;&#57;&#x36;&#x33;&#50;&#x38;&#57;&#53;&#x38;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x32;&#x35;&#57;&#54;&#51;&#x32;&#56;&#x39;&#53;&#56;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x32;&#x35;&#57;&#54;&#51;&#x32;&#56;&#x39;&#53;&#56;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td>SENDER_NAME</td>
@@ -6045,7 +6067,7 @@
 </tr>
 <tr>
 <td>SMTP_USER</td>
-<td><a href="mailto:&#x32;&#53;&#57;&#x36;&#x33;&#50;&#x38;&#x39;&#53;&#x38;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#x32;&#53;&#57;&#x36;&#x33;&#50;&#x38;&#x39;&#53;&#x38;&#64;&#113;&#113;&#46;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#50;&#x35;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#56;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;">&#50;&#x35;&#x39;&#54;&#51;&#50;&#x38;&#x39;&#x35;&#56;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td>TEMPLATE_NAME</td>
@@ -6101,28 +6123,6 @@
       <tags>
         <tag>博客</tag>
         <tag>评论系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>reverse刷题</title>
-    <url>/2022/01/11/reverse%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e89086db3f7cfac7699b3d161cb5d1416d1f965bac2da352bd691d664d3aca89">0762c98a3f2154e0196399e37952e2d166d11c5a82099fe30258aeebee990a317c64aeeeea91134ef130cdaa5e821ed0654261619ff180a6ab62bcf96811a2f24e6630a1cf4614918d525d8dc6fa463b635c71722e50990809c01ad2336d79d718f765db6b58ecb2000a3d8f54acb53c</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>CTF-wp</category>
-      </categories>
-      <tags>
-        <tag>wp</tag>
       </tags>
   </entry>
   <entry>
@@ -6377,38 +6377,6 @@
       </tags>
   </entry>
   <entry>
-    <title>新版next置换</title>
-    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
-    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
-<span id="more"></span>
-
-<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
-<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
-<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
-
-<p>文章分段栏</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<p>联系方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
-
-<p>头像</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
-
-<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
-]]></content>
-      <categories>
-        <category>博客相关问题类</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>next主题失效</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>博客制作遇到的问题</title>
     <url>/2022/01/11/%E5%8D%9A%E5%AE%A2%E5%88%B6%E4%BD%9C%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>制作博客的过程中遇到的一部分问题及其解决办法</p>
@@ -6550,6 +6518,38 @@
         <tag>博客部分问题解决方法</tag>
         <tag>常用指令</tag>
         <tag>博客主题优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新版next置换</title>
+    <url>/2022/01/18/%E6%96%B0%E7%89%88next%E7%BD%AE%E6%8D%A2/</url>
+    <content><![CDATA[<p>当旧版next主题失效时该怎么办</p>
+<span id="more"></span>
+
+<p>写这篇文章主要是害怕哪天自己的博客炸了，一时找不到解决办法，所以先写好以备不时之需。</p>
+<h1 id="导入主题"><a href="#导入主题" class="headerlink" title="导入主题"></a>导入主题</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>然后打开站点配置，在theme里将landscape改为next，language把en修改成zh-CN。</p>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><p>在themes\next中的_config.yml中进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / ||fa fa-home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ ||fa fa-tags</span><br><span class="line">  categories: /categories/ ||fa fa-th</span><br><span class="line">  archives: /archives/ ||fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line">  links: /links/ ||fa fa-link</span><br></pre></td></tr></table></figure>
+
+<p>文章分段栏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true #改成true以启用</span><br><span class="line">  number: true #自动生成编号</span><br><span class="line">  # 以下默认</span><br><span class="line">  wrap: false</span><br><span class="line">  expand_all: false</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<p>联系方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  #GitHub: https://github.com/HZY030628 || github</span><br><span class="line">  E-Mail: mailto:2596328958@qq.com || envelope</span><br><span class="line">  #Weibo: https://weibo.com/yourname || fab fa-weibo</span><br><span class="line">  #Google: https://plus.google.com/yourname || fab fa-google</span><br><span class="line">  #Twitter: https://twitter.com/yourname || fab fa-twitter</span><br><span class="line">  #FB Page: https://www.facebook.com/yourname || fab fa-facebook</span><br><span class="line">  #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span><br><span class="line">  #YouTube: https://youtube.com/yourname || fab fa-youtube</span><br><span class="line">  #Instagram: https://instagram.com/yourname || fab fa-instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || fab fa-skype</span><br></pre></td></tr></table></figure>
+
+<p>头像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true #若为true，则头像为圆形</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true #若为true，则鼠标碰到头像时旋转</span><br></pre></td></tr></table></figure>
+
+<p>头像跟标签页图标一样，需要把图片复制粘贴到image中，再修改文件名。</p>
+]]></content>
+      <categories>
+        <category>博客相关问题类</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>next主题失效</tag>
       </tags>
   </entry>
   <entry>
