@@ -97,7 +97,7 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 <meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240829084.png?x-oss-process=hzy">
 <meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291820117.png?x-oss-process=hzy">
 <meta property="article:published_time" content="2022-09-29T14:39:55.000Z">
-<meta property="article:modified_time" content="2022-10-24T01:15:57.603Z">
+<meta property="article:modified_time" content="2022-11-17T08:53:29.132Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="漏洞复现">
 <meta name="twitter:card" content="summary">
@@ -323,7 +323,7 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-24 09:15:57" itemprop="dateModified" datetime="2022-10-24T09:15:57+08:00">2022-10-24</time>
+                <time title="修改时间：2022-11-17 16:53:29" itemprop="dateModified" datetime="2022-11-17T16:53:29+08:00">2022-11-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -369,7 +369,7 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -524,9 +524,8 @@ $this-&gt;$lazySave = true;</code></pre>
 <p>在下面这里这个关键函数</p>
 <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240915851.png?x-oss-process=hzy" alt="image-20221024091510752"></p>
 <p>触发他的条件是</p>
-<pre><code class="hljs plaintext">this−&gt;visible[key]存在，即t h i s − &gt; v i s i b l e 存 在 键 名 为 this-&gt;visible存在键名为this−&gt;visible存在键名为key的键，而k e y 则 来 源 于 key则来源于key则来源于data的键名，d a t a 则 来 源 于 data则来源于data则来源于this-&gt;data，也就是说t h i s − &gt; d a t a 和 this-&gt;data和this−&gt;data和this-&gt;visible要有相同的键名$key</code></pre>
-<p>继续跟进getAttr方法</p>
-<p>在这里不难发现，这个地方对于$this-&gt;pool-&gt;getItem($this-&gt;key);调用的同时也触发了__call魔法函数</p>
+<pre><code class="hljs plaintext">this−&gt;visible[key]存在，即this-&gt;visible存在键名为key的键，而k e y 则 来 源 于 data的键名，data则来源于this-&gt;data，也就是说this−&gt;data和this-&gt;visible要有相同的键名$key</code></pre>
+<p>继续跟进getAttr方法，在这里不难发现，这个地方对于$this-&gt;pool-&gt;getItem($this-&gt;key);调用的同时也触发了__call魔法函数</p>
 <p>这个getltem方法在Cgabbel对象中又不存在，所以调用之前会先构造</p>
 <blockquote>
 <p>__call () 用于<strong>当调用一个对象存在的方法时自动调用</strong>。</p>
@@ -860,7 +859,7 @@ namespace&#123;
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">827k</span>
+    <span title="站点总字数">826k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
