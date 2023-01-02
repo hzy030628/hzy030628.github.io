@@ -1,0 +1,109 @@
+// CSS Style Guide: http://codeguide.co/#css
+
+
+$scheme    = hexo-config('scheme') ? hexo-config('scheme') : 'Muse';
+
+$variables = base $scheme;
+
+
+// Variables Layer
+// --------------------------------------------------
+for $variable in $variables
+  @import "_variables/" + $variable;
+for $inject_variable in hexo-config('injects.variable')
+  @import $inject_variable;
+
+// Mixins Layer
+// --------------------------------------------------
+@import "_mixins.styl";
+for $inject_mixin in hexo-config('injects.mixin')
+  @import $inject_mixin;
+
+// Dark mode colors
+// --------------------------------------------------
+@import "_colors.styl";
+
+// Common Layer
+// --------------------------------------------------
+
+// Scaffolding
+@import "_common/scaffolding";
+
+// Layout
+@import "_common/outline";
+
+// Components
+@import "_common/components";
+
+
+// Schemes Layer
+// --------------------------------------------------
+@import "_schemes/" + $scheme;
+
+
+// Custom Layer
+// --------------------------------------------------
+for $inject_style in hexo-config('injects.style')
+  @import $inject_style;
+
+// 自定义样式 
+// ---------------------------------------------------  
+body {
+	background: url(/images/a.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: 50% 50%;
+	background-size: cover;
+	color: var(--text-color);
+	font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+	font-size: 1em;
+	line-height: 2;
+}
+.content-wrap{
+	min-height:1000px;
+}
+
+
+
+
+//代码块复制按钮
+.highlight{
+  //方便copy代码按钮（btn-copy）的定位
+  position: relative;
+}
+.btn-copy {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #eee;
+    background-image: linear-gradient(#fcfcfc,#eee);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    padding: 2px 6px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    opacity: 0;
+}
+.btn-copy span {
+    margin-left: 5px;
+}
+.highlight:hover .btn-copy{
+  opacity: 1;
+}
+
+
+
+
+
