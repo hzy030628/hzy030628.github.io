@@ -47,11 +47,20 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>关于</title>
-  <meta name="title" content="关于" />
+  <title>分类</title>
+  <meta name="title" content="分类" />
 
 
 
+
+
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "6f081c2c"
+});
+daovoice('update');
+ </script>
 
 
 
@@ -197,6 +206,11 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
         <li class="menu-item menu-item-love">
 
     <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-whisper">
+
+    <a href="/Whisper/" rel="section"><i class="fa fa-calendar fa-fw"></i>微言</a>
 
   </li>
         <li class="menu-item menu-item-guestbook">
@@ -3068,6 +3082,8 @@ window.addEventListener('pjax:success', () => {
 
   
 <script src="/js/local-search.js"></script>
+
+
 
 
 
