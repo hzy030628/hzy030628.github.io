@@ -3,11 +3,18 @@ const ap = new APlayer({
     fixed: true,
     autoplay: true,
     audio: [
-	{
+	    {
         name: "春风十里报新年",
         artist: '接个吻，开一枪,火鸡,吕口口,Lambert,杨胖雨',
         url: 'http://music.163.com/song/media/outer/url?id=1413464902.mp3',
         cover: 'http://p1.music.126.net/A157zQR5rR66LMatjYAucQ==/109951164595606537.jpg?param=130y130',
+      },
+
+      {
+        name: "在你的身边",
+        artist: '盛哲',
+        url: 'http://music.163.com/song/media/outer/url?id=475479888.mp3',
+        cover: 'http://p3.music.126.net/AYNBdRxJ8EdZo4xFjp7b4Q==/109951163191178425.jpg?param=130y130',
       },
 	  
     ]
