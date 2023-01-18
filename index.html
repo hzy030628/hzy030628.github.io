@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>留言板</title>
-  <meta name="title" content="留言板" />
+  <title>微言</title>
+  <meta name="title" content="微言" />
 
 
 
@@ -312,7 +312,7 @@ daovoice('update');
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-18 20:31:52 / 修改时间：12:33:25" itemprop="dateCreated datePublished" datetime="2023-01-18T20:31:52+08:00">2023-01-18</time>
+              <time title="创建时间：2023-01-18 20:31:52 / 修改时间：12:38:06" itemprop="dateCreated datePublished" datetime="2023-01-18T20:31:52+08:00">2023-01-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -375,155 +375,14 @@ daovoice('update');
 
       
           <p>山石2022冬令营结营赛</p>
-<!--mopre-->
-<h1 id="前言">前言</h1>
-<p>第一次参加CTF冬令营，师傅们讲的都很好，也学到了不少东西，结营赛没想到WEB都是0解，题目质量很高，只能在其他方向上拿点分了，最终排名第四，继续加油吧，距离大佬还差的很远</p>
-<h1 id="签到题">签到题</h1>
-<p>关注公众号发送签到题得到flag</p>
-<p>hsnctf{welcome_to_hsnctf}</p>
-<h1 id="daobudao">daobudao</h1>
-<p>base64解码得到kvqfwi{j00g_oxfn_kdyh_ixq}</p>
-<p>凯撒解密，得到flag</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image001.png?x-oss-process=hzy" alt="img"></p>
-<p>hsnctf{g00d_luck_have_fun}</p>
-<h1 id="s7_analysis">S7_analysis</h1>
-<p>0x29 - PLC Stop，查询得到两组数据</p>
-<p>s7comm.param.func == 0x29</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image003.png?x-oss-process=hzy" alt="img"></p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image005.png?x-oss-process=hzy" alt="img"></p>
-<p>399 269.522771   192.168.1.103 95.182.246.171    S7COMM    87  ROSCTR:[Job   ] Function:[PLC Stop]</p>
-<p>得到编号399，所以得到flag</p>
-<p>hsnctf{399}</p>
-<h1 id="外星电波~">外星电波~</h1>
-<p>首先文件内容是base64，python脚本转一下发现是pk头</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image006.png?x-oss-process=hzy" alt="img"></p>
-<p>保存为pk文件</p>
-<pre><code class="hljs plaintext">import base64
-
-with open(&quot;./flag.txt&quot;, &quot;r&quot;) as f:
-
-  data = base64.b64decode(f.read())
-
-  #print(data)
-
-  file = open(&quot;flag.zip&quot;, &quot;wb&quot;)
-
-  file.write(data)</code></pre>
-<p>发现需要密码</p>
-<p>然后使用ntfs隐写解密得到wav音频</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image008.png?x-oss-process=hzy" alt="img"></p>
-<p>然后sstv隐写得到压缩包密码passwd@hillstone</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image010.png?x-oss-process=hzy" alt="img"></p>
-<p>解压得到flag</p>
-<p>hsnctf{70995fb0-eb60-0787-f305-77066aeb6730}</p>
-<h1 id="extract">extract</h1>
-<p>看文件附件就是提示Cloakify，然后去github下载工具进行解密</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/TryCatchHCF/Cloakify/blob/master/cloakifyFactory.py">https://github.com/TryCatchHCF/Cloakify/blob/master/cloakifyFactory.py</a></p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image012.png?x-oss-process=hzy" alt="img"></p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image014.png?x-oss-process=hzy" alt="img"></p>
-<p>得到flag文件是压缩包</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image015.png?x-oss-process=hzy" alt="img"></p>
-<p>解压发现是套娃，解压2332次左右就会得到flag文件</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image016.png?x-oss-process=hzy" alt="img"></p>
-<p>脚本如下</p>
-<pre><code class="hljs plaintext">import zipfile
-
-import re
-
-zipname = &quot;C:\\Users\\25963\\Desktop\\flag\\&quot;+&quot;f2332.zip&quot;
-
-while True:
-
-  if zipname != &quot;C:\\Users\\25963\\Desktop\\flag\\flag.txt&quot;:
-
-​    ts1 = zipfile.ZipFile(zipname)
-
-​    print (ts1.namelist()[0])
-
-​    res = re.search(&#x27;[0-9]*&#x27;,ts1.namelist()[0])
-
-​    print (res.group())
-
-​    passwd = res.group()
-
-​    ts1.extractall(&quot;C:\\Users\\25963\\Desktop\\flag\\&quot;,pwd=passwd)
-
-​    zipname = &quot;C:\\Users\\25963\\Desktop\\flag\\&quot;+ts1.namelist()[0]
-
-  else:
-
-​    print (&quot;find&quot;)</code></pre>
-<p>得到flag</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image018.png?x-oss-process=hzy" alt="img"></p>
-<p>hsnctf{66eec912-e9ce-4e1d-ac54-ecea075dcb96}</p>
-<h1 id="re_easy">re_easy</h1>
-<p>查壳</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image019.png?x-oss-process=hzy" alt="img"></p>
-<p>Upx先用upx shell脱壳</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image021.jpg?x-oss-process=hzy" alt="img"></p>
-<p>寻找到数据</p>
-<pre><code class="hljs plaintext">7,127,121,92,110,67,101,84,3,71,4,82,122,111,121,2,5,71,117,2,109,99,101,71,3,100,113,77</code></pre>
-<p>脚本如下</p>
-<pre><code class="hljs plaintext">s=[7,127,121,92,110,67,101,84,3,71,4,82,122,111,121,2,5,71,117,2,109,99,101,71,3,100,113,77]
-print(&#x27;&#x27;.join(chr(c^55)for c in s))</code></pre>
-<p>得到</p>
-<p>0HNkYtRc4p3eMXN52pB5ZTRp4SFz</p>
-<p>Ida打开可以得到base64码表，解码得到flag</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image023.jpg?x-oss-process=hzy" alt="img"></p>
-<p>hsnctf{7h1s_s0_e4sy}</p>
-<h1 id="babypy">Babypy</h1>
-<p>脚本如下</p>
-<pre><code class="hljs plaintext">import random
- from Crypto.Util.number import long_to_bytes
- from Crypto.Cipher import AES
- ans0 = b&#x27;\xa2\xeb\xbb\n9\xb70\xc8G\x84h\xd9\xd0\xf1\xf9\x13/_\xa7\xe4f\xbeN\xfaw.i\x067\xd1\x02^&#x27;
- random.seed(12648430)
- shuf1 = [i for i in range(32)]
- random.shuffle(shuf1)
- shuf2 = [i for i in range(32)]
- random.shuffle(shuf2)
- a = []
- b = []
- for _ in range(32):
-   a.append(random.randint(0, 255))
-   b.append(random.randint(0, 255))
- shuf3 = [i for i in range(32)]
- random.shuffle(shuf3)
- key = long_to_bytes(random.getrandbits(256))
- aes = AES.new(key, AES.MODE_ECB)
- ans1 = aes.decrypt(ans0)
- ans1 = list(ans1)
- ans2 = [0 for _ in range(32)]
- for i in range(32):
-   ans2[shuf3[i]] = ans1[i]
- for i in range(32):
-   ans2[shuf2[i]] ^= a[i] ^ b[i]
- ans3 = [0 for _ in range(32)]
- for i in range(32):
-   ans3[shuf1[i]] = ans2[i]
- print(ans3)</code></pre>
-<p>得到104, 115, 110, 99, 116, 102, 123, 82, 52, 110, 100, 111, 109, 95, 113, 117, 49, 116, 101, 95, 105, 110, 116, 51, 114, 101, 115, 116, 105, 110, 57, 125</p>
-<p>十进制转Hex转str得到flag（ps:手搓的）</p>
-<p>hsnctf{R4ndom_qu1te_int3restin9}</p>
-<h1 id="hsandroid1">HSAndroid1</h1>
-<p>首先反编译apk</p>
-<p>找到主函数进行分析，找到S和·Key</p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image025.jpg?x-oss-process=hzy" alt="img"></p>
-<p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/clip_image027.jpg?x-oss-process=hzy" alt="img"></p>
-<p>主体逻辑如上，先进行aes解迷然后进行base64解码即可得到flag</p>
-<p>代码如下</p>
-<pre><code class="hljs plaintext">from Crypto.Cipher import *
-s= &quot;HyKsaPpqT4l436tHiSEXtIlLgVV4GE7mGc2WoI0KlP2YhKFco7OPcJYtS58BFwDq&quot;
-key=[12, 32, 13, 14, 23, 108, 31, 108, 44, 121, 42, 121, 42, 113, 41, 124]
-key=&#x27;&#x27;.join(map(chr,key))
-iv=[12, 32, 13, 14, 23, 108, 31, 108, 44, 121, 42, 121, 42, 113, 41, 124]
-iv = &#x27;&#x27;.join(map(chr,iv))
-obj = AES.new(key,AES.MODE_CBC,iv)
-obj.decrypt(s.decode(&#x27;base64&#x27;))
-#&#x27;hsnctf&#123;android_is_not_e4sy_will_caref1ul&#125;\x07\x07\x07\x07\x07\x07\x07&#x27;</code></pre>
-<p>得到flag</p>
-<p><em>hsnctf{android_is_not_e4sy_will_caref1ul}</em></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/18/%E5%B1%B1%E7%9F%B32022%E5%86%AC%E4%BB%A4%E8%90%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
