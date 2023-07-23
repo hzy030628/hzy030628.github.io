@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hzy2003628.top/2023/07/22/2023BDSecCTF/</loc>
+    <lastmod>2023-07-23</lastmod>
+  </url>
+  <url>
+    <loc>https://hzy2003628.top/2022/07/22/2022BDSecCTF/</loc>
+    <lastmod>2023-07-22</lastmod>
+  </url>
+  <url>
     <loc>https://hzy2003628.top/2023/06/28/2023CISCN%5B%E5%8D%8E%E4%B8%AD%E5%86%B3%E8%B5%9B%5D/</loc>
     <lastmod>2023-07-16</lastmod>
   </url>
@@ -70,10 +78,6 @@
   </url>
   <url>
     <loc>https://hzy2003628.top/2023/07/10/CyberSecurityRumble%20Quals/</loc>
-    <lastmod>2023-07-10</lastmod>
-  </url>
-  <url>
-    <loc>https://hzy2003628.top/2022/07/22/BDSecCTF/</loc>
     <lastmod>2023-07-10</lastmod>
   </url>
   <url>
