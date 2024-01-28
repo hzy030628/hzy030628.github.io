@@ -94,7 +94,7 @@ daovoice('update');
 <meta property="og:description" content="misc隐写题目总结，方便后续使用到的时候能找到，所以记录一下。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-23T03:04:00.000Z">
-<meta property="article:modified_time" content="2023-12-18T04:37:48.238Z">
+<meta property="article:modified_time" content="2024-01-23T13:36:28.013Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="misc">
@@ -339,7 +339,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-18 12:37:48" itemprop="dateModified" datetime="2023-12-18T12:37:48+08:00">2023-12-18</time>
+                <time title="修改时间：2024-01-23 21:36:28" itemprop="dateModified" datetime="2024-01-23T21:36:28+08:00">2024-01-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -389,14 +389,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.5k</span>
+              <span>8.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -444,7 +444,7 @@ daovoice('update');
 <pre><code class="hljs javascript">outguess -r <span class="hljs-number">2.</span>jpg out.<span class="hljs-property">txt</span></code></pre>
 <h2 id="stegdetectjpg利器">stegdetect[jpg利器！！！]</h2>
 <blockquote>
-<p>仅实用JPG</p>
+<p>仅实用JPG，存在误报自己合理判断</p>
 </blockquote>
 <p>该工具会自动检测比较常规的JPG隐写，提高效率</p>
 <blockquote>
@@ -479,16 +479,16 @@ Loaded 1 files...
 <pre><code class="hljs plaintext">steghide extract -sf xxx.jpg （图片路径）-p 123456（-p 密码） //提取含有密码的隐藏内容</code></pre>
 <p>steghide也可以用来爆破密码：<br>
 需要shell脚本：`#<a target="_blank" rel="noopener" href="http://bruteStegHide.sh">bruteStegHide.sh</a></p>
-<pre><code class="hljs plaintext">#1.sh
-#!/bin/bash
+<pre><code class="hljs plaintext">#!/bin/bash
 
 for line in `cat $2`;do
-steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1
-if [[ $? -eq 0 ]];then
-echo &#x27;password is: &#x27;$line
-exit
-fi
-done</code></pre>
+    steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1
+    if [[ $? -eq 0 ]];then
+        echo &#x27;password is: &#x27;$line
+        exit
+    fi  
+done 
+</code></pre>
 <p>用法：</p>
 <pre><code class="hljs plaintext">./1.sh test.jpg passwd.txt</code></pre>
 <p>passwd.txt也需要自己生成，kali即可</p>
@@ -735,6 +735,69 @@ stegsnow -C -p &quot;hello world&quot; [outfile]</code></pre>
 <blockquote>
 <pre><code class="hljs plaintext">kali里面有</code></pre>
 </blockquote>
+<h1 id="压缩包隐写">压缩包隐写</h1>
+<blockquote>
+<p>也就是伪加密系列吧</p>
+</blockquote>
+<p>注意注释，可能有时候有hint</p>
+<p>其次就是压缩包的常见出题操作，比如伪加密，或者掩码爆破，明文爆破这几种最为常见，其他罕见的我也没见过就遇到了再补充吧</p>
+<h2 id="伪加密">伪加密</h2>
+<h3 id="zip">ZIP</h3>
+<pre><code class="hljs plaintext">压缩源文件数据区
+  50 4B 03 04：这是头文件标记  （0x04034b50）
+  14 00：解压文件所需 pkware 版本
+  00 00：全局方式位标记（判断有无加密）
+  08 00：压缩方式
+  5A 7E：最后修改文件时间
+  F7 46：最后修改文件日期</code></pre>
+<pre><code class="hljs plaintext">压缩源文件目录区
+ 50 4B 01 02：目录中文件文件头标记  （0x02014b50）
+ 1F 00：压缩使用的 pkware 版本
+ 14 00：解压文件所需 pkware 版本
+ 00 00：全局方式位标记（判断是否为伪加密）
+ 08 00：压缩方式
+  5A 7E：最后修改文件时间
+  F7 46：最后修改文件日期</code></pre>
+<pre><code class="hljs plaintext">压缩源文件目录结束标志
+ 50 4B 05 06：目录结束标记
+ 00 00：当前磁盘编号
+ 00 00：目录区开始磁盘编号
+ 01 00：本磁盘上纪录总数
+ 01 00：目录区中纪录总数
+ 59 00 00 00：目录区尺寸大小
+ 3E 00 00 00：目录区对第一张磁盘的偏移量
+ 00 00：ZIP 文件注释长度</code></pre>
+<p>判断是否是伪加密的方法</p>
+<pre><code class="hljs plaintext">全局方位标记的四个数字中只有第二个数字对其有影响，其它的不管为何值，都不影响它的加密属性，即：
+ 第二个数字为奇数时 –&gt;加密 
+ 第二个数字为偶数时 –&gt;未加密</code></pre>
+<p>有个很快捷的方式来判断到底是不是伪加密</p>
+<pre><code class="hljs plaintext">先搜504b03041400【搜不到从右往左逐字减】，然后看这后边的俩数字的第一个数字的个位数是奇数还是偶数，
+再搜504b010200001400【搜不到从右往左逐字减】，然后看这后边的俩数字的第一个数字的个位数是奇数还是偶数，
+然后上边不是说了，是奇数就是加密是偶数就是未加密，如果你搜到的这俩数字不一致，意思就是一个奇数一个偶数，那就是伪加密，改成偶数即可，通常习惯改成0.</code></pre>
+<p>然后说句实在话，在比赛过程中也不用去真的这样细节的去看数据来判断是不是伪加密，直接放爆破工具里面爆，伪加密的话爆破直接报错显示不是加密，那不就是伪加密了，然后还有几种方法可以提取出来伪加密的文件</p>
+<pre><code class="hljs plaintext">（1）用binwalk-e 直接分
+（2）在kali系统中，可以直接打开伪加密zip文件
+（3）检测伪加密的工具ZipCenOp.jar
+（4）也可试试WinRAR直接修复压缩包</code></pre>
+<p>当然如果这方法都不行，回归最基础，就手动改数据肯定可以。</p>
+<h3 id="rar">RAR</h3>
+<p>rar压缩包伪加密就更好识别了</p>
+<pre><code class="hljs plaintext">找第24个字节，该字节尾数为4表示加密，0表示无加密，将尾数改为0即可破解伪加密
+【第七列第二行的个位数】</code></pre>
+<h3 id="明文攻击">明文攻击</h3>
+<p>掩码攻击不多说，懂得都懂，明文攻击最常见的思路也是最根本的要求就是得有一个加密压缩包里面有的文件，然后通过这个文件去明文攻击压缩包，再难点的就是加密压缩包里面有个很常见的文件名，然后通过在网上找到这个文件【指相同CRC的】或者自己构造空置的相同文件名的文件【也就是空格填充，但是这种明文攻击起来很费时间】。</p>
+<p>然后第二种就是空格填充的话用到了一个工具bkcrack，用这个工具去爆，命令如下【见2023春秋杯冬季赛’明文混淆‘这题】</p>
+<pre><code class="hljs plaintext">D:\CTF\bkcrack-1.5.0-win64\bkcrack-1.5.0-win64&gt;bkcrack.exe -C  D:\game\MISC\明文混淆\明文混淆_aa760d446aaae9033ba325b5a324cb7b.zip  -c LICENSE.txt -p D:\game\MISC\明文混淆\LICENSE.txt
+bkcrack 1.5.0 - 2022-07-07
+[18:33:31] Z reduction using 5 bytes of known plaintext
+100.0 % (5 / 5)
+[18:33:31] Attack on 1042869 Z values at index 6
+Keys: 7163444a 203b76b0 17de1387
+86.5 % (902027 / 1042869)
+[19:05:27] Keys
+7163444a 203b76b0 17de1387</code></pre>
+<p>获得key之后再用ARCHPR的明文攻击功能里面输入对应的密钥，右边有个按钮直接可以通过密钥去解密压缩包。</p>
 <h1 id="异或爆破偏移">异或爆破偏移</h1>
 <h2 id="xortool猜测xor加密的密码长度及值">xortool（猜测xor加密的密码长度及值）</h2>
 <blockquote>
@@ -879,7 +942,7 @@ sekurlsa::logonpasswords full</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87pngjpggif"><span class="nav-number">1.</span> <span class="nav-text">图片(PNG,JPG,GIF)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#f5%E9%9A%90%E5%86%99"><span class="nav-number">1.1.</span> <span class="nav-text">F5隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outguess"><span class="nav-number">1.2.</span> <span class="nav-text">outguess</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86"><span class="nav-number">1.2.0.0.0.2.</span> <span class="nav-text">解密</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stegdetectjpg%E5%88%A9%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">stegdetect[jpg利器！！！]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steghide%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">steghide工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="nav-number">1.5.</span> <span class="nav-text">盲水印</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E5%9F%9F%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="nav-number">1.6.</span> <span class="nav-text">频域盲水印</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lsb%E8%A7%A3%E5%AF%86"><span class="nav-number">1.7.</span> <span class="nav-text">lsb解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsteg%E9%9A%90%E5%86%99"><span class="nav-number">1.8.</span> <span class="nav-text">zsteg隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pngcheck%E6%B2%A1%E6%80%9D%E8%B7%AF%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E7%9C%8B%E5%9B%BE%E7%89%87idat%E5%9D%97"><span class="nav-number">1.9.</span> <span class="nav-text">pngcheck【没思路就可以看看图片IDAT块】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webp%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.10.</span> <span class="nav-text">WebP转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exiftool"><span class="nav-number">1.11.</span> <span class="nav-text">exiftool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E7%A6%BB%E5%B7%A5%E5%85%B7binwalkforemost"><span class="nav-number">1.12.</span> <span class="nav-text">文件分离工具（binwalk,foremost）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binwalk"><span class="nav-number">1.13.</span> <span class="nav-text">binwalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foremost%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.14.</span> <span class="nav-text">foremost的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zbarimg%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%AB%E7%A0%81"><span class="nav-number">1.15.</span> <span class="nav-text">zbarimg（命令行扫码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bftools%E5%8F%AF%E4%BB%A5%E4%BB%8E%E5%9B%BE%E7%89%87%E8%A7%A3brainfuck"><span class="nav-number">1.16.</span> <span class="nav-text">bftools（可以从图片解brainfuck）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#png%E6%9C%80%E5%90%8E%E4%B8%80%E8%AF%95"><span class="nav-number">1.17.</span> <span class="nav-text">PNG最后一试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%BC%E5%9B%BE"><span class="nav-number">1.18.</span> <span class="nav-text">拼图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#montage%E5%B7%A5%E5%85%B7"><span class="nav-number">1.18.1.</span> <span class="nav-text">montage工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gaps%E5%B7%A5%E5%85%B7"><span class="nav-number">1.18.2.</span> <span class="nav-text">gaps工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91mp3wav"><span class="nav-number">2.</span> <span class="nav-text">音频(MP3，wav)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#first-of-all"><span class="nav-number">2.1.</span> <span class="nav-text">First Of All</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#audacityportable"><span class="nav-number">2.2.</span> <span class="nav-text">AudacityPortable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deepsound%E6%9C%89key%E8%AF%95%E8%BF%99%E4%B8%AA"><span class="nav-number">2.3.</span> <span class="nav-text">deepsound【有key试这个】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A8%E5%8F%B7%E9%9A%90%E5%86%99"><span class="nav-number">2.4.</span> <span class="nav-text">拨号隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sstv"><span class="nav-number">2.5.</span> <span class="nav-text">SSTV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mp3%E9%9A%90%E5%86%99"><span class="nav-number">2.6.</span> <span class="nav-text">MP3隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steghide%E9%80%82%E7%94%A8%E4%BA%8Ewav"><span class="nav-number">2.7.</span> <span class="nav-text">steghide[适用于wav]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#officewordexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">office(word,excel表格)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#snow%E9%9A%90%E5%86%99%E7%A9%BA%E6%A0%BC%E5%88%B6%E8%A1%A8%E7%AC%A6%E9%9A%90%E5%86%99"><span class="nav-number">3.1.</span> <span class="nav-text">SNOW隐写【空格制表符隐写】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stegsnow%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E9%9A%90%E5%86%99"><span class="nav-number">3.2.</span> <span class="nav-text">stegsnow（空白字符隐写）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyc%E9%9A%90%E5%86%99"><span class="nav-number">4.</span> <span class="nav-text">pyc隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stegosaurus"><span class="nav-number">4.1.</span> <span class="nav-text">Stegosaurus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E7%88%86%E7%A0%B4%E5%81%8F%E7%A7%BB"><span class="nav-number">5.</span> <span class="nav-text">异或爆破偏移</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xortool%E7%8C%9C%E6%B5%8Bxor%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AF%86%E7%A0%81%E9%95%BF%E5%BA%A6%E5%8F%8A%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">xortool（猜测xor加密的密码长度及值）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mimikatz%E6%8A%93%E5%8F%96lsass%E5%AF%86%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">mimikatz（抓取lsass密码）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87pngjpggif"><span class="nav-number">1.</span> <span class="nav-text">图片(PNG,JPG,GIF)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#f5%E9%9A%90%E5%86%99"><span class="nav-number">1.1.</span> <span class="nav-text">F5隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outguess"><span class="nav-number">1.2.</span> <span class="nav-text">outguess</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86"><span class="nav-number">1.2.0.0.0.2.</span> <span class="nav-text">解密</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stegdetectjpg%E5%88%A9%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">stegdetect[jpg利器！！！]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steghide%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">steghide工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="nav-number">1.5.</span> <span class="nav-text">盲水印</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E5%9F%9F%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="nav-number">1.6.</span> <span class="nav-text">频域盲水印</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lsb%E8%A7%A3%E5%AF%86"><span class="nav-number">1.7.</span> <span class="nav-text">lsb解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsteg%E9%9A%90%E5%86%99"><span class="nav-number">1.8.</span> <span class="nav-text">zsteg隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pngcheck%E6%B2%A1%E6%80%9D%E8%B7%AF%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E7%9C%8B%E5%9B%BE%E7%89%87idat%E5%9D%97"><span class="nav-number">1.9.</span> <span class="nav-text">pngcheck【没思路就可以看看图片IDAT块】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webp%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.10.</span> <span class="nav-text">WebP转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exiftool"><span class="nav-number">1.11.</span> <span class="nav-text">exiftool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E7%A6%BB%E5%B7%A5%E5%85%B7binwalkforemost"><span class="nav-number">1.12.</span> <span class="nav-text">文件分离工具（binwalk,foremost）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binwalk"><span class="nav-number">1.13.</span> <span class="nav-text">binwalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foremost%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.14.</span> <span class="nav-text">foremost的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zbarimg%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%AB%E7%A0%81"><span class="nav-number">1.15.</span> <span class="nav-text">zbarimg（命令行扫码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bftools%E5%8F%AF%E4%BB%A5%E4%BB%8E%E5%9B%BE%E7%89%87%E8%A7%A3brainfuck"><span class="nav-number">1.16.</span> <span class="nav-text">bftools（可以从图片解brainfuck）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#png%E6%9C%80%E5%90%8E%E4%B8%80%E8%AF%95"><span class="nav-number">1.17.</span> <span class="nav-text">PNG最后一试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%BC%E5%9B%BE"><span class="nav-number">1.18.</span> <span class="nav-text">拼图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#montage%E5%B7%A5%E5%85%B7"><span class="nav-number">1.18.1.</span> <span class="nav-text">montage工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gaps%E5%B7%A5%E5%85%B7"><span class="nav-number">1.18.2.</span> <span class="nav-text">gaps工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91mp3wav"><span class="nav-number">2.</span> <span class="nav-text">音频(MP3，wav)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#first-of-all"><span class="nav-number">2.1.</span> <span class="nav-text">First Of All</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#audacityportable"><span class="nav-number">2.2.</span> <span class="nav-text">AudacityPortable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deepsound%E6%9C%89key%E8%AF%95%E8%BF%99%E4%B8%AA"><span class="nav-number">2.3.</span> <span class="nav-text">deepsound【有key试这个】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A8%E5%8F%B7%E9%9A%90%E5%86%99"><span class="nav-number">2.4.</span> <span class="nav-text">拨号隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sstv"><span class="nav-number">2.5.</span> <span class="nav-text">SSTV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mp3%E9%9A%90%E5%86%99"><span class="nav-number">2.6.</span> <span class="nav-text">MP3隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steghide%E9%80%82%E7%94%A8%E4%BA%8Ewav"><span class="nav-number">2.7.</span> <span class="nav-text">steghide[适用于wav]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#officewordexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">office(word,excel表格)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#snow%E9%9A%90%E5%86%99%E7%A9%BA%E6%A0%BC%E5%88%B6%E8%A1%A8%E7%AC%A6%E9%9A%90%E5%86%99"><span class="nav-number">3.1.</span> <span class="nav-text">SNOW隐写【空格制表符隐写】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stegsnow%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E9%9A%90%E5%86%99"><span class="nav-number">3.2.</span> <span class="nav-text">stegsnow（空白字符隐写）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyc%E9%9A%90%E5%86%99"><span class="nav-number">4.</span> <span class="nav-text">pyc隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stegosaurus"><span class="nav-number">4.1.</span> <span class="nav-text">Stegosaurus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E9%9A%90%E5%86%99"><span class="nav-number">5.</span> <span class="nav-text">压缩包隐写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="nav-number">5.1.</span> <span class="nav-text">伪加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zip"><span class="nav-number">5.1.1.</span> <span class="nav-text">ZIP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rar"><span class="nav-number">5.1.2.</span> <span class="nav-text">RAR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">5.1.3.</span> <span class="nav-text">明文攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%88%96%E7%88%86%E7%A0%B4%E5%81%8F%E7%A7%BB"><span class="nav-number">6.</span> <span class="nav-text">异或爆破偏移</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xortool%E7%8C%9C%E6%B5%8Bxor%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AF%86%E7%A0%81%E9%95%BF%E5%BA%A6%E5%8F%8A%E5%80%BC"><span class="nav-number">6.1.</span> <span class="nav-text">xortool（猜测xor加密的密码长度及值）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mimikatz%E6%8A%93%E5%8F%96lsass%E5%AF%86%E7%A0%81"><span class="nav-number">7.</span> <span class="nav-text">mimikatz（抓取lsass密码）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1274,7 +1337,7 @@ sekurlsa::logonpasswords full</code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:17</span>
+    <span title="站点阅读时长">18:18</span>
 </div>
 
 
