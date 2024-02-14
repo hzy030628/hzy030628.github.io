@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hzy2003628.top/2024/02/14/NSSCTF-r18/</loc>
+    <lastmod>2024-02-14</lastmod>
+  </url>
+  <url>
+    <loc>https://hzy2003628.top/2022/08/03/NSSCTF-r4/</loc>
+    <lastmod>2024-02-14</lastmod>
+  </url>
+  <url>
     <loc>https://hzy2003628.top/2024/02/14/%E6%89%93%E9%9D%B6-Vulnerable%20Docker1%20Hard/</loc>
     <lastmod>2024-02-14</lastmod>
   </url>
@@ -395,10 +403,6 @@
   <url>
     <loc>https://hzy2003628.top/2022/08/12/T3N4CI0US%20CTF/</loc>
     <lastmod>2022-08-14</lastmod>
-  </url>
-  <url>
-    <loc>https://hzy2003628.top/2022/08/03/NSSCTF/</loc>
-    <lastmod>2022-08-05</lastmod>
   </url>
   <url>
     <loc>https://hzy2003628.top/2022/07/31/TFCCTF/</loc>
