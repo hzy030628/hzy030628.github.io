@@ -97,8 +97,10 @@ daovoice('update');
 <meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/c8cc1db3d8235534250e712eb08dc07f.png?x-oss-process=hzy">
 <meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/cc62997cd13816587a7258f72e8e6bdc.png?x-oss-process=hzy">
 <meta property="og:image" content="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/a5c2addebda6cf424ef2fc32bf999065.png?x-oss-process=hzy">
+<meta property="og:image" content="https://img.hzy2003628.top/43eab3193826b3f686e2690674dab990.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240215103634340.png">
 <meta property="article:published_time" content="2022-03-11T11:52:40.000Z">
-<meta property="article:modified_time" content="2024-02-14T13:41:23.293Z">
+<meta property="article:modified_time" content="2024-02-15T04:22:53.072Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="misc">
 <meta property="article:tag" content="流量分析">
@@ -222,7 +224,7 @@ daovoice('update');
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">111</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">112</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -344,7 +346,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-14 21:41:23" itemprop="dateModified" datetime="2024-02-14T21:41:23+08:00">2024-02-14</time>
+                <time title="修改时间：2024-02-15 12:22:53" itemprop="dateModified" datetime="2024-02-15T12:22:53+08:00">2024-02-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -384,14 +386,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>277</span>
+              <span>8.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -405,6 +407,7 @@ daovoice('update');
       
         <p>练一下文件分析的一些题型，掌握一下Wireshark工具的使用方法</p>
 <span id="more"></span>
+<h1 id="报错版流量包">报错版流量包</h1>
 <p>先做一下第一届 “百度杯” 信息安全攻防总决赛里面的find the flag的这个题，文件地址放这了。</p>
 <pre><code class="hljs plaintext">https://static2.ichunqiu.com/icq/resources/fileupload/CTF/BSRC/2017/BSRC3-1/findtheflag.cap</code></pre>
 <p>用Wireshark直接打开报错了<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/963de9b36131ae8c823cbd19f6004642.png?x-oss-process=hzy" alt="image-20220311195627114"></p>
@@ -412,6 +415,298 @@ daovoice('update');
 <p>再次打开，在流量包中有提示<img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/cc62997cd13816587a7258f72e8e6bdc.png?x-oss-process=hzy" alt="image-20220311200444184"></p>
 <p><img src="https://imagesssssssssss.oss-cn-beijing.aliyuncs.com/img/a5c2addebda6cf424ef2fc32bf999065.png?x-oss-process=hzy" alt="image-20220311200649590"></p>
 <p>按照同样的方式连接后面相连数据包的id字段，找到最终的flag！</p>
+<h1 id="盲注流量-回显全200解法二分法">盲注流量-回显全200解法(二分法)</h1>
+<p>流量分析SQL注入流量</p>
+<p>重点去看响应包，也就是HTTP/1.1 200 OK  (text/html)里面的内容，如下</p>
+<pre><code class="hljs plaintext">Frame 3568: 726 bytes on wire (5808 bits), 726 bytes captured (5808 bits) on interface \Device\NPF_&#123;E6CE0565-F179-4A52-B211-621FF8EEBA4F&#125;, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_&#123;E6CE0565-F179-4A52-B211-621FF8EEBA4F&#125;)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Feb 14, 2024 20:06:04.593375000 中国标准时间
+    UTC Arrival Time: Feb 14, 2024 12:06:04.593375000 UTC
+    Epoch Arrival Time: 1707912364.593375000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.006990000 seconds]
+    [Time delta from previous displayed frame: 0.036535000 seconds]
+    [Time since reference or first frame: 96.515960000 seconds]
+    Frame Number: 3568
+    Frame Length: 726 bytes (5808 bits)
+    Capture Length: 726 bytes (5808 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:http:data-text-lines]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80 || http2]
+Ethernet II, Src: de:75:30:ac:fb:5d (de:75:30:ac:fb:5d), Dst: Intel_b0:5a:45 (38:fc:98:b0:5a:45)
+    Destination: Intel_b0:5a:45 (38:fc:98:b0:5a:45)
+    Source: de:75:30:ac:fb:5d (de:75:30:ac:fb:5d)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 117.21.200.176, Dst: 172.16.14.21
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 712
+    Identification: 0x3f82 (16258)
+    010. .... = Flags: 0x2, Don&#x27;t fragment
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 49
+    Protocol: TCP (6)
+    Header Checksum: 0x0fc3 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 117.21.200.176
+    Destination Address: 172.16.14.21
+Transmission Control Protocol, Src Port: 81, Dst Port: 50868, Seq: 1, Ack: 282, Len: 672
+    Source Port: 81
+    Destination Port: 50868
+    [Stream index: 356]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 672]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 574345654
+    [Next Sequence Number: 673    (relative sequence number)]
+    Acknowledgment Number: 282    (relative ack number)
+    Acknowledgment number (raw): 3857710515
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+    Window: 501
+    [Calculated window size: 64128]
+    [Window size scaling factor: 128]
+    Checksum: 0xdd9b [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (672 bytes)
+Hypertext Transfer Protocol, has 2 chunks (including last chunk)
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 200
+        [Status Code Description: OK]
+        Response Phrase: OK
+    Server: openresty\r\n
+    Date: Wed, 14 Feb 2024 12:06:04 GMT\r\n
+    Content-Type: text/html; charset=UTF-8\r\n
+    Transfer-Encoding: chunked\r\n
+    Connection: keep-alive\r\n
+    Vary: Accept-Encoding\r\n
+    X-Powered-By: PHP/7.3.11\r\n
+    Cache-Control: no-cache\r\n
+    Content-Encoding: gzip\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.036535000 seconds]
+    [Request in frame: 3566]
+    [Request URI: http://3c97f319-92cf-4ba5-a3f2-6bd644abe921.node5.buuoj.cn:81/search.php?id=1-(ascii(substr((Select(reverse(group_concat(password)))From(F1naI1y)),6,1))%3E31)]
+    HTTP chunked response
+    Content-encoded entity body (gzip): 395 bytes -&gt; 708 bytes
+    File Data: 708 bytes
+Line-based text data: text/html (19 lines)
+    &lt;!DOCTYPE html&gt;\r\n
+    &lt;html&gt;\r\n
+    &lt;head&gt;\r\n
+            &lt;meta charset=&quot;UTF-8&quot;&gt;\r\n
+            &lt;title&gt;FLAG&lt;/title&gt;\r\n
+    &lt;/head&gt;\r\n
+    &lt;body background=&quot;./image/background.jpg&quot; style=&quot;background-repeat:no-repeat ;background-size:100% 100%; background-attachment: fixed;&quot; &gt;\r\n
+    &lt;div style=&quot;position: absolute;bottom: 0;width: 99%;&quot;&gt;&lt;p align=&quot;center&quot; style=&quot;font:italic 15px Georgia,serif;color:white;&quot;&gt; Syclover @ cl4y&lt;/p&gt;&lt;/div&gt;\r\n
+    \r\n
+    \r\n
+    \t\t\t&lt;body background=&#x27;./image/background.jpg&#x27; style=&#x27;background-repeat:no-repeat ;background-size:100% 100%; background-attachment: fixed;&#x27;&gt;\r\n
+    \t\t\t\t&lt;br&gt;&lt;br&gt;&lt;br&gt;\r\n
+    \t\t\t\t&lt;h1 style=&#x27;font-family:verdana;color:red;text-align:center;font-size:40px;&#x27;&gt;ERROR！！！&lt;/h1&gt;\r\n
+    \t\t\t\t&lt;/br&gt;\r\n
+    \t\t\t&lt;/body&gt;\t\t\t\r\n
+    \t\t\t\t\r\n
+    \r\n
+    &lt;/body&gt;\r\n
+    &lt;/html&gt;</code></pre>
+<p>重点是里面的Request URI，因为含有注入的url【id=1-(ascii(substr((Select(reverse(group_concat(password)))From(F1naI1y)),6,1))%3E31)】，其次就是回显内容，看Line-based text data，在这里显示的差别就是ERROR！！！</p>
+<p>利用下面这个来筛选指定length的流量</p>
+<pre><code class="hljs plaintext">frame.len == 978</code></pre>
+<img src="https://img.hzy2003628.top/43eab3193826b3f686e2690674dab990.png" alt="43eab3193826b3f686e2690674dab990" style="zoom:200%;">
+<p>用tshark导出指定内容</p>
+<pre><code class="hljs plaintext">┌──(kali㉿kali)-[~/桌面]
+└─$ tshark -r blindsql.pcapng -Y &quot;http.request&quot; -T fields -e http.request.full_uri &gt; data.txt</code></pre>
+<p>然后整理一下只保留有关flag的url</p>
+<img src="https://img.hzy2003628.top/image-20240215103634340.png" alt="image-20240215103634340" style="zoom:200%;">
+<p>脚本提取</p>
+<blockquote>
+<p>错误率有点高，要不然还是一点一点自己判断吧</p>
+</blockquote>
+<pre><code class="hljs plaintext">import urllib.parse
+import requests,re
+ 
+f = open(&#x27;1.txt&#x27;,&#x27;r&#x27;,encoding=&#x27;gb18030&#x27;,errors=&#x27;ignore&#x27;)
+lines = f.readlines()
+
+
+flag_ascii = &#123;&#125;
+for line in lines:
+    if len(line) &gt; 2:
+        
+        request = urllib.parse.unquote(urllib.parse.unquote(line))
+        matchObj = re.search(r&#x27;&#x27;&#x27;(\d&#123;0,2&#125;),1\)\)\&gt;(\d+)&#x27;&#x27;&#x27;, request)
+        # print(matchObj)
+
+
+        #倒数第一的value
+        # if matchObj:
+        #     key = int(matchObj.group(1))  # key保存字符的位置
+        #     value = int(matchObj.group(2))  # value保存字符的ascii编码
+        #     flag_ascii[key] = value
+
+        #倒数第二的value
+        if matchObj:
+            key = int(matchObj.group(1))  # key保存字符的位置
+            value = int(matchObj.group(2))  # value保存字符的ascii编码
+            # 检查是否已经有一个 value 存在
+            if key in flag_ascii:
+                # 如果已经存在，则更新为倒数第二个
+                flag_ascii[key] = [flag_ascii[key][-1], value]
+            else:
+                # 如果不存在，则创建一个列表，并将当前值添加到列表中
+                flag_ascii[key] = [value]
+
+
+# # 只保留每个 key 的最后一次出现的 value
+# for key, value in flag_ascii.items():
+#     flag_ascii[key] = value
+
+# print(flag_ascii)
+
+
+# 获取每个 key 对应的倒数第二个 value
+for key, values in flag_ascii.items():
+    if len(values) &gt; 1:
+        print(f&quot;&#123;values[-2]&#125;&quot;,end=&#x27; &#x27;)
+        ascii_value = values[-2]
+        flag = chr(ascii_value)
+        # print(str(flag),end=&#x27;&#x27;)</code></pre>
+<h1 id="盲注流量-回显200404解法二分法">盲注流量-回显200/404解法(二分法)</h1>
+<p>当状态码是200的时候，表示正确，报错为404，判断原理为大于num错，小于num+1错，即为num，所以盲注出来的字符串应该是状态码等于200时的字符或等于404时的ascii码减去1</p>
+<p>将流量包指定数据筛选后导出</p>
+<pre><code class="hljs plaintext">import urllib.parse
+import requests,re
+ 
+f = open(&#x27;日志里的秘密.log&#x27;,&#x27;r&#x27;,encoding=&#x27;gb18030&#x27;,errors=&#x27;ignore&#x27;)
+lines = f.readlines()
+flag_ascii = &#123;&#125;
+for line in lines:
+    if len(line) &gt; 2:
+        request = urllib.parse.unquote(urllib.parse.unquote(line))
+        matchObj = re.search(r&#x27;&#x27;&#x27;flag_is_here ORDER BY flag LIMIT 0,1\),(.*?),1\)\)&gt;(.*?) AND &#x27;RCKM&#x27;=&#x27;RCKM&amp;Submit=Submit HTTP/1.1&quot; (.*?) &#x27;&#x27;&#x27;,request)
+        #flag_is_here ORDER BY flag LIMIT 0,1),22,1))&gt;96 AND &#x27;RCKM&#x27;=&#x27;RCKM&amp;Submit=Submit HTTP/1.1
+        if matchObj:
+            key = int(matchObj.group(1))  # key保存字符的位置
+            value = int(matchObj.group(2))  # value保存字符的ascii编码
+            status= int(matchObj.group(3))
+            print(matchObj.group(3),&#x27;:&#x27;,matchObj.group(2))
+            if status==200:
+                flag_ascii[key] = value+1    # 用字典保存flag
+            if status==404:
+                flag_ascii[key] = value     # 用字典保存flag
+flag = &#x27;&#x27;
+for value in flag_ascii.values():
+    flag += chr(value)
+print (flag)</code></pre>
+<h1 id="盲注流量-布尔盲注">盲注流量-布尔盲注</h1>
+<pre><code class="hljs plaintext">import re
+
+#Request URI: http://192.168.246.1/ctf/Less-5/?id=1&#x27;%20and%20ascii(substr((select%20flag%20#from%20t),1,1))=102--+
+nums = []
+obj1 = re.compile(r&quot;1\)\)=(?P&lt;num1&gt;.*)\b&quot;,re.S)#开启贪婪模式匹配这里一定要使用.*贪婪模式 如果用.*?可能匹配失败 \b代表结尾
+def getAscii():
+    with open(&quot;re.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+        for line in f.readlines():
+            line = line.strip()
+            result = obj1.finditer(line)
+            for it in result:
+                num = it.group(&quot;num1&quot;)
+                nums.append(num)
+
+
+def getflag():
+    flag = &quot;&quot;
+    for i in nums:
+        i = chr(int(i))
+        flag = flag + i
+        print(flag)
+
+if __name__ == &#x27;__main__&#x27;:
+    getAscii()
+    getflag()
+</code></pre>
+<h1 id="盲注流量-时间盲注">盲注流量-时间盲注</h1>
+<pre><code class="hljs plaintext">import re
+
+
+#username[1]&quot; = &quot;in (&#x27;-1&#x27; ))) or if(ascii(substring((select 
+#flag from flag limit 0,1),1,1))=30,sleep(5),1)
+asciis = []
+asciis1 = []
+obj = re.compile(r&quot;limit 0,1\),(?P&lt;num&gt;.*),1\)\)=(?
+P&lt;asciinum&gt;.*)\b,sleep&quot;,re.S)
+#匹配正则表达式  第一个匹配lit 但是我们需要的只有ascii值  这里用.*贪婪模式  否则匹配失败
+
+
+def getASCII():
+    with open(&quot;time.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:
+        for line in f.readlines():  #readlines()读取出来为列表所以我们直接迭代 用strip()去除空格
+            line = line.strip()
+            result = obj.finditer(line) #正则匹配
+            for it in result:
+                num = it.group(&quot;num&quot;)  #lit值
+                asciinum = it.group(&quot;asciinum&quot;) #ASCIi值 注意这里提取的都为str类型  所以以下都要做int强转
+                asciis.append(asciinum) #将payload的全部ascii值(包括失败的）写入列表
+
+#使用一个循环 时间盲注可知ascii正确后才会进行下一次匹配  所以我们这里直接一个一个循环
+# 然后当正确的如102时  下一个又从30开始  所以会比前面小  利用这个特点筛选将正确的ASCIi写入新的列表
+def getASCII2():
+    a = 1
+    while a &lt; len(asciis):
+        if int(asciis[a]) &lt; int(asciis[a-1]):
+            asciis1.append(int(asciis[a-1]))
+        a += 1
+
+
+def getFLag():  #转换ASCIi
+    flag = &quot;&quot;
+    for i in asciis1:
+        i = chr(i)
+        flag = flag + i
+        print(flag)
+
+
+if __name__ == &#x27;__main__&#x27;:
+    getASCII()
+    getASCII2()
+    getFLag()
+
+</code></pre>
+<h1 id="语句为而非gtlt">语句为=，而非&gt;&lt;</h1>
+<pre><code class="hljs plaintext">import re
+
+number = []
+with open(&quot;aa.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:
+    for i in f.readlines():
+        flag_number = re.findall(r&quot;\[Request URI: .*?=(\d+)%23\]&quot;,i,re.S)
+        url_list = re.findall(r&quot;\[Request URI: (.*?)\]&quot;,i,re.S)
+        if flag_number:
+            print(url_list)
+            number.append(flag_number[0])
+
+print(number)
+flag = &#x27;&#x27;
+for i in number:
+    flag +=chr(int(i))
+print(flag)</code></pre>
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/serendipity1130/article/details/120772990">【CTF_流量日志分析】二分法盲注分析_ctf 盲注log-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_49746811/article/details/120691570">MISC杂项时间盲注及布尔盲注脚本 鹤城杯_xiaoqiuxx blog-CSDN博客</a></p>
 
     </div>
 
@@ -539,6 +834,7 @@ daovoice('update');
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E7%89%88%E6%B5%81%E9%87%8F%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">报错版流量包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B2%E6%B3%A8%E6%B5%81%E9%87%8F-%E5%9B%9E%E6%98%BE%E5%85%A8200%E8%A7%A3%E6%B3%95%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">盲注流量-回显全200解法(二分法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B2%E6%B3%A8%E6%B5%81%E9%87%8F-%E5%9B%9E%E6%98%BE200404%E8%A7%A3%E6%B3%95%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">盲注流量-回显200&#x2F;404解法(二分法)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B2%E6%B3%A8%E6%B5%81%E9%87%8F-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">盲注流量-布尔盲注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B2%E6%B3%A8%E6%B5%81%E9%87%8F-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">盲注流量-时间盲注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E5%8F%A5%E4%B8%BA%E8%80%8C%E9%9D%9Egtlt"><span class="nav-number">6.</span> <span class="nav-text">语句为&#x3D;，而非&gt;&lt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -554,7 +850,7 @@ daovoice('update');
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -884,7 +1180,7 @@ daovoice('update');
             <div>标签云</div>
             <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">74</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/" rel="tag">PWN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E8%AE%A4%E7%9F%A5/" rel="tag">渗透认知</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">59</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA%E8%AE%AD%E7%BB%83/" rel="tag">靶场训练</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">74</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/" rel="tag">HTTP头部信息分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="tag">PHP伪协议</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E7%89%B9%E6%80%A7/" rel="tag">PHP特性</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/" rel="tag">PWN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RE/" rel="tag">RE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%B7%A5%E5%85%B7%E5%8C%85/" rel="tag">Web工具包</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awd/" rel="tag">awd</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctfshow/" rel="tag">ctfshow</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next%E4%B8%BB%E9%A2%98%E5%A4%B1%E6%95%88/" rel="tag">next主题失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wp/" rel="tag">wp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss/" rel="tag">xss</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxe/" rel="tag">xxe</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="tag">不蒜子不显示</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">博客主题优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A1%86%E6%9E%B6%E9%97%AE%E9%A2%98/" rel="tag">博客死循环框架问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">博客部分问题解决方法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">反序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag">命令执行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E6%94%BB%E5%87%BB/" rel="tag">局域网攻击</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" rel="tag">常用指令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" rel="tag">文件上传漏洞</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="tag">文件包含</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E8%AE%A4%E7%9F%A5/" rel="tag">渗透认知</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag">漏洞复现</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%95%99%E8%A8%80%E6%9D%BF/" rel="tag">留言板</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%9B%98/" rel="tag">赛后复盘</a><span class="tag-list-count">59</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BA%E8%AE%AD%E7%BB%83/" rel="tag">靶场训练</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E7%9B%92%E6%B5%8B%E8%AF%95/" rel="tag">黑盒测试</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
             </div>
          </div>
@@ -933,7 +1229,7 @@ daovoice('update');
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">19:39</span>
+    <span title="站点阅读时长">20:02</span>
 </div>
 
 
