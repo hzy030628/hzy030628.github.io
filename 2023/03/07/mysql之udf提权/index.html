@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>关于</title>
-  <meta name="title" content="关于" />
+  <title>微言</title>
+  <meta name="title" content="微言" />
 
 
 
@@ -94,7 +94,7 @@ daovoice('update');
 <meta property="og:description" content="mysql之udf提权">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-07T11:36:39.000Z">
-<meta property="article:modified_time" content="2024-02-14T13:34:41.952Z">
+<meta property="article:modified_time" content="2024-02-21T08:18:23.913Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="靶场训练">
 <meta name="twitter:card" content="summary">
@@ -338,7 +338,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-14 21:34:41" itemprop="dateModified" datetime="2024-02-14T21:34:41+08:00">2024-02-14</time>
+                <time title="修改时间：2024-02-21 16:18:23" itemprop="dateModified" datetime="2024-02-21T16:18:23+08:00">2024-02-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -378,14 +378,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -501,7 +501,9 @@ select sys_eval(‘net user’);</code></pre>
 <pre><code class="hljs plaintext">drop function sys_eval;</code></pre>
 <h1 id="补充">补充</h1>
 <p>UDF提权一般仅适用于windows系统，linux系统由于自身对plugin目录严格的写入权限，很难利用</p>
-<p>参考博客链接:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45290991/article/details/115716262">(96条消息) 20210415web渗透学习之Mysqludf提权（二）（胃肠炎住院期间转）_热热的雨夜的博客-CSDN博客</a></p>
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45290991/article/details/115716262">GOOD1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/11/mysql.html#MOF-%E6%8F%90%E6%9D%83">GOOD2</a></p>
 
     </div>
 
@@ -628,7 +630,7 @@ select sys_eval(‘net user’);</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#udf%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">UDF简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E6%9D%83%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">提权思路(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#when"><span class="nav-number">2.1.</span> <span class="nav-text">When</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what"><span class="nav-number">2.2.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.0.0.1.</span> <span class="nav-text">数据库相关信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83payload"><span class="nav-number">2.3.</span> <span class="nav-text">提权payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%AD%A4%E6%8F%90%E6%9D%83udf"><span class="nav-number">2.4.</span> <span class="nav-text">调用此提权UDF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%97%95%E8%BF%B9%E6%B8%85%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">痕迹清除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#udf%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">UDF简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E6%9D%83%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">提权思路(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#when"><span class="nav-number">2.1.</span> <span class="nav-text">When</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what"><span class="nav-number">2.2.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.0.0.1.</span> <span class="nav-text">数据库相关信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83payload"><span class="nav-number">2.3.</span> <span class="nav-text">提权payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%AD%A4%E6%8F%90%E6%9D%83udf"><span class="nav-number">2.4.</span> <span class="nav-text">调用此提权UDF</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%97%95%E8%BF%B9%E6%B8%85%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">痕迹清除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
