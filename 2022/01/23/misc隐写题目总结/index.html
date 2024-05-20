@@ -47,8 +47,8 @@ document.write('<script src="' + src + '" id="sozz"><\/script>');
 
 <!-- title、keywords、desc关键字 -->
 
-  <title>留言板</title>
-  <meta name="title" content="留言板" />
+  <title>关于</title>
+  <meta name="title" content="关于" />
 
 
 
@@ -94,7 +94,7 @@ daovoice('update');
 <meta property="og:description" content="misc隐写题目总结，方便后续使用到的时候能找到，所以记录一下。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-23T03:04:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T04:11:01.240Z">
+<meta property="article:modified_time" content="2024-04-14T13:45:33.492Z">
 <meta property="article:author" content="故里">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="misc">
@@ -339,7 +339,7 @@ daovoice('update');
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-08 12:11:01" itemprop="dateModified" datetime="2024-02-08T12:11:01+08:00">2024-02-08</time>
+                <time title="修改时间：2024-04-14 21:45:33" itemprop="dateModified" datetime="2024-04-14T21:45:33+08:00">2024-04-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -383,7 +383,7 @@ daovoice('update');
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8.3k</span>
+              <span>8.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -786,6 +786,8 @@ stegsnow -C -p &quot;hello world&quot; [outfile]</code></pre>
 <pre><code class="hljs plaintext">找第24个字节，该字节尾数为4表示加密，0表示无加密，将尾数改为0即可破解伪加密
 【第七列第二行的个位数】</code></pre>
 <h3 id="明文攻击">明文攻击</h3>
+<pre><code class="hljs plaintext">需要注意明文攻击的压缩包算法必须是ZipCrypto Store
+如果是AES-256 Deflate AES-256 Store  这两种压缩算法是不能明文攻击的</code></pre>
 <p>掩码攻击不多说，懂得都懂，明文攻击最常见的思路也是最根本的要求就是得有一个加密压缩包里面有的文件，然后通过这个文件去明文攻击压缩包，再难点的就是加密压缩包里面有个很常见的文件名，然后通过在网上找到这个文件【指相同CRC的】或者自己构造空置的相同文件名的文件【也就是空格填充，但是这种明文攻击起来很费时间】。</p>
 <p>然后第二种就是空格填充的话用到了一个工具bkcrack，用这个工具去爆，命令如下【见2023春秋杯冬季赛’明文混淆‘这题】</p>
 <pre><code class="hljs plaintext">D:\CTF\bkcrack-1.5.0-win64\bkcrack-1.5.0-win64&gt;bkcrack.exe -C  D:\game\MISC\明文混淆\明文混淆_aa760d446aaae9033ba325b5a324cb7b.zip  -c LICENSE.txt -p D:\game\MISC\明文混淆\LICENSE.txt
@@ -1337,7 +1339,7 @@ sekurlsa::logonpasswords full</code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">21:59</span>
+    <span title="站点阅读时长">22:01</span>
 </div>
 
 
